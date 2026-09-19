@@ -218,6 +218,16 @@ const partMapAssets = {
       { partIndex: 1, x: 91, y: 63, labelX: 83, labelY: 86, side: 'right', kind: 'severable' },
     ],
   },
+  'world-20': {
+    image: 'assets/part-maps/barroth-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 4, x: 10, y: 39, labelX: 15, labelY: 14, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 38, y: 68, labelX: 17, labelY: 86, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 55, y: 48, labelX: 54, labelY: 14, kind: 'neutral' },
+      { partIndex: 2, x: 70, y: 75, labelX: 70, labelY: 88, side: 'right', kind: 'neutral' },
+      { partIndex: 1, x: 89, y: 57, labelX: 86, labelY: 14, side: 'right', kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
