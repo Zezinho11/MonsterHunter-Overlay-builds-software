@@ -50,6 +50,21 @@ button { cursor: pointer; }
 .source-card { display: grid; gap: 5px; padding: 11px 12px; border: 1px solid rgba(171, 195, 218, .12); border-radius: 8px; background: rgba(9, 14, 19, .38); color: #dce7f0; text-decoration: none; }
 .source-card:hover { border-color: rgba(109, 183, 232, .6); }
 .source-card small { color: #8da4b7; line-height: 1.45; }
+.part-map { margin-top: 12px; }
+.part-map-stage { position: relative; min-height: 330px; overflow: hidden; border: 1px solid rgba(171, 195, 218, .14); border-radius: 10px; background: radial-gradient(circle at 50% 45%, rgba(151, 102, 70, .36), rgba(14, 21, 28, .95) 68%); }
+.part-map-stage > img { display: block; width: 100%; height: 330px; object-fit: contain; padding: 34px 80px; filter: drop-shadow(0 12px 20px rgba(0, 0, 0, .52)); }
+.part-callout { position: absolute; left: var(--part-x); top: var(--part-y); transform: translate(-50%, -50%); display: grid; gap: 2px; min-width: 112px; max-width: 160px; padding: 7px 9px; border: 1px solid rgba(105, 172, 216, .55); border-radius: 7px; background: rgba(10, 16, 22, .9); color: #e4edf4; text-align: left; box-shadow: 0 6px 16px rgba(0, 0, 0, .28); cursor: pointer; }
+.part-callout::after { content: ''; position: absolute; width: 26px; height: 1px; background: rgba(105, 172, 216, .7); right: -26px; top: 50%; }
+.part-callout.is-breakable { border-color: rgba(255, 192, 78, .8); }
+.part-callout.is-breakable::after { background: rgba(255, 192, 78, .8); }
+.part-callout strong { font-size: 10px; }
+.part-callout small, .part-callout em, .part-callout span { color: #8eb0c7; font-size: 9px; font-style: normal; }
+.part-callout em { color: #f1ca72; }
+.part-map-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; color: #8da4b7; font-size: 9px; }
+.part-map-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend-dot { width: 8px; height: 8px; display: inline-block; border-radius: 50%; background: #69acd8; }
+.legend-dot.break { background: #ffc04e; }
+.legend-dot.cut { background: #db6871; }
 .build-card, .monster-card, .editor-card, .detail-card, .settings-card { border: 1px solid rgba(171, 195, 218, .16); border-radius: 12px; background: linear-gradient(145deg, rgba(27, 34, 44, .94), rgba(18, 23, 30, .92)); box-shadow: 0 14px 30px rgba(0, 0, 0, .16); }
 .build-card { overflow: hidden; } .card-art { display: grid; place-items: center; height: 125px; background: radial-gradient(circle at 50% 30%, rgba(92, 157, 206, .42), rgba(20, 31, 41, .1) 58%), #18242e; font-size: 42px; } .card-body { padding: 13px; } .card-title { display: flex; justify-content: space-between; gap: 8px; } .card-title strong { font-size: 13px; } .tag { padding: 3px 6px; border: 1px solid rgba(106, 179, 220, .25); border-radius: 4px; color: #9ed8f5; font-size: 8px; text-transform: uppercase; } .card-meta { display: flex; justify-content: space-between; margin-top: 10px; color: #8290a0; font-size: 10px; } .card-source { margin-top: 12px; color: #6eacd0; font-size: 10px; }
 .monster-card { overflow: hidden; cursor: pointer; transition: transform .15s ease; } .monster-card:hover { border-color: rgba(109, 183, 232, .6); transform: translateY(-2px); } .monster-art { display: grid; place-items: center; height: 104px; background: radial-gradient(circle at 50% 35%, rgba(150, 108, 76, .5), rgba(17, 23, 30, .15) 62%), #1a252d; font-size: 42px; } .monster-art img { max-width: 76%; max-height: 90px; object-fit: contain; filter: drop-shadow(0 7px 12px rgba(0, 0, 0, .45)); } .monster-card .card-body { padding: 11px 13px; }
