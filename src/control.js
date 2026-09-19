@@ -985,6 +985,30 @@ const partMapAssets = {
       { partIndex: 6, x: 7, y: 31, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-88': {
+    image: 'assets/part-maps/raging-brachydios-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 17, y: 28, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 10, x: 24, y: 19, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 52, y: 43, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 11, x: 37, y: 55, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 24, y: 76, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 8, valuePartIndex: 2, x: 68, y: 62, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 12, x: 88, y: 54, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-89': {
+    image: 'assets/part-maps/furious-rajang-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 9, x: 56, y: 17, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 65, y: 8, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 55, y: 54, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 5, x: 30, y: 48, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, x: 78, y: 48, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 58, y: 84, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 8, x: 55, y: 67, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
