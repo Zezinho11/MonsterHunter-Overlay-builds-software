@@ -245,13 +245,13 @@ const partMapAssets = {
   'world-22': {
     image: 'assets/part-maps/tobi-kadachi-hunter-notes-v1.png',
     anchors: [
-      { partIndex: 0, x: 6, y: 46, labelX: 14, labelY: 16, side: 'left', kind: 'breakable' },
-      { partIndex: 4, x: 16, y: 48, labelX: 31, labelY: 16, side: 'left', kind: 'neutral' },
-      { partIndex: 2, x: 40, y: 38, labelX: 50, labelY: 16, kind: 'breakable' },
-      { partIndex: 1, x: 82, y: 48, labelX: 85, labelY: 16, side: 'right', kind: 'breakable' },
-      { partIndex: 3, valuePartIndex: 6, x: 24, y: 68, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
-      { partIndex: 5, x: 38, y: 56, labelX: 43, labelY: 88, kind: 'neutral' },
-      { partIndex: 7, x: 55, y: 69, labelX: 70, labelY: 88, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 40, y: 42, labelX: 14, labelY: 16, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 48, y: 30, labelX: 31, labelY: 16, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 66, y: 14, labelX: 51, labelY: 16, kind: 'breakable' },
+      { partIndex: 1, x: 47, y: 64, labelX: 85, labelY: 16, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 6, x: 33, y: 38, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 58, y: 22, labelX: 44, labelY: 88, kind: 'neutral' },
+      { partIndex: 7, x: 51, y: 35, labelX: 70, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
 };
