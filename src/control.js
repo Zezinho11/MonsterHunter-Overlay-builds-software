@@ -854,6 +854,32 @@ const partMapAssets = {
       { partIndex: 1, x: 48, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
     ],
   },
+  'world-76': {
+    image: 'assets/part-maps/nightshade-paolumu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 32, y: 55, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 42, y: 43, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 47, y: 31, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, x: 75, y: 33, labelX: 87, labelY: 15, side: 'right', kind: 'severable' },
+      { partIndex: 0, x: 49, y: 57, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 53, y: 59, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 58, y: 68, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 5, x: 83, y: 74, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'world-77': {
+    image: 'assets/part-maps/yian-garuga-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 77, y: 76, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 83, y: 82, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 75, y: 63, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 7, x: 66, y: 67, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 9, x: 57, y: 56, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 61, y: 72, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 10, x: 48, y: 83, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 1, x: 40, y: 40, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
