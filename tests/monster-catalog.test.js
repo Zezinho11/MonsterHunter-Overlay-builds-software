@@ -95,6 +95,21 @@ test('catalog audit fields are structurally present for every monster', () => {
   }
 });
 
+test('Rise and World large-monster records preserve numeric hitzones when the source publishes them', () => {
+  const riseWithHitzones = catalog.entries.filter((monster) => monster.game === 'rise' && monster.parts?.some((part) => Number.isFinite(part.hitzones?.cut)));
+  const worldWithHitzones = catalog.entries.filter((monster) => monster.game === 'world' && monster.parts?.some((part) => Number.isFinite(part.hitzones?.cut)));
+  assert.equal(riseWithHitzones.length, 70);
+  assert.ok(worldWithHitzones.length >= 60);
+});
+
+test('all published numeric hitzone tables are present for the modern game catalogs', () => {
+  for (const [game, expected] of [['world', 87], ['rise', 70], ['wilds', 34]]) {
+    const records = catalog.entries.filter((monster) => monster.game === game);
+    const withHitzones = records.filter((monster) => monster.parts?.some((part) => Number.isFinite(part.hitzones?.cut) || Number.isFinite(part.hitzones?.slash)));
+    assert.equal(withHitzones.length, expected);
+  }
+});
+
 test('catalog exposes rank availability without inventing Wilds Master Rank', () => {
   for (const entry of catalog.entries) assert.ok(Array.isArray(entry.ranks), `Missing rank metadata: ${entry.name}`);
   assert.ok(catalog.entries.filter((entry) => entry.game === 'rise').every((entry) => entry.ranks.includes('master')));

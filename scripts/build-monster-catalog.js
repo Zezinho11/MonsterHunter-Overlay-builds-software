@@ -74,7 +74,7 @@ function renderIndex(html, gamePath) {
 function kiranicoIndex(html) {
   const pages = new Map();
   for (const match of html.matchAll(/href="https:\/\/mhworld\.kiranico\.com\/en\/monsters\/([^"/]+)\/([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi)) {
-    pages.set(slug(cleanHtml(match[3])), { id: match[1], name: cleanHtml(match[3]) });
+    pages.set(slug(cleanHtml(match[3])), { id: match[1], name: cleanHtml(match[3]), path: match[2] });
   }
   return pages;
 }
@@ -128,6 +128,23 @@ function extractKiranicoParts(html) {
     else parts.set(`kiranico-${slug(name)}`, { id: `kiranico-${slug(name)}`, name, health, hitzones: null, weakPointStars: null, breakThresholds: threshold, breakable: threshold.length > 0 });
   }
   return [...parts.values()];
+}
+
+function extractWorldHitzones(html) {
+  const table = htmlTables(html).find((candidate) => /<th[^>]*>\s*Part\s*<\/th>/i.test(candidate) && /<th[^>]*>\s*Sever\s*<\/th>/i.test(candidate));
+  return tableRows(table || '').map((row) => {
+    const values = row.slice(1, 4).map((value) => Number(value.replace('%', '')));
+    if (!row[0] || values.some((value) => !Number.isFinite(value))) return null;
+    return {
+      id: `kiranico-${slug(row[0])}`,
+      name: row[0],
+      health: null,
+      hitzones: { cut: values[0], blunt: values[1], ammo: values[2] },
+      weakPointStars: null,
+      breakThresholds: [],
+      breakable: false,
+    };
+  }).filter(Boolean);
 }
 
 function extractKiranicoRewards(html) {
@@ -291,16 +308,20 @@ async function enrichFromKiranico(entries, pages, game) {
       const entry = queue.shift();
       const page = game === 'world' ? kiranicoWorldPage(pages, entry.name) : pages.get(slug(entry.name));
       if (!page) continue;
-      const baseUrl = game === 'rise' ? `https://mhrise.kiranico.com/data/monsters/${page.id}` : `https://mhworld.kiranico.com/en/monsters/${page.id}/${slug(page.name)}`;
+      const baseUrl = game === 'rise' ? `https://mhrise.kiranico.com/data/monsters/${page.id}` : `https://mhworld.kiranico.com/en/monsters/${page.id}/${page.path || slug(page.name)}`;
       try {
         const response = await fetch(baseUrl);
         if (!response.ok) continue;
         const html = await response.text();
         const health = game === 'rise' ? extractKiranicoBaseHealth(html) : null;
-        const parts = extractKiranicoParts(html);
+        const parts = game === 'world' ? extractWorldHitzones(html) : extractKiranicoParts(html);
         const rewards = extractKiranicoRewards(html);
         if (health != null) { entry.baseHealth = health; entry.availability.health = true; }
-        if (parts.length) { entry.parts = parts; entry.availability.parts = true; }
+        if (parts.length) {
+          const existing = new Map((entry.parts || []).map((part) => [slug(part.name), part]));
+          entry.parts = parts.map((part) => ({ ...part, ...(existing.get(slug(part.name)) || {}) }));
+          entry.availability.parts = true;
+        }
         if (rewards.length) { entry.rewards = [...entry.rewards, ...rewards]; entry.availability.rewards = true; }
       } catch {
         // Preserve previous structured data when an external page is unavailable.
@@ -518,7 +539,7 @@ async function enrichWorldHealth(entries, pages) {
       const page = kiranicoWorldPage(pages, entry.name);
       if (!page) continue;
       try {
-        const response = await fetch(`https://mhworld.kiranico.com/en/monsters/${page.id}/${slug(page.name)}`);
+        const response = await fetch(`https://mhworld.kiranico.com/en/monsters/${page.id}/${page.path || slug(page.name)}`);
         if (!response.ok) continue;
         const profiles = extractWorldHealthProfiles(await response.text());
         if (profiles.length) {
@@ -574,7 +595,18 @@ async function enrichFromMonsterTools(entries, renderPages) {
         }
         if (parsedParts.length) {
           const currentByName = new Map(entry.parts.map((part) => [slug(part.name), part]));
-          entry.parts = parsedParts.map((part) => ({ ...currentByName.get(slug(part.name)), ...part }));
+          // Monster Hunter Tools contributes names/qualitative stars, while
+          // Kiranico/Rice can already have numeric hitzones and thresholds.
+          // Keep the richer structured record instead of replacing numbers
+          // with the Tools parser's intentional null placeholders. State
+          // variants such as Alatreon's Fire/Ice/Dragon rows are preserved
+          // even when Tools exposes only the base part name.
+          const mergedNames = new Set(parsedParts.map((part) => slug(part.name)));
+          const preservedParts = entry.parts.filter((part) => !mergedNames.has(slug(part.name)));
+          entry.parts = [
+            ...parsedParts.map((part) => ({ ...part, ...(currentByName.get(slug(part.name)) || {}) })),
+            ...preservedParts,
+          ];
           entry.availability.parts = true;
         }
         entry.availability.ecology = Boolean(ecology.characteristics || ecology.usefulInfo);
