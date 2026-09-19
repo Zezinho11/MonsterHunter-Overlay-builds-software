@@ -186,6 +186,17 @@ const partMapAssets = {
       { partIndex: 6, x: 35, y: 82, labelX: 20, labelY: 88, side: 'left', kind: 'neutral', paint: ['28,68 34,66 38,72 36,80 34,87 31,91 28,87 29,78', '43,67 49,66 53,72 52,81 50,89 46,91 44,86 45,77'] },
     ],
   },
+  'world-17': {
+    image: 'assets/part-maps/great-jagras-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 8, y: 36, labelX: 15, labelY: 14, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 41, y: 57, labelX: 24, labelY: 86, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 28, y: 72, labelX: 12, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 63, y: 72, labelX: 61, labelY: 88, side: 'right', kind: 'neutral' },
+      { partIndex: 8, x: 89, y: 57, labelX: 86, labelY: 86, side: 'right', kind: 'neutral' },
+      { partIndex: 9, x: 44, y: 58, labelX: 48, labelY: 14, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
