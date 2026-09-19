@@ -179,9 +179,9 @@ const partMapAssets = {
   'world-42': {
     image: 'assets/part-maps/rathalos-hunter-notes-v1.png',
     anchors: [
-      { partIndex: 0, x: 9, y: 54, labelX: 15, labelY: 16, side: 'left', kind: 'breakable', paint: ['6,47 11,45 16,50 13,57 8,60 5,56'] },
-      { partIndex: 1, x: 89, y: 70, labelX: 84, labelY: 88, side: 'right', kind: 'severable', paint: ['76,64 87,61 96,66 94,74 84,76 76,71'] },
-      { partIndex: 2, x: 62, y: 23, labelX: 84, labelY: 16, side: 'right', kind: 'breakable', paint: ['38,14 53,7 72,9 84,18 78,29 62,29 48,24'] },
+      { partIndex: 0, x: 9, y: 54, labelX: 15, labelY: 16, side: 'left', kind: 'breakable', paint: ['6,49 9,46 13,47 16,51 13,55 11,59 8,58 6,55'] },
+      { partIndex: 1, x: 89, y: 70, labelX: 84, labelY: 88, side: 'right', kind: 'severable', paint: ['80,66 86,63 91,64 95,67 93,71 89,73 84,73 80,70'] },
+      { partIndex: 2, x: 62, y: 23, labelX: 84, labelY: 16, side: 'right', kind: 'breakable', paint: ['40,15 49,10 57,8 66,9 73,11 80,15 78,19 70,19 63,17 56,20 49,18 44,21', '48,20 56,22 63,21 70,23 76,21 80,25 76,28 68,27 61,25 54,26'] },
       { partIndex: 5, x: 44, y: 61, labelX: 48, labelY: 90, kind: 'neutral', paint: [] },
       { partIndex: 6, x: 34, y: 84, labelX: 20, labelY: 88, side: 'left', kind: 'neutral', paint: [] },
     ],
