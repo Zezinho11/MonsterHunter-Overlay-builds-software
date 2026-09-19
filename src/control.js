@@ -829,6 +829,31 @@ const partMapAssets = {
       { partIndex: 11, x: 79, y: 31, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
     ],
   },
+  'world-73': {
+    image: 'assets/part-maps/ruiner-nergigante-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 10, y: 53, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 19, y: 39, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 11, x: 65, y: 24, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 8, x: 57, y: 47, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 30, y: 64, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 45, y: 65, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 10, x: 34, y: 82, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 3, x: 84, y: 73, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-75': {
+    image: 'assets/part-maps/coral-pukei-pukei-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 62, y: 45, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 24, y: 34, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 80, y: 36, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, x: 55, y: 59, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, x: 56, y: 68, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 68, y: 70, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 48, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
