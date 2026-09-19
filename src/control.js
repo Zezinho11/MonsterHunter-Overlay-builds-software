@@ -880,6 +880,33 @@ const partMapAssets = {
       { partIndex: 1, x: 40, y: 40, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
     ],
   },
+  'world-78': {
+    image: 'assets/part-maps/shara-ishvalda-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 5, x: 50, y: 35, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 50, y: 42, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 50, y: 54, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 0, x: 50, y: 45, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, x: 25, y: 51, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 43, y: 68, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 15, x: 50, y: 64, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 17, x: 62, y: 79, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-79': {
+    image: 'assets/part-maps/savage-deviljho-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 85, y: 58, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 72, y: 45, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 58, y: 46, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, x: 72, y: 57, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 1, x: 47, y: 59, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 73, y: 73, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 34, y: 82, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 8, x: 16, y: 45, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+      { partIndex: 2, x: 7, y: 25, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
