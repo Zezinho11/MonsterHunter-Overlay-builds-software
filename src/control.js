@@ -803,6 +803,32 @@ const partMapAssets = {
       { partIndex: 7, x: 10, y: 45, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-71': {
+    image: 'assets/part-maps/fulgur-anjanath-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, x: 92, y: 35, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 97, y: 42, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 80, y: 39, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 6, x: 53, y: 35, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 7, x: 70, y: 63, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 67, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 26, y: 69, labelX: 63, labelY: 88, kind: 'severable' },
+      { partIndex: 0, x: 7, y: 66, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'world-72': {
+    image: 'assets/part-maps/acidic-glavenus-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 61, y: 67, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 57, y: 58, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 38, y: 27, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 6, x: 41, y: 57, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 4, x: 48, y: 78, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 8, x: 17, y: 80, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, x: 57, y: 47, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 11, x: 79, y: 31, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
