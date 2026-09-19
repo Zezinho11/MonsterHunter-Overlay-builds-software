@@ -627,6 +627,30 @@ const partMapAssets = {
       { partIndex: 3, x: 19, y: 65, labelX: 63, labelY: 88, kind: 'severable' },
     ],
   },
+  'world-57': {
+    image: 'assets/part-maps/rajang-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 50, y: 39, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 28, y: 22, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 55, y: 55, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, x: 35, y: 69, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, x: 73, y: 72, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 66, y: 84, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 82, y: 48, labelX: 63, labelY: 88, kind: 'severable' },
+    ],
+  },
+  'world-58': {
+    image: 'assets/part-maps/viper-tobi-kadachi-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 15, y: 28, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 31, y: 39, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 51, y: 30, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 5, x: 48, y: 57, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 63, y: 70, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 76, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 19, y: 64, labelX: 63, labelY: 88, kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
