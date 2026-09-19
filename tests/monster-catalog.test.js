@@ -124,3 +124,12 @@ test('catalog exposes rank availability without inventing Wilds Master Rank', ()
   assert.ok(catalog.entries.some((entry) => entry.game === 'world' && entry.name === 'Great Jagras' && entry.ranks.includes('low') && entry.ranks.includes('high') && entry.ranks.includes('master')));
   assert.ok(catalog.entries.filter((entry) => entry.game === 'mhgu').every((entry) => entry.ranks.includes('low') && entry.ranks.includes('high') && entry.ranks.includes('master')));
 });
+
+test('MHGU fallback fills published small-monster health and hitzones without replacing Kiranico rank data', () => {
+  const mhgu = catalog.entries.filter((monster) => monster.game === 'mhgu');
+  const withHealth = mhgu.filter((monster) => monster.healthProfiles?.length);
+  const withHitzones = mhgu.filter((monster) => monster.parts?.some((part) => Number.isFinite(part.hitzones?.cut)));
+  assert.equal(withHealth.length, 130);
+  assert.equal(withHitzones.length, 130);
+  assert.ok(mhgu.find((monster) => monster.name === 'Ahtal-Neset')?.healthProfiles?.length > 0);
+});

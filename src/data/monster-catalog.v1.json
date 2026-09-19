@@ -1,6 +1,6 @@
 {
   "schema": "monster-catalog.v1",
-  "generatedAt": "2026-09-19T13:53:28.499Z",
+  "generatedAt": "2026-09-19T14:05:46.328Z",
   "locale": "en",
   "sources": [
     {
@@ -59,6 +59,15 @@
       ],
       "url": "https://mhgu.kiranico.com/monster",
       "note": "MHGU pages provide rank-specific quest health, hitzones A/B, status thresholds, break data and Low/High/G Rank reward tables."
+    },
+    {
+      "id": "mhgu-community-hitzones",
+      "games": [
+        "mhgu"
+      ],
+      "url": "https://github.com/ArmoredRaven17/MHGU-Monster-Info",
+      "license": "MIT",
+      "note": "Fallback for MHGU records without a Kiranico table; data is decoded from game resources and the upstream project documents the one missing Ahtal-Neset record."
     },
     {
       "id": "monster-hunter-db-icons",
@@ -255520,7 +255529,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-aptonoth-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 80,
+            "ammo": 80,
+            "fire": 55,
+            "water": 55,
+            "ice": 55,
+            "thunder": 55,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-aptonoth-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 75,
+            "fire": 50,
+            "water": 50,
+            "ice": 50,
+            "thunder": 50,
+            "dragon": 10,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Raw Meat",
@@ -255596,16 +255646,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 75,
+          "healthRange": {
+            "min": 75,
+            "max": 75
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -255729,7 +255791,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-apceros-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 100,
+            "ammo": 90,
+            "fire": 40,
+            "water": 20,
+            "ice": 30,
+            "thunder": 40,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-apceros-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 70,
+            "blunt": 100,
+            "ammo": 70,
+            "fire": 40,
+            "water": 20,
+            "ice": 30,
+            "thunder": 40,
+            "dragon": 10,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Apceros Liver",
@@ -255889,16 +255992,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 200,
+          "healthRange": {
+            "min": 200,
+            "max": 200
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4U",
       "rankData": {
@@ -256106,7 +256221,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-kelbi-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 100,
+            "water": 100,
+            "ice": 100,
+            "thunder": 100,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Kelbi Horn",
@@ -256314,16 +256450,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 55,
+          "healthRange": {
+            "min": 55,
+            "max": 55
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -256579,7 +256727,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-mosswine-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 120,
+            "blunt": 100,
+            "ammo": 100,
+            "fire": 100,
+            "water": 100,
+            "ice": 10,
+            "thunder": 0,
+            "dragon": 100,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Blue Mushroom",
@@ -256763,16 +256932,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 100,
+          "healthRange": {
+            "min": 100,
+            "max": 100
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -257004,7 +257185,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-hornetaur-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 100,
+            "blunt": 120,
+            "ammo": 100,
+            "fire": 100,
+            "water": 20,
+            "ice": 100,
+            "thunder": 60,
+            "dragon": 10,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Hornetaur Shell",
@@ -257176,16 +257378,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 50,
+          "healthRange": {
+            "min": 50,
+            "max": 50
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -257405,7 +257619,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-vespoid-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 83,
+            "blunt": 87,
+            "ammo": 85,
+            "fire": 100,
+            "water": 50,
+            "ice": 50,
+            "thunder": 10,
+            "dragon": 0,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Vespoid Shell",
@@ -257565,16 +257800,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 30,
+          "healthRange": {
+            "min": 30,
+            "max": 30
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -257782,7 +258029,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-felyne-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 100,
+            "water": 100,
+            "ice": 100,
+            "thunder": 100,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "First-aid Med",
@@ -257930,16 +258198,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 40,
+          "healthRange": {
+            "min": 40,
+            "max": 40
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -258135,7 +258415,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-melynx-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 100,
+            "water": 100,
+            "ice": 100,
+            "thunder": 100,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Secret Stash",
@@ -258295,16 +258596,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 40,
+          "healthRange": {
+            "min": 40,
+            "max": 40
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -258512,7 +258825,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-velociprey-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 50,
+            "water": 50,
+            "ice": 50,
+            "thunder": 50,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Bird Wyvern Fang",
@@ -258660,16 +258994,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 100,
+          "healthRange": {
+            "min": 100,
+            "max": 100
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -258865,7 +259211,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-genprey-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 56,
+            "blunt": 56,
+            "ammo": 60,
+            "fire": 20,
+            "water": 20,
+            "ice": 60,
+            "thunder": 30,
+            "dragon": 0,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Genprey Fang",
@@ -258977,16 +259344,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 120,
+          "healthRange": {
+            "min": 120,
+            "max": 120
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -259146,7 +259525,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-ioprey-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 45,
+            "blunt": 45,
+            "ammo": 50,
+            "fire": 20,
+            "water": 50,
+            "ice": 20,
+            "thunder": 30,
+            "dragon": 0,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Ioprey Fang",
@@ -259258,16 +259658,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 150,
+          "healthRange": {
+            "min": 150,
+            "max": 150
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -259429,7 +259841,68 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-cephalos-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 60,
+            "blunt": 60,
+            "ammo": 60,
+            "fire": 10,
+            "water": 15,
+            "ice": 40,
+            "thunder": 30,
+            "dragon": 0,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-cephalos-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 80,
+            "ammo": 85,
+            "fire": 10,
+            "water": 20,
+            "ice": 40,
+            "thunder": 30,
+            "dragon": 0,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-cephalos-2",
+          "name": "Parte 3",
+          "health": null,
+          "hitzones": {
+            "cut": 55,
+            "blunt": 50,
+            "ammo": 50,
+            "fire": 10,
+            "water": 15,
+            "ice": 20,
+            "thunder": 25,
+            "dragon": 0,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Piscine Liver",
@@ -259589,16 +260062,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 200,
+          "healthRange": {
+            "min": 200,
+            "max": 200
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4U",
       "rankData": {
@@ -259806,7 +260291,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-bullfango-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 100,
+            "blunt": 100,
+            "ammo": 100,
+            "fire": 50,
+            "water": 50,
+            "ice": 40,
+            "thunder": 100,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Bullfango Pelt",
@@ -259978,16 +260484,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 120,
+          "healthRange": {
+            "min": 120,
+            "max": 120
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -260207,7 +260725,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-popo-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 80,
+            "ammo": 80,
+            "fire": 55,
+            "water": 10,
+            "ice": 10,
+            "thunder": 15,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-popo-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 75,
+            "fire": 50,
+            "water": 10,
+            "ice": 10,
+            "thunder": 10,
+            "dragon": 10,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Popo Tongue",
@@ -260379,16 +260938,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 105,
+          "healthRange": {
+            "min": 105,
+            "max": 105
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -260610,7 +261181,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-giaprey-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 66,
+            "blunt": 66,
+            "ammo": 70,
+            "fire": 60,
+            "water": 20,
+            "ice": 10,
+            "thunder": 30,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Giaprey Scale",
@@ -260722,16 +261314,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 110,
+          "healthRange": {
+            "min": 110,
+            "max": 110
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -260891,7 +261495,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-anteka-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 100,
+            "water": 100,
+            "ice": 100,
+            "thunder": 100,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Anteka Antler",
@@ -261087,16 +261712,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 55,
+          "healthRange": {
+            "min": 55,
+            "max": 55
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -261332,7 +261969,7 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MH4U-Remobra_Icon.png",
       "iconFallbackAsset": null,
-      "render": "https://images.wikia.com/monsterhunter/images/2/2a/2ndGen-Remobra_Render_001.png/revision/latest?cb=20150303030230&format=png",
+      "render": "https://images.wikia.com/monsterhunter/images/f/ff/MH4-Remobra_Render_001.png/revision/latest?cb=20140108055152&format=png",
       "renderSource": "monster-hunter-fandom-cross-game",
       "imageFallback": null,
       "elements": [],
@@ -261340,7 +261977,68 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-remobra-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 10,
+            "water": 30,
+            "ice": 10,
+            "thunder": 0,
+            "dragon": 35,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-remobra-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 71,
+            "blunt": 66,
+            "ammo": 60,
+            "fire": 10,
+            "water": 25,
+            "ice": 15,
+            "thunder": 5,
+            "dragon": 20,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-remobra-2",
+          "name": "Parte 3",
+          "health": null,
+          "hitzones": {
+            "cut": 45,
+            "blunt": 45,
+            "ammo": 30,
+            "fire": 15,
+            "water": 30,
+            "ice": 10,
+            "thunder": 5,
+            "dragon": 35,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Remobra Hide",
@@ -261476,18 +262174,30 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 190,
+          "healthRange": {
+            "min": 190,
+            "max": 190
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
-      "renderVariant": "2ndGen",
+      "renderVariant": "MH4",
       "rankData": {
         "low": {
           "rewards": [
@@ -261669,7 +262379,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-hermitaur-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 110,
+            "ammo": 50,
+            "fire": 30,
+            "water": 5,
+            "ice": 20,
+            "thunder": 60,
+            "dragon": 0,
+            "stun": 200,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Sm. Hermitaur Shell",
@@ -261829,16 +262560,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 120,
+          "healthRange": {
+            "min": 120,
+            "max": 120
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4U",
       "rankData": {
@@ -262046,7 +262789,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-ceanataur-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 110,
+            "ammo": 50,
+            "fire": 30,
+            "water": 5,
+            "ice": 20,
+            "thunder": 60,
+            "dragon": 0,
+            "stun": 200,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Small Ceanataur Shell",
@@ -262230,16 +262994,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 120,
+          "healthRange": {
+            "min": 120,
+            "max": 120
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -262473,7 +263249,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-blango-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 65,
+            "blunt": 60,
+            "ammo": 65,
+            "fire": 40,
+            "water": 5,
+            "ice": 0,
+            "thunder": 15,
+            "dragon": 0,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Blango Pelt",
@@ -262609,16 +263406,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 120,
+          "healthRange": {
+            "min": 120,
+            "max": 120
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -262802,7 +263611,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-rhenoplos-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 30,
+            "blunt": 40,
+            "ammo": 45,
+            "fire": 0,
+            "water": 45,
+            "ice": 45,
+            "thunder": 45,
+            "dragon": 5,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-rhenoplos-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 80,
+            "ammo": 85,
+            "fire": 10,
+            "water": 50,
+            "ice": 50,
+            "thunder": 50,
+            "dragon": 10,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Raw Meat",
@@ -262962,16 +263812,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 120,
+          "healthRange": {
+            "min": 120,
+            "max": 120
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -263179,7 +264041,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-bnahabra-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 83,
+            "blunt": 87,
+            "ammo": 85,
+            "fire": 100,
+            "water": 50,
+            "ice": 50,
+            "thunder": 10,
+            "dragon": 0,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Bnahabra Shell",
@@ -263327,16 +264210,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 30,
+          "healthRange": {
+            "min": 30,
+            "max": 30
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -263532,7 +264427,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-altaroth-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 100,
+            "water": 100,
+            "ice": 100,
+            "thunder": 100,
+            "dragon": 100,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Altaroth Stomach",
@@ -263956,16 +264872,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 45,
+          "healthRange": {
+            "min": 45,
+            "max": 45
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -264437,7 +265365,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-jaggi-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 80,
+            "ammo": 85,
+            "fire": 70,
+            "water": 50,
+            "ice": 50,
+            "thunder": 50,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Bird Wyvern Fang",
@@ -264585,16 +265534,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 90,
+          "healthRange": {
+            "min": 90,
+            "max": 90
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -264790,7 +265751,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-jaggia-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 85,
+            "fire": 75,
+            "water": 50,
+            "ice": 50,
+            "thunder": 50,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Jaggi Hide",
@@ -264938,16 +265920,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 120,
+          "healthRange": {
+            "min": 120,
+            "max": 120
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -265145,7 +266139,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-ludroth-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 90,
+            "blunt": 95,
+            "ammo": 90,
+            "fire": 40,
+            "water": 0,
+            "ice": 10,
+            "thunder": 30,
+            "dragon": 0,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-ludroth-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 85,
+            "blunt": 85,
+            "ammo": 80,
+            "fire": 60,
+            "water": 0,
+            "ice": 10,
+            "thunder": 25,
+            "dragon": 0,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Hydro Hide",
@@ -265305,16 +266340,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 180,
+          "healthRange": {
+            "min": 180,
+            "max": 180
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -265524,7 +266571,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-uroktor-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 85,
+            "blunt": 85,
+            "ammo": 80,
+            "fire": 0,
+            "water": 40,
+            "ice": 10,
+            "thunder": 30,
+            "dragon": 0,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-uroktor-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 80,
+            "ammo": 70,
+            "fire": 0,
+            "water": 60,
+            "ice": 10,
+            "thunder": 25,
+            "dragon": 0,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Uroktor Scale",
@@ -265660,16 +266748,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 220,
+          "healthRange": {
+            "min": 220,
+            "max": 220
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -265853,7 +266953,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-slagtoth-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 75,
+            "fire": 35,
+            "water": 35,
+            "ice": 45,
+            "thunder": 55,
+            "dragon": 5,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-slagtoth-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 66,
+            "blunt": 59,
+            "ammo": 70,
+            "fire": 30,
+            "water": 30,
+            "ice": 40,
+            "thunder": 50,
+            "dragon": 5,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Slagtoth Oil",
@@ -266001,16 +267142,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 160,
+          "healthRange": {
+            "min": 160,
+            "max": 160
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -266206,7 +267359,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-gargwa-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 80,
+            "ammo": 80,
+            "fire": 100,
+            "water": 90,
+            "ice": 90,
+            "thunder": 90,
+            "dragon": 5,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-gargwa-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 75,
+            "fire": 90,
+            "water": 80,
+            "ice": 80,
+            "thunder": 80,
+            "dragon": 0,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Raw Meat",
@@ -266510,16 +267704,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 65,
+          "healthRange": {
+            "min": 65,
+            "max": 65
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -266873,7 +268079,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-zamite-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 40,
+            "water": 20,
+            "ice": 10,
+            "thunder": 90,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-zamite-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 45,
+            "blunt": 45,
+            "ammo": 50,
+            "fire": 30,
+            "water": 10,
+            "ice": 10,
+            "thunder": 70,
+            "dragon": 10,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Sharp Fang",
@@ -267021,16 +268268,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 165,
+          "healthRange": {
+            "min": 165,
+            "max": 165
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -267226,7 +268485,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-konchu-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 23,
+            "blunt": 30,
+            "ammo": 10,
+            "fire": 10,
+            "water": 10,
+            "ice": 10,
+            "thunder": 10,
+            "dragon": 10,
+            "stun": 10,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Konchu Shell",
@@ -267398,16 +268678,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 100,
+          "healthRange": {
+            "min": 100,
+            "max": 100
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {
@@ -267627,7 +268919,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-maccao-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 80,
+            "ammo": 85,
+            "fire": 70,
+            "water": 50,
+            "ice": 50,
+            "thunder": 50,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Bird Wyvern Fang",
@@ -267775,16 +269088,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 100,
+          "healthRange": {
+            "min": 100,
+            "max": 100
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -267980,7 +269305,48 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-larinoth-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 100,
+            "blunt": 100,
+            "ammo": 100,
+            "fire": 55,
+            "water": 55,
+            "ice": 55,
+            "thunder": 55,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        },
+        {
+          "id": "mhgu-community-larinoth-1",
+          "name": "Parte 2",
+          "health": null,
+          "hitzones": {
+            "cut": 80,
+            "blunt": 80,
+            "ammo": 80,
+            "fire": 55,
+            "water": 55,
+            "ice": 55,
+            "thunder": 55,
+            "dragon": 10,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Raw Meat",
@@ -268188,16 +269554,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 150,
+          "healthRange": {
+            "min": 150,
+            "max": 150
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -268453,7 +269831,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-moofah-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 75,
+            "blunt": 75,
+            "ammo": 80,
+            "fire": 100,
+            "water": 100,
+            "ice": 100,
+            "thunder": 100,
+            "dragon": 10,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Moofah Horn",
@@ -268625,16 +270024,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 150,
+          "healthRange": {
+            "min": 150,
+            "max": 150
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MHGen",
       "rankData": {
@@ -268856,7 +270267,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-great_thunderbug-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 90,
+            "blunt": 90,
+            "ammo": 90,
+            "fire": 20,
+            "water": 35,
+            "ice": 20,
+            "thunder": 0,
+            "dragon": 20,
+            "stun": 0,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Shocking Extract",
@@ -269040,16 +270472,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 50,
+          "healthRange": {
+            "min": 50,
+            "max": 50
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "2ndGen",
       "rankData": {
@@ -269281,7 +270725,28 @@
       "resistances": [],
       "ailments": [],
       "locations": [],
-      "parts": [],
+      "parts": [
+        {
+          "id": "mhgu-community-conga-0",
+          "name": "Parte 1",
+          "health": null,
+          "hitzones": {
+            "cut": 56,
+            "blunt": 65,
+            "ammo": 60,
+            "fire": 30,
+            "water": 10,
+            "ice": 15,
+            "thunder": 10,
+            "dragon": 0,
+            "stun": 100,
+            "exhaust": 100
+          },
+          "weakPointStars": null,
+          "breakThresholds": [],
+          "breakable": false
+        }
+      ],
       "rewards": [
         {
           "item": "Conga Pelt+",
@@ -269405,16 +270870,28 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "quest": null,
+          "health": 150,
+          "healthRange": {
+            "min": 150,
+            "max": 150
+          },
+          "location": null
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": false,
-        "parts": false,
+        "parts": true,
         "rewards": true,
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "renderVariant": "MH4",
       "rankData": {

@@ -262,6 +262,57 @@ function extractMhguStatus(html) {
   return tableRows(table || '').slice(1).map((row) => ({ status: row[0], initial: parseMhguNumber(row[1]), increase: parseMhguNumber(row[2]), maximum: parseMhguNumber(row[3]) })).filter((row) => row.status && row.initial != null);
 }
 
+function extractMhguCommunityHitzones(text) {
+  const match = String(text).match(/window\.MONSTER_DATA\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
+  if (!match) return [];
+  try {
+    const data = JSON.parse(match[1]);
+    return (data.monsters || []).map((monster) => ({
+      name: monster.name,
+      hp: Number.isFinite(monster.hp) ? monster.hp : null,
+      parts: (monster.tables?.[0] || []).map((row, index) => ({
+        id: `mhgu-community-${slug(monster.name)}-${row[0] ?? index}`,
+        name: row[1] || `Parte ${index + 1}`,
+        health: null,
+        hitzones: {
+          cut: row[2] ?? null,
+          blunt: row[3] ?? null,
+          ammo: row[4] ?? null,
+          fire: row[5] ?? null,
+          water: row[6] ?? null,
+          ice: row[7] ?? null,
+          thunder: row[8] ?? null,
+          dragon: row[9] ?? null,
+          stun: row[10] ?? null,
+          exhaust: row[11] ?? null,
+        },
+        weakPointStars: null,
+        breakThresholds: [],
+        breakable: false,
+      })),
+    })).filter((monster) => monster.name);
+  } catch {
+    return [];
+  }
+}
+
+function enrichMhguFromCommunityHitzones(entries, text) {
+  const byName = new Map(extractMhguCommunityHitzones(text).map((monster) => [slug(monster.name), monster]));
+  for (const entry of entries.filter((candidate) => candidate.game === 'mhgu')) {
+    const source = byName.get(slug(entry.name));
+    if (!source) continue;
+    if (!entry.healthProfiles?.length && source.hp != null) {
+      entry.healthProfiles = [{ mode: 'reference', rank: null, quest: null, health: source.hp, healthRange: { min: source.hp, max: source.hp }, location: null }];
+      entry.availability.health = true;
+    }
+    const hasNumericHitzones = entry.parts?.some((part) => Object.values(part.hitzones || {}).some((value) => Number.isFinite(value)));
+    if (!hasNumericHitzones && source.parts.length) {
+      entry.parts = source.parts;
+      entry.availability.parts = true;
+    }
+  }
+}
+
 async function enrichFromMhguKiranico(entries, pages) {
   const queue = entries.filter((entry) => entry.game === 'mhgu');
   const workers = Array.from({ length: 8 }, async () => {
@@ -736,7 +787,7 @@ const riseSmallMonsterNames = new Set([
 ]);
 
 async function main() {
-  const [world, worldSupplement, wilds, rise, mhguPage, mhrice, iconManifest, zukanMonsters, worldRenderPages, riseRenderPages, wildsRenderPages, worldKiranicoPages, riseKiranicoLargePages, riseKiranicoSmallPages, mhguKiranicoPages] = await Promise.all([
+  const [world, worldSupplement, wilds, rise, mhguPage, mhrice, iconManifest, zukanMonsters, worldRenderPages, riseRenderPages, wildsRenderPages, worldKiranicoPages, riseKiranicoLargePages, riseKiranicoSmallPages, mhguKiranicoPages, mhguCommunityHitzones] = await Promise.all([
     getJson('https://mhw-db.com/monsters'),
     getJson('https://raw.githubusercontent.com/Neryss/monster_hunter_db/master/mhw_db.json'),
     getJson('https://wilds.mhdb.io/en/monsters'),
@@ -752,6 +803,7 @@ async function main() {
     getText('https://mhrise.kiranico.com/data/monsters?view=lg'),
     getText('https://mhrise.kiranico.com/data/monsters?view=sm'),
     getText('https://mhgu.kiranico.com/monster'),
+    getText('https://raw.githubusercontent.com/ArmoredRaven17/MHGU-Monster-Info/master/docs/data/hitzones.js'),
   ]);
 
   const worldNames = new Set(world.map((record) => record.name.toLowerCase()));
@@ -838,6 +890,7 @@ async function main() {
   const riseKiranicoPages = new Map([...kiranicoRiseIndex(riseKiranicoLargePages), ...kiranicoRiseIndex(riseKiranicoSmallPages)]);
   await enrichFromKiranico(entries, riseKiranicoPages, 'rise');
   await enrichFromMhguKiranico(entries, mhguPages);
+  enrichMhguFromCommunityHitzones(entries, mhguCommunityHitzones);
   await enrichFromMonsterTools(entries, renderPages);
   await enrichFromFandom(entries);
   await enrichFromFandomCrossGame(entries);
@@ -864,6 +917,7 @@ async function main() {
       { id: 'neryss-rise-db', games: ['rise'], url: 'https://github.com/Neryss/monster_hunter_db', note: 'Rise/Sunbreak weakness and resistance supplement.' },
       { id: 'wilds-mhdb', games: ['wilds'], url: 'https://wilds.mhdb.io/en/monsters', note: 'Wilds weaknesses, rewards and part multipliers.' },
       { id: 'mhgu-kiranico', games: ['mhgu'], url: 'https://mhgu.kiranico.com/monster', note: 'MHGU pages provide rank-specific quest health, hitzones A/B, status thresholds, break data and Low/High/G Rank reward tables.' },
+      { id: 'mhgu-community-hitzones', games: ['mhgu'], url: 'https://github.com/ArmoredRaven17/MHGU-Monster-Info', license: 'MIT', note: 'Fallback for MHGU records without a Kiranico table; data is decoded from game resources and the upstream project documents the one missing Ahtal-Neset record.' },
       { id: 'monster-hunter-db-icons', games: ['world', 'rise', 'wilds', 'mhgu'], url: 'https://github.com/CrimsonNynja/monster-hunter-DB/tree/master/icons', note: 'Game-specific icon references; attribution retained.' },
       { id: 'monster-hunter-tools-renders', games: ['world', 'rise', 'wilds'], url: 'https://monsterhunter.tools/', note: 'High-resolution game render references by title and monster; image source attribution is retained by the provider.' },
       { id: 'monster-hunter-fandom-renders', games: ['world', 'wilds', 'mhgu'], url: 'https://monsterhunter.fandom.com/wiki/Category:Monster_Renders', note: 'PNG render references selected by exact game/variant filename; MHGU may also use an explicitly marked cross-game render from MHGen/MH4U/MHFU/MH3U when no MHGU file exists.' },
