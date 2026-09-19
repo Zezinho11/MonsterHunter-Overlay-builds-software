@@ -361,6 +361,27 @@ const partMapAssets = {
       { partIndex: 6, x: 85, y: 76, labelX: 82, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-32': {
+    image: 'assets/part-maps/kirin-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 0, x: 65, y: 8, labelX: 17, labelY: 16, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 68, y: 24, labelX: 83, labelY: 16, side: 'right', kind: 'neutral' },
+      { partIndex: 2, x: 57, y: 55, labelX: 20, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 58, y: 75, labelX: 80, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-33': {
+    image: 'assets/part-maps/kulve-taroth-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 3, x: 29, y: 14, labelX: 15, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 31, y: 26, labelX: 38, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 40, y: 42, labelX: 62, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, x: 91, y: 64, labelX: 85, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, x: 34, y: 63, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 61, y: 42, labelX: 50, labelY: 88, kind: 'breakable' },
+      { partIndex: 6, x: 82, y: 65, labelX: 82, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
