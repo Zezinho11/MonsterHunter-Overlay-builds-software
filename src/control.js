@@ -933,6 +933,33 @@ const partMapAssets = {
       { partIndex: 4, x: 60, y: 52, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-82': {
+    image: 'assets/part-maps/scarred-yian-garuga-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 78, y: 75, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 84, y: 81, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 77, y: 65, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 7, x: 68, y: 66, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 9, x: 57, y: 55, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 62, y: 70, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 10, x: 47, y: 83, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 13, x: 28, y: 73, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+      { partIndex: 1, x: 8, y: 73, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'world-83': {
+    image: 'assets/part-maps/gold-rathian-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 4, x: 75, y: 60, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 68, y: 51, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 57, y: 61, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, x: 51, y: 49, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, x: 24, y: 29, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 60, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 21, y: 68, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 1, x: 6, y: 62, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
