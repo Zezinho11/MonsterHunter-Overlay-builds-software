@@ -457,6 +457,32 @@ const partMapAssets = {
       { partIndex: 3, valuePartIndex: 7, x: 38, y: 83, labelX: 82, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-40': {
+    image: 'assets/part-maps/paolumu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 46, y: 56, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 51, y: 44, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 37, y: 43, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 8, x: 76, y: 52, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, x: 39, y: 51, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 47, y: 61, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 38, y: 69, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 3, x: 43, y: 84, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'world-41': {
+    image: 'assets/part-maps/radobaan-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 7, x: 34, y: 42, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 15, y: 56, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 49, y: 25, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, x: 89, y: 53, labelX: 87, labelY: 15, side: 'right', kind: 'severable' },
+      { partIndex: 5, x: 42, y: 49, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 55, y: 50, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 44, y: 67, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 8, x: 70, y: 68, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
