@@ -1154,6 +1154,39 @@ const partMapAssets = {
       { partIndex: 8, x: 84, y: 72, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'rise-1': {
+    image: 'assets/part-maps/bishaten-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 64, y: 28, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 19, y: 38, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 57, y: 56, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 7, x: 74, y: 42, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, x: 48, y: 76, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 43, y: 81, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 88, y: 60, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'rise-2': {
+    image: 'assets/part-maps/great-wroggi-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 67, y: 16, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 52, y: 49, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 59, y: 61, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, x: 22, y: 48, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-3': {
+    image: 'assets/part-maps/magnamalo-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, valuePartIndex: 11, x: 77, y: 51, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 58, y: 28, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 57, y: 55, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 7, x: 78, y: 72, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 8, x: 18, y: 55, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 73, y: 82, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 28, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
