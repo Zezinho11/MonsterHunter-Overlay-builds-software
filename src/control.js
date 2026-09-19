@@ -229,6 +229,19 @@ const partMapAssets = {
       { partIndex: 1, x: 8, y: 55, labelX: 14, labelY: 70, side: 'left', kind: 'neutral' },
     ],
   },
+  'world-21': {
+    image: 'assets/part-maps/jyuratodus-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 9, y: 18, labelX: 14, labelY: 14, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 29, y: 42, labelX: 30, labelY: 14, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 55, y: 22, labelX: 52, labelY: 14, kind: 'neutral' },
+      { partIndex: 7, x: 24, y: 49, labelX: 14, labelY: 58, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 52, y: 59, labelX: 48, labelY: 90, kind: 'breakable' },
+      { partIndex: 3, x: 35, y: 82, labelX: 18, labelY: 90, side: 'left', kind: 'breakable' },
+      { partIndex: 8, x: 69, y: 82, labelX: 68, labelY: 90, side: 'right', kind: 'neutral' },
+      { partIndex: 1, x: 91, y: 34, labelX: 84, labelY: 58, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
