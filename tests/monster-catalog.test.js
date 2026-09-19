@@ -86,6 +86,15 @@ test('catalog has reward coverage for every supported monster and health coverag
   assert.ok(catalog.entries.filter((entry) => entry.game === 'mhgu' && entry.type === 'large').filter((entry) => entry.healthProfiles?.length).length >= 90);
 });
 
+test('catalog audit fields are structurally present for every monster', () => {
+  for (const monster of catalog.entries) {
+    assert.ok(monster.id && monster.game && monster.name);
+    assert.ok(monster.availability && typeof monster.availability === 'object');
+    assert.ok(Array.isArray(monster.rewards));
+    assert.ok(Array.isArray(monster.ranks));
+  }
+});
+
 test('catalog exposes rank availability without inventing Wilds Master Rank', () => {
   for (const entry of catalog.entries) assert.ok(Array.isArray(entry.ranks), `Missing rank metadata: ${entry.name}`);
   assert.ok(catalog.entries.filter((entry) => entry.game === 'rise').every((entry) => entry.ranks.includes('master')));
