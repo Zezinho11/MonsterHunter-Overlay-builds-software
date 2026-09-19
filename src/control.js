@@ -907,6 +907,32 @@ const partMapAssets = {
       { partIndex: 2, x: 7, y: 25, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-80': {
+    image: 'assets/part-maps/blackveil-vaal-hazak-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 77, y: 38, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 68, y: 53, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 60, y: 40, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 14, x: 73, y: 28, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 48, y: 68, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 54, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 11, x: 67, y: 82, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 2, x: 19, y: 55, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-81': {
+    image: 'assets/part-maps/seething-bazelgeuse-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 74, y: 79, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 75, y: 61, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 65, y: 61, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 7, x: 35, y: 31, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 68, y: 68, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 71, y: 84, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 35, y: 81, labelX: 63, labelY: 88, kind: 'severable' },
+      { partIndex: 4, x: 60, y: 52, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
