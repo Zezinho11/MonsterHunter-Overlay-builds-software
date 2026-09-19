@@ -749,6 +749,33 @@ const partMapAssets = {
       { partIndex: 6, x: 6, y: 53, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
     ],
   },
+  'world-67': {
+    image: 'assets/part-maps/shrieking-legiana-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 35, y: 56, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 29, y: 28, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 45, y: 59, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 5, x: 42, y: 59, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 49, y: 67, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 49, y: 71, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 49, y: 82, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 4, x: 71, y: 67, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-68': {
+    image: 'assets/part-maps/barioth-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 12, y: 57, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 47, y: 28, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 31, y: 45, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 8, x: 53, y: 72, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 5, x: 56, y: 54, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 35, y: 72, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, x: 75, y: 70, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 10, x: 86, y: 43, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+      { partIndex: 2, x: 94, y: 40, labelX: 63, labelY: 15, kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
