@@ -5,7 +5,7 @@ const catalogPath = path.join(__dirname, '..', 'src', 'data', 'monster-catalog.v
 const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
 const entries = catalog.entries || [];
 const ranks = ['low', 'high', 'master'];
-const legacyValidatedMapIds = new Set(['world-42', 'world-17', 'world-18', 'world-19', 'world-20']);
+const legacyValidatedMapIds = new Set(['world-42', 'world-17', 'world-18', 'world-19', 'world-20', 'world-21']);
 
 const isCoordinate = (value) => Number.isFinite(value) && value >= 0 && value <= 100;
 const hasValidatedMap = (entry) => {
