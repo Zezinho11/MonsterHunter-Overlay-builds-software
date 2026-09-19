@@ -242,6 +242,18 @@ const partMapAssets = {
       { partIndex: 1, x: 91, y: 34, labelX: 84, labelY: 58, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-22': {
+    image: 'assets/part-maps/tobi-kadachi-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 6, y: 46, labelX: 14, labelY: 16, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 16, y: 48, labelX: 31, labelY: 16, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 40, y: 38, labelX: 50, labelY: 16, kind: 'breakable' },
+      { partIndex: 1, x: 82, y: 48, labelX: 85, labelY: 16, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 6, x: 24, y: 68, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 38, y: 56, labelX: 43, labelY: 88, kind: 'neutral' },
+      { partIndex: 7, x: 55, y: 69, labelX: 70, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
@@ -250,11 +262,12 @@ function partMapMarkup(monster) {
   const anchors = Array.isArray(map.anchors) ? map.anchors : (Array.isArray(asset.anchors) ? asset.anchors : []);
   const labels = anchors.map((anchor) => {
     const part = (monster.parts || [])[anchor.partIndex];
+    const valuePart = Number.isInteger(anchor.valuePartIndex) ? (monster.parts || [])[anchor.valuePartIndex] : part;
     if (!part || !Number.isFinite(anchor.x) || !Number.isFinite(anchor.y)) return '';
     const kind = anchor.kind || (part.severable ? 'severable' : part.breakable ? 'breakable' : 'neutral');
     const flags = [part.breakable ? 'quebra' : '', part.severable ? 'cortável' : ''].filter(Boolean).join(' · ');
     const side = anchor.side === 'left' ? 'is-left' : anchor.side === 'right' ? 'is-right' : '';
-    return `<button class="part-callout ${side} is-${kind}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
+    return `<button class="part-callout ${side} is-${kind}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(valuePart || part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
   }).join('');
   const connectors = anchors.map((anchor) => `<line x1="${anchor.x}" y1="${anchor.y}" x2="${anchor.labelX ?? anchor.x}" y2="${anchor.labelY ?? anchor.y}" />`).join('');
   const legend = '<div class="part-map-legend"><span>Linhas indicam a parte correspondente</span><span>Valores: Corte · Impacto · Munição</span></div>';
