@@ -483,6 +483,31 @@ const partMapAssets = {
       { partIndex: 8, x: 70, y: 68, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-43': {
+    image: 'assets/part-maps/rathian-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 18, y: 64, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 28, y: 54, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 58, y: 32, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, x: 40, y: 44, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, x: 38, y: 58, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 30, y: 70, labelX: 50, labelY: 88, kind: 'breakable' },
+      { partIndex: 1, x: 17, y: 84, labelX: 82, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-44': {
+    image: 'assets/part-maps/pink-rathian-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 79, y: 73, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 72, y: 56, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 37, y: 27, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, x: 59, y: 28, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, x: 57, y: 45, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 59, y: 67, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 23, y: 43, labelX: 63, labelY: 88, kind: 'severable' },
+      { partIndex: 1, valuePartIndex: 8, x: 8, y: 37, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
