@@ -557,6 +557,32 @@ const partMapAssets = {
       { partIndex: 6, x: 58, y: 69, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-51': {
+    image: 'assets/part-maps/xeno-jiiva-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 10, x: 78, y: 69, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 8, x: 30, y: 30, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 68, y: 60, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 5, x: 59, y: 64, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 6, x: 73, y: 70, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 11, x: 72, y: 80, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 19, x: 52, y: 82, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 9, x: 20, y: 74, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-52': {
+    image: 'assets/part-maps/zorah-magdaros-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 24, y: 58, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 36, y: 69, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 65, y: 37, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, x: 57, y: 61, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 6, x: 34, y: 78, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 46, y: 84, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 9, x: 65, y: 59, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 10, x: 72, y: 49, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
