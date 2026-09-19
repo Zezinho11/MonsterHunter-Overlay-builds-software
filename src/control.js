@@ -176,6 +176,33 @@ function partValueSummary(part) {
   return values.join(' · ') || 'Hitzone indisponível';
 }
 const partMapAssets = {
+  'world-1': {
+    image: 'assets/part-maps/aptonoth-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 61, y: 18, labelX: 20, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 52, y: 52, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-2': {
+    image: 'assets/part-maps/jagras-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 84, y: 57, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 1, x: 52, y: 46, labelX: 20, labelY: 15, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'world-3': {
+    image: 'assets/part-maps/mernos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 53, y: 32, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 0, x: 53, y: 54, labelX: 50, labelY: 88, kind: 'neutral' },
+    ],
+  },
+  'world-4': {
+    image: 'assets/part-maps/vespoid-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 57, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
   'world-42': {
     image: 'assets/part-maps/rathalos-hunter-notes-v1.png',
     anchors: [
