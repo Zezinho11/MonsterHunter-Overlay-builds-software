@@ -237,6 +237,54 @@ const partMapAssets = {
       { partIndex: 1, x: 56, y: 51, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-10': {
+    image: 'assets/part-maps/kelbi-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 78, y: 20, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 1, x: 57, y: 53, labelX: 20, labelY: 15, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'world-11': {
+    image: 'assets/part-maps/raphinos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 49, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 1, x: 51, y: 65, labelX: 50, labelY: 88, kind: 'neutral' },
+    ],
+  },
+  'world-12': {
+    image: 'assets/part-maps/shamos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 12, y: 55, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 51, y: 46, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-13': {
+    image: 'assets/part-maps/girros-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 72, y: 67, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 1, x: 51, y: 44, labelX: 20, labelY: 15, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'world-14': {
+    image: 'assets/part-maps/hornetaur-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 55, y: 50, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'world-15': {
+    image: 'assets/part-maps/gastodon-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 17, y: 45, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 57, y: 52, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-16': {
+    image: 'assets/part-maps/barnos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 31, y: 54, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 53, y: 62, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
   'world-42': {
     image: 'assets/part-maps/rathalos-hunter-notes-v1.png',
     anchors: [
