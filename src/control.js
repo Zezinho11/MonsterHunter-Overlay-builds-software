@@ -290,6 +290,29 @@ const partMapAssets = {
       { partIndex: 4, x: 64, y: 61, labelX: 81, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-26': {
+    image: 'assets/part-maps/behemoth-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 3, valuePartIndex: 4, x: 15, y: 18, labelX: 14, labelY: 16, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 20, y: 26, labelX: 37, labelY: 16, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 48, y: 28, labelX: 60, labelY: 16, kind: 'neutral' },
+      { partIndex: 6, x: 42, y: 39, labelX: 83, labelY: 16, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 8, x: 21, y: 54, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 10, x: 31, y: 79, labelX: 49, labelY: 88, kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 11, x: 82, y: 72, labelX: 81, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-27': {
+    image: 'assets/part-maps/deviljho-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 18, y: 58, labelX: 15, labelY: 16, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 42, y: 35, labelX: 49, labelY: 16, kind: 'neutral' },
+      { partIndex: 3, x: 83, y: 62, labelX: 83, labelY: 16, side: 'right', kind: 'severable' },
+      { partIndex: 2, valuePartIndex: 7, x: 34, y: 47, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 9, x: 31, y: 51, labelX: 49, labelY: 88, kind: 'neutral' },
+      { partIndex: 11, x: 54, y: 71, labelX: 81, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
