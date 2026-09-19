@@ -407,6 +407,31 @@ const partMapAssets = {
       { partIndex: 4, valuePartIndex: 11, x: 43, y: 66, labelX: 82, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-36': {
+    image: 'assets/part-maps/legiana-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 48, y: 51, labelX: 15, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 56, y: 58, labelX: 38, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 65, y: 55, labelX: 62, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, x: 76, y: 31, labelX: 85, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, x: 24, y: 76, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 53, y: 68, labelX: 50, labelY: 88, kind: 'breakable' },
+      { partIndex: 6, x: 51, y: 79, labelX: 82, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'world-37': {
+    image: 'assets/part-maps/lunastra-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 84, y: 37, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 75, y: 45, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 59, y: 50, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, x: 34, y: 34, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 7, x: 43, y: 81, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 62, y: 64, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 65, y: 82, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 1, x: 80, y: 72, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
