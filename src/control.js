@@ -676,6 +676,31 @@ const partMapAssets = {
       { partIndex: 2, x: 10, y: 34, labelX: 63, labelY: 88, kind: 'severable' },
     ],
   },
+  'world-61': {
+    image: 'assets/part-maps/ebony-odogaron-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 62, y: 25, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 56, y: 33, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 62, y: 47, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 6, x: 48, y: 53, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 36, y: 72, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, x: 69, y: 76, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 57, y: 68, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 2, x: 82, y: 53, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-62': {
+    image: 'assets/part-maps/banbaro-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 50, y: 57, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 25, y: 45, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 50, y: 49, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 6, x: 51, y: 68, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 7, x: 48, y: 83, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 53, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 84, y: 59, labelX: 63, labelY: 88, kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
