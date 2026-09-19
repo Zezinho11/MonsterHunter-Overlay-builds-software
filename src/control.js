@@ -603,6 +603,30 @@ const partMapAssets = {
       { partIndex: 5, x: 27, y: 43, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
     ],
   },
+  'world-55': {
+    image: 'assets/part-maps/safi-jiiva-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, x: 19, y: 35, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 76, y: 31, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 54, y: 30, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, x: 54, y: 53, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 0, x: 38, y: 68, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 69, y: 73, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 37, y: 84, labelX: 63, labelY: 88, kind: 'severable' },
+      { partIndex: 14, x: 79, y: 47, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-56': {
+    image: 'assets/part-maps/stygian-zinogre-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, x: 86, y: 43, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 48, y: 34, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 56, y: 54, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 1, x: 73, y: 69, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 6, x: 34, y: 72, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 19, y: 65, labelX: 63, labelY: 88, kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};

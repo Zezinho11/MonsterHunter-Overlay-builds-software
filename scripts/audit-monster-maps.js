@@ -5,7 +5,7 @@ const catalogPath = path.join(__dirname, '..', 'src', 'data', 'monster-catalog.v
 const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
 const entries = catalog.entries || [];
 const ranks = ['low', 'high', 'master'];
-const legacyValidatedMapIds = new Set(['world-42', 'world-17', 'world-18', 'world-19', 'world-20', 'world-21', 'world-22', 'world-23', 'world-24', 'world-25', 'world-26', 'world-27', 'world-28', 'world-29', 'world-30', 'world-31', 'world-32', 'world-33', 'world-34', 'world-35', 'world-36', 'world-37', 'world-38', 'world-39', 'world-40', 'world-41', 'world-43', 'world-44', 'world-45', 'world-48', 'world-49', 'world-50', 'world-51', 'world-52', 'world-53', 'world-54']);
+const legacyValidatedMapIds = new Set(['world-42', 'world-17', 'world-18', 'world-19', 'world-20', 'world-21', 'world-22', 'world-23', 'world-24', 'world-25', 'world-26', 'world-27', 'world-28', 'world-29', 'world-30', 'world-31', 'world-32', 'world-33', 'world-34', 'world-35', 'world-36', 'world-37', 'world-38', 'world-39', 'world-40', 'world-41', 'world-43', 'world-44', 'world-45', 'world-48', 'world-49', 'world-50', 'world-51', 'world-52', 'world-53', 'world-54', 'world-55', 'world-56']);
 
 const isCoordinate = (value) => Number.isFinite(value) && value >= 0 && value <= 100;
 const hasValidatedMap = (entry) => {
