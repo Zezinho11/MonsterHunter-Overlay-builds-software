@@ -960,6 +960,31 @@ const partMapAssets = {
       { partIndex: 1, x: 6, y: 62, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-84': {
+    image: 'assets/part-maps/silver-rathalos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 4, x: 17, y: 53, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 31, y: 48, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 43, y: 63, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, x: 53, y: 42, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, x: 70, y: 34, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 40, y: 82, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 67, y: 74, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 1, x: 93, y: 74, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'world-85': {
+    image: 'assets/part-maps/brute-tigrex-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 47, y: 30, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 58, y: 43, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 56, y: 66, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 0, x: 77, y: 76, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 5, x: 43, y: 83, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 18, y: 62, labelX: 37, labelY: 88, side: 'left', kind: 'severable' },
+      { partIndex: 6, x: 7, y: 31, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
