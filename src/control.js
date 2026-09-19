@@ -267,6 +267,29 @@ const partMapAssets = {
       { partIndex: 5, x: 27, y: 35, labelX: 20, labelY: 88, side: 'left', kind: 'neutral' },
     ],
   },
+  'world-24': {
+    image: 'assets/part-maps/azure-rathalos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 72, y: 78, labelX: 15, labelY: 16, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 21, y: 42, labelX: 39, labelY: 16, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 64, y: 55, labelX: 61, labelY: 16, kind: 'breakable' },
+      { partIndex: 5, x: 65, y: 64, labelX: 84, labelY: 16, side: 'right', kind: 'neutral' },
+      { partIndex: 6, x: 63, y: 86, labelX: 18, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 7, x: 47, y: 76, labelX: 49, labelY: 88, kind: 'severable' },
+      { partIndex: 4, x: 69, y: 70, labelX: 80, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-25': {
+    image: 'assets/part-maps/bazelgeuse-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 59, y: 11, labelX: 16, labelY: 16, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 25, y: 39, labelX: 49, labelY: 16, kind: 'breakable' },
+      { partIndex: 3, x: 56, y: 45, labelX: 83, labelY: 16, side: 'right', kind: 'breakable' },
+      { partIndex: 1, x: 18, y: 73, labelX: 18, labelY: 88, side: 'left', kind: 'severable' },
+      { partIndex: 5, x: 54, y: 87, labelX: 49, labelY: 88, kind: 'neutral' },
+      { partIndex: 4, x: 64, y: 61, labelX: 81, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
@@ -278,7 +301,7 @@ function partMapMarkup(monster) {
     const valuePart = Number.isInteger(anchor.valuePartIndex) ? (monster.parts || [])[anchor.valuePartIndex] : part;
     if (!part || !Number.isFinite(anchor.x) || !Number.isFinite(anchor.y)) return '';
     const kind = anchor.kind || (part.severable ? 'severable' : part.breakable ? 'breakable' : 'neutral');
-    const flags = [part.breakable ? 'quebra' : '', part.severable ? 'cortável' : ''].filter(Boolean).join(' · ');
+    const flags = [part.breakable || kind === 'breakable' ? 'quebra' : '', part.severable || kind === 'severable' ? 'cortável' : ''].filter(Boolean).join(' · ');
     const side = anchor.side === 'left' ? 'is-left' : anchor.side === 'right' ? 'is-right' : '';
     return `<button class="part-callout ${side} is-${kind}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(valuePart || part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
   }).join('');
