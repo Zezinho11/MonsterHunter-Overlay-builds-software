@@ -39,6 +39,10 @@ test('catalog associates validated render references without replacing missing a
   }
 });
 
+test('every catalog monster has a validated render reference', () => {
+  assert.equal(catalog.entries.filter((entry) => entry.render && entry.availability.render).length, catalog.entries.length);
+});
+
 test('every monster has an icon or an explicit unavailable state, and missing renders get a PNG fallback image', () => {
   assert.ok(catalog.entries.filter((entry) => !entry.icon).every((entry) => entry.availability.icon === false), 'Missing icons must be explicit, never silently inferred');
   for (const entry of catalog.entries.filter((monster) => !monster.render)) {

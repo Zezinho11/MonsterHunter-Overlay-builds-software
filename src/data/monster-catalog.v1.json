@@ -340,9 +340,9 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Jagras_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Jagras_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/1/17/MHW-Jagras_Render_001.png/revision/latest?cb=20171204105237&format=png",
+      "renderSource": "monster-hunter-fandom",
+      "imageFallback": null,
       "elements": [],
       "weaknesses": [
         {
@@ -527,7 +527,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": false,
         "health": true
@@ -805,9 +805,10 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Vespoid_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Vespoid_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/a/a2/MHGen-Vespoid_Render_001.png/revision/latest?cb=20151202035418&format=png",
+      "renderSource": "monster-hunter-fandom-cross-game",
+      "imageFallback": null,
+      "renderVariant": "MHGen",
       "elements": [],
       "weaknesses": [
         {
@@ -979,7 +980,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": false,
         "health": true
@@ -1018,9 +1019,10 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Mosswine_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Mosswine_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/8/8e/MHGen-Mosswine_Render_001.png/revision/latest?cb=20151130195937&format=png",
+      "renderSource": "monster-hunter-fandom-cross-game",
+      "imageFallback": null,
+      "renderVariant": "MHGen",
       "elements": [],
       "weaknesses": [
         {
@@ -1098,7 +1100,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": false,
         "health": true
@@ -1137,9 +1139,9 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Apceros_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Apceros_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/d/d5/MHW-Apceros_Render_001.png/revision/latest?cb=20180209034455&format=png",
+      "renderSource": "monster-hunter-fandom",
+      "imageFallback": null,
       "elements": [],
       "weaknesses": [
         {
@@ -1235,7 +1237,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": false,
         "health": true
@@ -1318,9 +1320,9 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Kestodon_Female_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Kestodon_Female_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/3/3f/MHW-Kestodon_Render_001.png/revision/latest?cb=20200929163616&format=png",
+      "renderSource": "monster-hunter-fandom",
+      "imageFallback": null,
       "elements": [],
       "weaknesses": [
         {
@@ -1458,7 +1460,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": false,
         "health": true
@@ -1705,9 +1707,9 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Gajau_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Gajau_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/a/a6/MHW-Gajau_Render_001.png/revision/latest?cb=20190412154729&format=png",
+      "renderSource": "monster-hunter-fandom",
+      "imageFallback": null,
       "elements": [],
       "weaknesses": [
         {
@@ -1893,7 +1895,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": false,
         "health": true
@@ -1932,9 +1934,9 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Kelbi_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Kelbi_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/f/f1/MHW-Kelbi_Render_001.png/revision/latest?cb=20200929162846&format=png",
+      "renderSource": "monster-hunter-fandom",
+      "imageFallback": null,
       "elements": [],
       "weaknesses": [
         {
@@ -2072,7 +2074,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": false,
         "health": true
@@ -2846,9 +2848,10 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Hornetaur_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHW-Hornetaur_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/4/45/MHGen-Hornetaur_Render_001.png/revision/latest?cb=20151130201926&format=png",
+      "renderSource": "monster-hunter-fandom-cross-game",
+      "imageFallback": null,
+      "renderVariant": "MHGen",
       "elements": [],
       "weaknesses": [
         {
@@ -2984,7 +2987,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": false,
         "health": true
@@ -249653,9 +249656,9 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHWilds-Rathalos_Icon.png",
       "iconFallbackAsset": null,
-      "render": null,
-      "renderSource": null,
-      "imageFallback": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MHWilds-Rathalos_Icon.png",
+      "render": "https://images.wikia.com/monsterhunter/images/1/12/MHWilds-Rathalos_Render_001.png/revision/latest?cb=20251112050049&format=png",
+      "renderSource": "monster-hunter-fandom",
+      "imageFallback": null,
       "elements": [
         "Fire"
       ],
@@ -250282,7 +250285,7 @@
         "locations": true,
         "parts": true,
         "rewards": true,
-        "render": false,
+        "render": true,
         "icon": true,
         "ecology": true,
         "health": true

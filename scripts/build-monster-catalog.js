@@ -412,6 +412,15 @@ const fandomRenderCandidates = {
   'world:Girros': 'MHW-Girros Render 001.png',
   'world:Gastodon': 'MHW-Gastodon Render 001.png',
   'world:Barnos': 'MHW-Barnos Render 001.png',
+  'world:Vespoid': 'MHGen-Vespoid Render 001.png',
+  'world:Mosswine': 'MHGen-Mosswine Render 001.png',
+  'world:Hornetaur': 'MHGen-Hornetaur Render 001.png',
+  'world:Jagras': 'MHW-Jagras Render 001.png',
+  'world:Apceros': 'MHW-Apceros Render 001.png',
+  'world:Kestodon': 'MHW-Kestodon Render 001.png',
+  'world:Gajau': 'MHW-Gajau Render 001.png',
+  'world:Kelbi': 'MHW-Kelbi Render 001.png',
+  'wilds:Rathalos': 'MHWilds-Rathalos Render 001.png',
   'wilds:Guardian Doshaguma': 'MHWilds-Guardian Doshaguma Custom Render 001.png',
   'wilds:Guardian Arkveld': 'MHWilds-Guardian Arkveld Custom Render 001.png',
   'wilds:Guardian Fulgur Anjanath': 'MHWilds-Guardian Fulgur Anjanath Custom Render 001.png',
@@ -521,7 +530,9 @@ async function enrichFromFandom(entries) {
       const url = await fandomImageUrl(fandomRenderCandidates[`${entry.game}:${entry.name}`]);
       if (url) {
         entry.render = url;
-        entry.renderSource = 'monster-hunter-fandom';
+        const fileName = fandomRenderCandidates[`${entry.game}:${entry.name}`];
+        entry.renderSource = fileName.startsWith('MHGen-') ? 'monster-hunter-fandom-cross-game' : 'monster-hunter-fandom';
+        if (fileName.startsWith('MHGen-')) entry.renderVariant = 'MHGen';
         entry.availability.render = true;
       }
     }
