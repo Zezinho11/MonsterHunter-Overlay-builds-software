@@ -508,6 +508,29 @@ const partMapAssets = {
       { partIndex: 1, valuePartIndex: 8, x: 8, y: 37, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-45': {
+    image: 'assets/part-maps/teostra-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 51, y: 30, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 20, y: 37, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 51, y: 45, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 5, x: 53, y: 54, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, x: 57, y: 61, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 61, y: 74, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 44, y: 80, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 1, x: 14, y: 70, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-48': {
+    image: 'assets/part-maps/tzitzi-yaku-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 81, y: 53, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 82, y: 25, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 67, y: 64, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, x: 68, y: 58, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, x: 29, y: 58, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
