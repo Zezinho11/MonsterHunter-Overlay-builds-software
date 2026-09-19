@@ -11,6 +11,7 @@
     "mvp:check": "npm run check && npm test",
     "catalog:refresh": "node scripts/build-monster-catalog.js",
     "catalog:audit": "node scripts/audit-monster-catalog.js",
+    "maps:audit": "node scripts/audit-monster-maps.js",
     "dist": "electron-builder --win nsis portable",
     "dist:installer": "electron-builder --win nsis",
     "dist:portable": "electron-builder --win portable"
