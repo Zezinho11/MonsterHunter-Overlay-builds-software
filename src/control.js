@@ -1223,6 +1223,38 @@ const partMapAssets = {
       { partIndex: 14, x: 69, y: 48, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'rise-7': {
+    image: 'assets/part-maps/lagombi-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 53, y: 34, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 52, y: 55, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 28, y: 35, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 6, x: 76, y: 43, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 8, x: 52, y: 80, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 41, y: 74, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'rise-8': {
+    image: 'assets/part-maps/khezu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 78, y: 34, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 52, y: 37, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 19, y: 56, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 4, x: 38, y: 62, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, x: 58, y: 57, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 48, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 86, y: 76, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'rise-9': {
+    image: 'assets/part-maps/great-baggi-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 28, y: 22, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 51, y: 50, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 43, y: 62, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, x: 82, y: 63, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
