@@ -221,11 +221,12 @@ const partMapAssets = {
   'world-20': {
     image: 'assets/part-maps/barroth-hunter-notes-v1.png',
     anchors: [
-      { partIndex: 4, x: 10, y: 39, labelX: 15, labelY: 14, side: 'left', kind: 'breakable' },
-      { partIndex: 0, x: 38, y: 68, labelX: 17, labelY: 86, side: 'left', kind: 'breakable' },
-      { partIndex: 6, x: 55, y: 48, labelX: 54, labelY: 14, kind: 'neutral' },
-      { partIndex: 2, x: 70, y: 75, labelX: 70, labelY: 88, side: 'right', kind: 'neutral' },
-      { partIndex: 1, x: 89, y: 57, labelX: 86, labelY: 14, side: 'right', kind: 'severable' },
+      { partIndex: 3, x: 88, y: 42, labelX: 82, labelY: 14, side: 'right', kind: 'breakable' },
+      { partIndex: 4, x: 92, y: 52, labelX: 82, labelY: 30, side: 'right', kind: 'neutral' },
+      { partIndex: 6, x: 53, y: 46, labelX: 45, labelY: 14, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 61, y: 76, labelX: 65, labelY: 90, side: 'right', kind: 'breakable' },
+      { partIndex: 2, x: 25, y: 77, labelX: 17, labelY: 90, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 8, y: 55, labelX: 14, labelY: 70, side: 'left', kind: 'neutral' },
     ],
   },
 };
