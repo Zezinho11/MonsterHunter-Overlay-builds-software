@@ -776,6 +776,33 @@ const partMapAssets = {
       { partIndex: 2, x: 94, y: 40, labelX: 63, labelY: 15, kind: 'breakable' },
     ],
   },
+  'world-69': {
+    image: 'assets/part-maps/glavenus-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 53, y: 18, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 52, y: 30, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 70, y: 36, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 6, x: 64, y: 51, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 4, x: 55, y: 65, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 8, x: 80, y: 70, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, x: 69, y: 74, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 10, x: 31, y: 78, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+      { partIndex: 11, x: 15, y: 80, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-70': {
+    image: 'assets/part-maps/brachydios-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 83, y: 36, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 70, y: 42, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 58, y: 54, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 0, x: 63, y: 74, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, x: 66, y: 68, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 48, y: 82, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 21, y: 52, labelX: 63, labelY: 88, kind: 'severable' },
+      { partIndex: 7, x: 10, y: 45, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
