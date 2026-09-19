@@ -1,0 +1,55 @@
+{
+  "schema": "game-snapshot.v1",
+  "fixtureId": "simulated-overlay-v1",
+  "purpose": "POC do overlay com dados sintéticos; não representa memória ou telemetria real de jogo.",
+  "target": {
+    "platform": "windows-x64",
+    "game": "SIMULATION",
+    "gameVersion": "fixture-1",
+    "source": "fixture",
+    "readOnly": true,
+    "rendererTarget": "direct3d11-directcomposition"
+  },
+  "initialState": {
+    "connectedGame": "SIMULATION",
+    "monster": {
+      "name": "Doshaguma",
+      "icon": "🐾",
+      "type": "Fanged Beast",
+      "currentHealth": 16840,
+      "maxHealth": 22000,
+      "stamina": { "current": 975, "max": 1200 },
+      "weaknesses": [
+        { "icon": "⚡", "label": "Trovão" },
+        { "icon": "💧", "label": "Água" }
+      ],
+      "ailments": [
+        { "name": "Enfurecer", "count": 1, "progress": 38, "timer": "00:35", "color": "#e66a70" },
+        { "name": "Paralisia", "count": 1, "progress": 52, "timer": "", "color": "#6ea8ff" }
+      ],
+      "enraged": false,
+      "captureReady": false,
+      "parts": [
+        { "name": "Cabeça", "index": 1, "state": "Em progresso", "bars": [{ "kind": "Break", "current": 42, "max": 100 }] },
+        { "name": "Braço esquerdo", "index": 0, "state": "Em progresso", "bars": [{ "kind": "Break", "current": 74, "max": 100 }, { "kind": "Sever", "current": 31, "max": 100 }] },
+        { "name": "Braço direito", "index": 0, "state": "Quebrado", "bars": [{ "kind": "Break", "current": 100, "max": 100 }] },
+        { "name": "Tronco", "index": 0, "state": "Em progresso", "bars": [{ "kind": "Break", "current": 58, "max": 100 }] }
+      ]
+    },
+    "hunters": [
+      { "id": "haato", "name": "Haato", "icon": "⚔", "color": "#ff9f68", "totalDamage": 9134, "dps": 98.62 },
+      { "id": "flappale", "name": "Flappale", "icon": "◈", "color": "#a78bfa", "totalDamage": 7407, "dps": 75.02 },
+      { "id": "poogie", "name": "Poogie", "icon": "♧", "color": "#80d8a7", "totalDamage": 10284, "dps": 52.47 },
+      { "id": "mashilo", "name": "Mashilo", "icon": "✦", "color": "#f2df68", "totalDamage": 4397, "dps": 22.43 }
+    ],
+    "chart": [
+      { "time": 0, "values": [0, 0, 0, 0] },
+      { "time": 10, "values": [110, 78, 37, 18] },
+      { "time": 20, "values": [86, 64, 49, 22] },
+      { "time": 30, "values": [101, 72, 52, 31] },
+      { "time": 40, "values": [94, 70, 58, 28] },
+      { "time": 50, "values": [99, 75, 53, 25] }
+    ],
+    "elapsedSeconds": 196
+  }
+}

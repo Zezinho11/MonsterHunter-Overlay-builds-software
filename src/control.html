@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hunter Companion</title>
+    <link rel="stylesheet" href="control.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <div class="profile-card">
+          <button id="avatar-button" class="avatar" title="Alterar perfil">Z</button>
+          <strong id="profile-name">NomeCaçador</strong>
+          <small>Caçador offline</small>
+          <input id="avatar-input" type="file" accept="image/*" hidden />
+        </div>
+        <nav class="main-nav" aria-label="Navegação principal">
+          <button class="nav-item" data-view="bestiary"><span>◈</span> Monsterpedia</button>
+          <button class="nav-item active" data-view="online-builds"><span>▦</span> Builds online</button>
+          <button class="nav-item" data-view="saved-builds"><span>◫</span> Builds registradas</button>
+          <button class="nav-item" data-view="overlay-settings"><span>◌</span> Overlay</button>
+        </nav>
+        <button class="settings-button" data-view="app-settings" title="Configurações do software">⚙ <span>Configurações</span></button>
+      </aside>
+      <section class="content-shell">
+        <header class="content-header"><div><span class="section-kicker">HUNTER COMPANION</span><h1 id="view-title">Builds online</h1></div><div class="header-actions"><span id="connection-label" class="connection-pill"><i></i> Modo de simulação · nenhum jogo detectado</span><button id="profile-header" class="profile-header">Z <span id="header-profile-name">NomeCaçador</span></button></div></header>
+        <div id="view-root" class="view-root"></div>
+      </section>
+    </main>
+    <script src="builds/local-store.js"></script>
+    <script src="data/monster-catalog.v1.js"></script>
+    <script src="control.js"></script>
+  </body>
+</html>

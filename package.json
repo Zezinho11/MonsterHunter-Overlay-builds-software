@@ -1,0 +1,60 @@
+{
+  "name": "monster-hunter-overlay-builds",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop companion for Monster Hunter World, Rise and Wilds.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check src/main.js && node --check src/preload.js && node --check src/overlay.js && node --check src/control.js",
+    "test": "node --test tests/*.test.js",
+    "mvp:check": "npm run check && npm test",
+    "catalog:refresh": "node scripts/build-monster-catalog.js",
+    "dist": "electron-builder --win nsis portable",
+    "dist:installer": "electron-builder --win nsis",
+    "dist:portable": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^38.1.0",
+    "electron-builder": "^26.0.12"
+  },
+  "allowScripts": {
+    "electron@38.8.6": true
+  },
+  "build": {
+    "appId": "com.coditech.monsterhuntercompanion",
+    "productName": "Monster Hunter Companion",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "src/**/*",
+      "package.json",
+      "README.md",
+      "MVP_TEST_GUIDE.md"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "${productName}-${version}-${arch}-setup.${ext}"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-${arch}-portable.${ext}"
+    }
+  }
+}

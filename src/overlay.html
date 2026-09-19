@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overlay</title>
+    <link rel="stylesheet" href="overlay.css" />
+  </head>
+  <body>
+    <main id="overlay-root" class="overlay-root edit-mode">
+      <section id="monster-widget" class="widget monster-widget">
+        <div class="widget-header"><span class="eyebrow">MONSTRO ATUAL</span><span id="session-clock">03:16</span></div>
+        <div class="monster-heading"><div id="monster-icon" class="monster-icon">🐾</div><div class="monster-heading-copy"><span id="monster-type" class="monster-type">Fanged Beast</span><div class="monster-title"><strong id="monster-name">Doshaguma</strong><span id="monster-state">ENFURECIDO</span></div><span id="monster-health-text" class="monster-health-text">16.840 / 22.000</span></div><strong id="monster-health-percent" class="monster-health-percent">76,5%</strong></div>
+        <div class="health-track large segmented"><div id="monster-health" class="health-fill monster-fill"></div></div>
+        <div class="monster-secondary-row"><div class="weakness-list" id="weakness-list"></div><div class="stamina-block"><span>STAMINA</span><strong id="stamina-text">975 / 1.200</strong><div class="health-track stamina-track segmented"><div id="stamina-bar" class="health-fill stamina-fill"></div></div></div></div>
+        <div id="ailments-list" class="ailments-list"></div>
+        <div id="parts-list" class="parts-list"></div>
+      </section>
+
+      <section id="damage-widget" class="widget damage-widget">
+        <div class="widget-header"><span class="eyebrow">DANO DA CAÇADA</span><span id="damage-mode">DPS MÓVEL</span></div>
+        <div id="hunter-list" class="hunter-list"></div>
+        <div class="chart-wrap"><canvas id="damage-chart" width="580" height="170"></canvas><div class="chart-axis"><span>0s</span><span>tempo da caçada</span><span>agora</span></div></div>
+      </section>
+      <div id="edit-badge" class="edit-badge">MODO DE EDIÇÃO · clique-pass-through desligado</div>
+    </main>
+    <script src="overlay.js"></script>
+  </body>
+</html>
