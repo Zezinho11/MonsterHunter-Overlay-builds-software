@@ -583,6 +583,26 @@ const partMapAssets = {
       { partIndex: 10, x: 72, y: 49, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-53': {
+    image: 'assets/part-maps/leshen-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 50, y: 28, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 50, y: 54, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 31, y: 65, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, x: 50, y: 82, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, x: 32, y: 35, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'world-54': {
+    image: 'assets/part-maps/ancient-leshen-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 50, y: 30, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 50, y: 57, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 30, y: 67, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 4, x: 50, y: 83, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 5, x: 27, y: 43, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
