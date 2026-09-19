@@ -531,6 +531,32 @@ const partMapAssets = {
       { partIndex: 4, x: 29, y: 58, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
     ],
   },
+  'world-49': {
+    image: 'assets/part-maps/uragaan-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 83, y: 60, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 84, y: 67, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 55, y: 25, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, x: 14, y: 59, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 6, x: 84, y: 74, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 9, x: 57, y: 58, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 10, x: 48, y: 71, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 11, x: 44, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'world-50': {
+    image: 'assets/part-maps/vaal-hazak-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 50, y: 53, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 11, x: 24, y: 26, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 50, y: 46, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, x: 21, y: 68, labelX: 87, labelY: 15, side: 'right', kind: 'severable' },
+      { partIndex: 3, x: 58, y: 63, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 10, x: 67, y: 75, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 9, x: 48, y: 87, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 6, x: 58, y: 69, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
