@@ -168,15 +168,6 @@ function materialResultCards(results) {
   if (!results.length) return '<div class="empty-state">Nenhum material encontrado para este jogo/rank.</div>';
   return results.slice(0, 80).map((result) => `<article class="material-result" data-monster-id="${escapeHtml(result.monster.id)}"><div><strong>${escapeHtml(ptMaterial(result.item))}</strong><span>${escapeHtml(result.monster.name)} · ${escapeHtml(result.monster.game.replace('Monster Hunter: ', ''))}</span></div><small>${escapeHtml(pt(result.method))}${result.part ? ` · ${escapeHtml(ptPart(result.part))}` : ''}${result.rank ? ` · ${result.rank === 'low' ? 'Baixo' : result.rank === 'high' ? 'Alto' : 'Mestre/G'}` : ''}${result.chance != null ? ` · ${result.chance}%` : ''}</small></article>`).join('');
 }
-function partMapPosition(name, index) {
-  const key = normalizeSearch(name);
-  if (key.includes('head') || key.includes('horn') || key.includes('scalp')) return { x: 18 + (index % 2) * 4, y: 20 + (index % 3) * 9 };
-  if (key.includes('tail')) return { x: 78, y: 68 + (index % 2) * 10 };
-  if (key.includes('wing')) return { x: 72, y: 20 + (index % 2) * 12 };
-  if (key.includes('leg') || key.includes('arm') || key.includes('foreleg') || key.includes('hindleg')) return { x: 28 + (index % 3) * 24, y: 78 - (index % 2) * 11 };
-  if (key.includes('neck')) return { x: 38, y: 28 + (index % 2) * 11 };
-  return { x: 48 + (index % 2) * 12, y: 45 + (index % 3) * 11 };
-}
 function partValueSummary(part) {
   const hitzones = part.hitzones || {};
   const values = [['Corte', hitzones.cut ?? hitzones.slash], ['Impacto', hitzones.blunt ?? hitzones.impact], ['Munição', hitzones.ammo ?? hitzones.shot]]
@@ -186,14 +177,20 @@ function partValueSummary(part) {
 }
 const partMapAssets = {};
 function partMapMarkup(monster) {
-  const partMapImage = partMapAssets[monster.name];
-  const labels = (monster.parts || []).slice(0, 12).map((part, index) => {
-    const position = partMapPosition(part.name, index);
+  const map = monster.partMap || {};
+  const partMapImage = map.image || partMapAssets[monster.id] || partMapAssets[monster.name];
+  const anchors = Array.isArray(map.anchors) ? map.anchors : [];
+  const labels = anchors.map((anchor) => {
+    const part = (monster.parts || [])[anchor.partIndex];
+    if (!part || !Number.isFinite(anchor.x) || !Number.isFinite(anchor.y)) return '';
     const flags = [part.breakable ? 'quebra' : '', part.severable ? 'cortável' : ''].filter(Boolean).join(' · ');
-    return `<button class="part-callout ${part.breakable ? 'is-breakable' : ''}" style="--part-x:${position.x}%;--part-y:${position.y}%" data-part-index="${index}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
+    const side = anchor.side === 'left' ? 'is-left' : anchor.side === 'right' ? 'is-right' : '';
+    return `<button class="part-callout ${side} ${part.breakable ? 'is-breakable' : ''}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
   }).join('');
+  const connectors = anchors.map((anchor) => `<line x1="${anchor.x}" y1="${anchor.y}" x2="${anchor.labelX ?? anchor.x}" y2="${anchor.labelY ?? anchor.y}" />`).join('');
   const legend = '<div class="part-map-legend"><span><i class="legend-dot break"></i>Quebrável</span><span><i class="legend-dot cut"></i>Cortável</span><span>Valores: Corte · Impacto · Munição</span></div>';
-  return `<div class="part-map"><div class="part-map-stage">${partMapImage ? `<img src="${escapeHtml(partMapImage)}" alt="Mapa ilustrado de partes de ${escapeHtml(monster.name)}" />` : '<div class="part-map-pending"><strong>Arte individual em produção</strong><small>Esta ficha não reutiliza o render oficial nem a arte de outro monstro.</small></div>'}${labels}</div>${legend}</div>`;
+  const status = partMapImage && anchors.length ? '' : '<div class="part-map-pending"><strong>Mapa anatômico individual em validação</strong><small>As caixas só aparecem quando a arte e as coordenadas das partes deste monstro forem conferidas. Nenhum mapa de outra espécie é reutilizado.</small></div>';
+  return `<div class="part-map"><div class="part-map-stage">${partMapImage ? `<img src="${escapeHtml(partMapImage)}" alt="Mapa ilustrado de partes de ${escapeHtml(monster.name)}" />` : ''}${status}${connectors ? `<svg class="part-map-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${connectors}</svg>` : ''}${labels}</div>${legend}</div>`;
 }
 function renderBestiary() {
   viewRoot.innerHTML = `<div class="toolbar"><label class="field">Jogo${selectHtml('monster-game', ['Todos os jogos', ...games], 'Todos os jogos')}</label><label class="field">Porte${selectHtml('monster-size', ['Todos os portes', 'Grandes', 'Pequenos'], 'Todos os portes')}</label><label class="field">Rank${selectHtml('monster-rank', ['Todos os ranks', 'Baixo', 'Alto', 'Mestre/G'], 'Todos os ranks')}</label><label class="field">Favoritos${selectHtml('monster-favorites', ['Todos os monstros', 'Somente favoritos'], 'Todos os monstros')}</label><label class="field">Pesquisar monstro<input class="text-input" id="monster-search" placeholder="Nome do monstro" /></label><label class="field">Pesquisar material<input class="text-input" id="material-search" placeholder="Ex.: Rathalos Ruby" /></label><label class="spoiler-toggle"><input type="checkbox" id="monster-spoilers" ${spoilerMode ? 'checked' : ''} /> Modo sem spoilers</label></div><div class="info-banner" id="monster-count">Catálogo carregado: World/Iceborne ${monsters.filter((monster) => monster.game === 'Monster Hunter: World').length} · Rise/Sunbreak ${monsters.filter((monster) => monster.game === 'Monster Hunter: Rise').length} · Wilds ${monsters.filter((monster) => monster.game === 'Monster Hunter: Wilds').length} · Generations Ultimate ${monsters.filter((monster) => monster.game === 'Monster Hunter: Generations Ultimate').length}</div><section class="material-search-card"><div class="section-heading"><h2>Busca reversa por material</h2><span>Resultados do catálogo local</span></div><p class="muted-inline">Digite um material para descobrir quais monstros o fornecem e em qual método ou rank.</p><div id="material-results" class="material-results"><div class="empty-state">Digite um material para começar.</div></div></section><div id="monster-grid" class="card-grid">${monsterCards(monsters)}</div>`;
