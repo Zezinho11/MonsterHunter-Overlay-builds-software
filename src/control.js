@@ -179,11 +179,11 @@ const partMapAssets = {
   'world-42': {
     image: 'assets/part-maps/rathalos-hunter-notes-v1.png',
     anchors: [
-      { partIndex: 0, x: 11, y: 52, labelX: 18, labelY: 24, side: 'left' },
-      { partIndex: 1, x: 88, y: 73, labelX: 80, labelY: 89, side: 'right' },
-      { partIndex: 2, x: 68, y: 28, labelX: 83, labelY: 17, side: 'right' },
-      { partIndex: 5, x: 43, y: 56, labelX: 45, labelY: 86 },
-      { partIndex: 6, x: 48, y: 78, labelX: 31, labelY: 91, side: 'left' },
+      { partIndex: 0, x: 9, y: 54, labelX: 17, labelY: 23, side: 'left' },
+      { partIndex: 1, x: 89, y: 70, labelX: 82, labelY: 88, side: 'right' },
+      { partIndex: 2, x: 62, y: 23, labelX: 84, labelY: 15, side: 'right' },
+      { partIndex: 5, x: 44, y: 61, labelX: 45, labelY: 86 },
+      { partIndex: 6, x: 34, y: 84, labelX: 22, labelY: 94, side: 'left' },
     ],
   },
 };
@@ -199,7 +199,7 @@ function partMapMarkup(monster) {
     const side = anchor.side === 'left' ? 'is-left' : anchor.side === 'right' ? 'is-right' : '';
     return `<button class="part-callout ${side} ${part.breakable ? 'is-breakable' : ''}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
   }).join('');
-  const connectors = anchors.map((anchor) => `<line x1="${anchor.x}" y1="${anchor.y}" x2="${anchor.labelX ?? anchor.x}" y2="${anchor.labelY ?? anchor.y}" />`).join('');
+  const connectors = anchors.map((anchor) => `<line x1="${anchor.x}" y1="${anchor.y}" x2="${anchor.labelX ?? anchor.x}" y2="${anchor.labelY ?? anchor.y}" /><circle cx="${anchor.x}" cy="${anchor.y}" r="0.8" />`).join('');
   const legend = '<div class="part-map-legend"><span><i class="legend-dot break"></i>Quebrável</span><span><i class="legend-dot cut"></i>Cortável</span><span>Valores: Corte · Impacto · Munição</span></div>';
   const status = partMapImage && anchors.length ? '' : '<div class="part-map-pending"><strong>Mapa anatômico individual em validação</strong><small>As caixas só aparecem quando a arte e as coordenadas das partes deste monstro forem conferidas. Nenhum mapa de outra espécie é reutilizado.</small></div>';
   return `<div class="part-map"><div class="part-map-stage">${partMapImage ? `<img src="${escapeHtml(partMapImage)}" alt="Mapa ilustrado de partes de ${escapeHtml(monster.name)}" />` : ''}${status}${connectors ? `<svg class="part-map-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${connectors}</svg>` : ''}${labels}</div>${legend}</div>`;

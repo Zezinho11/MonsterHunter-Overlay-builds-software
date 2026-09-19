@@ -51,12 +51,13 @@ button { cursor: pointer; }
 .source-card:hover { border-color: rgba(109, 183, 232, .6); }
 .source-card small { color: #8da4b7; line-height: 1.45; }
 .part-map { margin-top: 12px; }
-.part-map-stage { position: relative; min-height: 280px; overflow: hidden; border: 1px solid rgba(171, 195, 218, .14); border-radius: 10px; background: radial-gradient(circle at 50% 45%, rgba(151, 102, 70, .28), rgba(14, 21, 28, .95) 68%); }
-.part-map-stage > img { display: block; width: 100%; height: 280px; object-fit: contain; padding: 28px 82px; filter: drop-shadow(0 12px 20px rgba(0, 0, 0, .52)); }
+.part-map-stage { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid rgba(171, 195, 218, .14); border-radius: 10px; background: radial-gradient(circle at 50% 45%, rgba(151, 102, 70, .28), rgba(14, 21, 28, .95) 68%); }
+.part-map-stage > img { display: block; width: 100%; height: 100%; object-fit: fill; filter: drop-shadow(0 12px 20px rgba(0, 0, 0, .52)); }
 .part-map-pending { display: grid; place-items: center; align-content: center; gap: 8px; min-height: 280px; padding: 30px; color: #d6b879; text-align: center; }
 .part-map-pending small { max-width: 260px; color: #8da4b7; line-height: 1.5; }
 .part-map-connectors { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-.part-map-connectors line { stroke: rgba(105, 172, 216, .78); stroke-width: .28; vector-effect: non-scaling-stroke; }
+.part-map-connectors line { stroke: rgba(105, 172, 216, .9); stroke-width: .28; vector-effect: non-scaling-stroke; }
+.part-map-connectors circle { fill: #f1ca72; stroke: #17212a; stroke-width: .35; vector-effect: non-scaling-stroke; }
 .part-callout { position: absolute; left: var(--callout-x); top: var(--callout-y); transform: translate(-50%, -50%); display: grid; gap: 2px; min-width: 112px; max-width: 160px; padding: 7px 9px; border: 1px solid rgba(105, 172, 216, .55); border-radius: 7px; background: rgba(10, 16, 22, .92); color: #e4edf4; text-align: left; box-shadow: 0 6px 16px rgba(0, 0, 0, .28); cursor: pointer; z-index: 2; }
 .part-callout.is-breakable { border-color: rgba(255, 192, 78, .8); }
 .part-callout.is-breakable::after { background: rgba(255, 192, 78, .8); }
