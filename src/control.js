@@ -701,6 +701,30 @@ const partMapAssets = {
       { partIndex: 4, x: 84, y: 59, labelX: 63, labelY: 88, kind: 'severable' },
     ],
   },
+  'world-63': {
+    image: 'assets/part-maps/beotodus-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 80, y: 38, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 51, y: 40, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 50, y: 60, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, x: 40, y: 63, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, x: 17, y: 43, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 20, y: 52, labelX: 63, labelY: 88, kind: 'severable' },
+    ],
+  },
+  'world-64': {
+    image: 'assets/part-maps/nargacuga-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 75, y: 39, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 39, y: 34, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 48, y: 23, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 4, x: 51, y: 49, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 6, x: 45, y: 57, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 57, y: 62, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 28, y: 70, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 1, x: 82, y: 79, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
