@@ -37,6 +37,18 @@ function ptList(values = [], separator = ' · ') {
   return values.map((value) => pt(value)).join(separator) || 'Indisponível';
 }
 
+const dataLabelTerms = {
+  body: 'corpo', head: 'cabeça', forelegs: 'patas dianteiras', foreleg: 'pata dianteira', forearms: 'antebraços', hindlegs: 'patas traseiras', hindleg: 'pata traseira', legs: 'patas', leg: 'pata', lower: 'inferior', upper: 'superior', lowerbody: 'parte inferior', chest: 'peito', neck: 'pescoço', back: 'costas', tail: 'cauda', 'tail tip': 'ponta da cauda', horn: 'chifre', horns: 'chifres', wing: 'asa', wings: 'asas', arm: 'braço', arms: 'braços', jaw: 'mandíbula', tongue: 'língua', stomach: 'estômago', scalp: 'couro cabeludo', rock: 'rocha', shell: 'carapaça', hide: 'couro', scale: 'escama', scales: 'escamas', claw: 'garra', claws: 'garras', fang: 'presa', fangs: 'presas', bone: 'osso', bones: 'ossos', wing: 'asa', webbing: 'membrana', talon: 'garra', mane: 'juba', sac: 'bolsa', fluid: 'fluido', essence: 'essência', carapace: 'carapaça', thickhide: 'couro espesso', hardclaw: 'garra resistente', shard: 'fragmento', cortex: 'córtex', plate: 'placa', mantle: 'manto', ruby: 'rubi', gem: 'gema', blood: 'sangue', tear: 'lágrima', pelt: 'pele', meat: 'carne', liver: 'fígado', ore: 'minério', crystal: 'cristal', husk: 'casca', whisker: 'bigode', crest: 'crista', beak: 'bico', beaks: 'bicos', stinger: 'ferrão', antennae: 'antenas', antenna: 'antena', mud: 'lama', wounded: 'ferido', enraged: 'enfurecido', heated: 'aquecido', white: 'branco', black: 'negro', 'gloss black': 'preto brilhante', electricity: 'eletricidade', 'magma armor': 'armadura de magma', 'critical state': 'estado crítico', 'before wounded': 'antes de ferir', 'after wounded': 'depois de ferir', 'raw meat': 'carne crua', potion: 'poção', 'monster fluid': 'fluido de monstro', 'monster essence': 'essência de monstro', 'monster bone': 'osso de monstro', 'iron ore': 'minério de ferro', 'machalite ore': 'minério de machalita', 'dragonite ore': 'minério de dragonita', 'wyvern tear': 'lágrima de wyvern', 'large wyvern tear': 'lágrima grande de wyvern', 'nulberry': 'nobora', 'first-aid med': 'medicamento de primeiros socorros', 'ancient potion': 'poção antiga', 'mega potion': 'mega poção'
+};
+function translateDataLabel(value) {
+  let result = String(value || '');
+  const phrases = Object.keys(dataLabelTerms).sort((a, b) => b.length - a.length);
+  for (const phrase of phrases) result = result.replace(new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}\\b`, 'gi'), dataLabelTerms[phrase]);
+  return result;
+}
+function ptMaterial(value) { return translateDataLabel(value); }
+function ptPart(value) { return translateDataLabel(pt(value)); }
+
 const weaknessIcons = { fire: '🔥', water: '💧', thunder: '⚡', ice: '❄️', dragon: '🐉', poison: '☠️', paralysis: '⚡', sleep: '💤', blast: '💥', stun: '💫' };
 function weaknessIcon(element) { return weaknessIcons[String(element).toLowerCase()] || '✦'; }
 function weaknessLevel(level) {
@@ -143,7 +155,7 @@ function materialResults(list, query, rankKey) {
   for (const monster of list) {
     const rankRewards = rankKey && monster.rankData?.[rankKey]?.rewards?.length ? monster.rankData[rankKey].rewards : monster.rewards || [];
     for (const reward of rankRewards) {
-      if (!normalizeSearch(reward.item).includes(normalizedQuery)) continue;
+      if (!normalizeSearch(reward.item).includes(normalizedQuery) && !normalizeSearch(ptMaterial(reward.item)).includes(normalizedQuery)) continue;
       for (const condition of reward.conditions || []) {
         if (rankKey && condition.rank && condition.rank !== rankKey) continue;
         results.push({ monster, item: reward.item, method: condition.type, rank: condition.rank, chance: condition.chance, part: condition.part });
@@ -154,7 +166,7 @@ function materialResults(list, query, rankKey) {
 }
 function materialResultCards(results) {
   if (!results.length) return '<div class="empty-state">Nenhum material encontrado para este jogo/rank.</div>';
-  return results.slice(0, 80).map((result) => `<article class="material-result" data-monster-id="${escapeHtml(result.monster.id)}"><div><strong>${escapeHtml(result.item)}</strong><span>${escapeHtml(result.monster.name)} · ${escapeHtml(result.monster.game.replace('Monster Hunter: ', ''))}</span></div><small>${escapeHtml(pt(result.method))}${result.part ? ` · ${escapeHtml(pt(result.part))}` : ''}${result.rank ? ` · ${result.rank === 'low' ? 'Baixo' : result.rank === 'high' ? 'Alto' : 'Mestre/G'}` : ''}${result.chance != null ? ` · ${result.chance}%` : ''}</small></article>`).join('');
+  return results.slice(0, 80).map((result) => `<article class="material-result" data-monster-id="${escapeHtml(result.monster.id)}"><div><strong>${escapeHtml(ptMaterial(result.item))}</strong><span>${escapeHtml(result.monster.name)} · ${escapeHtml(result.monster.game.replace('Monster Hunter: ', ''))}</span></div><small>${escapeHtml(pt(result.method))}${result.part ? ` · ${escapeHtml(ptPart(result.part))}` : ''}${result.rank ? ` · ${result.rank === 'low' ? 'Baixo' : result.rank === 'high' ? 'Alto' : 'Mestre/G'}` : ''}${result.chance != null ? ` · ${result.chance}%` : ''}</small></article>`).join('');
 }
 function renderBestiary() {
   viewRoot.innerHTML = `<div class="toolbar"><label class="field">Jogo${selectHtml('monster-game', ['Todos os jogos', ...games], 'Todos os jogos')}</label><label class="field">Porte${selectHtml('monster-size', ['Todos os portes', 'Grandes', 'Pequenos'], 'Todos os portes')}</label><label class="field">Rank${selectHtml('monster-rank', ['Todos os ranks', 'Baixo', 'Alto', 'Mestre/G'], 'Todos os ranks')}</label><label class="field">Favoritos${selectHtml('monster-favorites', ['Todos os monstros', 'Somente favoritos'], 'Todos os monstros')}</label><label class="field">Pesquisar monstro<input class="text-input" id="monster-search" placeholder="Nome do monstro" /></label><label class="field">Pesquisar material<input class="text-input" id="material-search" placeholder="Ex.: Rathalos Ruby" /></label><label class="spoiler-toggle"><input type="checkbox" id="monster-spoilers" ${spoilerMode ? 'checked' : ''} /> Modo sem spoilers</label></div><div class="info-banner" id="monster-count">Catálogo carregado: World/Iceborne ${monsters.filter((monster) => monster.game === 'Monster Hunter: World').length} · Rise/Sunbreak ${monsters.filter((monster) => monster.game === 'Monster Hunter: Rise').length} · Wilds ${monsters.filter((monster) => monster.game === 'Monster Hunter: Wilds').length} · Generations Ultimate ${monsters.filter((monster) => monster.game === 'Monster Hunter: Generations Ultimate').length}</div><section class="material-search-card"><div class="section-heading"><h2>Busca reversa por material</h2><span>Resultados do catálogo local</span></div><p class="muted-inline">Digite um material para descobrir quais monstros o fornecem e em qual método ou rank.</p><div id="material-results" class="material-results"><div class="empty-state">Digite um material para começar.</div></div></section><div id="monster-grid" class="card-grid">${monsterCards(monsters)}</div>`;
@@ -187,10 +199,10 @@ function renderMonsterDetail(monster, selectedRank = null) {
   const rankedHealth = rankData?.healthProfiles?.length ? rankData.healthProfiles : monster.healthProfiles;
   const weaknesses = weaknessSummary(monster);
   const parts = monster.parts?.length
-    ? monster.parts.map((part) => `<li><strong>${escapeHtml(pt(part.name))}${part.breakable ? ' · quebra' : ''}</strong><span>${part.health ? `Vida ${part.health}` : part.weakPointStars ? `Corte ${weaknessStars(part.weakPointStars.cut)}` : 'Hitzone disponível'}${part.breakThresholds?.length ? ` · limiar ${part.breakThresholds.join('/')}` : ''}</span></li>`).join('')
+    ? monster.parts.map((part) => `<li><strong>${escapeHtml(ptPart(part.name))}${part.breakable ? ' · quebra' : ''}</strong><span>${part.health ? `Vida ${part.health}` : part.weakPointStars ? `Corte ${weaknessStars(part.weakPointStars.cut)}` : 'Hitzone disponível'}${part.breakThresholds?.length ? ` · limiar ${part.breakThresholds.join('/')}` : ''}</span></li>`).join('')
     : '<li>Partes/hitzones não publicados pela fonte selecionada.</li>';
   const rewards = rankedRewards?.length
-    ? rankedRewards.map((reward) => `<li><strong>${escapeHtml(reward.item)}</strong><span>${(reward.conditions || []).map((condition) => `${pt(condition.type)}${condition.chance != null ? ` ${condition.chance}%` : ''}`).join(', ')}</span></li>`).join('')
+    ? rankedRewards.map((reward) => `<li><strong>${escapeHtml(ptMaterial(reward.item))}</strong><span>${(reward.conditions || []).map((condition) => `${pt(condition.type)}${condition.part ? ` · ${ptPart(condition.part)}` : ''}${condition.chance != null ? ` ${condition.chance}%` : ''}`).join(', ')}</span></li>`).join('')
     : '<li>Recompensas indisponíveis.</li>';
   const renderImage = monster.render || monster.imageFallback || monster.iconFallbackAsset;
   const render = renderImage
