@@ -182,8 +182,8 @@ const partMapAssets = {
       { partIndex: 0, x: 9, y: 54, labelX: 15, labelY: 16, side: 'left', kind: 'breakable', paint: ['6,49 9,46 13,47 16,51 13,55 11,59 8,58 6,55'] },
       { partIndex: 1, x: 89, y: 70, labelX: 84, labelY: 88, side: 'right', kind: 'severable', paint: ['80,66 86,63 91,64 95,67 93,71 89,73 84,73 80,70'] },
       { partIndex: 2, x: 62, y: 23, labelX: 84, labelY: 16, side: 'right', kind: 'breakable', paint: ['40,15 49,10 57,8 66,9 73,11 80,15 78,19 70,19 63,17 56,20 49,18 44,21', '48,20 56,22 63,21 70,23 76,21 80,25 76,28 68,27 61,25 54,26'] },
-      { partIndex: 5, x: 44, y: 61, labelX: 48, labelY: 90, kind: 'neutral', paint: [] },
-      { partIndex: 6, x: 34, y: 84, labelX: 20, labelY: 88, side: 'left', kind: 'neutral', paint: [] },
+      { partIndex: 5, x: 39, y: 56, labelX: 47, labelY: 90, kind: 'neutral', paint: ['29,48 35,45 40,49 44,55 43,61 38,65 32,62 29,57'] },
+      { partIndex: 6, x: 35, y: 82, labelX: 20, labelY: 88, side: 'left', kind: 'neutral', paint: ['28,68 34,66 38,72 36,80 34,87 31,91 28,87 29,78', '43,67 49,66 53,72 52,81 50,89 46,91 44,86 45,77'] },
     ],
   },
 };
@@ -202,7 +202,7 @@ function partMapMarkup(monster) {
   }).join('');
   const paints = anchors.flatMap((anchor) => (anchor.paint || []).map((points) => `<polygon class="part-paint is-${anchor.kind || 'neutral'}" points="${points}" />`)).join('');
   const connectors = anchors.map((anchor) => `<line x1="${anchor.x}" y1="${anchor.y}" x2="${anchor.labelX ?? anchor.x}" y2="${anchor.labelY ?? anchor.y}" />`).join('');
-  const legend = '<div class="part-map-legend"><span><i class="legend-dot break"></i>Quebrável</span><span><i class="legend-dot cut"></i>Cortável</span><span>Valores: Corte · Impacto · Munição</span></div>';
+  const legend = '<div class="part-map-legend"><span><i class="legend-dot break"></i>Quebrável</span><span><i class="legend-dot cut"></i>Cortável</span><span><i class="legend-dot hitzone"></i>Hitzone</span><span>Valores: Corte · Impacto · Munição</span></div>';
   const status = partMapImage && anchors.length ? '' : '<div class="part-map-pending"><strong>Mapa anatômico individual em validação</strong><small>As caixas só aparecem quando a arte e as coordenadas das partes deste monstro forem conferidas. Nenhum mapa de outra espécie é reutilizado.</small></div>';
   return `<div class="part-map"><div class="part-map-stage">${partMapImage ? `<img src="${escapeHtml(partMapImage)}" alt="Mapa ilustrado de partes de ${escapeHtml(monster.name)}" />` : ''}${status}<svg class="part-map-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${paints}${connectors}</svg>${labels}</div>${legend}</div>`;
 }
