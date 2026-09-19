@@ -725,6 +725,30 @@ const partMapAssets = {
       { partIndex: 1, x: 82, y: 79, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-65': {
+    image: 'assets/part-maps/velkhana-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 51, y: 54, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 24, y: 25, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 50, y: 62, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 6, x: 51, y: 69, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 8, x: 46, y: 75, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, x: 59, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 51, y: 84, labelX: 63, labelY: 88, kind: 'severable' },
+    ],
+  },
+  'world-66': {
+    image: 'assets/part-maps/tigrex-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 75, y: 51, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 49, y: 48, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 54, y: 68, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 0, x: 66, y: 73, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 5, x: 35, y: 80, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 15, y: 55, labelX: 63, labelY: 88, kind: 'severable' },
+      { partIndex: 6, x: 6, y: 53, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
