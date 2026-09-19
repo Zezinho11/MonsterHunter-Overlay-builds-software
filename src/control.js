@@ -313,6 +313,30 @@ const partMapAssets = {
       { partIndex: 11, x: 54, y: 71, labelX: 81, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-28': {
+    image: 'assets/part-maps/diablos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 4, valuePartIndex: 6, x: 55, y: 23, labelX: 15, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 76, y: 25, labelX: 38, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 20, y: 56, labelX: 62, labelY: 15, kind: 'neutral' },
+      { partIndex: 1, x: 61, y: 58, labelX: 85, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 9, x: 70, y: 80, labelX: 18, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 8, x: 54, y: 67, labelX: 50, labelY: 88, kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 10, x: 91, y: 42, labelX: 82, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-29': {
+    image: 'assets/part-maps/black-diablos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 4, valuePartIndex: 6, x: 35, y: 21, labelX: 15, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 30, y: 64, labelX: 38, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 55, y: 48, labelX: 62, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, x: 61, y: 52, labelX: 85, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 9, x: 34, y: 84, labelX: 18, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 8, x: 55, y: 68, labelX: 50, labelY: 88, kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 10, x: 86, y: 50, labelX: 82, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
