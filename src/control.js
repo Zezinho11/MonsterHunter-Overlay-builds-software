@@ -382,6 +382,31 @@ const partMapAssets = {
       { partIndex: 6, x: 82, y: 65, labelX: 82, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'world-34': {
+    image: 'assets/part-maps/kushala-daora-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 30, y: 37, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 37, y: 46, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 48, y: 57, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 8, x: 73, y: 32, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 0, x: 31, y: 56, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 45, y: 64, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 39, y: 84, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 2, x: 62, y: 81, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-35': {
+    image: 'assets/part-maps/lavasioth-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 5, x: 68, y: 34, labelX: 15, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 60, y: 39, labelX: 38, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 8, x: 48, y: 21, labelX: 62, labelY: 15, kind: 'breakable' },
+      { partIndex: 9, x: 29, y: 24, labelX: 85, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 10, x: 58, y: 49, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 47, y: 43, labelX: 50, labelY: 88, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 11, x: 43, y: 66, labelX: 82, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
