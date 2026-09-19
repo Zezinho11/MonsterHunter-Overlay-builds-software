@@ -207,6 +207,17 @@ const partMapAssets = {
       { partIndex: 4, x: 82, y: 55, labelX: 85, labelY: 14, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-19': {
+    image: 'assets/part-maps/pukei-pukei-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 8, y: 43, labelX: 15, labelY: 14, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 60, y: 28, labelX: 82, labelY: 14, side: 'right', kind: 'breakable' },
+      { partIndex: 3, x: 50, y: 48, labelX: 82, labelY: 34, side: 'right', kind: 'breakable' },
+      { partIndex: 6, x: 39, y: 57, labelX: 17, labelY: 72, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 43, y: 79, labelX: 26, labelY: 90, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 91, y: 63, labelX: 83, labelY: 86, side: 'right', kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
