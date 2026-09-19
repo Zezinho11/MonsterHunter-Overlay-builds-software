@@ -203,6 +203,40 @@ const partMapAssets = {
       { partIndex: 0, x: 57, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
     ],
   },
+  'world-5': {
+    image: 'assets/part-maps/mosswine-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 51, y: 49, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'world-6': {
+    image: 'assets/part-maps/apceros-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 18, y: 60, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 54, y: 43, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-7': {
+    image: 'assets/part-maps/kestodon-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 19, y: 58, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 53, y: 45, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-8': {
+    image: 'assets/part-maps/noios-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 50, y: 32, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 0, x: 51, y: 52, labelX: 50, labelY: 88, kind: 'neutral' },
+    ],
+  },
+  'world-9': {
+    image: 'assets/part-maps/gajau-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 14, y: 55, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 56, y: 51, labelX: 80, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
   'world-42': {
     image: 'assets/part-maps/rathalos-hunter-notes-v1.png',
     anchors: [
