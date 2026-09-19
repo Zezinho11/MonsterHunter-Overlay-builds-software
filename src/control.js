@@ -1291,6 +1291,37 @@ const partMapAssets = {
       { partIndex: 8, x: 57, y: 65, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'rise-13': {
+    image: 'assets/part-maps/tigrex-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 80, y: 17, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 45, y: 38, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 11, x: 56, y: 64, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, x: 58, y: 53, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, x: 65, y: 56, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 13, x: 81, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 9, x: 17, y: 55, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'rise-14': {
+    image: 'assets/part-maps/great-izuchi-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 86, y: 28, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 60, y: 54, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 70, y: 70, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 4, x: 37, y: 49, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, x: 8, y: 16, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+    ],
+  },
+  'rise-15': {
+    image: 'assets/part-maps/arzuros-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 24, y: 39, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 51, y: 44, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 5, x: 34, y: 65, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 6, x: 73, y: 69, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
