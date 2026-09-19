@@ -1009,6 +1009,42 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 8, x: 55, y: 67, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-90': {
+    image: 'assets/part-maps/alatreon-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 5, x: 35, y: 47, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 43, y: 34, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 76, y: 26, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 9, x: 36, y: 80, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 11, x: 84, y: 68, labelX: 13, labelY: 88, side: 'left', kind: 'severable' },
+      { partIndex: 4, x: 14, y: 27, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 10, x: 62, y: 83, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-91': {
+    image: 'assets/part-maps/frostfang-barioth-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 78, y: 48, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, x: 58, y: 27, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 57, y: 43, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 9, x: 54, y: 61, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 6, x: 67, y: 67, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 11, valuePartIndex: 12, x: 17, y: 43, labelX: 37, labelY: 88, side: 'left', kind: 'severable' },
+      { partIndex: 10, x: 38, y: 72, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-92': {
+    image: 'assets/part-maps/fatalis-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 32, y: 29, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 40, y: 42, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 9, x: 53, y: 58, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, x: 82, y: 34, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, x: 56, y: 83, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 28, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 84, y: 72, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
