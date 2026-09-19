@@ -432,6 +432,31 @@ const partMapAssets = {
       { partIndex: 1, x: 80, y: 72, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
     ],
   },
+  'world-38': {
+    image: 'assets/part-maps/nergigante-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, valuePartIndex: 4, x: 29, y: 48, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, x: 34, y: 56, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 10, x: 72, y: 27, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 7, x: 47, y: 39, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 8, x: 35, y: 69, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 47, y: 59, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 9, x: 52, y: 84, labelX: 63, labelY: 88, kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 11, x: 79, y: 76, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-39': {
+    image: 'assets/part-maps/odogaron-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 59, y: 40, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 52, y: 31, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 39, y: 19, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, x: 81, y: 69, labelX: 87, labelY: 15, side: 'right', kind: 'severable' },
+      { partIndex: 0, x: 26, y: 62, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 40, y: 42, labelX: 50, labelY: 88, kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 7, x: 38, y: 83, labelX: 82, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
