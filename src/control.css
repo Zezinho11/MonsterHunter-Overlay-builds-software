@@ -57,11 +57,10 @@ button { cursor: pointer; }
 .part-map-pending small { max-width: 260px; color: #8da4b7; line-height: 1.5; }
 .part-map-connectors { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
 .part-map-connectors line { stroke: rgba(105, 172, 216, .9); stroke-width: .28; vector-effect: non-scaling-stroke; }
-.part-map-connectors circle { fill: #f1ca72; stroke: #17212a; stroke-width: .35; vector-effect: non-scaling-stroke; }
-.part-highlight { position: absolute; left: var(--part-x); top: var(--part-y); width: var(--part-w); height: var(--part-h); transform: translate(-50%, -50%); border: 2px solid rgba(105, 172, 216, .65); border-radius: 42%; pointer-events: none; z-index: 1; }
-.part-highlight.is-breakable { border-color: rgba(255, 192, 78, .95); background: rgba(255, 192, 78, .22); }
-.part-highlight.is-severable { border-color: rgba(219, 104, 113, .95); background: rgba(219, 104, 113, .22); }
-.part-highlight.is-neutral { border-color: rgba(105, 172, 216, .78); background: rgba(105, 172, 216, .14); }
+.part-paint { stroke-width: .3; vector-effect: non-scaling-stroke; }
+.part-paint.is-breakable { fill: rgba(255, 192, 78, .78); stroke: rgba(255, 192, 78, .98); }
+.part-paint.is-severable { fill: rgba(219, 104, 113, .72); stroke: rgba(219, 104, 113, .98); }
+.part-paint.is-neutral { fill: transparent; stroke: transparent; }
 .part-callout { position: absolute; left: var(--callout-x); top: var(--callout-y); transform: translate(-50%, -50%); display: grid; gap: 2px; width: 118px; min-width: 0; max-width: 118px; padding: 6px 7px; border: 1px solid rgba(105, 172, 216, .55); border-radius: 7px; background: rgba(10, 16, 22, .94); color: #e4edf4; text-align: left; box-shadow: 0 6px 16px rgba(0, 0, 0, .28); cursor: pointer; z-index: 2; }
 .part-callout.is-breakable { border-color: rgba(255, 192, 78, .8); }
 .part-callout.is-severable { border-color: rgba(219, 104, 113, .8); }

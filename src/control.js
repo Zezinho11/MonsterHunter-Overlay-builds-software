@@ -179,11 +179,11 @@ const partMapAssets = {
   'world-42': {
     image: 'assets/part-maps/rathalos-hunter-notes-v1.png',
     anchors: [
-      { partIndex: 0, x: 9, y: 54, labelX: 17, labelY: 22, side: 'left', kind: 'breakable', width: 12, height: 15 },
-      { partIndex: 1, x: 89, y: 70, labelX: 82, labelY: 84, side: 'right', kind: 'severable', width: 20, height: 12 },
-      { partIndex: 2, x: 62, y: 23, labelX: 84, labelY: 16, side: 'right', kind: 'breakable', width: 34, height: 32 },
-      { partIndex: 5, x: 44, y: 61, labelX: 45, labelY: 77, kind: 'neutral', width: 20, height: 18 },
-      { partIndex: 6, x: 34, y: 84, labelX: 22, labelY: 88, side: 'left', kind: 'neutral', width: 12, height: 12 },
+      { partIndex: 0, x: 9, y: 54, labelX: 15, labelY: 16, side: 'left', kind: 'breakable', paint: ['6,47 11,45 16,50 13,57 8,60 5,56'] },
+      { partIndex: 1, x: 89, y: 70, labelX: 84, labelY: 88, side: 'right', kind: 'severable', paint: ['76,64 87,61 96,66 94,74 84,76 76,71'] },
+      { partIndex: 2, x: 62, y: 23, labelX: 84, labelY: 16, side: 'right', kind: 'breakable', paint: ['38,14 53,7 72,9 84,18 78,29 62,29 48,24'] },
+      { partIndex: 5, x: 44, y: 61, labelX: 48, labelY: 90, kind: 'neutral', paint: [] },
+      { partIndex: 6, x: 34, y: 84, labelX: 20, labelY: 88, side: 'left', kind: 'neutral', paint: [] },
     ],
   },
 };
@@ -198,12 +198,13 @@ function partMapMarkup(monster) {
     const kind = anchor.kind || (part.severable ? 'severable' : part.breakable ? 'breakable' : 'neutral');
     const flags = [part.breakable ? 'quebra' : '', part.severable ? 'cortável' : ''].filter(Boolean).join(' · ');
     const side = anchor.side === 'left' ? 'is-left' : anchor.side === 'right' ? 'is-right' : '';
-    return `<span class="part-highlight is-${kind}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--part-w:${anchor.width || 10}%;--part-h:${anchor.height || 10}%" aria-hidden="true"></span><button class="part-callout ${side} is-${kind}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
+    return `<button class="part-callout ${side} is-${kind}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
   }).join('');
-  const connectors = anchors.map((anchor) => `<line x1="${anchor.x}" y1="${anchor.y}" x2="${anchor.labelX ?? anchor.x}" y2="${anchor.labelY ?? anchor.y}" /><circle cx="${anchor.x}" cy="${anchor.y}" r="0.8" />`).join('');
+  const paints = anchors.flatMap((anchor) => (anchor.paint || []).map((points) => `<polygon class="part-paint is-${anchor.kind || 'neutral'}" points="${points}" />`)).join('');
+  const connectors = anchors.map((anchor) => `<line x1="${anchor.x}" y1="${anchor.y}" x2="${anchor.labelX ?? anchor.x}" y2="${anchor.labelY ?? anchor.y}" />`).join('');
   const legend = '<div class="part-map-legend"><span><i class="legend-dot break"></i>Quebrável</span><span><i class="legend-dot cut"></i>Cortável</span><span>Valores: Corte · Impacto · Munição</span></div>';
   const status = partMapImage && anchors.length ? '' : '<div class="part-map-pending"><strong>Mapa anatômico individual em validação</strong><small>As caixas só aparecem quando a arte e as coordenadas das partes deste monstro forem conferidas. Nenhum mapa de outra espécie é reutilizado.</small></div>';
-  return `<div class="part-map"><div class="part-map-stage">${partMapImage ? `<img src="${escapeHtml(partMapImage)}" alt="Mapa ilustrado de partes de ${escapeHtml(monster.name)}" />` : ''}${status}${connectors ? `<svg class="part-map-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${connectors}</svg>` : ''}${labels}</div>${legend}</div>`;
+  return `<div class="part-map"><div class="part-map-stage">${partMapImage ? `<img src="${escapeHtml(partMapImage)}" alt="Mapa ilustrado de partes de ${escapeHtml(monster.name)}" />` : ''}${status}<svg class="part-map-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${paints}${connectors}</svg>${labels}</div>${legend}</div>`;
 }
 function renderBestiary() {
   viewRoot.innerHTML = `<div class="toolbar"><label class="field">Jogo${selectHtml('monster-game', ['Todos os jogos', ...games], 'Todos os jogos')}</label><label class="field">Porte${selectHtml('monster-size', ['Todos os portes', 'Grandes', 'Pequenos'], 'Todos os portes')}</label><label class="field">Rank${selectHtml('monster-rank', ['Todos os ranks', 'Baixo', 'Alto', 'Mestre/G'], 'Todos os ranks')}</label><label class="field">Favoritos${selectHtml('monster-favorites', ['Todos os monstros', 'Somente favoritos'], 'Todos os monstros')}</label><label class="field">Pesquisar monstro<input class="text-input" id="monster-search" placeholder="Nome do monstro" /></label><label class="field">Pesquisar material<input class="text-input" id="material-search" placeholder="Ex.: Rathalos Ruby" /></label><label class="spoiler-toggle"><input type="checkbox" id="monster-spoilers" ${spoilerMode ? 'checked' : ''} /> Modo sem spoilers</label></div><div class="info-banner" id="monster-count">Catálogo carregado: World/Iceborne ${monsters.filter((monster) => monster.game === 'Monster Hunter: World').length} · Rise/Sunbreak ${monsters.filter((monster) => monster.game === 'Monster Hunter: Rise').length} · Wilds ${monsters.filter((monster) => monster.game === 'Monster Hunter: Wilds').length} · Generations Ultimate ${monsters.filter((monster) => monster.game === 'Monster Hunter: Generations Ultimate').length}</div><section class="material-search-card"><div class="section-heading"><h2>Busca reversa por material</h2><span>Resultados do catálogo local</span></div><p class="muted-inline">Digite um material para descobrir quais monstros o fornecem e em qual método ou rank.</p><div id="material-results" class="material-results"><div class="empty-state">Digite um material para começar.</div></div></section><div id="monster-grid" class="card-grid">${monsterCards(monsters)}</div>`;
