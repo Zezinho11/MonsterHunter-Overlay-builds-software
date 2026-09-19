@@ -184,13 +184,7 @@ function partValueSummary(part) {
     .map(([label, value]) => `${label} ${value}`);
   return values.join(' · ') || 'Hitzone indisponível';
 }
-const partMapAssets = {
-  'Gore Magala': 'assets/part-maps/gore-magala.png',
-  Rathalos: 'assets/part-maps/rathalos.png',
-  'Great Jagras': 'assets/part-maps/great-jagras.png',
-  Mizutsune: 'assets/part-maps/mizutsune.png',
-  'Ahtal-Ka': 'assets/part-maps/ahtal-ka.png',
-};
+const partMapAssets = {};
 function partMapMarkup(monster) {
   const partMapImage = partMapAssets[monster.name];
   const labels = (monster.parts || []).slice(0, 12).map((part, index) => {
