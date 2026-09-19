@@ -184,15 +184,22 @@ function partValueSummary(part) {
     .map(([label, value]) => `${label} ${value}`);
   return values.join(' · ') || 'Hitzone indisponível';
 }
+const partMapAssets = {
+  'Gore Magala': 'assets/part-maps/gore-magala.png',
+  Rathalos: 'assets/part-maps/rathalos.png',
+  'Great Jagras': 'assets/part-maps/great-jagras.png',
+  Mizutsune: 'assets/part-maps/mizutsune.png',
+  'Ahtal-Ka': 'assets/part-maps/ahtal-ka.png',
+};
 function partMapMarkup(monster) {
-  const renderImage = monster.render || monster.imageFallback || monster.iconFallbackAsset;
+  const partMapImage = partMapAssets[monster.name];
   const labels = (monster.parts || []).slice(0, 12).map((part, index) => {
     const position = partMapPosition(part.name, index);
     const flags = [part.breakable ? 'quebra' : '', part.severable ? 'cortável' : ''].filter(Boolean).join(' · ');
     return `<button class="part-callout ${part.breakable ? 'is-breakable' : ''}" style="--part-x:${position.x}%;--part-y:${position.y}%" data-part-index="${index}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
   }).join('');
   const legend = '<div class="part-map-legend"><span><i class="legend-dot break"></i>Quebrável</span><span><i class="legend-dot cut"></i>Cortável</span><span>Valores: Corte · Impacto · Munição</span></div>';
-  return `<div class="part-map"><div class="part-map-stage">${renderImage ? `<img src="${escapeHtml(renderImage)}" alt="${escapeHtml(monster.name)}" />` : '<span class="muted-inline">Render indisponível</span>'}${labels}</div>${legend}</div>`;
+  return `<div class="part-map"><div class="part-map-stage">${partMapImage ? `<img src="${escapeHtml(partMapImage)}" alt="Mapa ilustrado de partes de ${escapeHtml(monster.name)}" />` : '<div class="part-map-pending"><strong>Arte individual em produção</strong><small>Esta ficha não reutiliza o render oficial nem a arte de outro monstro.</small></div>'}${labels}</div>${legend}</div>`;
 }
 function renderBestiary() {
   viewRoot.innerHTML = `<div class="toolbar"><label class="field">Jogo${selectHtml('monster-game', ['Todos os jogos', ...games], 'Todos os jogos')}</label><label class="field">Porte${selectHtml('monster-size', ['Todos os portes', 'Grandes', 'Pequenos'], 'Todos os portes')}</label><label class="field">Rank${selectHtml('monster-rank', ['Todos os ranks', 'Baixo', 'Alto', 'Mestre/G'], 'Todos os ranks')}</label><label class="field">Favoritos${selectHtml('monster-favorites', ['Todos os monstros', 'Somente favoritos'], 'Todos os monstros')}</label><label class="field">Pesquisar monstro<input class="text-input" id="monster-search" placeholder="Nome do monstro" /></label><label class="field">Pesquisar material<input class="text-input" id="material-search" placeholder="Ex.: Rathalos Ruby" /></label><label class="spoiler-toggle"><input type="checkbox" id="monster-spoilers" ${spoilerMode ? 'checked' : ''} /> Modo sem spoilers</label></div><div class="info-banner" id="monster-count">Catálogo carregado: World/Iceborne ${monsters.filter((monster) => monster.game === 'Monster Hunter: World').length} · Rise/Sunbreak ${monsters.filter((monster) => monster.game === 'Monster Hunter: Rise').length} · Wilds ${monsters.filter((monster) => monster.game === 'Monster Hunter: Wilds').length} · Generations Ultimate ${monsters.filter((monster) => monster.game === 'Monster Hunter: Generations Ultimate').length}</div><section class="material-search-card"><div class="section-heading"><h2>Busca reversa por material</h2><span>Resultados do catálogo local</span></div><p class="muted-inline">Digite um material para descobrir quais monstros o fornecem e em qual método ou rank.</p><div id="material-results" class="material-results"><div class="empty-state">Digite um material para começar.</div></div></section><div id="monster-grid" class="card-grid">${monsterCards(monsters)}</div>`;
