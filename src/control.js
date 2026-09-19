@@ -197,6 +197,16 @@ const partMapAssets = {
       { partIndex: 9, x: 44, y: 58, labelX: 48, labelY: 14, side: 'right', kind: 'neutral' },
     ],
   },
+  'world-18': {
+    image: 'assets/part-maps/kulu-ya-ku-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 9, y: 36, labelX: 15, labelY: 14, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 25, y: 63, labelX: 14, labelY: 84, side: 'left', kind: 'neutral' },
+      { partIndex: 3, x: 48, y: 55, labelX: 49, labelY: 14, kind: 'neutral' },
+      { partIndex: 1, x: 57, y: 80, labelX: 67, labelY: 88, side: 'right', kind: 'neutral' },
+      { partIndex: 4, x: 82, y: 55, labelX: 85, labelY: 14, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
