@@ -651,6 +651,31 @@ const partMapAssets = {
       { partIndex: 4, x: 19, y: 64, labelX: 63, labelY: 88, kind: 'severable' },
     ],
   },
+  'world-59': {
+    image: 'assets/part-maps/namielle-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 64, y: 56, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 27, y: 25, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 7, x: 52, y: 40, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 5, x: 58, y: 57, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 6, x: 61, y: 72, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 0, x: 57, y: 80, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 76, y: 80, labelX: 63, labelY: 88, kind: 'neutral' },
+      { partIndex: 3, x: 15, y: 58, labelX: 87, labelY: 88, side: 'right', kind: 'severable' },
+    ],
+  },
+  'world-60': {
+    image: 'assets/part-maps/zinogre-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 75, y: 47, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 52, y: 38, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 69, y: 55, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 5, x: 52, y: 56, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, x: 64, y: 75, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, x: 25, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, x: 10, y: 34, labelX: 63, labelY: 88, kind: 'severable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
