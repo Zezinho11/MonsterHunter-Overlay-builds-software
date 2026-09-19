@@ -337,6 +337,30 @@ const partMapAssets = {
       { partIndex: 5, valuePartIndex: 10, x: 86, y: 50, labelX: 82, labelY: 88, side: 'right', kind: 'severable' },
     ],
   },
+  'world-30': {
+    image: 'assets/part-maps/dodogama-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 20, y: 15, labelX: 15, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 30, y: 34, labelX: 38, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 9, x: 55, y: 43, labelX: 62, labelY: 15, kind: 'neutral' },
+      { partIndex: 1, x: 89, y: 68, labelX: 85, labelY: 15, side: 'right', kind: 'severable' },
+      { partIndex: 2, valuePartIndex: 10, x: 42, y: 84, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 8, x: 47, y: 68, labelX: 50, labelY: 88, kind: 'neutral' },
+      { partIndex: 11, x: 81, y: 84, labelX: 82, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'world-31': {
+    image: 'assets/part-maps/great-girros-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 13, y: 25, labelX: 15, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 31, y: 38, labelX: 38, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 54, y: 37, labelX: 62, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, x: 86, y: 51, labelX: 85, labelY: 15, side: 'right', kind: 'severable' },
+      { partIndex: 0, x: 43, y: 82, labelX: 18, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 57, y: 61, labelX: 50, labelY: 88, kind: 'neutral' },
+      { partIndex: 6, x: 85, y: 76, labelX: 82, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
