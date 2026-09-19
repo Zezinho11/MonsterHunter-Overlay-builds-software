@@ -86,6 +86,13 @@ test('catalog has reward coverage for every supported monster and health coverag
   assert.ok(catalog.entries.filter((entry) => entry.game === 'mhgu' && entry.type === 'large').filter((entry) => entry.healthProfiles?.length).length >= 90);
 });
 
+test('World small monsters use the published reference health when no quest profile exists', () => {
+  const smallWorld = catalog.entries.filter((monster) => monster.game === 'world' && monster.type === 'small');
+  const withHealth = smallWorld.filter((monster) => monster.healthProfiles?.some((profile) => profile.mode === 'reference'));
+  assert.equal(withHealth.length, 16);
+  assert.ok(withHealth.every((monster) => monster.healthProfiles.every((profile) => Number.isFinite(profile.health))));
+});
+
 test('catalog audit fields are structurally present for every monster', () => {
   for (const monster of catalog.entries) {
     assert.ok(monster.id && monster.game && monster.name);

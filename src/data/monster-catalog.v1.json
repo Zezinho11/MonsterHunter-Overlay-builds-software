@@ -1,6 +1,6 @@
 {
   "schema": "monster-catalog.v1",
-  "generatedAt": "2026-09-19T13:39:34.977Z",
+  "generatedAt": "2026-09-19T13:53:28.499Z",
   "locale": "en",
   "sources": [
     {
@@ -235,7 +235,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 53
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -244,7 +251,7 @@
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -498,7 +505,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 60
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -507,7 +521,7 @@
         "render": false,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -730,7 +744,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -739,7 +760,7 @@
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -936,7 +957,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 8
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -945,7 +973,7 @@
         "render": false,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -1048,7 +1076,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -1057,7 +1092,7 @@
         "render": false,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -1178,7 +1213,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -1187,7 +1229,7 @@
         "render": false,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -1394,7 +1436,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 120
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -1403,7 +1452,7 @@
         "render": false,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -1595,7 +1644,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -1604,7 +1660,7 @@
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -1815,7 +1871,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -1824,7 +1887,7 @@
         "render": false,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -1987,7 +2050,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 70
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -1996,7 +2066,7 @@
         "render": false,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -2201,7 +2271,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -2210,7 +2287,7 @@
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -2444,7 +2521,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -2453,7 +2537,7 @@
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -2701,7 +2785,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 150
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -2710,7 +2801,7 @@
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -2871,7 +2962,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 40
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -2880,7 +2978,7 @@
         "render": false,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -3012,7 +3110,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -3021,7 +3126,7 @@
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -3325,7 +3430,14 @@
         }
       ],
       "baseHealth": null,
-      "healthProfiles": [],
+      "healthProfiles": [
+        {
+          "mode": "reference",
+          "rank": null,
+          "location": null,
+          "health": 100
+        }
+      ],
       "availability": {
         "weaknesses": true,
         "locations": true,
@@ -3334,7 +3446,7 @@
         "render": true,
         "icon": true,
         "ecology": false,
-        "health": false
+        "health": true
       },
       "rankData": {
         "low": {
@@ -261220,7 +261332,7 @@
       },
       "icon": "https://raw.githubusercontent.com/CrimsonNynja/monster-hunter-DB/master/icons/MH4U-Remobra_Icon.png",
       "iconFallbackAsset": null,
-      "render": "https://images.wikia.com/monsterhunter/images/f/ff/MH4-Remobra_Render_001.png/revision/latest?cb=20140108055152&format=png",
+      "render": "https://images.wikia.com/monsterhunter/images/2/2a/2ndGen-Remobra_Render_001.png/revision/latest?cb=20150303030230&format=png",
       "renderSource": "monster-hunter-fandom-cross-game",
       "imageFallback": null,
       "elements": [],
@@ -261375,7 +261487,7 @@
         "ecology": false,
         "health": false
       },
-      "renderVariant": "MH4",
+      "renderVariant": "2ndGen",
       "rankData": {
         "low": {
           "rewards": [

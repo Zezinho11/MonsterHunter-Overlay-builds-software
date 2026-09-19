@@ -528,6 +528,12 @@ function extractWorldHealthProfiles(html) {
       profiles.push({ mode, rank: row[0] || null, location: row[1] || null, health });
     }
   }
+  if (!profiles.length) {
+    const summary = cleanHtml(html).match(/\b([\d,]+)\s+Health\b/i);
+    if (summary) {
+      profiles.push({ mode: 'reference', rank: null, location: null, health: Number(summary[1].replace(/,/g, '')) });
+    }
+  }
   return profiles.sort((a, b) => (a.mode === 'expedition' ? -1 : 1) - (b.mode === 'expedition' ? -1 : 1));
 }
 
