@@ -175,11 +175,23 @@ function partValueSummary(part) {
     .map(([label, value]) => `${label} ${value}`);
   return values.join(' · ') || 'Hitzone indisponível';
 }
-const partMapAssets = {};
+const partMapAssets = {
+  'world-42': {
+    image: 'assets/part-maps/rathalos-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, x: 11, y: 52, labelX: 18, labelY: 24, side: 'left' },
+      { partIndex: 1, x: 88, y: 73, labelX: 80, labelY: 89, side: 'right' },
+      { partIndex: 2, x: 68, y: 28, labelX: 83, labelY: 17, side: 'right' },
+      { partIndex: 5, x: 43, y: 56, labelX: 45, labelY: 86 },
+      { partIndex: 6, x: 48, y: 78, labelX: 31, labelY: 91, side: 'left' },
+    ],
+  },
+};
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
-  const partMapImage = map.image || partMapAssets[monster.id] || partMapAssets[monster.name];
-  const anchors = Array.isArray(map.anchors) ? map.anchors : [];
+  const asset = partMapAssets[monster.id] || partMapAssets[monster.name] || {};
+  const partMapImage = map.image || (typeof asset === 'string' ? asset : asset.image);
+  const anchors = Array.isArray(map.anchors) ? map.anchors : (Array.isArray(asset.anchors) ? asset.anchors : []);
   const labels = anchors.map((anchor) => {
     const part = (monster.parts || [])[anchor.partIndex];
     if (!part || !Number.isFinite(anchor.x) || !Number.isFinite(anchor.y)) return '';
