@@ -1496,6 +1496,42 @@ const partMapAssets = {
       { partIndex: 6, x: 79, y: 76, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'rise-31': {
+    image: 'assets/part-maps/anjanath-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 73, y: 71, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, x: 55, y: 24, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 5, x: 70, y: 62, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, x: 18, y: 58, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 9, valuePartIndex: 10, x: 68, y: 55, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 11, x: 54, y: 80, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 8, x: 82, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-32': {
+    image: 'assets/part-maps/nargacuga-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, valuePartIndex: 5, x: 72, y: 68, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 38, y: 50, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 12, x: 55, y: 49, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 9, x: 17, y: 30, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 0, x: 54, y: 60, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 7, x: 67, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 38, y: 80, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-33': {
+    image: 'assets/part-maps/zinogre-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 7, x: 88, y: 70, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 90, y: 61, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 10, x: 58, y: 46, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 16, x: 15, y: 40, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 19, x: 70, y: 78, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 14, x: 37, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 12, x: 62, y: 64, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
