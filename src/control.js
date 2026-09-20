@@ -3489,6 +3489,39 @@ const partMapAssets = {
         { partIndex: 7, valuePartIndex: 7, x: 38, y: 86, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
       ],
     },
+    'mhgu-63ddd': {
+      image: 'assets/part-maps/valstrax-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 76, y: 55, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 67, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 60, y: 64, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 47, y: 48, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 74, y: 76, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 51, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 38, y: 34, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 28, y: 67, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-63306': {
+      image: 'assets/part-maps/rajang-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 50, y: 64, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 26, y: 53, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 54, y: 80, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 50, y: 49, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 70, y: 60, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-644d6': {
+      image: 'assets/part-maps/furious-rajang-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 87, y: 48, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 73, y: 69, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 61, y: 80, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 70, y: 59, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 39, y: 49, labelX: 50, labelY: 82, kind: 'breakable' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
