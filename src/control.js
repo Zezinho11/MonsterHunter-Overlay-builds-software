@@ -2626,6 +2626,39 @@ const partMapAssets = {
       { partIndex: 1, valuePartIndex: 1, x: 38, y: 66, labelX: 78, labelY: 15, side: 'right', kind: 'neutral' },
     ],
   },
+  'mhgu-6d786': {
+    image: 'assets/part-maps/seltas-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 53, y: 50, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 76, y: 29, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 38, y: 62, labelX: 18, labelY: 78, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 52, y: 73, labelX: 82, labelY: 78, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 57, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-65376': {
+    image: 'assets/part-maps/seltas-queen-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 52, y: 52, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 58, y: 58, labelX: 50, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 53, y: 68, labelX: 50, labelY: 84, kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 20, y: 25, labelX: 82, labelY: 84, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 35, y: 65, labelX: 15, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 70, y: 65, labelX: 85, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 39, y: 78, labelX: 20, labelY: 84, side: 'left', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 72, y: 78, labelX: 80, labelY: 84, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-65776': {
+    image: 'assets/part-maps/arzuros-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 16, y: 50, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 55, y: 45, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 38, y: 69, labelX: 15, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 82, y: 52, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 66, y: 73, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
