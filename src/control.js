@@ -2959,6 +2959,44 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 7, x: 95, y: 27, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
     ],
   },
+  'mhgu-d6576': {
+    image: 'assets/part-maps/rathalos-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 53, y: 55, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 58, y: 52, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 58, y: 41, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 59, y: 63, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 30, y: 68, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 78, y: 50, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 52, y: 70, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'mhgu-06036': {
+    image: 'assets/part-maps/silver-rathalos-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 62, y: 56, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 58, y: 50, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 57, y: 38, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 59, y: 64, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 73, y: 76, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 27, y: 37, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 64, y: 70, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 88, y: 79, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-d6846': {
+    image: 'assets/part-maps/dreadking-rathalos-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 58, y: 65, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 54, y: 59, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 58, y: 47, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 62, y: 68, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 25, y: 73, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 75, y: 31, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 56, y: 77, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 12, y: 82, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
