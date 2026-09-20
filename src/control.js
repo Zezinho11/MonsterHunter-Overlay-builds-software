@@ -3258,6 +3258,48 @@ const partMapAssets = {
       { partIndex: 6, valuePartIndex: 6, x: 39, y: 89, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
     ],
   },
+  'mhgu-69e46': {
+    image: 'assets/part-maps/gammoth-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 70, y: 43, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 73, y: 54, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 63, y: 80, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 79, y: 80, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 27, y: 80, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 45, y: 80, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 18, y: 60, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 51, y: 56, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'mhgu-6a004': {
+    image: 'assets/part-maps/elderfrost-gammoth-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 54, y: 37, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 30, y: 60, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 46, y: 77, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 72, y: 80, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 23, y: 70, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 39, y: 80, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 12, y: 55, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 55, y: 54, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'mhgu-6aa56': {
+    image: 'assets/part-maps/glavenus-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 15, y: 69, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 25, y: 60, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 55, y: 54, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 58, y: 65, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 45, y: 80, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 78, y: 80, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 88, y: 60, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 88, y: 27, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 8, valuePartIndex: 8, x: 83, y: 25, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 9, valuePartIndex: 9, x: 77, y: 33, labelX: 62, labelY: 82, kind: 'breakable' },
+      { partIndex: 10, valuePartIndex: 10, x: 72, y: 40, labelX: 38, labelY: 82, kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
