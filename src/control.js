@@ -1567,6 +1567,42 @@ const partMapAssets = {
       { partIndex: 11, x: 57, y: 40, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'rise-37': {
+    image: 'assets/part-maps/chameleos-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 5, x: 83, y: 78, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 83, y: 63, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 6, x: 65, y: 31, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 15, x: 20, y: 36, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 8, x: 61, y: 48, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 10, x: 67, y: 58, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 11, x: 62, y: 76, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-38': {
+    image: 'assets/part-maps/apex-rathalos-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 4, x: 47, y: 25, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 11, x: 20, y: 50, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 7, x: 57, y: 23, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 10, x: 29, y: 78, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 8, valuePartIndex: 9, x: 53, y: 56, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 13, valuePartIndex: 16, x: 48, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 15, x: 52, y: 65, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'rise-39': {
+    image: 'assets/part-maps/apex-mizutsune-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 5, x: 86, y: 52, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 93, y: 59, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 37, x: 57, y: 40, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 33, x: 15, y: 48, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 28, valuePartIndex: 29, x: 61, y: 62, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 18, valuePartIndex: 19, x: 70, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 23, valuePartIndex: 24, x: 34, y: 80, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
