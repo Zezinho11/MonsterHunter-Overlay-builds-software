@@ -2781,6 +2781,42 @@ const partMapAssets = {
       { partIndex: 6, valuePartIndex: 6, x: 18, y: 57, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
     ],
   },
+  'mhgu-6da86': {
+    image: 'assets/part-maps/daimyo-hermitaur-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 52, y: 52, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 61, y: 59, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 78, y: 31, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 82, y: 70, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 27, y: 68, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 68, y: 58, labelX: 50, labelY: 82, kind: 'breakable' },
+    ],
+  },
+  'mhgu-67db6': {
+    image: 'assets/part-maps/stonefist-hermitaur-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 50, y: 56, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 61, y: 65, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 52, y: 28, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 22, y: 82, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 83, y: 56, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 38, y: 72, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 45, y: 64, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 85, y: 82, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'mhgu-674b6': {
+    image: 'assets/part-maps/volvidon-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 15, y: 38, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 55, y: 47, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 48, y: 76, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 85, y: 66, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 67, y: 78, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 50, y: 58, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 57, y: 27, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
