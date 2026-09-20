@@ -3069,6 +3069,44 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 7, x: 59, y: 78, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
     ],
   },
+  'mhgu-69a46': {
+    image: 'assets/part-maps/najarala-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 66, y: 28, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 54, y: 44, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 54, y: 63, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 48, y: 43, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 24, y: 56, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 84, y: 69, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 89, y: 77, labelX: 50, labelY: 82, kind: 'neutral' },
+    ],
+  },
+  'mhgu-6a856': {
+    image: 'assets/part-maps/nargacuga-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 25, y: 69, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 47, y: 63, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 58, y: 71, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 42, y: 54, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 72, y: 73, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 50, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 85, y: 35, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 91, y: 12, labelX: 50, labelY: 82, kind: 'breakable' },
+    ],
+  },
+  'mhgu-63506': {
+    image: 'assets/part-maps/silverwind-nargacuga-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 55, y: 52, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 45, y: 55, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 56, y: 70, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 24, y: 31, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 62, y: 70, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 42, y: 70, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 17, y: 70, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 8, y: 83, labelX: 50, labelY: 82, kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
