@@ -2604,6 +2604,28 @@ const partMapAssets = {
       { partIndex: 0, valuePartIndex: 0, x: 52, y: 52, labelX: 50, labelY: 15, kind: 'neutral' },
     ],
   },
+  'mhgu-60036': {
+    image: 'assets/part-maps/great-maccao-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 13, y: 27, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 52, y: 49, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 86, y: 55, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-64dd6': {
+    image: 'assets/part-maps/velocidrome-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 85, y: 18, labelX: 78, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 49, y: 50, labelX: 22, labelY: 15, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'mhgu-60b36': {
+    image: 'assets/part-maps/bulldrome-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 52, y: 46, labelX: 22, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 38, y: 66, labelX: 78, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
