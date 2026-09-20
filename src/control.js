@@ -2219,6 +2219,42 @@ const partMapAssets = {
       { partIndex: 8, valuePartIndex: 8, x: 69, y: 84, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-22': {
+    image: 'assets/part-maps/gypceros-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 70, y: 43, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 74, y: 18, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 65, y: 52, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 43, y: 61, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 52, y: 66, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 32, y: 84, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 54, y: 83, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-23': {
+    image: 'assets/part-maps/xu-wu-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 50, y: 29, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 50, y: 42, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 17, y: 47, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 55, y: 73, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 66, y: 46, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 11, valuePartIndex: 11, x: 51, y: 61, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 9, x: 89, y: 57, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-24': {
+    image: 'assets/part-maps/guardian-rathalos-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 43, y: 34, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 22, y: 40, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 70, y: 82, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 9, valuePartIndex: 9, x: 56, y: 58, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 50, y: 78, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 56, y: 74, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 76, y: 43, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
