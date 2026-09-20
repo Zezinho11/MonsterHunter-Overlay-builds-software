@@ -10,6 +10,9 @@ const legacyValidatedMapIds = new Set(['world-42', 'world-1', 'world-2', 'world-
 legacyValidatedMapIds.add('mhgu-63406');
 legacyValidatedMapIds.add('mhgu-634d6');
 legacyValidatedMapIds.add('mhgu-64e46');
+legacyValidatedMapIds.add('mhgu-6e8d6');
+legacyValidatedMapIds.add('mhgu-69d96');
+legacyValidatedMapIds.add('mhgu-65936');
 
 const isCoordinate = (value) => Number.isFinite(value) && value >= 0 && value <= 100;
 const hasValidatedMap = (entry) => {
