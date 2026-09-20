@@ -25,9 +25,9 @@ button { cursor: pointer; }
 .connection-pill { color: #8998a9; font-size: 10px; } .connection-pill i { display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: #dda94e; box-shadow: 0 0 8px #dda94e; }
 .profile-header { display: flex; align-items: center; gap: 8px; padding: 6px 10px 6px 6px; border-radius: 20px; background: rgba(82, 100, 219, .22); color: #dce5ff; font-size: 11px; } .profile-header:first-letter { display: grid; padding: 6px; border-radius: 50%; background: #5364db; }
 .view-root { min-height: 0; padding: 26px 30px 36px; }
-.view-root.detail-view-root { flex: 1; overflow: hidden; padding-bottom: 18px; }
-body:has(.detail-view-root) .app-shell { height: 100vh; min-height: 0; overflow: hidden; }
-body:has(.detail-view-root) .content-shell { overflow: hidden; }
+.view-root.detail-view-root { flex: none; overflow: visible; padding-bottom: 36px; }
+body:has(.detail-view-root) .app-shell { height: auto; min-height: 100vh; overflow: visible; }
+body:has(.detail-view-root) .content-shell { overflow: visible; }
 .toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; margin-bottom: 22px; }
 .field { display: grid; gap: 6px; color: #8492a3; font-size: 10px; } select, .text-input { min-width: 150px; padding: 10px 12px; border: 1px solid rgba(171, 195, 218, .2); border-radius: 7px; outline: 0; background: #1a222c; color: #e3ebf3; font-size: 12px; } select:focus, .text-input:focus { border-color: #69acd8; }
 .primary-button, .ghost-button { padding: 10px 15px; border-radius: 7px; font-size: 11px; } .primary-button { border: 1px solid #5799c5; background: #32749d; color: #eff8ff; } .ghost-button { border: 1px solid rgba(171, 195, 218, .2); background: #19212b; color: #b9c8d8; }
@@ -110,15 +110,15 @@ body:has(.detail-view-root) .content-shell { overflow: hidden; }
 @media (max-width: 1100px) { .monster-detail-shell { grid-template-columns: 220px minmax(300px, 1fr); } .detail-right { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; } .detail-right .detail-data-card:last-child .compact-list { max-height: 240px; } }
 @media (max-width: 850px) { .sidebar { flex-basis: 165px; } .content-header, .view-root { padding-left: 19px; padding-right: 19px; } .saved-layout, .detail-layout, .monster-detail-shell { grid-template-columns: 1fr; } .detail-right { grid-column: auto; grid-template-columns: 1fr; } .monster-render-panel { min-height: 390px; } .profile-header span, .connection-pill { display: none; } }
 
-.detail-view-root .monster-detail-shell { height: calc(100% - 28px); margin-top: 0 !important; overflow: hidden; }
-.detail-view-root .detail-left, .detail-view-root .detail-center { min-height: 0; overflow-y: auto; scrollbar-gutter: stable; }
-.detail-view-root .detail-center { display: flex; flex-direction: column; overflow-y: hidden; }
+.detail-view-root .monster-detail-shell { height: auto; margin-top: 0 !important; overflow: visible; }
+.detail-view-root .detail-left, .detail-view-root .detail-center { min-height: 0; overflow: visible; scrollbar-gutter: auto; }
+.detail-view-root .detail-center { display: grid; overflow: visible; }
 .detail-view-root .monster-detail-shell > * { min-height: 0; }
-.detail-view-root .monster-render-panel { flex: 0 0 clamp(290px, 38%, 370px); min-height: 0; }
-.detail-view-root .monster-render-panel .monster-detail-art { min-height: 0; }
-.detail-view-root .center-part-map-card { display: flex; min-height: 0; flex: 1 1 auto; flex-direction: column; overflow: hidden; }
-.detail-view-root .center-part-map-card .part-map { display: flex; min-height: 0; flex: 1 1 auto; flex-direction: column; }
-.detail-view-root .center-part-map-card .part-map-stage { min-height: 0; flex: 1 1 auto; aspect-ratio: auto; }
-.detail-view-root .detail-right { display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; overflow: hidden; }
-.detail-view-root .detail-right .detail-data-card:last-child { display: flex; min-height: 0; flex-direction: column; overflow: hidden; }
-.detail-view-root .detail-right .detail-data-card:last-child .compact-list { min-height: 0; flex: 1 1 auto; }
+.detail-view-root .monster-render-panel { flex: none; min-height: clamp(330px, 32vw, 420px); }
+.detail-view-root .monster-render-panel .monster-detail-art { min-height: clamp(220px, 23vw, 300px); }
+.detail-view-root .center-part-map-card { display: block; min-height: 0; overflow: visible; }
+.detail-view-root .center-part-map-card .part-map { display: block; min-height: 0; }
+.detail-view-root .center-part-map-card .part-map-stage { min-height: 0; aspect-ratio: 3 / 2; }
+.detail-view-root .detail-right { display: grid; grid-template-rows: auto auto; min-height: 0; overflow: visible; }
+.detail-view-root .detail-right .detail-data-card:last-child { display: block; min-height: 0; overflow: visible; }
+.detail-view-root .detail-right .detail-data-card:last-child .compact-list { min-height: 0; flex: none; }
