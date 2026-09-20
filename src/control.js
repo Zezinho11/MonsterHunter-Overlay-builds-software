@@ -2527,6 +2527,26 @@ const partMapAssets = {
       { partIndex: 0, valuePartIndex: 0, x: 55, y: 53, labelX: 50, labelY: 15, kind: 'neutral' },
     ],
   },
+  'mhgu-67bb6': {
+    image: 'assets/part-maps/jaggia-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 53, y: 52, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-6b396': {
+    image: 'assets/part-maps/ludroth-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 54, y: 51, labelX: 22, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 77, y: 41, labelX: 78, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'mhgu-6ad56': {
+    image: 'assets/part-maps/uroktor-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 54, y: 48, labelX: 22, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 80, y: 49, labelX: 78, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
