@@ -2147,6 +2147,42 @@ const partMapAssets = {
       { partIndex: 8, valuePartIndex: 8, x: 77, y: 84, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-16': {
+    image: 'assets/part-maps/guardian-fulgur-anjanath-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 17, y: 48, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 20, y: 56, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 67, y: 27, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 87, y: 61, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 11, valuePartIndex: 11, x: 52, y: 60, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 7, x: 73, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 38, y: 54, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-17': {
+    image: 'assets/part-maps/hirabami-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 44, y: 35, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 50, y: 45, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 23, y: 52, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 65, y: 65, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 68, y: 53, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 66, y: 75, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 78, y: 47, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-18': {
+    image: 'assets/part-maps/yian-kut-ku-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 36, y: 29, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 27, y: 19, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 83, y: 80, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 43, y: 56, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 38, y: 42, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 56, y: 83, labelX: 37, labelY: 88, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 37, y: 66, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
