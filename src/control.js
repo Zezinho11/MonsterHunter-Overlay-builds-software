@@ -1967,6 +1967,42 @@ const partMapAssets = {
       { partIndex: 13, valuePartIndex: 14, x: 28, y: 76, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-1': {
+    image: 'assets/part-maps/zoh-shia-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 8, x: 50, y: 51, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 6, x: 20, y: 37, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, x: 37, y: 69, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 46, y: 85, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 51, y: 61, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 17, x: 41, y: 79, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 16, valuePartIndex: 16, x: 60, y: 69, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-2': {
+    image: 'assets/part-maps/guardian-doshaguma-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 84, y: 29, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 0, x: 59, y: 45, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 61, y: 43, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 15, y: 57, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 55, y: 62, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 36, y: 76, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 6, x: 71, y: 80, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-3': {
+    image: 'assets/part-maps/rey-dau-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 83, y: 62, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 8, x: 35, y: 35, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 31, y: 72, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 66, y: 56, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 10, valuePartIndex: 10, x: 70, y: 73, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 4, x: 58, y: 86, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 9, x: 79, y: 86, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
