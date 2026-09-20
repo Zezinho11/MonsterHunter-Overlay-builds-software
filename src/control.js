@@ -3300,6 +3300,45 @@ const partMapAssets = {
       { partIndex: 10, valuePartIndex: 10, x: 72, y: 40, labelX: 38, labelY: 82, kind: 'breakable' },
     ],
   },
+  'mhgu-63a06': {
+    image: 'assets/part-maps/hellblade-glavenus-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 72, y: 27, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 65, y: 45, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 70, y: 35, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 55, y: 55, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 53, y: 80, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 82, y: 80, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 24, y: 55, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 18, y: 45, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-677b6': {
+    image: 'assets/part-maps/agnaktor-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 16, y: 62, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 28, y: 50, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 42, y: 57, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 55, y: 62, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 60, y: 35, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 45, y: 75, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 73, y: 75, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 90, y: 45, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-60336': {
+    image: 'assets/part-maps/gore-magala-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 72, y: 78, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 64, y: 68, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 60, y: 60, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 60, y: 74, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 78, y: 84, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 45, y: 88, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 37, y: 35, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 24, y: 82, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
