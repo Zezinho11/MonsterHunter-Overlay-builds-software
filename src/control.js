@@ -1919,6 +1919,42 @@ const partMapAssets = {
       { partIndex: 13, valuePartIndex: 13, x: 76, y: 31, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
     ],
   },
+  'rise-67': {
+    image: 'assets/part-maps/gold-rathian-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 4, valuePartIndex: 5, x: 78, y: 68, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 13, x: 34, y: 25, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 58, y: 48, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 15, x: 24, y: 68, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 12, valuePartIndex: 8, x: 62, y: 60, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 14, x: 57, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 13, valuePartIndex: 13, x: 72, y: 31, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-68': {
+    image: 'assets/part-maps/flaming-espinas-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 7, x: 18, y: 57, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 16, y: 50, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 25, x: 67, y: 29, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 19, x: 47, y: 43, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 37, x: 84, y: 81, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 13, x: 45, y: 65, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 31, x: 49, y: 80, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-69': {
+    image: 'assets/part-maps/violet-mizutsune-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 5, x: 14, y: 55, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 37, x: 45, y: 24, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 13, x: 61, y: 57, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 33, x: 91, y: 63, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 18, valuePartIndex: 19, x: 70, y: 75, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 28, valuePartIndex: 29, x: 52, y: 58, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 23, valuePartIndex: 24, x: 75, y: 78, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
