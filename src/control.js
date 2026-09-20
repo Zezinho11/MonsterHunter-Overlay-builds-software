@@ -2683,6 +2683,37 @@ const partMapAssets = {
       { partIndex: 1, valuePartIndex: 1, x: 51, y: 57, labelX: 20, labelY: 15, side: 'left', kind: 'neutral' },
     ],
   },
+  'mhgu-65e76': {
+    image: 'assets/part-maps/cephadrome-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 68, y: 55, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 58, y: 57, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 54, y: 38, labelX: 20, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 60, y: 60, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 22, y: 40, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 43, y: 73, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 88, y: 65, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+    ],
+  },
+  'mhgu-a67b6': {
+    image: 'assets/part-maps/yian-kut-ku-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 14, y: 59, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 29, y: 51, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 50, y: 38, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 46, y: 61, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 78, y: 66, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 67, y: 31, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 42, y: 75, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'mhgu-69846': {
+    image: 'assets/part-maps/iodrome-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 9, y: 47, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 54, y: 50, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
