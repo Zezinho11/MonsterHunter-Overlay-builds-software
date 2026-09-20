@@ -2003,6 +2003,42 @@ const partMapAssets = {
       { partIndex: 4, valuePartIndex: 9, x: 79, y: 86, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-4': {
+    image: 'assets/part-maps/lala-barina-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 50, y: 58, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 8, x: 50, y: 25, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 50, y: 59, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 50, y: 70, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 9, valuePartIndex: 9, x: 50, y: 63, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 11, x: 23, y: 76, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 7, x: 30, y: 88, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-5': {
+    image: 'assets/part-maps/congalala-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 17, y: 38, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 34, y: 68, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 83, y: 29, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 54, y: 62, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 7, x: 31, y: 82, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 5, x: 56, y: 88, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 82, y: 81, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-6': {
+    image: 'assets/part-maps/nerscylla-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 50, y: 58, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 5, x: 50, y: 27, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 7, x: 50, y: 40, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 50, y: 65, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 14, x: 50, y: 71, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 16, x: 23, y: 78, labelX: 37, labelY: 88, side: 'neutral', kind: 'neutral' },
+      { partIndex: 10, valuePartIndex: 12, x: 79, y: 78, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
