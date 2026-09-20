@@ -3451,6 +3451,44 @@ const partMapAssets = {
         { partIndex: 3, valuePartIndex: 3, x: 45, y: 79, labelX: 50, labelY: 82, kind: 'neutral' },
       ],
     },
+    'mhgu-6b096': {
+      image: 'assets/part-maps/brachydios-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 48, y: 33, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 1, valuePartIndex: 1, x: 45, y: 30, labelX: 50, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 56, y: 53, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 73, y: 70, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 40, y: 78, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 25, y: 68, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 14, y: 45, labelX: 50, labelY: 82, kind: 'breakable' },
+      ],
+    },
+    'mhgu-65ed3': {
+      image: 'assets/part-maps/raging-brachydios-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 57, y: 42, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 1, valuePartIndex: 1, x: 60, y: 43, labelX: 50, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 51, y: 58, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 74, y: 70, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 39, y: 77, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 24, y: 71, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 16, y: 42, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 84, y: 50, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      ],
+    },
+    'mhgu-68946': {
+      image: 'assets/part-maps/shagaru-magala-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 40, y: 52, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 45, y: 57, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 49, y: 66, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 61, y: 42, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 47, y: 76, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 30, y: 81, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 73, y: 34, labelX: 50, labelY: 82, kind: 'breakable' },
+        { partIndex: 7, valuePartIndex: 7, x: 38, y: 86, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
