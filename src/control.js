@@ -3801,7 +3801,8 @@ function renderMonsterDetail(monster, selectedRank = null) {
   const detailLeft = viewRoot.querySelector('.detail-left');
   const provenanceCard = viewRoot.querySelector('.provenance-card');
   const provenanceBanner = viewRoot.querySelector('.detail-provenance');
-  detailLeft?.append(provenanceCard, provenanceBanner);
+  provenanceCard?.append(provenanceBanner);
+  detailLeft?.append(provenanceCard);
   setDetailHeader(monster, selectedRank);
   document.querySelector('#back-bestiary').addEventListener('click', renderBestiary);
   document.querySelector('#toggle-detail-favorite').addEventListener('click', () => { toggleMonsterFavorite(monster.id); renderMonsterDetail(monster, selectedRank); });
