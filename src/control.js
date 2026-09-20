@@ -2413,6 +2413,24 @@ const partMapAssets = {
       { partIndex: 0, valuePartIndex: 0, x: 55, y: 51, labelX: 50, labelY: 15, kind: 'neutral' },
     ],
   },
+  'mhgu-643d6': {
+    image: 'assets/part-maps/felyne-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 55, y: 51, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-6e3b6': {
+    image: 'assets/part-maps/melynx-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 43, y: 43, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-69046': {
+    image: 'assets/part-maps/velociprey-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 57, y: 54, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
