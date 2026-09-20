@@ -3326,8 +3326,8 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 7, x: 90, y: 45, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
     ],
   },
-  'mhgu-60336': {
-    image: 'assets/part-maps/gore-magala-mhgu-hunter-notes-v1.png',
+    'mhgu-60336': {
+      image: 'assets/part-maps/gore-magala-mhgu-hunter-notes-v1.png',
     anchors: [
       { partIndex: 0, valuePartIndex: 0, x: 72, y: 78, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
       { partIndex: 1, valuePartIndex: 1, x: 64, y: 68, labelX: 50, labelY: 15, kind: 'neutral' },
@@ -3336,10 +3336,49 @@ const partMapAssets = {
       { partIndex: 4, valuePartIndex: 4, x: 78, y: 84, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
       { partIndex: 5, valuePartIndex: 5, x: 45, y: 88, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
       { partIndex: 6, valuePartIndex: 6, x: 37, y: 35, labelX: 50, labelY: 82, kind: 'breakable' },
-      { partIndex: 7, valuePartIndex: 7, x: 24, y: 82, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
-    ],
-  },
-};
+        { partIndex: 7, valuePartIndex: 7, x: 24, y: 82, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-680d5': {
+      image: 'assets/part-maps/chaotic-gore-magala-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 49, y: 34, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 67, y: 46, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 63, y: 61, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 57, y: 69, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 72, y: 72, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 60, y: 84, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 78, y: 38, labelX: 50, labelY: 82, kind: 'breakable' },
+        { partIndex: 7, valuePartIndex: 7, x: 35, y: 81, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-67eb6': {
+      image: 'assets/part-maps/seregios-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 37, y: 54, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 45, y: 53, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 66, y: 43, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 57, y: 63, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 20, y: 80, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 17, y: 58, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 48, y: 67, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 84, y: 44, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      ],
+    },
+    'mhgu-6ab56': {
+      image: 'assets/part-maps/duramboros-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 13, y: 54, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 1, valuePartIndex: 1, x: 21, y: 59, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 49, y: 57, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 36, y: 29, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 44, y: 76, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 66, y: 73, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 82, y: 58, labelX: 50, labelY: 82, kind: 'breakable' },
+        { partIndex: 7, valuePartIndex: 7, x: 93, y: 66, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+  };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
   const asset = partMapAssets[monster.id] || partMapAssets[monster.name] || {};
