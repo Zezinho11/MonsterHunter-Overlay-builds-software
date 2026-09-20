@@ -2659,6 +2659,30 @@ const partMapAssets = {
       { partIndex: 4, valuePartIndex: 4, x: 66, y: 73, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
     ],
   },
+  'mhgu-60e36': {
+    image: 'assets/part-maps/redhelm-arzuros-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 76, y: 39, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 48, y: 47, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 70, y: 69, labelX: 85, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 22, y: 66, labelX: 15, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 48, y: 76, labelX: 20, labelY: 82, side: 'left', kind: 'breakable' },
+    ],
+  },
+  'mhgu-64d84': {
+    image: 'assets/part-maps/giadrome-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 35, y: 40, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 67, y: 57, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'mhgu-6eab6': {
+    image: 'assets/part-maps/gendrome-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 76, y: 29, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 51, y: 57, labelX: 20, labelY: 15, side: 'left', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
