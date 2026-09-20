@@ -3032,6 +3032,43 @@ const partMapAssets = {
       { partIndex: 4, valuePartIndex: 4, x: 85, y: 64, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
     ],
   },
+  'mhgu-6ba96': {
+    image: 'assets/part-maps/lavasioth-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 15, y: 49, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 28, y: 48, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 45, y: 30, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 52, y: 56, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 89, y: 55, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 63, y: 54, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 72, y: 55, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'mhgu-6bb96': {
+    image: 'assets/part-maps/shogun-ceanataur-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 76, y: 48, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 61, y: 55, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 73, y: 35, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 82, y: 70, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 55, y: 65, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 51, y: 50, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 73, y: 37, labelX: 50, labelY: 82, kind: 'breakable' },
+    ],
+  },
+  'mhgu-6a044': {
+    image: 'assets/part-maps/rustrazor-ceanataur-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 84, y: 54, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 62, y: 58, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 73, y: 35, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 48, y: 76, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 50, y: 68, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 48, y: 54, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 75, y: 45, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 59, y: 78, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
