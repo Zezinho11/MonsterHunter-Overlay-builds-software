@@ -2111,6 +2111,42 @@ const partMapAssets = {
       { partIndex: 5, valuePartIndex: 5, x: 24, y: 53, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-13': {
+    image: 'assets/part-maps/rathian-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 23, y: 75, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 31, y: 30, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 79, y: 61, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 8, valuePartIndex: 8, x: 55, y: 62, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 45, y: 84, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 58, y: 84, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 72, y: 37, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-14': {
+    image: 'assets/part-maps/chatacabra-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 67, y: 40, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 84, y: 61, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 0, x: 24, y: 70, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 83, y: 77, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 53, y: 60, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 39, y: 86, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, valuePartIndex: 8, x: 73, y: 86, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-15': {
+    image: 'assets/part-maps/mizutsune-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 56, y: 25, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 0, x: 46, y: 55, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 31, y: 58, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 9, valuePartIndex: 9, x: 67, y: 60, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 74, y: 69, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 54, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, valuePartIndex: 8, x: 77, y: 84, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
