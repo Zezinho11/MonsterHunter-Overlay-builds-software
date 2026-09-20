@@ -2327,6 +2327,54 @@ const partMapAssets = {
       { partIndex: 5, valuePartIndex: 5, x: 43, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-31': {
+    image: 'assets/part-maps/lagiacrus-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, valuePartIndex: 2, x: 16, y: 34, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 0, x: 49, y: 33, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 34, y: 51, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 82, y: 50, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 55, y: 68, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 15, valuePartIndex: 15, x: 72, y: 72, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 14, valuePartIndex: 14, x: 48, y: 56, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-32': {
+    image: 'assets/part-maps/seregios-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 58, y: 68, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 60, y: 29, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 24, y: 66, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 54, y: 57, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 55, y: 84, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 9, valuePartIndex: 9, x: 83, y: 76, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 10, valuePartIndex: 10, x: 56, y: 60, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-33': {
+    image: 'assets/part-maps/omega-planetes-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 55, y: 50, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 49, y: 28, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 66, y: 29, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 78, y: 48, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 25, y: 68, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 83, y: 69, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 9, valuePartIndex: 9, x: 55, y: 61, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-34': {
+    image: 'assets/part-maps/gogmazios-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 3, valuePartIndex: 3, x: 77, y: 47, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 10, valuePartIndex: 10, x: 52, y: 34, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 27, y: 58, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 17, valuePartIndex: 17, x: 17, y: 53, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 68, y: 73, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 11, valuePartIndex: 11, x: 52, y: 78, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 14, valuePartIndex: 14, x: 76, y: 59, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
