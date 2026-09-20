@@ -71,7 +71,7 @@ function weaknessVisual(monster) {
   const badges = weaknesses.length
     ? weaknesses.map((weakness) => `<span class="weakness-badge"><span class="weakness-icon weakness-${escapeHtml(String(weakness.element).toLowerCase())}">${weaknessIcon(weakness.element)}</span><span><strong>${weaknessStars(weakness.level)}</strong><small>${escapeHtml(pt(weakness.element))}</small></span></span>`).join('')
     : '<span class="muted-inline">Indisponível</span>';
-  const resistances = monster.resistances || [];
+  const resistances = (monster.resistances || []).filter((resistance) => resistance?.kind === 'element' && resistance.element);
   const resistanceBadges = resistances.length
     ? resistances.map((resistance) => `<span class="weakness-badge resistance-badge"><span class="weakness-icon weakness-${escapeHtml(String(resistance.element).toLowerCase())}">${weaknessIcon(resistance.element)}</span><span><strong>${escapeHtml(pt(resistance.element))}</strong>${resistance.condition ? `<small>${escapeHtml(pt(resistance.condition))}</small>` : '<small>resistência</small>'}</span></span>`).join('')
     : '<span class="muted-inline">Indisponível</span>';
