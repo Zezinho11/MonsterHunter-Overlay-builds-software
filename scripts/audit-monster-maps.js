@@ -51,6 +51,9 @@ legacyValidatedMapIds.add('mhgu-06eb6');
 legacyValidatedMapIds.add('mhgu-76946');
 
 const isCoordinate = (value) => Number.isFinite(value) && value >= 0 && value <= 100;
+legacyValidatedMapIds.add('mhgu-6bbe8');
+legacyValidatedMapIds.add('mhgu-649d6');
+legacyValidatedMapIds.add('mhgu-67d50');
 legacyValidatedMapIds.add('mhgu-6e0b6');
 legacyValidatedMapIds.add('mhgu-6ea4d');
 legacyValidatedMapIds.add('mhgu-6e5b6');

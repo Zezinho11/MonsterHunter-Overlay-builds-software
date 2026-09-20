@@ -3220,6 +3220,44 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 7, x: 54, y: 43, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
     ],
   },
+  'mhgu-6bbe8': {
+    image: 'assets/part-maps/soulseer-mizutsune-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 28, y: 18, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 33, y: 56, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 55, y: 63, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 48, y: 45, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 77, y: 65, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 52, y: 56, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 31, y: 31, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 54, y: 38, labelX: 50, labelY: 82, kind: 'breakable' },
+    ],
+  },
+  'mhgu-649d6': {
+    image: 'assets/part-maps/astalos-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 78, y: 48, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 66, y: 62, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 55, y: 45, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 30, y: 40, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 63, y: 75, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 45, y: 66, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 27, y: 65, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 86, y: 31, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'mhgu-67d50': {
+    image: 'assets/part-maps/boltreaver-astalos-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 47, y: 42, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 49, y: 57, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 50, y: 35, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 27, y: 35, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 46, y: 75, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 50, y: 80, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 39, y: 89, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
