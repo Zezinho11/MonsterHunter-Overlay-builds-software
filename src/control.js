@@ -3378,6 +3378,44 @@ const partMapAssets = {
         { partIndex: 7, valuePartIndex: 7, x: 93, y: 66, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
       ],
     },
+    'mhgu-68746': {
+      image: 'assets/part-maps/tigrex-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 52, y: 20, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 64, y: 35, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 64, y: 62, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 71, y: 44, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 26, y: 73, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 53, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 82, y: 69, labelX: 50, labelY: 82, kind: 'neutral' },
+      ],
+    },
+    'mhgu-6d486': {
+      image: 'assets/part-maps/grimclaw-tigrex-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 10, y: 30, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 28, y: 40, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 44, y: 56, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 50, y: 35, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 83, y: 60, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 50, y: 83, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 64, y: 77, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 32, y: 78, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-69596': {
+      image: 'assets/part-maps/gravios-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 47, y: 22, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 49, y: 63, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 70, y: 43, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 57, y: 58, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 84, y: 40, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 27, y: 40, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 32, y: 84, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 73, y: 84, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
