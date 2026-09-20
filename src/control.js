@@ -3144,6 +3144,44 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 7, x: 95, y: 58, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
     ],
   },
+  'mhgu-60436': {
+    image: 'assets/part-maps/crystalbeard-uragaan-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 16, y: 38, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 29, y: 51, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 55, y: 39, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 49, y: 63, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 36, y: 74, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 59, y: 81, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 84, y: 56, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 95, y: 46, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+    ],
+  },
+  'mhgu-68346': {
+    image: 'assets/part-maps/lagiacrus-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 79, y: 16, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 70, y: 45, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 62, y: 60, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 52, y: 40, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 72, y: 78, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 19, y: 55, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 44, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+    ],
+  },
+  'mhgu-647d6': {
+    image: 'assets/part-maps/zinogre-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 37, y: 20, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 56, y: 49, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 65, y: 58, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 78, y: 75, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 35, y: 76, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 63, y: 40, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 24, y: 60, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 13, y: 62, labelX: 50, labelY: 82, kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
