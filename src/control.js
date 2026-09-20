@@ -3416,6 +3416,41 @@ const partMapAssets = {
         { partIndex: 7, valuePartIndex: 7, x: 73, y: 84, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
       ],
     },
+    'mhgu-65836': {
+      image: 'assets/part-maps/diablos-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 42, y: 70, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 48, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 61, y: 42, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 57, y: 61, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 77, y: 45, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 61, y: 82, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 29, y: 38, labelX: 50, labelY: 82, kind: 'breakable' },
+        { partIndex: 7, valuePartIndex: 7, x: 79, y: 28, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-60806': {
+      image: 'assets/part-maps/bloodbath-diablos-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 37, y: 48, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 1, valuePartIndex: 1, x: 44, y: 46, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 61, y: 41, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 55, y: 64, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 79, y: 35, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 52, y: 83, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 18, y: 37, labelX: 50, labelY: 82, kind: 'breakable' },
+        { partIndex: 7, valuePartIndex: 7, x: 86, y: 73, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-63d06': {
+      image: 'assets/part-maps/kirin-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 28, y: 42, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 53, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 67, y: 64, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 45, y: 79, labelX: 50, labelY: 82, kind: 'neutral' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
