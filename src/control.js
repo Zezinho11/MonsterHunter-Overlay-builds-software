@@ -3182,6 +3182,44 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 7, x: 13, y: 62, labelX: 50, labelY: 82, kind: 'breakable' },
     ],
   },
+  'mhgu-6e0b6': {
+    image: 'assets/part-maps/thunderlord-zinogre-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 17, y: 61, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 54, y: 53, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 55, y: 34, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 78, y: 75, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 38, y: 76, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 64, y: 44, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 80, y: 23, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 94, y: 16, labelX: 50, labelY: 82, kind: 'breakable' },
+    ],
+  },
+  'mhgu-6ea4d': {
+    image: 'assets/part-maps/barioth-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 55, y: 37, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 50, y: 30, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 60, y: 57, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 26, y: 35, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 38, y: 60, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 52, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 87, y: 75, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-6e5b6': {
+    image: 'assets/part-maps/mizutsune-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 82, y: 27, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 72, y: 64, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 58, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 56, y: 55, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 16, y: 51, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 75, y: 68, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 73, y: 41, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 54, y: 43, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
