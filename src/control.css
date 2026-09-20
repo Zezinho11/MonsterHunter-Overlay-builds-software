@@ -146,3 +146,21 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 .detail-view-root .detail-left .provenance-card { display: flex; height: clamp(430px, 27vw, 560px); min-height: 0; flex-direction: column; overflow: hidden; }
 .detail-view-root .detail-left .provenance-card .source-grid { min-height: 0; flex: 1 1 auto; overflow-y: auto; align-content: start; }
 .detail-view-root .detail-left .provenance-card .detail-provenance { flex: none; margin: 12px 0 0; }
+
+/* Two aligned rows: render/weaknesses above, provenance/map/rewards below. */
+.detail-view-root .monster-detail-shell { grid-template-rows: auto auto !important; align-items: stretch; }
+.detail-view-root .detail-left { grid-column: 1 !important; grid-row: 1 !important; align-self: start; }
+.detail-view-root .detail-center { display: contents !important; }
+.detail-view-root .monster-render-panel { grid-column: 2 !important; grid-row: 1 !important; align-self: start; }
+.detail-view-root .center-part-map-card { grid-column: 2 !important; grid-row: 2 !important; height: clamp(430px, 27vw, 560px); align-self: stretch; }
+.detail-view-root .detail-right { display: contents !important; }
+.detail-view-root .weakness-detail-card { grid-column: 3 !important; grid-row: 1 !important; align-self: start; }
+.detail-view-root .detail-right .detail-data-card:last-child { grid-column: 3 !important; grid-row: 2 !important; height: auto; min-height: 0; margin-top: 0; align-self: stretch; }
+.detail-view-root > .monster-detail-shell > .provenance-card { grid-column: 1 !important; grid-row: 2 !important; height: 100%; min-height: 0; margin: 0; align-self: stretch; }
+.detail-view-root > .monster-detail-shell > .provenance-card { display: flex; flex-direction: column; overflow: hidden; }
+.detail-view-root > .monster-detail-shell > .provenance-card .source-grid { min-height: 0; flex: 1 1 auto; overflow-y: auto; align-content: start; }
+.detail-view-root > .monster-detail-shell > .provenance-card .detail-provenance { flex: none; margin: 12px 0 0; }
+@media (max-width: 1100px) {
+  .detail-view-root .monster-detail-shell { grid-template-rows: none !important; }
+  .detail-view-root .detail-left, .detail-view-root .detail-center, .detail-view-root .detail-right, .detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card, .detail-view-root .weakness-detail-card, .detail-view-root .detail-right .detail-data-card:last-child, .detail-view-root > .monster-detail-shell > .provenance-card { display: grid !important; grid-column: auto !important; grid-row: auto !important; height: auto; margin-top: 0; }
+}
