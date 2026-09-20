@@ -2291,6 +2291,42 @@ const partMapAssets = {
       { partIndex: 6, valuePartIndex: 6, x: 18, y: 66, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-28': {
+    image: 'assets/part-maps/guardian-ebony-odogaron-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 15, y: 57, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 0, x: 38, y: 65, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 82, y: 19, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 56, y: 42, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 9, x: 57, y: 61, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 35, y: 84, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 8, valuePartIndex: 8, x: 73, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'wilds-29': {
+    image: 'assets/part-maps/rathalos-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 66, y: 40, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 20, y: 39, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 76, y: 82, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 10, valuePartIndex: 10, x: 66, y: 62, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 54, y: 74, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 63, y: 72, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, valuePartIndex: 8, x: 88, y: 38, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-30': {
+    image: 'assets/part-maps/blangonga-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 20, y: 44, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 0, x: 43, y: 69, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 86, y: 56, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 61, y: 61, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 78, y: 82, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 58, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 43, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
