@@ -2921,6 +2921,44 @@ const partMapAssets = {
       { partIndex: 6, valuePartIndex: 6, x: 39, y: 76, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
     ],
   },
+  'mhgu-464d6': {
+    image: 'assets/part-maps/rathian-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 57, y: 67, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 59, y: 48, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 51, y: 54, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 58, y: 68, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 87, y: 35, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 24, y: 35, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 68, y: 84, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'mhgu-06eb6': {
+    image: 'assets/part-maps/gold-rathian-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 38, y: 33, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 45, y: 48, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 62, y: 45, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 54, y: 63, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 83, y: 70, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 72, y: 35, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 71, y: 84, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 91, y: 68, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-76946': {
+    image: 'assets/part-maps/dreadqueen-rathian-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 24, y: 65, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 78, y: 37, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 57, y: 52, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 58, y: 69, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 88, y: 55, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 25, y: 28, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 68, y: 87, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 95, y: 27, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
