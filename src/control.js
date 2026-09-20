@@ -3803,6 +3803,17 @@ function renderMonsterDetail(monster, selectedRank = null) {
   const provenanceBanner = viewRoot.querySelector('.detail-provenance');
   provenanceCard?.append(provenanceBanner);
   detailLeft?.append(provenanceCard);
+  const syncProvenanceHeight = () => {
+    const mapCard = viewRoot.querySelector('.center-part-map-card');
+    const card = viewRoot.querySelector('.provenance-card');
+    if (!mapCard || !card) return;
+    const availableHeight = Math.max(240, mapCard.getBoundingClientRect().bottom - card.getBoundingClientRect().top);
+    card.style.setProperty('--provenance-height', `${availableHeight}px`);
+  };
+  window.__detailProvenanceResize?.disconnect?.();
+  window.__detailProvenanceResize = new ResizeObserver(syncProvenanceHeight);
+  window.__detailProvenanceResize.observe(viewRoot.querySelector('.monster-detail-shell'));
+  requestAnimationFrame(syncProvenanceHeight);
   setDetailHeader(monster, selectedRank);
   document.querySelector('#back-bestiary').addEventListener('click', renderBestiary);
   document.querySelector('#toggle-detail-favorite').addEventListener('click', () => { toggleMonsterFavorite(monster.id); renderMonsterDetail(monster, selectedRank); });

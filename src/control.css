@@ -236,11 +236,13 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
   height: clamp(430px, 27vw, 560px) !important;
   min-height: 0 !important;
   margin-top: 0 !important;
-  align-self: start !important;
+  align-self: stretch !important;
+  width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   overflow: hidden !important;
 }
+.detail-view-root .weakness-detail-card { width: 100% !important; }
 .detail-view-root .detail-right .detail-data-card:last-child .compact-list {
   min-height: 0 !important;
   max-height: none !important;
@@ -249,7 +251,7 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 }
 .detail-view-root .detail-left .provenance-card {
   display: flex !important;
-  height: clamp(430px, 27vw, 560px) !important;
+  height: var(--provenance-height, clamp(430px, 27vw, 560px)) !important;
   min-height: 0 !important;
   flex-direction: column !important;
   overflow: hidden !important;
