@@ -1428,6 +1428,40 @@ const partMapAssets = {
       { partIndex: 8, x: 67, y: 80, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'rise-25': {
+    image: 'assets/part-maps/apex-arzuros-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 27, y: 22, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 4, x: 34, y: 56, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 57, y: 54, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, x: 78, y: 57, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 9, x: 55, y: 69, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, x: 72, y: 81, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'rise-26': {
+    image: 'assets/part-maps/kulu-yaku-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 3, x: 83, y: 23, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 4, x: 58, y: 70, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 7, x: 68, y: 55, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 8, x: 18, y: 55, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 10, x: 77, y: 77, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 79, y: 82, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'rise-27': {
+    image: 'assets/part-maps/barroth-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 4, valuePartIndex: 3, x: 88, y: 34, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 79, y: 12, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 12, x: 48, y: 63, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 8, valuePartIndex: 23, x: 62, y: 50, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 16, x: 27, y: 74, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 20, x: 16, y: 49, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 21, x: 16, y: 49, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
