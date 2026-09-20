@@ -111,15 +111,16 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 @media (max-width: 850px) { .sidebar { flex-basis: 165px; } .content-header, .view-root { padding-left: 19px; padding-right: 19px; } .saved-layout, .detail-layout, .monster-detail-shell { grid-template-columns: 1fr; } .detail-right { grid-column: auto; grid-template-columns: 1fr; } .monster-render-panel { min-height: 390px; } .profile-header span, .connection-pill { display: none; } }
 
 .detail-view-root .monster-detail-shell { height: auto; margin-top: 0 !important; overflow: visible; }
+.detail-view-root .monster-detail-shell { grid-template-rows: auto clamp(430px, 27vw, 560px); }
 .detail-view-root .detail-left, .detail-view-root .detail-center { min-height: 0; overflow: visible; scrollbar-gutter: auto; }
 .detail-view-root .detail-center { display: contents; overflow: visible; }
 .detail-view-root .monster-detail-shell > * { min-height: 0; }
 .detail-view-root .detail-left { grid-column: 1; grid-row: 1 / 3; align-self: start; }
 .detail-view-root .monster-render-panel { grid-column: 2; grid-row: 1; min-height: clamp(330px, 32vw, 420px); }
 .detail-view-root .monster-render-panel .monster-detail-art { min-height: clamp(220px, 23vw, 300px); }
-.detail-view-root .center-part-map-card { grid-column: 2; grid-row: 2; display: block; min-height: 0; overflow: visible; }
-.detail-view-root .center-part-map-card .part-map { display: block; min-height: 0; }
-.detail-view-root .center-part-map-card .part-map-stage { min-height: 0; aspect-ratio: 3 / 2; }
+.detail-view-root .center-part-map-card { grid-column: 2; grid-row: 2; display: flex; min-height: 0; height: 100%; flex-direction: column; overflow: hidden; }
+.detail-view-root .center-part-map-card .part-map { display: flex; min-height: 0; flex: 1 1 auto; flex-direction: column; }
+.detail-view-root .center-part-map-card .part-map-stage { min-height: 0; flex: 1 1 auto; aspect-ratio: auto; }
 .detail-view-root .detail-right { display: contents; min-height: 0; overflow: visible; }
 .detail-view-root .weakness-detail-card { grid-column: 3; grid-row: 1; align-self: start; }
 .detail-view-root .detail-right .detail-data-card:last-child { grid-column: 3; grid-row: 2; display: flex; min-height: 0; align-self: stretch; flex-direction: column; overflow: hidden; }
