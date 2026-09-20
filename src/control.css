@@ -132,6 +132,17 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
   .detail-view-root .detail-left, .detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card, .detail-view-root .weakness-detail-card, .detail-view-root .detail-right .detail-data-card:last-child, .detail-view-root .provenance-card, .detail-view-root .detail-provenance { grid-column: auto; grid-row: auto; }
 }
 
+/* Independent columns: render -> map in the center, weakness -> rewards on the right. */
+.detail-view-root .monster-detail-shell { grid-template-rows: none !important; align-items: start; }
+.detail-view-root .detail-left { grid-column: auto !important; grid-row: auto !important; align-self: start; }
+.detail-view-root .detail-center { display: grid !important; grid-column: auto !important; grid-row: auto !important; align-content: start; gap: 14px; }
+.detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card { grid-column: auto !important; grid-row: auto !important; }
+.detail-view-root .center-part-map-card { height: clamp(430px, 27vw, 560px); align-self: start; }
+.detail-view-root .detail-right { display: flex !important; grid-column: auto !important; grid-row: auto !important; flex-direction: column; gap: 14px; }
+.detail-view-root .weakness-detail-card { grid-column: auto !important; grid-row: auto !important; height: clamp(330px, 32vw, 420px); align-self: start; }
+.detail-view-root .detail-right .detail-data-card:last-child { grid-column: auto !important; grid-row: auto !important; height: clamp(430px, 27vw, 560px); margin-top: 0; align-self: start; }
+.detail-view-root .detail-left .provenance-card { display: flex; height: clamp(430px, 27vw, 560px); min-height: 0; flex-direction: column; overflow: hidden; }
+
 /* Detail layout: the center remains a continuous render -> map column. */
 .detail-view-root .monster-detail-shell { grid-template-rows: none !important; height: auto !important; align-items: start; overflow: visible; }
 .detail-view-root .detail-left { grid-column: auto !important; grid-row: auto !important; }
