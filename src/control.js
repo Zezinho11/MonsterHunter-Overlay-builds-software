@@ -2586,6 +2586,24 @@ const partMapAssets = {
       { partIndex: 1, valuePartIndex: 1, x: 80, y: 62, labelX: 78, labelY: 15, side: 'right', kind: 'neutral' },
     ],
   },
+  'mhgu-60d06': {
+    image: 'assets/part-maps/moofah-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 53, y: 52, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-69889': {
+    image: 'assets/part-maps/great-thunderbug-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 54, y: 53, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-65ee3': {
+    image: 'assets/part-maps/conga-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 52, y: 52, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
