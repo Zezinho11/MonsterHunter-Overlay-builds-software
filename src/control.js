@@ -2490,6 +2490,25 @@ const partMapAssets = {
       { partIndex: 0, valuePartIndex: 0, x: 52, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
     ],
   },
+  'mhgu-6e9b6': {
+    image: 'assets/part-maps/ceanataur-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 53, y: 52, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-69b46': {
+    image: 'assets/part-maps/blango-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 51, y: 53, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-65b76': {
+    image: 'assets/part-maps/rhenoplos-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 52, y: 56, labelX: 22, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 30, y: 55, labelX: 78, labelY: 15, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
