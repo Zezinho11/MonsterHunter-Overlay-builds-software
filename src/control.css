@@ -175,3 +175,92 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
   .detail-view-root .monster-detail-shell { grid-template-rows: none !important; }
   .detail-view-root .detail-left, .detail-view-root .detail-center, .detail-view-root .detail-right, .detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card, .detail-view-root .weakness-detail-card, .detail-view-root .detail-right .detail-data-card:last-child, .detail-view-root > .monster-detail-shell > .provenance-card { display: grid !important; grid-column: auto !important; grid-row: auto !important; height: auto; margin-top: 0; }
 }
+
+/* Final detail layout: each column flows independently; bounded cards scroll internally. */
+.detail-view-root .monster-detail-shell {
+  grid-template-rows: none !important;
+  align-items: start !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+.detail-view-root .detail-left {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  align-self: start !important;
+}
+.detail-view-root .detail-center {
+  display: grid !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  align-content: start !important;
+  gap: 14px !important;
+  overflow: visible !important;
+}
+.detail-view-root .monster-render-panel,
+.detail-view-root .center-part-map-card {
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+.detail-view-root .center-part-map-card {
+  height: clamp(430px, 27vw, 560px) !important;
+  min-height: 0 !important;
+  align-self: start !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+.detail-view-root .center-part-map-card .part-map {
+  display: flex !important;
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+}
+.detail-view-root .center-part-map-card .part-map-stage {
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  aspect-ratio: auto !important;
+}
+.detail-view-root .detail-right {
+  display: flex !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  overflow: visible !important;
+}
+.detail-view-root .weakness-detail-card {
+  height: clamp(330px, 32vw, 420px) !important;
+  align-self: start !important;
+}
+.detail-view-root .detail-right .detail-data-card:last-child {
+  height: clamp(430px, 27vw, 560px) !important;
+  min-height: 0 !important;
+  margin-top: 0 !important;
+  align-self: start !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+.detail-view-root .detail-right .detail-data-card:last-child .compact-list {
+  min-height: 0 !important;
+  max-height: none !important;
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+}
+.detail-view-root .detail-left .provenance-card {
+  display: flex !important;
+  height: clamp(430px, 27vw, 560px) !important;
+  min-height: 0 !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+.detail-view-root .detail-left .provenance-card .source-grid {
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  align-content: start !important;
+}
+.detail-view-root .detail-left .provenance-card .detail-provenance {
+  flex: none !important;
+  margin: 12px 0 0 !important;
+}
