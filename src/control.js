@@ -2255,6 +2255,42 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 7, x: 76, y: 43, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-25': {
+    image: 'assets/part-maps/uth-duna-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 84, y: 36, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 0, x: 77, y: 62, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 18, y: 57, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 12, valuePartIndex: 12, x: 57, y: 55, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 76, y: 78, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 47, y: 72, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 29, y: 82, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-26': {
+    image: 'assets/part-maps/jin-dahaad-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 61, y: 34, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 0, x: 59, y: 18, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 23, y: 61, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 84, y: 63, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 13, valuePartIndex: 13, x: 51, y: 65, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 43, y: 73, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 34, y: 84, labelX: 87, labelY: 88, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'wilds-27': {
+    image: 'assets/part-maps/nu-udra-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 51, y: 28, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 51, y: 39, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 16, y: 50, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 69, y: 34, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 50, y: 62, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 9, x: 87, y: 60, labelX: 37, labelY: 88, side: 'right', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 18, y: 66, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
