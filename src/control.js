@@ -1955,6 +1955,18 @@ const partMapAssets = {
       { partIndex: 23, valuePartIndex: 24, x: 75, y: 78, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'rise-70': {
+    image: 'assets/part-maps/risen-chameleos-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 5, x: 38, y: 31, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 45, y: 19, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 6, x: 75, y: 33, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 8, x: 56, y: 43, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 15, x: 84, y: 70, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 11, valuePartIndex: 12, x: 48, y: 73, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 13, valuePartIndex: 14, x: 28, y: 76, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
