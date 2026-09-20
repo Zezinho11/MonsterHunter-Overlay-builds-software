@@ -3522,6 +3522,41 @@ const partMapAssets = {
         { partIndex: 4, valuePartIndex: 4, x: 39, y: 49, labelX: 50, labelY: 82, kind: 'breakable' },
       ],
     },
+    'mhgu-6edb6': {
+      image: 'assets/part-maps/deviljho-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 81, y: 24, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 68, y: 50, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 57, y: 58, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 73, y: 70, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 50, y: 81, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 20, y: 49, labelX: 50, labelY: 82, kind: 'breakable' },
+      ],
+    },
+    'mhgu-69446': {
+      image: 'assets/part-maps/savage-deviljho-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 18, y: 52, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 49, y: 61, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 62, y: 55, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 42, y: 72, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 75, y: 74, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 88, y: 62, labelX: 50, labelY: 82, kind: 'breakable' },
+      ],
+    },
+    'mhgu-6ebb6': {
+      image: 'assets/part-maps/kushala-daora-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 79, y: 30, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 73, y: 38, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 61, y: 58, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 55, y: 46, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 28, y: 76, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 67, y: 75, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 52, y: 74, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 30, y: 34, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};

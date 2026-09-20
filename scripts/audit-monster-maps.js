@@ -96,6 +96,9 @@ legacyValidatedMapIds.add('mhgu-68946');
 legacyValidatedMapIds.add('mhgu-63ddd');
 legacyValidatedMapIds.add('mhgu-63306');
 legacyValidatedMapIds.add('mhgu-644d6');
+legacyValidatedMapIds.add('mhgu-6edb6');
+legacyValidatedMapIds.add('mhgu-69446');
+legacyValidatedMapIds.add('mhgu-6ebb6');
 const hasValidatedMap = (entry) => {
   if (legacyValidatedMapIds.has(entry.id)) return true;
   const map = entry.partMap;
