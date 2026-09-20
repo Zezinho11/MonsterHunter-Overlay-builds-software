@@ -3557,6 +3557,43 @@ const partMapAssets = {
         { partIndex: 7, valuePartIndex: 7, x: 30, y: 34, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
       ],
     },
+    'mhgu-69346': {
+      image: 'assets/part-maps/chameleos-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 91, y: 53, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 69, y: 62, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 61, y: 43, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 74, y: 75, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 51, y: 81, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 54, y: 38, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 23, y: 63, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-65a76': {
+      image: 'assets/part-maps/teostra-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 48, y: 34, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 51, y: 52, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 62, y: 54, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 83, y: 63, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 44, y: 78, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 65, y: 79, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 25, y: 42, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-68e56': {
+      image: 'assets/part-maps/lao-shan-lung-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 12, y: 22, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 24, y: 42, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 34, y: 48, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 53, y: 38, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 64, y: 53, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 47, y: 63, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 77, y: 60, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 28, y: 78, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
