@@ -2745,6 +2745,42 @@ const partMapAssets = {
       { partIndex: 4, valuePartIndex: 4, x: 74, y: 86, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
     ],
   },
+  'mhgu-a6b96': {
+    image: 'assets/part-maps/gypceros-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 51, y: 23, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 51, y: 38, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 49, y: 56, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 53, y: 67, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 20, y: 62, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 80, y: 30, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 53, y: 84, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'mhgu-63906': {
+    image: 'assets/part-maps/tetsucabra-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 29, y: 25, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 39, y: 36, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 64, y: 48, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 25, y: 82, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 77, y: 83, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 80, y: 57, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 19, y: 58, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'mhgu-64ad6': {
+    image: 'assets/part-maps/drilltusk-tetsucabra-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 27, y: 27, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 39, y: 40, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 65, y: 49, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 26, y: 83, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 84, y: 84, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 82, y: 62, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 6, x: 18, y: 57, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
