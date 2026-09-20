@@ -2997,6 +2997,41 @@ const partMapAssets = {
       { partIndex: 7, valuePartIndex: 7, x: 12, y: 82, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
     ],
   },
+  'mhgu-63706': {
+    image: 'assets/part-maps/nibelsnarf-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 82, y: 45, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 45, y: 55, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 52, y: 28, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 54, y: 65, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 86, y: 43, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 68, y: 62, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 77, y: 57, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 88, y: 60, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-76a56': {
+    image: 'assets/part-maps/plesioth-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 78, y: 48, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 66, y: 45, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 50, y: 27, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 59, y: 56, labelX: 50, labelY: 82, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 28, y: 22, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 51, y: 65, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 82, y: 83, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-6a056': {
+    image: 'assets/part-maps/blangonga-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 31, y: 31, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 32, y: 70, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 70, y: 78, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 55, y: 52, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 85, y: 64, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
