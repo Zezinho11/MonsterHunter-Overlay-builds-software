@@ -71,9 +71,13 @@ function weaknessVisual(monster) {
   const badges = weaknesses.length
     ? weaknesses.map((weakness) => `<span class="weakness-badge"><span class="weakness-icon weakness-${escapeHtml(String(weakness.element).toLowerCase())}">${weaknessIcon(weakness.element)}</span><span><strong>${weaknessStars(weakness.level)}</strong><small>${escapeHtml(pt(weakness.element))}</small></span></span>`).join('')
     : '<span class="muted-inline">Indisponível</span>';
+  const resistances = monster.resistances || [];
+  const resistanceBadges = resistances.length
+    ? resistances.map((resistance) => `<span class="weakness-badge resistance-badge"><span class="weakness-icon weakness-${escapeHtml(String(resistance.element).toLowerCase())}">${weaknessIcon(resistance.element)}</span><span><strong>${escapeHtml(pt(resistance.element))}</strong>${resistance.condition ? `<small>${escapeHtml(pt(resistance.condition))}</small>` : '<small>resistência</small>'}</span></span>`).join('')
+    : '<span class="muted-inline">Indisponível</span>';
   const parts = (monster.parts || []).filter((part) => part.weakPointStars).slice(0, 8);
   const table = parts.length ? `<div class="weakness-table"><div class="weakness-table-head">Parte</div><div class="weakness-table-head">Corte</div><div class="weakness-table-head">Impacto</div><div class="weakness-table-head">Munição</div>${parts.map((part) => `<div class="weakness-part-name">${escapeHtml(pt(part.name))}${part.breakable ? ' <em>· quebra</em>' : ''}</div><div>${weaknessStars(part.weakPointStars.cut)}</div><div>${weaknessStars(part.weakPointStars.blunt)}</div><div>${weaknessStars(part.weakPointStars.ammo)}</div>`).join('')}</div>` : '';
-  return `<div class="weakness-elements">${badges}</div>${table}<small class="weakness-note">Estrelas indicam a classificação do ponto fraco publicada pela fonte; valores numéricos de hitzone aparecem separadamente quando disponíveis.</small>`;
+  return `<div class="weakness-elements">${badges}</div>${table}<small class="weakness-note">Estrelas indicam a classificação do ponto fraco publicada pela fonte; valores numéricos de hitzone aparecem separadamente quando disponíveis.</small><div class="weakness-divider" aria-hidden="true"></div><section class="resistance-section"><h4>Resistências</h4><div class="resistance-elements">${resistanceBadges}</div></section>`;
 }
 
 const monsterCatalog = window.monsterCatalog || { entries: [] };

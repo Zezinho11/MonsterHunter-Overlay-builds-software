@@ -266,3 +266,37 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
   flex: none !important;
   margin: 12px 0 0 !important;
 }
+
+/* Use the remaining weakness-card space for source-backed resistances. */
+.weakness-divider {
+  height: 1px;
+  margin: 14px 0 12px;
+  background: rgba(214, 225, 235, .72);
+}
+.resistance-section h4 {
+  margin: 0 0 9px;
+  color: #e4edf4;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+.resistance-elements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.resistance-badge {
+  min-width: 92px;
+  padding: 6px 7px;
+}
+.resistance-badge strong {
+  color: #d8e3ec;
+  font-size: 9px;
+  letter-spacing: 0;
+}
+.resistance-badge small {
+  max-width: 76px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
