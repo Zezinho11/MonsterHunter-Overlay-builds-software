@@ -1638,6 +1638,41 @@ const partMapAssets = {
       { partIndex: 14, valuePartIndex: 20, x: 51, y: 84, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'rise-43': {
+    image: 'assets/part-maps/bazelgeuse-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 5, x: 22, y: 42, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 10, x: 54, y: 25, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 7, x: 50, y: 43, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 12, x: 79, y: 67, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 6, x: 53, y: 60, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, valuePartIndex: 9, x: 42, y: 77, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+    ],
+  },
+  'rise-44': {
+    image: 'assets/part-maps/narwa-allmother-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, valuePartIndex: 7, x: 20, y: 78, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 18, y: 68, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 9, x: 54, y: 43, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 12, x: 22, y: 52, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 19, x: 38, y: 62, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 16, x: 48, y: 17, labelX: 37, labelY: 88, side: 'right', kind: 'breakable' },
+      { partIndex: 11, x: 39, y: 52, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-45': {
+    image: 'assets/part-maps/apex-zinogre-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 7, x: 87, y: 75, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 86, y: 68, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 12, x: 52, y: 40, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 6, valuePartIndex: 22, x: 76, y: 32, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 27, x: 68, y: 75, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 19, x: 34, y: 77, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 15, x: 55, y: 62, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
