@@ -1257,7 +1257,7 @@ const partMapAssets = {
     ],
   },
   'rise-10': {
-    image: 'assets/part-maps/barioth-hunter-notes-v1.png',
+    image: 'assets/part-maps/barioth-rise-hunter-notes-v1.png',
     anchors: [
       { partIndex: 1, x: 9, y: 54, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
       { partIndex: 5, x: 45, y: 35, labelX: 37, labelY: 15, side: 'left', kind: 'neutral' },
