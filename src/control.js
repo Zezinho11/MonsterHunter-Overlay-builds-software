@@ -2470,6 +2470,26 @@ const partMapAssets = {
       { partIndex: 0, valuePartIndex: 0, x: 55, y: 53, labelX: 50, labelY: 15, kind: 'neutral' },
     ],
   },
+  'mhgu-6a956': {
+    image: 'assets/part-maps/anteka-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 56, y: 53, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
+  'mhgu-63b06': {
+    image: 'assets/part-maps/remobra-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 54, y: 55, labelX: 22, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 1, valuePartIndex: 1, x: 61, y: 36, labelX: 78, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 75, y: 65, labelX: 50, labelY: 88, kind: 'neutral' },
+    ],
+  },
+  'mhgu-64bd6': {
+    image: 'assets/part-maps/hermitaur-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 52, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
