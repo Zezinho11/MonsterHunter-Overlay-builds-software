@@ -2850,6 +2850,41 @@ const partMapAssets = {
       { partIndex: 5, valuePartIndex: 5, x: 78, y: 58, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
     ],
   },
+  'mhgu-6eed6': {
+    image: 'assets/part-maps/basarios-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 17, y: 29, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 22, y: 45, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 48, y: 36, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 52, y: 63, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 78, y: 68, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 37, y: 48, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 51, y: 85, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 92, y: 66, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-6b796': {
+    image: 'assets/part-maps/malfestio-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 50, y: 20, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 50, y: 53, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 72, y: 55, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 34, y: 70, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 50, y: 86, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 83, y: 77, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-6dade': {
+    image: 'assets/part-maps/nightcloak-malfestio-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 51, y: 28, labelX: 50, labelY: 15, kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 55, y: 55, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 69, y: 54, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 35, y: 65, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 52, y: 86, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 87, y: 73, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
