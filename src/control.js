@@ -52,6 +52,11 @@ function ptPart(value) { return translateDataLabel(pt(value)); }
 
 const weaknessIcons = { fire: '🔥', water: '💧', thunder: '⚡', ice: '❄️', dragon: '🐉', poison: '☠️', paralysis: '⚡', sleep: '💤', blast: '💥', stun: '💫' };
 function weaknessIcon(element) { return weaknessIcons[String(element).toLowerCase()] || '✦'; }
+const resistanceIcons = { noise: '🔊', flash: '✨', exhaust: '💨', poison: '☠️', sleep: '💤', paralysis: '⚡', fire: '🔥', water: '💧', thunder: '⚡', ice: '❄️', dragon: '🐉' };
+const resistanceLabels = { noise: 'Ruído', flash: 'Flash', exhaust: 'Exaustão', poison: 'Veneno', sleep: 'Sono', paralysis: 'Paralisia', fire: 'Fogo', water: 'Água', thunder: 'Trovão', ice: 'Gelo', dragon: 'Dragão' };
+function resistanceValue(resistance) { return resistance?.element || resistance?.effect || resistance?.status || ''; }
+function resistanceIcon(resistance) { return resistanceIcons[String(resistanceValue(resistance)).toLowerCase()] || '✦'; }
+function resistanceLabel(resistance) { const value = String(resistanceValue(resistance)).toLowerCase(); return resistanceLabels[value] || pt(value); }
 function weaknessLevel(level) {
   const count = Math.max(0, Math.min(3, Number(level) || 0));
   return count;
@@ -71,9 +76,9 @@ function weaknessVisual(monster) {
   const badges = weaknesses.length
     ? weaknesses.map((weakness) => `<span class="weakness-badge"><span class="weakness-icon weakness-${escapeHtml(String(weakness.element).toLowerCase())}">${weaknessIcon(weakness.element)}</span><span><strong>${weaknessStars(weakness.level)}</strong><small>${escapeHtml(pt(weakness.element))}</small></span></span>`).join('')
     : '<span class="muted-inline">Indisponível</span>';
-  const resistances = (monster.resistances || []).filter((resistance) => resistance?.kind === 'element' && resistance.element);
+  const resistances = (monster.resistances || []).filter((resistance) => resistanceValue(resistance));
   const resistanceBadges = resistances.length
-    ? resistances.map((resistance) => `<span class="weakness-badge resistance-badge"><span class="weakness-icon weakness-${escapeHtml(String(resistance.element).toLowerCase())}">${weaknessIcon(resistance.element)}</span><span><strong>${escapeHtml(pt(resistance.element))}</strong>${resistance.condition ? `<small>${escapeHtml(pt(resistance.condition))}</small>` : '<small>resistência</small>'}</span></span>`).join('')
+    ? resistances.map((resistance) => `<span class="weakness-badge resistance-badge"><span class="weakness-icon">${resistanceIcon(resistance)}</span><span><strong>${escapeHtml(resistanceLabel(resistance))}</strong>${resistance.condition ? `<small>${escapeHtml(pt(resistance.condition))}</small>` : `<small>${resistance.kind === 'effect' ? 'efeito' : resistance.kind === 'status' ? 'status' : 'resistência'}</small>`}</span></span>`).join('')
     : '<span class="muted-inline">Indisponível</span>';
   const parts = (monster.parts || []).filter((part) => part.weakPointStars).slice(0, 8);
   const table = parts.length ? `<div class="weakness-table"><div class="weakness-table-head">Parte</div><div class="weakness-table-head">Corte</div><div class="weakness-table-head">Impacto</div><div class="weakness-table-head">Munição</div>${parts.map((part) => `<div class="weakness-part-name">${escapeHtml(pt(part.name))}${part.breakable ? ' <em>· quebra</em>' : ''}</div><div>${weaknessStars(part.weakPointStars.cut)}</div><div>${weaknessStars(part.weakPointStars.blunt)}</div><div>${weaknessStars(part.weakPointStars.ammo)}</div>`).join('')}</div>` : '';
