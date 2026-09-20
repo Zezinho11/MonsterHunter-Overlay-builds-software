@@ -2817,6 +2817,39 @@ const partMapAssets = {
       { partIndex: 6, valuePartIndex: 6, x: 57, y: 27, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
     ],
   },
+  'mhgu-63d0d': {
+    image: 'assets/part-maps/congalala-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 80, y: 49, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 74, y: 56, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 36, y: 80, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 54, y: 59, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, valuePartIndex: 4, x: 28, y: 28, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+    ],
+  },
+  'mhgu-6d586': {
+    image: 'assets/part-maps/royal-ludroth-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 83, y: 37, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 62, y: 69, labelX: 50, labelY: 82, kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 54, y: 31, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 58, y: 48, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 78, y: 72, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 35, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 15, y: 61, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+    ],
+  },
+  'mhgu-69879': {
+    image: 'assets/part-maps/barroth-mhgu-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 28, y: 38, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 55, y: 55, labelX: 50, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 49, y: 66, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 34, y: 83, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 73, y: 84, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      { partIndex: 5, valuePartIndex: 5, x: 78, y: 58, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};

@@ -37,6 +37,9 @@ legacyValidatedMapIds.add('mhgu-64ad6');
 legacyValidatedMapIds.add('mhgu-6da86');
 legacyValidatedMapIds.add('mhgu-67db6');
 legacyValidatedMapIds.add('mhgu-674b6');
+legacyValidatedMapIds.add('mhgu-63d0d');
+legacyValidatedMapIds.add('mhgu-6d586');
+legacyValidatedMapIds.add('mhgu-69879');
 
 const isCoordinate = (value) => Number.isFinite(value) && value >= 0 && value <= 100;
 const hasValidatedMap = (entry) => {
