@@ -3630,6 +3630,43 @@ const partMapAssets = {
         { partIndex: 6, valuePartIndex: 6, x: 73, y: 58, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
       ],
     },
+    'mhgu-65576': {
+      image: 'assets/part-maps/nakarkos-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 59, y: 49, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 75, y: 66, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 31, y: 47, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 80, y: 30, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 56, y: 70, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 44, y: 60, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 41, y: 32, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-64dd4': {
+      image: 'assets/part-maps/ahtal-neset-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 50, y: 44, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 25, y: 61, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 76, y: 56, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 48, y: 35, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 38, y: 78, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 64, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 87, y: 41, labelX: 50, labelY: 82, kind: 'breakable' },
+        { partIndex: 7, valuePartIndex: 7, x: 72, y: 82, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-6eaad': {
+      image: 'assets/part-maps/ahtal-ka-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 45, y: 49, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 30, y: 62, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 58, y: 53, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 69, y: 34, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 50, y: 59, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 67, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 84, y: 69, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
