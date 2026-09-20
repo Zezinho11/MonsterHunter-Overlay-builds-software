@@ -5,6 +5,7 @@ const headerProfileName = document.querySelector('#header-profile-name');
 const avatarButton = document.querySelector('#avatar-button');
 const avatarInput = document.querySelector('#avatar-input');
 const connectionLabel = document.querySelector('#connection-label');
+const detailHeaderActions = document.querySelector('#detail-header-actions');
 
 const viewNames = { 'online-builds': 'Builds online', 'saved-builds': 'Builds registradas', bestiary: 'Monsterpedia', 'overlay-settings': 'Configurar overlay', 'app-settings': 'Configurações' };
 const games = ['Monster Hunter: Wilds', 'Monster Hunter: World', 'Monster Hunter: Rise', 'Monster Hunter: Generations Ultimate'];
@@ -3667,6 +3668,56 @@ const partMapAssets = {
         { partIndex: 6, valuePartIndex: 6, x: 84, y: 69, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
       ],
     },
+    'mhgu-6bd96': {
+      image: 'assets/part-maps/alatreon-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 49, y: 33, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 50, y: 45, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 51, y: 58, labelX: 82, labelY: 15, side: 'right', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 30, y: 43, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 51, y: 76, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 69, y: 74, labelX: 50, labelY: 82, kind: 'breakable' },
+      ],
+    },
+    'mhgu-6d3e6': {
+      image: 'assets/part-maps/fatalis-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 50, y: 26, labelX: 50, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 50, y: 30, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 50, y: 40, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 50, y: 58, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 24, y: 74, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 72, y: 44, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 50, y: 70, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 82, y: 78, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      ],
+    },
+    'mhgu-67306': {
+      image: 'assets/part-maps/crimson-fatalis-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 50, y: 39, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 50, y: 41, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 50, y: 49, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 50, y: 61, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 31, y: 71, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 68, y: 46, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 50, y: 72, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 82, y: 72, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      ],
+    },
+    'mhgu-6b886': {
+      image: 'assets/part-maps/old-fatalis-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 50, y: 37, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 50, y: 39, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 50, y: 47, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 50, y: 58, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 26, y: 76, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 73, y: 45, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 50, y: 72, labelX: 50, labelY: 82, kind: 'neutral' },
+        { partIndex: 7, valuePartIndex: 7, x: 82, y: 75, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
@@ -3688,6 +3739,7 @@ function partMapMarkup(monster) {
   return `<div class="part-map"><div class="part-map-stage">${partMapImage ? `<img src="${escapeHtml(partMapImage)}" alt="Mapa ilustrado de partes de ${escapeHtml(monster.name)}" />` : ''}${status}<svg class="part-map-connectors" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${connectors}</svg>${labels}</div>${legend}</div>`;
 }
 function renderBestiary() {
+  clearDetailHeader();
   viewRoot.innerHTML = `<div class="toolbar"><label class="field">Jogo${selectHtml('monster-game', ['Todos os jogos', ...games], 'Todos os jogos')}</label><label class="field">Porte${selectHtml('monster-size', ['Todos os portes', 'Grandes', 'Pequenos'], 'Todos os portes')}</label><label class="field">Rank${selectHtml('monster-rank', ['Todos os ranks', 'Baixo', 'Alto', 'Mestre/G'], 'Todos os ranks')}</label><label class="field">Favoritos${selectHtml('monster-favorites', ['Todos os monstros', 'Somente favoritos'], 'Todos os monstros')}</label><label class="field">Pesquisar monstro<input class="text-input" id="monster-search" placeholder="Nome do monstro" /></label><label class="field">Pesquisar material<input class="text-input" id="material-search" placeholder="Ex.: Rathalos Ruby" /></label><label class="spoiler-toggle"><input type="checkbox" id="monster-spoilers" ${spoilerMode ? 'checked' : ''} /> Modo sem spoilers</label></div><div class="info-banner" id="monster-count">Catálogo carregado: World/Iceborne ${monsters.filter((monster) => monster.game === 'Monster Hunter: World').length} · Rise/Sunbreak ${monsters.filter((monster) => monster.game === 'Monster Hunter: Rise').length} · Wilds ${monsters.filter((monster) => monster.game === 'Monster Hunter: Wilds').length} · Generations Ultimate ${monsters.filter((monster) => monster.game === 'Monster Hunter: Generations Ultimate').length}</div><section class="material-search-card"><div class="section-heading"><h2>Busca reversa por material</h2><span>Resultados do catálogo local</span></div><p class="muted-inline">Digite um material para descobrir quais monstros o fornecem e em qual método ou rank.</p><div id="material-results" class="material-results"><div class="empty-state">Digite um material para começar.</div></div></section><div id="monster-grid" class="card-grid">${monsterCards(monsters)}</div>`;
   const applyFilters = () => {
     const game = document.querySelector('#monster-game').value;
@@ -3743,6 +3795,7 @@ function renderMonsterDetail(monster, selectedRank = null) {
   const rewardContent = spoilerLocked ? spoilerBlock : `<ul class="detail-list compact-list">${rewards}</ul>`;
   const sourceCards = provenanceFor(monster).map((source) => `<a class="source-card" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer"><strong>${escapeHtml(sourceLabel(source))}</strong><small>${escapeHtml(source.note || 'Fonte catalogada')}</small></a>`).join('');
   viewRoot.innerHTML = `<button class="ghost-button" id="back-bestiary">← Voltar ao bestiário</button><div class="monster-detail-actions"><button class="ghost-button ${favoriteMonsterIds.has(monster.id) ? 'is-favorite' : ''}" id="toggle-detail-favorite">${favoriteMonsterIds.has(monster.id) ? '★ Favorito' : '☆ Favoritar'}</button><span class="muted-inline">${spoilerMode ? 'Modo sem spoilers ativo' : 'Modo sem spoilers desativado'}</span></div><div class="monster-detail-shell" style="margin-top:16px"><aside class="detail-side detail-left"><section class="detail-card"><h3>Identificação</h3><div class="stat-grid"><div class="stat-box"><small>Espécie</small><strong>${escapeHtml(pt(monster.species))}</strong></div><div class="stat-box"><small>Habitat</small><strong>${escapeHtml(monster.habitat)}</strong></div><div class="stat-box"><small>${healthLabel}</small><strong>${healthValue}</strong></div><div class="stat-box"><small>Fraquezas</small><strong>${weaknesses}</strong></div></div></section><section class="detail-card compact-card"><h3>Descrição</h3><p class="detail-description">${escapeHtml(monster.descriptionPt || 'Descrição indisponível.')}</p></section><section class="detail-card compact-card"><h3>Informações úteis</h3>${usefulInfo}</section></aside><section class="detail-center"><section class="monster-render-panel"><div class="render-heading"><span>${escapeHtml(monster.game)}</span><span>${escapeHtml(monster.threat)}${selectedRank ? ` · ${selectedRank === 'low' ? 'BAIXO' : selectedRank === 'high' ? 'ALTO' : 'MESTRE/G'}` : ''}</span></div><div class="monster-detail-art">${render}</div><h1>${escapeHtml(monster.name)}</h1><p class="render-status">${renderStatus}</p></section><section class="detail-card center-part-map-card"><h3>Mapa de partes, hitzones e limiares</h3>${partMapMarkup(monster)}${partList}</section></section><aside class="detail-side detail-right"><section class="detail-card detail-data-card weakness-detail-card" data-section="weaknesses"><h3>Fraquezas e pontos fracos</h3>${weaknessVisual(monster)}</section><section class="detail-card detail-data-card"><h3>Recompensas e drops${selectedRank ? ` · ${selectedRank === 'low' ? 'Baixo' : selectedRank === 'high' ? 'Alto' : 'Mestre/G'}` : ''}</h3>${rewardContent}</section></aside></div><section class="detail-card provenance-card"><div class="section-heading"><h2>Procedência dos dados</h2><span>Fonte por domínio</span></div><div class="source-grid">${sourceCards || '<span class="muted-inline">Fontes não registradas.</span>'}</div></section><div class="info-banner detail-provenance">A ficha preserva a origem do dado e diferencia render da edição selecionada de render cross-game. Informações ausentes continuam identificadas como indisponíveis.</div>`;
+  setDetailHeader(monster, selectedRank);
   document.querySelector('#back-bestiary').addEventListener('click', renderBestiary);
   document.querySelector('#toggle-detail-favorite').addEventListener('click', () => { toggleMonsterFavorite(monster.id); renderMonsterDetail(monster, selectedRank); });
   document.querySelector('#reveal-spoilers')?.addEventListener('click', () => { revealedSpoilerIds.add(monster.id); renderMonsterDetail(monster, selectedRank); });
@@ -3751,9 +3804,16 @@ function renderOverlaySettings() { viewRoot.innerHTML = `<section class="setting
 function wireOverlayControls() { document.querySelector('#edit-mode').addEventListener('change', (event) => window.hunterOverlay.setEditMode(event.target.checked)); document.querySelector('#click-through').addEventListener('change', (event) => window.hunterOverlay.setClickThrough(event.target.checked)); document.querySelector('#opacity').addEventListener('input', (event) => window.hunterOverlay.setOpacity(Number(event.target.value) / 100)); document.querySelector('#show-monster').addEventListener('change', (event) => window.hunterOverlay.setWidgetVisibility('monster', event.target.checked)); document.querySelector('#show-damage').addEventListener('change', (event) => window.hunterOverlay.setWidgetVisibility('damage', event.target.checked)); document.querySelectorAll('[data-delta]').forEach((button) => button.addEventListener('click', () => window.hunterOverlay.adjustBounds({ up: { y: -20 }, down: { y: 20 }, left: { x: -20 }, right: { x: 20 }, larger: { width: 45, height: 45 }, smaller: { width: -45, height: -45 } }[button.dataset.delta]))); }
 function renderSettings() { viewRoot.innerHTML = `<section class="settings-card"><h2>Perfil do caçador</h2><label class="field">Nome do caçador<input class="text-input" id="name-input" value="${escapeHtml(localStorage.getItem('hunterName') || 'NomeCaçador')}" /></label><button id="save-profile" class="primary-button" style="margin-top:14px">Salvar perfil</button><div class="info-banner" style="margin-top:18px">As configurações do software e o perfil ficam locais nesta etapa.</div></section>`; document.querySelector('#save-profile').addEventListener('click', () => { const value = document.querySelector('#name-input').value.trim() || 'NomeCaçador'; localStorage.setItem('hunterName', value); updateProfile(value); }); }
 function updateProfile(name) { profileName.textContent = name; headerProfileName.textContent = name; avatarButton.textContent = name.charAt(0).toUpperCase(); }
+function clearDetailHeader() { detailHeaderActions.hidden = true; detailHeaderActions.innerHTML = ''; }
+function setDetailHeader(monster, selectedRank = null) {
+  detailHeaderActions.hidden = false;
+  detailHeaderActions.innerHTML = `<span class="detail-header-name">— ${escapeHtml(monster.name)}</span><button class="ghost-button" id="detail-back-bestiary">← Voltar ao bestiário</button><button class="ghost-button ${favoriteMonsterIds.has(monster.id) ? 'is-favorite' : ''}" id="detail-toggle-favorite">${favoriteMonsterIds.has(monster.id) ? '★ Favorito' : '☆ Favoritar'}</button>`;
+  document.querySelector('#detail-back-bestiary').addEventListener('click', renderBestiary);
+  document.querySelector('#detail-toggle-favorite').addEventListener('click', () => { toggleMonsterFavorite(monster.id); renderMonsterDetail(monster, selectedRank); });
+}
 function renderView(view) { currentView = view; viewTitle.textContent = viewNames[view]; document.querySelectorAll('[data-view]').forEach((button) => button.classList.toggle('active', button.dataset.view === view)); ({ 'online-builds': renderOnlineBuilds, 'saved-builds': renderSavedBuilds, bestiary: renderBestiary, 'overlay-settings': renderOverlaySettings, 'app-settings': renderSettings }[view] || renderOnlineBuilds)(); }
 
-document.querySelectorAll('[data-view]').forEach((button) => button.addEventListener('click', () => renderView(button.dataset.view)));
+document.querySelectorAll('[data-view]').forEach((button) => button.addEventListener('click', () => { clearDetailHeader(); renderView(button.dataset.view); }));
 avatarButton.addEventListener('click', () => avatarInput.click());
 avatarInput.addEventListener('change', (event) => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => { localStorage.setItem('hunterAvatar', reader.result); avatarButton.style.backgroundImage = `url(${reader.result})`; avatarButton.style.backgroundSize = 'cover'; avatarButton.textContent = ''; }; reader.readAsDataURL(file); });
 document.querySelector('#profile-header').addEventListener('click', () => renderView('app-settings'));
