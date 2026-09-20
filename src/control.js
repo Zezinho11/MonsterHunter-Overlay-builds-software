@@ -2183,6 +2183,42 @@ const partMapAssets = {
       { partIndex: 5, valuePartIndex: 5, x: 37, y: 66, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'wilds-19': {
+    image: 'assets/part-maps/rompopolo-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 0, x: 18, y: 66, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 47, y: 30, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 1, x: 86, y: 17, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 7, valuePartIndex: 7, x: 59, y: 57, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 44, y: 59, labelX: 13, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, valuePartIndex: 5, x: 35, y: 82, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 6, valuePartIndex: 6, x: 64, y: 83, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-20': {
+    image: 'assets/part-maps/arkveld-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 51, y: 34, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 0, x: 20, y: 45, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, valuePartIndex: 3, x: 51, y: 24, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 2, x: 83, y: 72, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 11, valuePartIndex: 11, x: 57, y: 59, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 9, x: 39, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 4, valuePartIndex: 4, x: 20, y: 68, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'wilds-21': {
+    image: 'assets/part-maps/ajarakan-wilds-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, valuePartIndex: 1, x: 71, y: 39, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 3, x: 69, y: 20, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 2, x: 22, y: 72, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 9, valuePartIndex: 9, x: 59, y: 63, labelX: 87, labelY: 15, side: 'right', kind: 'neutral' },
+      { partIndex: 0, valuePartIndex: 0, x: 84, y: 70, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, valuePartIndex: 7, x: 52, y: 83, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 8, valuePartIndex: 8, x: 69, y: 84, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
