@@ -1813,6 +1813,42 @@ const partMapAssets = {
       { partIndex: 2, valuePartIndex: 15, x: 49, y: 80, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
     ],
   },
+  'rise-58': {
+    image: 'assets/part-maps/daimyo-hermitaur-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 0, valuePartIndex: 4, x: 51, y: 70, labelX: 13, labelY: 15, side: 'left', kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 7, x: 51, y: 31, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 2, valuePartIndex: 14, x: 19, y: 61, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 11, valuePartIndex: 12, x: 84, y: 61, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 1, valuePartIndex: 5, x: 51, y: 60, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 9, valuePartIndex: 10, x: 72, y: 80, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 17, valuePartIndex: 18, x: 27, y: 80, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-59': {
+    image: 'assets/part-maps/pyre-rakna-kadaki-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 1, x: 57, y: 28, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 3, x: 80, y: 21, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 24, y: 57, labelX: 63, labelY: 15, kind: 'breakable' },
+      { partIndex: 6, x: 44, y: 39, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 7, x: 57, y: 53, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 2, valuePartIndex: 8, x: 47, y: 67, labelX: 37, labelY: 88, side: 'left', kind: 'breakable' },
+      { partIndex: 5, x: 58, y: 49, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
+  'rise-60': {
+    image: 'assets/part-maps/lucent-nargacuga-rise-hunter-notes-v1.png',
+    anchors: [
+      { partIndex: 2, valuePartIndex: 5, x: 50, y: 76, labelX: 13, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 4, x: 21, y: 55, labelX: 37, labelY: 15, side: 'left', kind: 'breakable' },
+      { partIndex: 6, x: 62, y: 47, labelX: 63, labelY: 15, kind: 'neutral' },
+      { partIndex: 3, valuePartIndex: 8, x: 86, y: 19, labelX: 87, labelY: 15, side: 'right', kind: 'breakable' },
+      { partIndex: 0, valuePartIndex: 11, x: 48, y: 63, labelX: 13, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 1, x: 61, y: 71, labelX: 37, labelY: 88, side: 'left', kind: 'neutral' },
+      { partIndex: 7, x: 75, y: 75, labelX: 87, labelY: 88, side: 'right', kind: 'neutral' },
+    ],
+  },
 };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
