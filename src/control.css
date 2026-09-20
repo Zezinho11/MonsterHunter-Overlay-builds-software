@@ -112,5 +112,11 @@ body:has(.detail-view-root) .content-shell { overflow: hidden; }
 
 .detail-view-root .monster-detail-shell { height: 100%; margin-top: 0 !important; overflow: hidden; }
 .detail-view-root .detail-left, .detail-view-root .detail-center { min-height: 0; overflow-y: auto; scrollbar-gutter: stable; }
+.detail-view-root .detail-center { display: flex; flex-direction: column; overflow-y: hidden; }
+.detail-view-root .monster-render-panel { flex: 0 0 clamp(300px, 43%, 420px); min-height: 0; }
+.detail-view-root .monster-render-panel .monster-detail-art { min-height: 0; }
+.detail-view-root .center-part-map-card { display: flex; min-height: 0; flex: 1 1 auto; flex-direction: column; overflow: hidden; }
+.detail-view-root .center-part-map-card .part-map { display: flex; min-height: 0; flex: 1 1 auto; flex-direction: column; }
+.detail-view-root .center-part-map-card .part-map-stage { min-height: 0; flex: 1 1 auto; aspect-ratio: auto; }
 .detail-view-root .detail-right { display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; overflow: hidden; }
 .detail-view-root .detail-right .detail-data-card:last-child { display: flex; min-height: 0; flex-direction: column; overflow: hidden; }
