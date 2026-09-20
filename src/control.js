@@ -3594,6 +3594,42 @@ const partMapAssets = {
         { partIndex: 7, valuePartIndex: 7, x: 28, y: 78, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
       ],
     },
+    'mhgu-678b6': {
+      image: 'assets/part-maps/akantor-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 70, y: 54, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 60, y: 48, labelX: 50, labelY: 15, kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 59, y: 64, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 52, y: 37, labelX: 18, labelY: 50, side: 'left', kind: 'breakable' },
+        { partIndex: 4, valuePartIndex: 4, x: 28, y: 46, labelX: 82, labelY: 50, side: 'right', kind: 'breakable' },
+        { partIndex: 5, valuePartIndex: 5, x: 72, y: 78, labelX: 18, labelY: 82, side: 'left', kind: 'neutral' },
+        { partIndex: 6, valuePartIndex: 6, x: 47, y: 83, labelX: 82, labelY: 82, side: 'right', kind: 'neutral' },
+      ],
+    },
+    'mhgu-640d6': {
+      image: 'assets/part-maps/ukanlos-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 76, y: 49, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 58, y: 48, labelX: 50, labelY: 15, kind: 'neutral' },
+        { partIndex: 2, valuePartIndex: 2, x: 47, y: 62, labelX: 18, labelY: 15, side: 'left', kind: 'neutral' },
+        { partIndex: 3, valuePartIndex: 3, x: 31, y: 73, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 67, y: 78, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 53, y: 66, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 19, y: 66, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
+    'mhgu-69946': {
+      image: 'assets/part-maps/amatsu-mhgu-hunter-notes-v1.png',
+      anchors: [
+        { partIndex: 0, valuePartIndex: 0, x: 34, y: 51, labelX: 18, labelY: 15, side: 'left', kind: 'breakable' },
+        { partIndex: 1, valuePartIndex: 1, x: 43, y: 48, labelX: 50, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 2, valuePartIndex: 2, x: 62, y: 47, labelX: 82, labelY: 15, side: 'right', kind: 'breakable' },
+        { partIndex: 3, valuePartIndex: 3, x: 61, y: 35, labelX: 18, labelY: 50, side: 'left', kind: 'neutral' },
+        { partIndex: 4, valuePartIndex: 4, x: 53, y: 62, labelX: 82, labelY: 50, side: 'right', kind: 'neutral' },
+        { partIndex: 5, valuePartIndex: 5, x: 48, y: 57, labelX: 18, labelY: 82, side: 'left', kind: 'breakable' },
+        { partIndex: 6, valuePartIndex: 6, x: 73, y: 58, labelX: 82, labelY: 82, side: 'right', kind: 'breakable' },
+      ],
+    },
   };
 function partMapMarkup(monster) {
   const map = monster.partMap || {};
