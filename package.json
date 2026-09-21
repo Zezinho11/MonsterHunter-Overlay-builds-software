@@ -12,6 +12,7 @@
     "catalog:refresh": "node scripts/build-monster-catalog.js",
     "catalog:audit": "node scripts/audit-monster-catalog.js",
     "monsterpedia:audit": "node scripts/audit-monsterpedia.js",
+    "monsterpedia:deep-audit": "node scripts/audit-monsterpedia-deep.js",
     "maps:audit": "node scripts/audit-monster-maps.js",
     "dist": "electron-builder --win nsis portable",
     "dist:installer": "electron-builder --win nsis",
