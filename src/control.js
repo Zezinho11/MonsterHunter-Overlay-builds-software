@@ -50,12 +50,30 @@ function translateDataLabel(value) {
 function ptMaterial(value) { return translateDataLabel(value); }
 function ptPart(value) { return translateDataLabel(pt(value)); }
 
-const weaknessIcons = { fire: '🔥', water: '💧', thunder: '⚡', ice: '❄️', dragon: '🐉', poison: '☠️', paralysis: '⚡', sleep: '💤', blast: '💥', stun: '💫' };
-function weaknessIcon(element) { return weaknessIcons[String(element).toLowerCase()] || '✦'; }
-const resistanceIcons = { noise: '🔊', flash: '✨', exhaust: '💨', poison: '☠️', sleep: '💤', paralysis: '⚡', fire: '🔥', water: '💧', thunder: '⚡', ice: '❄️', dragon: '🐉' };
+const iconPaths = {
+  fire: '<path d="M12 2c1 4-2 5-2 8 0 1.8 1.1 3 2.5 3 1.2 0 2.1-.8 2.3-2.1 1.3 1.2 2.2 2.7 2.2 4.5A5 5 0 0 1 12 20a5 5 0 0 1-5-5c0-3.5 2.8-5.7 5-8.3C12.4 5.6 12.4 3.8 12 2Z"/>',
+  water: '<path d="M12 2S5 9.2 5 13.3a7 7 0 0 0 14 0C19 9.2 12 2 12 2Z"/>',
+  thunder: '<path d="m14 2-8 11h6l-1 9 8-12h-6l1-8Z"/>',
+  ice: '<path d="M12 2v20M4.1 6.5l15.8 11M4.1 17.5l15.8-11M2 12h20"/><circle cx="12" cy="12" r="2"/>',
+  dragon: '<path d="M4 16c3-7 8-9 16-8-2 2-3 4-3 7-3-1-5 0-7 3-1-2-3-2-6-2Z"/><path d="M7 16 4 21m9-4 2 4"/>',
+  poison: '<path d="M9 3h6m-5 0v4L5 17a3 3 0 0 0 2.6 4h8.8A3 3 0 0 0 19 17l-5-10V3"/><path d="M8 16h8"/>',
+  paralysis: '<path d="m14 2-5 8h4l-3 12 7-10h-4l1-10Z"/>',
+  sleep: '<path d="M5 18h14M7 15h4l-4-5h4M14 9h4l-4-5h4"/>',
+  blast: '<path d="m13 2-2 7 4-1-2 6 5-2-6 8 1-7-4 1 2-6-4 2 6-8Z"/>',
+  stun: '<circle cx="12" cy="12" r="8"/><path d="m12 7-2 5h3l-1 5 3-6h-3l1-4Z"/>',
+  noise: '<path d="M4 10v4h3l4 3V7l-4 3H4Zm11-1c2 1 2 5 0 6m2-9c4 3 4 7 0 10"/>',
+  flash: '<path d="M13 2 4 13h6l-1 9 9-12h-6l1-8Z"/>',
+  exhaust: '<path d="M5 18c3-3 5 3 8 0s5 3 6 0M5 12c3-3 5 3 8 0s5 3 6 0M5 6c3-3 5 3 8 0s5 3 6 0"/>',
+  cut: '<path d="m5 5 14 14M19 5 5 19"/><path d="M7 7 4 4m13 13 3 3"/>',
+  blunt: '<path d="M8 4h8v5H8zM10 9v11m4-11v11M7 20h10"/>',
+  ammo: '<path d="M8 3h8v5l-1 2v8a3 3 0 0 1-6 0v-8L8 8V3Z"/><path d="M8 6h8"/>'
+};
+function mhIcon(name, label = '') { const key = String(name || '').toLowerCase(); return `<svg class="mh-icon mh-icon-${escapeHtml(key)}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${iconPaths[key] || '<circle cx="12" cy="12" r="7"/>'}</svg>${label ? `<span class="sr-only">${escapeHtml(label)}</span>` : ''}`; }
+function weaknessIcon(element) { return mhIcon(element); }
+const resistanceIcons = { noise: 'noise', flash: 'flash', exhaust: 'exhaust', poison: 'poison', sleep: 'sleep', paralysis: 'paralysis', fire: 'fire', water: 'water', thunder: 'thunder', ice: 'ice', dragon: 'dragon' };
 const resistanceLabels = { noise: 'Ruído', flash: 'Flash', exhaust: 'Exaustão', poison: 'Veneno', sleep: 'Sono', paralysis: 'Paralisia', fire: 'Fogo', water: 'Água', thunder: 'Trovão', ice: 'Gelo', dragon: 'Dragão' };
 function resistanceValue(resistance) { return resistance?.element || resistance?.effect || resistance?.status || ''; }
-function resistanceIcon(resistance) { return resistanceIcons[String(resistanceValue(resistance)).toLowerCase()] || '✦'; }
+function resistanceIcon(resistance) { return mhIcon(resistanceIcons[String(resistanceValue(resistance)).toLowerCase()] || 'unknown'); }
 function resistanceLabel(resistance) { const value = String(resistanceValue(resistance)).toLowerCase(); return resistanceLabels[value] || pt(value); }
 function weaknessLevel(level) {
   const count = Math.max(0, Math.min(3, Number(level) || 0));
@@ -81,7 +99,7 @@ function weaknessVisual(monster) {
     ? resistances.map((resistance) => `<span class="weakness-badge resistance-badge"><span class="weakness-icon">${resistanceIcon(resistance)}</span><span><strong>${escapeHtml(resistanceLabel(resistance))}</strong>${resistance.condition ? `<small>${escapeHtml(pt(resistance.condition))}</small>` : `<small>${resistance.kind === 'effect' ? 'efeito' : resistance.kind === 'status' ? 'status' : 'resistência'}</small>`}</span></span>`).join('')
     : '<span class="muted-inline">Indisponível</span>';
   const parts = (monster.parts || []).filter((part) => part.weakPointStars).slice(0, 8);
-  const table = parts.length ? `<div class="weakness-table"><div class="weakness-table-head">Parte</div><div class="weakness-table-head">Corte</div><div class="weakness-table-head">Impacto</div><div class="weakness-table-head">Munição</div>${parts.map((part) => `<div class="weakness-part-name">${escapeHtml(pt(part.name))}${part.breakable ? ' <em>· quebra</em>' : ''}</div><div>${weaknessStars(part.weakPointStars.cut)}</div><div>${weaknessStars(part.weakPointStars.blunt)}</div><div>${weaknessStars(part.weakPointStars.ammo)}</div>`).join('')}</div>` : '';
+  const table = parts.length ? `<div class="weakness-table"><div class="weakness-table-head">Parte</div><div class="weakness-table-head">${mhIcon('cut', 'Corte')}<span>Corte</span></div><div class="weakness-table-head">${mhIcon('blunt', 'Impacto')}<span>Impacto</span></div><div class="weakness-table-head">${mhIcon('ammo', 'Munição')}<span>Munição</span></div>${parts.map((part) => `<div class="weakness-part-name">${escapeHtml(pt(part.name))}${part.breakable ? ' <em>· quebra</em>' : ''}</div><div>${weaknessStars(part.weakPointStars.cut)}</div><div>${weaknessStars(part.weakPointStars.blunt)}</div><div>${weaknessStars(part.weakPointStars.ammo)}</div>`).join('')}</div>` : '';
   return `<div class="weakness-elements">${badges}</div>${table}<small class="weakness-note">Estrelas indicam a classificação do ponto fraco publicada pela fonte; valores numéricos de hitzone aparecem separadamente quando disponíveis.</small><div class="weakness-divider" aria-hidden="true"></div><section class="resistance-section"><h4>Resistências</h4><div class="resistance-elements">${resistanceBadges}</div></section>`;
 }
 
