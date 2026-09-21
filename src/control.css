@@ -38,6 +38,7 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 .section-heading h2 { margin: 0; font-size: 16px; }
 .section-heading span { color: #78a8c8; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
 .material-search-card > p { margin: 7px 0 12px; }
+.material-search-input { display: block; width: min(100%, 420px); margin: 0 0 14px; }
 .material-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
 .material-result { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 1px solid rgba(171, 195, 218, .12); border-radius: 8px; background: rgba(9, 14, 19, .38); cursor: pointer; }
 .material-result:hover { border-color: rgba(109, 183, 232, .6); background: rgba(27, 45, 58, .56); }
@@ -84,8 +85,10 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 .detail-layout { display: grid; grid-template-columns: 1fr 270px; gap: 18px; } .monster-detail-art { display: grid; place-items: center; min-height: 240px; border-radius: 9px; background: radial-gradient(circle at 50% 35%, rgba(159, 107, 71, .62), transparent 55%), #17212a; font-size: 90px; } .monster-detail-art img { max-width: 88%; max-height: 300px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .5)); } .detail-content h2 { margin: 0 0 5px; font-size: 22px; } .detail-content p { margin: 0 0 15px; color: #8898a9; font-size: 11px; } .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .stat-box { padding: 10px; border: 1px solid rgba(171, 195, 218, .12); border-radius: 7px; background: rgba(9, 14, 19, .4); } .stat-box small, .stat-box strong { display: block; } .stat-box small { color: #7c8b9c; font-size: 9px; } .stat-box strong { margin-top: 4px; font-size: 12px; } .detail-list { margin: 15px 0 0; padding-left: 15px; color: #b9c7d4; font-size: 11px; line-height: 1.8; }
 .monster-detail-shell { display: grid; grid-template-columns: minmax(190px, .8fr) minmax(360px, 1.45fr) minmax(235px, 1fr); gap: 14px; align-items: start; min-height: 0; } .detail-side, .detail-center { display: grid; align-content: start; gap: 14px; min-width: 0; } .detail-side .detail-card, .center-part-map-card { padding: 14px; } .detail-side h3, .monster-render-panel h1, .center-part-map-card h3 { margin: 0 0 10px; } .compact-card .detail-description { margin: 0; line-height: 1.55; } .monster-render-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; min-height: clamp(330px, 32vw, 420px); height: auto; padding: 14px; border: 1px solid rgba(171, 195, 218, .16); border-radius: 12px; background: radial-gradient(circle at 50% 42%, rgba(161, 102, 70, .5), rgba(22, 31, 40, .88) 58%), #17212a; box-shadow: 0 14px 30px rgba(0, 0, 0, .16); } .render-heading { display: flex; justify-content: space-between; width: 100%; color: #8496a7; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; } .monster-render-panel .monster-detail-art { width: 100%; min-height: clamp(220px, 23vw, 300px); flex: 0 1 auto; background: transparent; } .monster-render-panel .monster-detail-art img { max-width: 100%; max-height: min(29vw, 290px); } .monster-render-panel h1 { font-size: clamp(22px, 2.4vw, 32px); text-align: center; } .render-status { margin: -3px 0 0; color: #8898a9; font-size: 10px; text-align: center; } .render-pending { display: grid; justify-items: center; gap: 8px; color: #9aabba; text-align: center; } .render-mark { color: #5f9fd2; font-size: 72px; } .render-pending strong { color: #d2dde8; font-size: 16px; } .render-pending small { max-width: 180px; font-size: 10px; line-height: 1.4; } .detail-data-card { min-height: 0; } .detail-data-card h3 { font-size: 13px; } .compact-list { display: grid; gap: 5px; max-height: none; margin: 0; padding: 0; list-style: none; overflow: visible; } .compact-list li { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(171, 195, 218, .09); color: #b9c7d4; font-size: 10px; } .compact-list li strong { color: #d5e0ea; font-weight: 600; } .compact-list li span { color: #8fa1b2; text-align: right; } .detail-provenance { margin-top: 12px; }
 .detail-right { min-height: 0; } .detail-right .detail-data-card:last-child { min-height: 0; } .detail-right .detail-data-card:last-child .compact-list { max-height: calc(100vh - 330px); overflow-y: auto; overscroll-behavior: contain; }
-.weakness-elements { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.weakness-elements, .resistance-elements { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; margin-top: 8px; align-items: stretch; }
+.weakness-elements > .muted-inline, .resistance-elements > .muted-inline { grid-column: 1 / -1; }
 .weakness-badge { display: flex; align-items: center; gap: 7px; min-width: 78px; padding: 7px 8px; border: 1px solid rgba(171, 195, 218, .22); border-radius: 8px; background: linear-gradient(145deg, rgba(39, 51, 63, .85), rgba(12, 18, 25, .8)); box-shadow: inset 0 1px rgba(255,255,255,.04); }
+.weakness-elements .weakness-badge, .resistance-elements .weakness-badge { min-width: 0; min-height: 54px; }
 .weakness-icon { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #202b35; font-size: 14px; }
 .weakness-badge strong, .weakness-badge small { display: block; line-height: 1.1; }
 .weakness-summary-level { font-weight: 800; }
@@ -282,12 +285,11 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
   text-transform: lowercase;
 }
 .resistance-elements {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
 }
 .resistance-badge {
-  min-width: 92px;
   padding: 6px 7px;
 }
 .resistance-badge strong {
@@ -300,4 +302,7 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+@media (max-width: 1250px) {
+  .weakness-elements, .resistance-elements { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
