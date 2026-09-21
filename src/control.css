@@ -235,6 +235,9 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 .detail-view-root .weakness-detail-card {
   height: clamp(330px, 32vw, 420px) !important;
   align-self: start !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
 }
 .detail-view-root .detail-right .detail-data-card:last-child {
   height: clamp(430px, 27vw, 560px) !important;

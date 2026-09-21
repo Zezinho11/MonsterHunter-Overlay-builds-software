@@ -26,7 +26,7 @@ if ((control.match(/function renderMonsterDetail/g) || []).length !== 1) errors.
 if ((control.match(/function weaknessVisual/g) || []).length !== 1) errors.push('weakness renderer is not shared by all monster pages');
 if ((control.match(/id="material-search"/g) || []).length !== 1) errors.push('reverse material search must expose exactly one active input');
 if (control.includes('id="reveal-spoilers"')) errors.push('spoiler reveal buttons must not reuse a duplicate id');
-for (const required of ['.detail-view-root', '.center-part-map-card', '.provenance-card', '.source-meta', 'overflow-y: auto']) {
+for (const required of ['.detail-view-root', '.center-part-map-card', '.provenance-card', '.source-meta', '.weakness-detail-card', 'overflow-y: auto']) {
   if (!css.includes(required)) errors.push(`missing shared layout rule: ${required}`);
 }
 
