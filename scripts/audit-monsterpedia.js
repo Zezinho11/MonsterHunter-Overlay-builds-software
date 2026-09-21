@@ -14,6 +14,9 @@ const mapRefs = [...control.matchAll(/image:\s*'assets\/part-maps\/([^']+)'/g)].
 const mapDir = path.join(root, 'src', 'assets', 'part-maps');
 const missingMapAssets = mapRefs.filter((asset) => !fs.existsSync(path.join(mapDir, asset)));
 const duplicateMapRefs = [...new Set(mapRefs.filter((asset, index) => mapRefs.indexOf(asset) !== index))];
+const uiIconDir = path.join(root, 'src', 'assets', 'ui-icons');
+const requiredUiIcons = ['fire.png', 'water.png', 'thunder.png', 'ice.png', 'dragon.png', 'poison.png', 'paralysis.png', 'sleep.png', 'blast.png', 'stun.png', 'fatigue.png'];
+const missingUiIcons = requiredUiIcons.filter((asset) => !fs.existsSync(path.join(uiIconDir, asset)));
 
 if (!entries.length) errors.push('catalog has no entries');
 if (entries.some((entry) => !entry.id || !entry.game || !entry.name)) errors.push('catalog contains an entry without id/game/name');
@@ -22,6 +25,7 @@ if (missing((entry) => Array.isArray(entry.parts) && entry.parts.length).length)
 if (missing((entry) => Array.isArray(entry.rewards)).length) errors.push(`missing rewards array: ${missing((entry) => Array.isArray(entry.rewards)).length}`);
 if (missingMapAssets.length) errors.push(`missing mapped image assets: ${missingMapAssets.length}`);
 if (duplicateMapRefs.length) errors.push(`duplicate mapped image assets: ${duplicateMapRefs.length}`);
+if (missingUiIcons.length) errors.push(`missing sourced UI icons: ${missingUiIcons.join(', ')}`);
 if ((control.match(/function renderMonsterDetail/g) || []).length !== 1) errors.push('detail renderer is not shared by all monster pages');
 if ((control.match(/function weaknessVisual/g) || []).length !== 1) errors.push('weakness renderer is not shared by all monster pages');
 if ((control.match(/id="material-search"/g) || []).length !== 1) errors.push('reverse material search must expose exactly one active input');
@@ -40,6 +44,7 @@ for (const [game, label] of Object.entries(gameLabels)) {
   console.log(`${label}: ${records.length} fichas | render ${withRender}/${records.length} | imagem ${withImage}/${records.length} | fonte ${withSources}/${records.length} | saúde indisponível ${missingHealth}`);
 }
 console.log(`Mapas referenciados no renderer: ${new Set(mapRefs).size} únicos | assets ausentes: ${missingMapAssets.length} | duplicados: ${duplicateMapRefs.length}`);
+console.log(`Ícones UI auditados: ${requiredUiIcons.length} requeridos | ausentes: ${missingUiIcons.length}`);
 console.log(`Campos pendentes permitidos: renders ${missing((entry) => entry.render).length}, saúde ${missing((entry) => entry.baseHealth != null || entry.healthProfiles?.length).length}, licença explícita nas fontes ${catalog.sources?.filter((source) => source.license).length || 0}/${catalog.sources?.length || 0}`);
 
 if (errors.length) {

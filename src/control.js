@@ -68,9 +68,17 @@ const iconPaths = {
   blunt: '<path d="M8 4h8v5H8zM10 9v11m4-11v11M7 20h10"/>',
   ammo: '<path d="M8 3h8v5l-1 2v8a3 3 0 0 1-6 0v-8L8 8V3Z"/><path d="M8 6h8"/>'
 };
-function mhIcon(name, label = '') { const key = String(name || '').toLowerCase(); return `<svg class="mh-icon mh-icon-${escapeHtml(key)}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${iconPaths[key] || '<circle cx="12" cy="12" r="7"/>'}</svg>${label ? `<span class="sr-only">${escapeHtml(label)}</span>` : ''}`; }
+const iconAssetFiles = { fire: 'fire.png', water: 'water.png', thunder: 'thunder.png', ice: 'ice.png', dragon: 'dragon.png', poison: 'poison.png', paralysis: 'paralysis.png', sleep: 'sleep.png', blast: 'blast.png', stun: 'stun.png', exhaust: 'fatigue.png' };
+function mhIcon(name, label = '') {
+  const key = String(name || '').toLowerCase();
+  const asset = iconAssetFiles[key];
+  const visual = asset
+    ? `<img class="mh-icon mh-icon-${escapeHtml(key)}" src="assets/ui-icons/${asset}" alt="" aria-hidden="true" draggable="false" />`
+    : `<svg class="mh-icon mh-icon-${escapeHtml(key)}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${iconPaths[key] || '<circle cx="12" cy="12" r="7"/>'}</svg>`;
+  return `${visual}${label ? `<span class="sr-only">${escapeHtml(label)}</span>` : ''}`;
+}
 function weaknessIcon(element) { return mhIcon(element); }
-const resistanceIcons = { noise: 'noise', flash: 'flash', exhaust: 'exhaust', poison: 'poison', sleep: 'sleep', paralysis: 'paralysis', fire: 'fire', water: 'water', thunder: 'thunder', ice: 'ice', dragon: 'dragon' };
+const resistanceIcons = { noise: 'noise', flash: 'flash', exhaust: 'exhaust', poison: 'poison', sleep: 'sleep', paralysis: 'paralysis', fire: 'fire', water: 'water', thunder: 'thunder', ice: 'ice', dragon: 'dragon', fireblight: 'fire', waterblight: 'water', thunderblight: 'thunder', iceblight: 'ice', dragonblight: 'dragon' };
 const resistanceLabels = { noise: 'Ruído', flash: 'Flash', exhaust: 'Exaustão', poison: 'Veneno', sleep: 'Sono', paralysis: 'Paralisia', fire: 'Fogo', water: 'Água', thunder: 'Trovão', ice: 'Gelo', dragon: 'Dragão' };
 function resistanceValue(resistance) { return resistance?.element || resistance?.effect || resistance?.status || ''; }
 function resistanceIcon(resistance) { return mhIcon(resistanceIcons[String(resistanceValue(resistance)).toLowerCase()] || 'unknown'); }
