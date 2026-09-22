@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none" stroke="#d5b366" stroke-width="1.2">
+<defs><path id="petal" d="M50 7 54 20 51 26 61 35 57 45 50 39 43 45 39 35 49 26 46 20Z"/><path id="leaf" d="m50 15 3 17-3 7-3-7Z"/></defs>
+<g transform="translate(0 10)"><circle cx="50" cy="50" r="28"/><circle cx="50" cy="50" r="23" stroke-width=".6"/><path d="m50 2 5 12-5-3-5 3ZM50 98l-5-12 5 3 5-3ZM2 50l12-5-3 5 3 5ZM98 50l-12 5 3-5-3-5Z"/>
+<use href="#petal"/><use href="#petal" transform="rotate(90 50 50)"/><use href="#petal" transform="rotate(180 50 50)"/><use href="#petal" transform="rotate(270 50 50)"/>
+<use href="#leaf" transform="rotate(45 50 50)"/><use href="#leaf" transform="rotate(135 50 50)"/><use href="#leaf" transform="rotate(225 50 50)"/><use href="#leaf" transform="rotate(315 50 50)"/>
+<path d="m50 28 6 16 16 6-16 6-6 16-6-16-16-6 16-6Z"/><path d="m50 39 11 11-11 11-11-11Z"/><circle cx="50" cy="50" r="3" fill="#d5b366"/><path d="m16 19 8 3-3 8m63-11-8 3 3 8M16 81l8-3-3-8m63 11-8-3 3-8"/></g></svg>

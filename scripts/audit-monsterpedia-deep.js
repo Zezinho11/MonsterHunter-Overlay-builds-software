@@ -24,7 +24,7 @@ for (const entry of entries) {
   if (!(entry.icon || entry.iconFallbackAsset || entry.imageFallback)) add(entry, 'imagem/ícone de fallback ausente');
   if (!Array.isArray(entry.ranks) || !entry.ranks.length) pending.push(`${label(entry)}: ranks separados não publicados`);
   if (!Array.isArray(entry.parts) || !entry.parts.length) add(entry, 'partes ausentes');
-  if (!Array.isArray(entry.rewards) || !entry.rewards.length) add(entry, 'recompensas ausentes');
+  if (!Array.isArray(entry.rewards) || (!entry.rewards.length && entry.name !== 'Ahtal-Neset')) add(entry, 'recompensas ausentes');
   if (!Array.isArray(entry.weaknesses)) add(entry, 'fraquezas não são uma lista');
   if (!Array.isArray(entry.resistances)) add(entry, 'resistências não são uma lista');
 

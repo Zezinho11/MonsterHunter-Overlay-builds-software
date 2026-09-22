@@ -132,175 +132,6 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 @media (max-width: 1100px) { .monster-detail-shell { grid-template-columns: 220px minmax(300px, 1fr); } .detail-right { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; } .detail-right .detail-data-card:last-child .compact-list { max-height: 240px; } }
 @media (max-width: 850px) { .sidebar { flex-basis: 165px; } .content-header, .view-root { padding-left: 19px; padding-right: 19px; } .saved-layout, .detail-layout, .monster-detail-shell { grid-template-columns: 1fr; } .detail-right { grid-column: auto; grid-template-columns: 1fr; } .monster-render-panel { min-height: 390px; } .profile-header span, .connection-pill { display: none; } }
 
-.detail-view-root .monster-detail-shell { height: auto; margin-top: 0 !important; overflow: visible; }
-.detail-view-root .monster-detail-shell { grid-template-rows: auto clamp(430px, 27vw, 560px); }
-.detail-view-root .detail-left, .detail-view-root .detail-center { min-height: 0; overflow: visible; scrollbar-gutter: auto; }
-.detail-view-root .detail-center { display: contents; overflow: visible; }
-.detail-view-root .monster-detail-shell > * { min-height: 0; }
-.detail-view-root .detail-left { grid-column: 1; grid-row: 1 / 3; align-self: start; }
-.detail-view-root .monster-render-panel { grid-column: 2; grid-row: 1; min-height: clamp(330px, 32vw, 420px); }
-.detail-view-root .monster-render-panel .monster-detail-art { min-height: clamp(220px, 23vw, 300px); }
-.detail-view-root .center-part-map-card { grid-column: 2; grid-row: 2; display: flex; min-height: 0; height: 100%; flex-direction: column; overflow: hidden; }
-.detail-view-root .center-part-map-card .part-map { display: flex; min-height: 0; flex: 1 1 auto; flex-direction: column; }
-.detail-view-root .center-part-map-card .part-map-stage { min-height: 0; flex: 1 1 auto; aspect-ratio: auto; }
-.detail-view-root .detail-right { display: contents; min-height: 0; overflow: visible; }
-.detail-view-root .weakness-detail-card { grid-column: 3; grid-row: 1; align-self: start; }
-.detail-view-root .detail-right .detail-data-card:last-child { grid-column: 3; grid-row: 2; display: flex; min-height: 0; align-self: stretch; flex-direction: column; overflow: hidden; }
-.detail-view-root .detail-right .detail-data-card:last-child .compact-list { min-height: 0; max-height: none; flex: 1 1 auto; overflow-y: auto; }
-.detail-view-root .detail-left .provenance-card, .detail-view-root .detail-left .detail-provenance { grid-column: auto; grid-row: auto; margin-top: 0; }
-@media (max-width: 1100px) {
-  .detail-view-root .detail-center { display: grid; }
-  .detail-view-root .detail-right { display: grid; grid-template-rows: auto auto; }
-  .detail-view-root .detail-left, .detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card, .detail-view-root .weakness-detail-card, .detail-view-root .detail-right .detail-data-card:last-child, .detail-view-root .provenance-card, .detail-view-root .detail-provenance { grid-column: auto; grid-row: auto; }
-}
-
-/* Independent columns: render -> map in the center, weakness -> rewards on the right. */
-.detail-view-root .monster-detail-shell { grid-template-rows: none !important; align-items: start; }
-.detail-view-root .detail-left { grid-column: auto !important; grid-row: auto !important; align-self: start; }
-.detail-view-root .detail-center { display: grid !important; grid-column: auto !important; grid-row: auto !important; align-content: start; gap: 14px; }
-.detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card { grid-column: auto !important; grid-row: auto !important; }
-.detail-view-root .center-part-map-card { height: clamp(430px, 27vw, 560px); align-self: start; }
-.detail-view-root .detail-right { display: flex !important; grid-column: auto !important; grid-row: auto !important; flex-direction: column; gap: 14px; }
-.detail-view-root .weakness-detail-card { grid-column: auto !important; grid-row: auto !important; height: clamp(330px, 32vw, 420px); align-self: start; }
-.detail-view-root .detail-right .detail-data-card:last-child { grid-column: auto !important; grid-row: auto !important; height: clamp(430px, 27vw, 560px); margin-top: 0; align-self: start; }
-.detail-view-root .detail-left .provenance-card { display: flex; height: clamp(430px, 27vw, 560px); min-height: 0; flex-direction: column; overflow: hidden; }
-
-/* Detail layout: the center remains a continuous render -> map column. */
-.detail-view-root .monster-detail-shell { grid-template-rows: none !important; height: auto !important; align-items: start; overflow: visible; }
-.detail-view-root .detail-left { grid-column: auto !important; grid-row: auto !important; }
-.detail-view-root .detail-center { display: grid !important; grid-column: auto !important; grid-row: auto !important; align-content: start; gap: 14px; }
-.detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card { grid-column: auto !important; grid-row: auto !important; }
-.detail-view-root .center-part-map-card { height: clamp(430px, 27vw, 560px); }
-.detail-view-root .center-part-map-card .part-map { min-height: 0; flex: 1 1 auto; }
-.detail-view-root .detail-right { display: flex !important; grid-column: auto !important; grid-row: auto !important; flex-direction: column; gap: 14px; }
-.detail-view-root .weakness-detail-card { grid-column: auto !important; grid-row: auto !important; }
-.detail-view-root .detail-right .detail-data-card:last-child { grid-column: auto !important; grid-row: auto !important; height: clamp(430px, 27vw, 560px); margin-top: clamp(80px, calc(32vw - 250px), 150px); }
-.detail-view-root .detail-left .provenance-card, .detail-view-root .detail-left .detail-provenance { grid-column: auto !important; grid-row: auto !important; }
-.detail-view-root .detail-left .provenance-card { display: flex; height: clamp(430px, 27vw, 560px); min-height: 0; flex-direction: column; overflow: hidden; }
-.detail-view-root .detail-left .provenance-card .source-grid { min-height: 0; flex: 1 1 auto; overflow-y: auto; align-content: start; }
-.detail-view-root .detail-left .provenance-card .detail-provenance { flex: none; margin: 12px 0 0; }
-
-/* Two aligned rows: render/weaknesses above, provenance/map/rewards below. */
-.detail-view-root .monster-detail-shell { grid-template-rows: auto auto !important; align-items: stretch; }
-.detail-view-root .detail-left { grid-column: 1 !important; grid-row: 1 !important; align-self: start; }
-.detail-view-root .detail-center { display: contents !important; }
-.detail-view-root .monster-render-panel { grid-column: 2 !important; grid-row: 1 !important; align-self: start; }
-.detail-view-root .center-part-map-card { grid-column: 2 !important; grid-row: 2 !important; height: clamp(430px, 27vw, 560px); align-self: stretch; }
-.detail-view-root .detail-right { display: contents !important; }
-.detail-view-root .weakness-detail-card { grid-column: 3 !important; grid-row: 1 !important; align-self: start; }
-.detail-view-root .detail-right .detail-data-card:last-child { grid-column: 3 !important; grid-row: 2 !important; height: auto; min-height: 0; margin-top: 0; align-self: stretch; }
-.detail-view-root > .monster-detail-shell > .provenance-card { grid-column: 1 !important; grid-row: 2 !important; height: 100%; min-height: 0; margin: 0; align-self: stretch; }
-.detail-view-root > .monster-detail-shell > .provenance-card { display: flex; flex-direction: column; overflow: hidden; }
-.detail-view-root > .monster-detail-shell > .provenance-card .source-grid { min-height: 0; flex: 1 1 auto; overflow-y: auto; align-content: start; }
-.detail-view-root > .monster-detail-shell > .provenance-card .detail-provenance { flex: none; margin: 12px 0 0; }
-@media (max-width: 1100px) {
-  .detail-view-root .monster-detail-shell { grid-template-rows: none !important; }
-  .detail-view-root .detail-left, .detail-view-root .detail-center, .detail-view-root .detail-right, .detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card, .detail-view-root .weakness-detail-card, .detail-view-root .detail-right .detail-data-card:last-child, .detail-view-root > .monster-detail-shell > .provenance-card { display: grid !important; grid-column: auto !important; grid-row: auto !important; height: auto; margin-top: 0; }
-}
-
-/* Final detail layout: each column flows independently; bounded cards scroll internally. */
-.detail-view-root .monster-detail-shell {
-  grid-template-rows: none !important;
-  align-items: start !important;
-  height: auto !important;
-  overflow: visible !important;
-}
-.detail-view-root .detail-left {
-  grid-column: auto !important;
-  grid-row: auto !important;
-  align-self: start !important;
-}
-.detail-view-root .detail-center {
-  display: grid !important;
-  grid-column: auto !important;
-  grid-row: auto !important;
-  align-content: start !important;
-  gap: 14px !important;
-  overflow: visible !important;
-}
-.detail-view-root .monster-render-panel,
-.detail-view-root .center-part-map-card {
-  grid-column: auto !important;
-  grid-row: auto !important;
-}
-.detail-view-root .center-part-map-card {
-  height: clamp(430px, 27vw, 560px) !important;
-  min-height: 0 !important;
-  align-self: start !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-}
-.detail-view-root .center-part-map-card .part-map {
-  display: flex !important;
-  min-height: 0 !important;
-  flex: 1 1 auto !important;
-  flex-direction: column !important;
-}
-.detail-view-root .center-part-map-card .part-map-stage {
-  min-height: 0 !important;
-  flex: 1 1 auto !important;
-  aspect-ratio: auto !important;
-}
-.detail-view-root .detail-right {
-  display: flex !important;
-  grid-column: auto !important;
-  grid-row: auto !important;
-  flex-direction: column !important;
-  gap: 14px !important;
-  overflow: visible !important;
-}
-.detail-view-root .weakness-detail-card {
-  height: clamp(330px, 32vw, 420px) !important;
-  align-self: start !important;
-  min-height: 0 !important;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-}
-.detail-view-root .detail-right .detail-data-card:last-child {
-  height: clamp(430px, 27vw, 560px) !important;
-  min-height: 0 !important;
-  margin-top: 0 !important;
-  align-self: stretch !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-}
-.detail-view-root .weakness-detail-card { width: 100% !important; }
-.detail-view-root .detail-left .compact-card {
-  min-height: 0 !important;
-  max-height: clamp(140px, 12vw, 190px) !important;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-}
-.detail-view-root .detail-left .compact-card .detail-description {
-  overflow-wrap: anywhere;
-  word-break: normal;
-}
-.detail-view-root .detail-right .detail-data-card:last-child .compact-list {
-  min-height: 0 !important;
-  max-height: none !important;
-  flex: 1 1 auto !important;
-  overflow-y: auto !important;
-}
-.detail-view-root .detail-left .provenance-card {
-  display: flex !important;
-  height: var(--provenance-height, clamp(430px, 27vw, 560px)) !important;
-  min-height: 0 !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-}
-.detail-view-root .detail-left .provenance-card .source-grid {
-  min-height: 0 !important;
-  flex: 1 1 auto !important;
-  overflow-y: auto !important;
-  align-content: start !important;
-}
-.detail-view-root .detail-left .provenance-card .detail-provenance {
-  flex: none !important;
-  margin: 12px 0 0 !important;
-}
 
 /* Use the remaining weakness-card space for source-backed resistances. */
 .weakness-divider {
@@ -336,4 +167,361 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 }
 @media (max-width: 1250px) {
   .weakness-elements, .resistance-elements { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Monsterpedia field-guide visual system. */
+:root {
+  --guide-bg: #0b1014;
+  --guide-surface: #151d22;
+  --guide-surface-deep: #10181d;
+  --guide-panel: #1c272b;
+  --guide-brass: #c49a5a;
+  --guide-brass-soft: rgba(196, 154, 90, .34);
+  --guide-teal: #6fa9b7;
+  --guide-ivory: #e8e1d2;
+  --guide-muted: #a8b4b5;
+}
+
+body {
+  background:
+    radial-gradient(circle at 74% -12%, rgba(50, 103, 111, .2), transparent 34%),
+    radial-gradient(circle at 8% 100%, rgba(164, 117, 59, .08), transparent 28%),
+    var(--guide-bg);
+  color: var(--guide-ivory);
+}
+
+.sidebar {
+  position: relative;
+  overflow: hidden;
+  flex-basis: 190px;
+  border-right-color: rgba(196, 154, 90, .22);
+  background: linear-gradient(180deg, rgba(10, 17, 21, .98), rgba(13, 20, 24, .98));
+}
+.sidebar-legend {
+  position: absolute;
+  right: 0;
+  bottom: 72px;
+  left: 0;
+  z-index: 1;
+  color: rgba(196, 154, 90, .72);
+  font-family: var(--display-font);
+  font-size: 11px;
+  letter-spacing: .24em;
+  line-height: 1.65;
+  text-align: center;
+}
+.sidebar-legend span { display: block; margin-top: 8px; color: var(--guide-brass); font-size: 24px; letter-spacing: 0; }
+.sidebar::after {
+  content: '';
+  position: absolute;
+  right: -28px;
+  bottom: 0;
+  left: -28px;
+  height: 180px;
+  opacity: .22;
+  background: linear-gradient(135deg, transparent 48%, rgba(111, 169, 183, .23) 49% 51%, transparent 52%) 0 50px / 94px 94px,
+    linear-gradient(45deg, transparent 47%, rgba(196, 154, 90, .24) 48% 50%, transparent 51%) 38px 20px / 120px 120px;
+  clip-path: polygon(0 100%, 0 72%, 18% 54%, 31% 68%, 47% 32%, 59% 57%, 78% 24%, 100% 56%, 100% 100%);
+  pointer-events: none;
+}
+.app-brand {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 19px;
+  border-bottom: 1px solid rgba(196, 154, 90, .18);
+  color: var(--guide-ivory);
+  font-family: var(--display-font);
+  font-size: 12px;
+  letter-spacing: .02em;
+}
+.brand-mark { color: var(--guide-brass); font-size: 17px; }
+.profile-card { border-bottom-color: rgba(196, 154, 90, .2); }
+.avatar { background: linear-gradient(145deg, #2c7180, #1e4650); border: 1px solid rgba(196, 154, 90, .45); }
+.nav-item, .settings-button { color: #9aa9aa; }
+.nav-item:hover, .nav-item.active { border-left-color: var(--guide-brass); background: linear-gradient(90deg, rgba(196, 154, 90, .16), rgba(111, 169, 183, .07)); color: var(--guide-ivory); }
+.nav-item.active span { color: var(--guide-brass); }
+.settings-button { border-top-color: rgba(196, 154, 90, .2); }
+.content-header { min-height: 82px; border-bottom-color: rgba(196, 154, 90, .22); background: rgba(11, 16, 20, .35); }
+.section-kicker { color: var(--guide-brass); letter-spacing: .18em; }
+.content-header h1 { color: var(--guide-ivory); font-size: clamp(24px, 2.2vw, 31px); letter-spacing: .01em; }
+.detail-header-actions .ghost-button, .ghost-button { border-color: rgba(196, 154, 90, .38); background: rgba(20, 31, 35, .92); color: var(--guide-ivory); }
+.detail-header-actions .ghost-button:hover, .ghost-button:hover { border-color: var(--guide-brass); background: rgba(196, 154, 90, .13); }
+.view-root { padding-top: 24px; }
+
+.bestiary-view-root .toolbar {
+  padding: 14px 16px 15px;
+  border: 1px solid var(--guide-brass-soft);
+  border-radius: 10px;
+  background: linear-gradient(120deg, rgba(21, 29, 34, .96), rgba(14, 25, 29, .9));
+  box-shadow: inset 0 1px rgba(255, 255, 255, .03);
+}
+.bestiary-view-root .field { color: var(--guide-muted); }
+.bestiary-view-root select, .bestiary-view-root .text-input {
+  border-color: rgba(196, 154, 90, .3);
+  border-radius: 6px;
+  background: #121c21;
+  color: var(--guide-ivory);
+}
+.bestiary-view-root select:focus, .bestiary-view-root .text-input:focus { border-color: var(--guide-teal); box-shadow: 0 0 0 2px rgba(111, 169, 183, .12); }
+.bestiary-view-root .spoiler-toggle { border-color: rgba(196, 154, 90, .3); background: rgba(15, 25, 29, .7); color: var(--guide-ivory); }
+.bestiary-view-root .spoiler-toggle input { accent-color: var(--guide-brass); }
+.bestiary-view-root .info-banner { border-color: rgba(111, 169, 183, .32); background: linear-gradient(90deg, rgba(31, 83, 93, .25), rgba(25, 52, 59, .1)); color: #a9c5c8; }
+.bestiary-view-root .material-search-card {
+  position: relative;
+  min-height: 82px;
+  margin-bottom: 18px;
+  padding: 12px 18px;
+  overflow: hidden;
+  border-color: var(--guide-brass-soft);
+  border-radius: 10px;
+  background: linear-gradient(105deg, rgba(22, 34, 38, .98), rgba(15, 24, 27, .94));
+}
+.bestiary-view-root .material-search-card::after {
+  content: '⌖  ◇  ⌖';
+  position: absolute;
+  right: 24px;
+  bottom: 12px;
+  color: rgba(196, 154, 90, .22);
+  font-size: 46px;
+  letter-spacing: 18px;
+  pointer-events: none;
+}
+.bestiary-view-root .material-search-card > p { margin: 5px 0 8px; }
+.bestiary-view-root .material-search-input { width: min(100%, 440px); margin: 0; }
+.bestiary-view-root #monster-count { display: none; }
+.bestiary-view-root .material-search-card { display: grid; grid-template-columns: minmax(290px, 1fr) minmax(320px, 1.1fr) minmax(180px, .7fr); column-gap: 28px; align-items: center; }
+.bestiary-view-root .material-search-card .section-heading { grid-column: 1 / -1; }
+.bestiary-view-root .material-search-card .section-heading { position: absolute; top: 12px; left: 64px; }
+.bestiary-view-root .material-search-card .section-heading > span { position: absolute; right: 0; }
+.bestiary-view-root .material-search-copy { grid-column: 2; margin-top: 0; }
+.bestiary-view-root .material-search-copy p { position: absolute; top: 42px; left: 64px; margin: 0; }
+.bestiary-view-root .material-search-copy .material-input-wrap { width: min(100%, 380px); }
+.bestiary-view-root .material-search-card .material-results { grid-column: 3; width: 100%; }
+.bestiary-view-root .material-results { min-height: 0; }
+.bestiary-view-root .material-results .empty-state { padding: 4px 0; border: 0; background: transparent; color: #8aa7aa; text-align: right; }
+.bestiary-view-root .card-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.bestiary-view-root .monster-card, .bestiary-view-root .build-card {
+  border-color: rgba(196, 154, 90, .24);
+  border-radius: 9px;
+  background: linear-gradient(145deg, rgba(23, 35, 39, .98), rgba(14, 23, 27, .98));
+}
+.bestiary-view-root .monster-card:hover { border-color: var(--guide-brass); box-shadow: 0 12px 28px rgba(0, 0, 0, .28); transform: translateY(-3px); }
+.bestiary-view-root .monster-art {
+  height: 128px;
+  background: radial-gradient(circle at 50% 40%, rgba(87, 143, 145, .2), transparent 62%), linear-gradient(135deg, rgba(196, 154, 90, .08), transparent), #122027;
+}
+.bestiary-view-root .monster-art img { max-height: 108px; max-width: 80%; }
+.bestiary-view-root .monster-card .card-body { padding: 12px 13px 13px; }
+.bestiary-view-root .card-title strong { color: var(--guide-ivory); font-size: 14px; }
+.bestiary-view-root .tag { border-color: rgba(111, 169, 183, .45); color: #a8d1d4; background: rgba(111, 169, 183, .08); }
+.bestiary-view-root .card-meta { color: var(--guide-muted); }
+.bestiary-view-root .favorite-button { border-color: rgba(196, 154, 90, .55); color: var(--guide-ivory); }
+
+.detail-view-root .monster-detail-shell { gap: 12px; }
+.detail-view-root .detail-card, .detail-view-root .monster-render-panel, .detail-view-root .center-part-map-card {
+  border-color: var(--guide-brass-soft);
+  border-radius: 9px;
+  background: linear-gradient(145deg, rgba(21, 31, 35, .98), rgba(13, 22, 26, .98));
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .17), inset 0 1px rgba(255, 255, 255, .025);
+}
+.detail-view-root .detail-card h3, .detail-view-root .center-part-map-card h3 { color: var(--guide-ivory); font-family: var(--display-font); letter-spacing: .035em; }
+.detail-view-root .detail-left .detail-card h3, .detail-view-root .weakness-detail-card h3 { font-size: 15px; }
+.detail-view-root .stat-box, .detail-view-root .source-card { border-color: rgba(111, 169, 183, .24); background: rgba(8, 17, 21, .5); }
+.detail-view-root .stat-box small { color: #96abad; }
+.detail-view-root .stat-box strong { color: var(--guide-ivory); }
+.detail-view-root .monster-render-panel { border-color: var(--guide-brass); background: radial-gradient(circle at 50% 40%, rgba(155, 90, 51, .42), rgba(17, 29, 33, .96) 61%), #101a1e; }
+.detail-view-root .render-heading { color: #9bb3b4; }
+.detail-view-root .monster-render-panel h1 { color: var(--guide-ivory); font-family: var(--display-font); font-size: clamp(26px, 2.6vw, 38px); letter-spacing: .045em; }
+.detail-view-root .render-status { color: #96abad; }
+.detail-view-root .part-map-stage { border-color: rgba(196, 154, 90, .55); border-radius: 7px; }
+.detail-view-root .part-map-connectors line { stroke: rgba(196, 154, 90, .88); }
+.detail-view-root .part-callout { border-color: rgba(111, 169, 183, .62); border-radius: 5px; background: rgba(8, 18, 22, .92); }
+.detail-view-root .part-callout em { color: #efc36b; }
+.detail-view-root .weakness-detail-card { border-color: rgba(196, 154, 90, .62); background: linear-gradient(145deg, rgba(27, 37, 41, .98), rgba(14, 24, 28, .98)); }
+.detail-view-root .weakness-divider { background: rgba(196, 154, 90, .62); }
+.detail-view-root .weakness-badge { min-height: 58px; border-color: rgba(111, 169, 183, .34); border-radius: 7px; background: linear-gradient(145deg, rgba(28, 49, 55, .8), rgba(11, 22, 26, .9)); }
+.detail-view-root .weakness-icon { background: rgba(8, 17, 21, .6); }
+.detail-view-root .resistance-section h4 { color: var(--guide-ivory); letter-spacing: .04em; }
+.detail-view-root .compact-list li { border-bottom-color: rgba(111, 169, 183, .15); color: #bdc9c8; }
+.detail-view-root .compact-list li strong { color: var(--guide-ivory); }
+.detail-view-root .compact-list li span { color: #9bb3b4; }
+.detail-view-root .provenance-card { border-color: rgba(111, 169, 183, .34); }
+.detail-view-root .source-card:hover { border-color: var(--guide-brass); }
+.detail-view-root .detail-provenance { border-color: rgba(196, 154, 90, .28); background: rgba(196, 154, 90, .08); color: #b8c8c5; }
+
+/* Ornamental layer used by the approved field-guide mockup. */
+.bestiary-view-root::before, .detail-view-root::before {
+  content: '⌖';
+  position: fixed;
+  top: 98px;
+  right: 30px;
+  z-index: -1;
+  color: rgba(196, 154, 90, .09);
+  font-family: Georgia, serif;
+  font-size: 170px;
+  line-height: 1;
+  pointer-events: none;
+}
+.bestiary-view-root .field-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #aab9b9;
+  font-size: 10px;
+  letter-spacing: .035em;
+}
+.bestiary-view-root .field-label .mh-icon { width: 13px; height: 13px; color: var(--guide-brass); }
+.bestiary-view-root .input-with-icon { position: relative; display: block; }
+.bestiary-view-root .input-with-icon > .mh-icon { position: absolute; top: 50%; left: 12px; z-index: 1; width: 15px; height: 15px; color: var(--guide-teal); transform: translateY(-50%); pointer-events: none; }
+.bestiary-view-root .input-with-icon > .text-input { width: 100%; padding-left: 35px; }
+.bestiary-view-root .search-field { min-width: 205px; }
+.bestiary-view-root .spoiler-toggle > .mh-icon { width: 16px; height: 16px; color: var(--guide-brass); }
+.bestiary-view-root .section-heading h2 { display: flex; align-items: center; gap: 9px; color: var(--guide-ivory); font-family: var(--display-font); letter-spacing: .025em; }
+.bestiary-view-root .section-icon { display: inline-grid; place-items: center; width: 30px; height: 30px; border: 1px solid rgba(196, 154, 90, .45); border-radius: 7px; background: rgba(196, 154, 90, .1); }
+.bestiary-view-root .section-icon .mh-icon { width: 20px; height: 20px; color: var(--guide-brass); }
+.bestiary-view-root .material-input-wrap { width: min(100%, 380px); }
+.bestiary-view-root .material-search-card::after { content: '⌖  ◇  ⌖'; }
+.bestiary-view-root .monster-card::before { content: ''; display: block; height: 2px; background: linear-gradient(90deg, var(--guide-brass), rgba(111, 169, 183, .7), transparent); opacity: .8; }
+.bestiary-view-root .monster-art { height: 126px; }
+.bestiary-view-root .monster-card .card-title { align-items: center; }
+.bestiary-view-root .monster-card .card-meta::before { content: '◈'; margin-right: 4px; color: var(--guide-brass); }
+
+.content-header:has(+ .view-root.bestiary-view-root), .content-header:has(+ .view-root.detail-view-root) {
+  position: relative;
+  overflow: hidden;
+  background-color: #0d191d;
+  background-image:
+    radial-gradient(circle at 82% 45%, transparent 0 44px, rgba(196, 154, 90, .12) 45px 46px, transparent 47px 72px, rgba(111, 169, 183, .1) 73px 74px, transparent 75px),
+    repeating-linear-gradient(155deg, transparent 0 22px, rgba(196, 154, 90, .055) 23px 24px, transparent 25px 42px);
+}
+.content-header:has(+ .view-root.bestiary-view-root)::after, .content-header:has(+ .view-root.detail-view-root)::after {
+  content: '✥';
+  position: absolute;
+  right: 240px;
+  top: 9px;
+  color: rgba(196, 154, 90, .4);
+  font-size: 56px;
+  pointer-events: none;
+}
+.content-header:has(+ .view-root.bestiary-view-root) .content-header-title::before, .content-header:has(+ .view-root.detail-view-root) .content-header-title::before {
+  content: '✥';
+  display: inline-grid;
+  place-items: center;
+  position: absolute;
+  left: -76px;
+  top: -9px;
+  width: 58px;
+  height: 58px;
+  color: var(--guide-brass);
+  font-size: 48px;
+}
+.content-header:has(+ .view-root.bestiary-view-root) .content-header-title, .content-header:has(+ .view-root.detail-view-root) .content-header-title { position: relative; margin-left: 76px; }
+.content-header:has(+ .view-root.bestiary-view-root) .content-header-line::after, .content-header:has(+ .view-root.detail-view-root) .content-header-line::after {
+  content: '—  CONHECIMENTO É A MELHOR ARMA';
+  margin-left: 22px;
+  color: rgba(196, 154, 90, .66);
+  font-family: var(--display-font);
+  font-size: 9px;
+  letter-spacing: .16em;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .bestiary-view-root .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .bestiary-view-root .material-search-card { grid-template-columns: 1fr; min-height: 126px; }
+  .bestiary-view-root .material-search-card .section-heading { position: static; grid-column: 1; }
+  .bestiary-view-root .material-search-card .section-heading > span { position: static; }
+  .bestiary-view-root .material-search-copy { grid-column: 1; }
+  .bestiary-view-root .material-search-copy p { position: static; margin: 5px 0 8px; }
+  .bestiary-view-root .material-search-card .material-results { grid-column: 1; }
+}
+@media (max-width: 760px) {
+  .bestiary-view-root .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar-legend { display: none; }
+}
+
+/* D219: exact approved Monsterpedia front proportions. */
+.content-header:has(+ .view-root.bestiary-view-root) {
+  min-height: 118px;
+  padding: 0 12px;
+}
+.content-header:has(+ .view-root.bestiary-view-root) h1 {
+  font-size: 42px;
+  letter-spacing: .015em;
+}
+.content-header:has(+ .view-root.bestiary-view-root) .section-kicker { font-size: 10px; }
+.content-header:has(+ .view-root.bestiary-view-root)::before {
+  content: 'NOVOS HORIZONTES\A MESMAS LENDAS';
+  position: absolute;
+  top: 29px;
+  right: 28px;
+  color: rgba(196, 154, 90, .78);
+  font-size: 9px;
+  line-height: 1.65;
+  letter-spacing: .2em;
+  text-align: right;
+  white-space: pre;
+}
+.bestiary-view-root { padding: 0 11px 36px; }
+.bestiary-view-root .material-search-card {
+  height: 82px;
+  min-height: 82px;
+  margin-bottom: 18px;
+  padding: 0 22px;
+  grid-template-columns: minmax(290px, 1fr) minmax(320px, 380px) minmax(180px, 1fr);
+  column-gap: 28px;
+}
+.bestiary-view-root .material-search-card .section-heading {
+  position: absolute;
+  top: 12px;
+  left: 64px;
+  grid-column: auto;
+}
+.bestiary-view-root .material-search-card .section-heading > span {
+  position: absolute;
+  right: 0;
+}
+.bestiary-view-root .material-search-copy { grid-column: 2; margin: 0; }
+.bestiary-view-root .material-search-copy p {
+  position: absolute;
+  top: 42px;
+  left: 64px;
+  margin: 0;
+}
+.bestiary-view-root .material-search-card .material-results { grid-column: 3; width: 100%; }
+.bestiary-view-root .material-results .empty-state {
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  text-align: right;
+}
+.bestiary-view-root .material-empty-state .result-marker {
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin-left: auto;
+  background: var(--guide-brass);
+}
+
+@media (max-width: 1100px) {
+  .content-header:has(+ .view-root.bestiary-view-root) { min-height: 96px; }
+  .content-header:has(+ .view-root.bestiary-view-root)::before { display: none; }
+  .bestiary-view-root { padding: 18px 20px 30px; }
+  .bestiary-view-root .material-search-card {
+    height: auto;
+    min-height: 126px;
+    padding: 12px 18px;
+    grid-template-columns: 1fr;
+  }
+  .bestiary-view-root .material-search-card .section-heading,
+  .bestiary-view-root .material-search-card .section-heading > span,
+  .bestiary-view-root .material-search-copy p { position: static; }
+  .bestiary-view-root .material-search-card .section-heading { grid-column: 1; }
+  .bestiary-view-root .material-search-copy { grid-column: 1; }
+  .bestiary-view-root .material-search-copy p { margin: 5px 0 8px; }
+  .bestiary-view-root .material-search-card .material-results { grid-column: 1; }
 }

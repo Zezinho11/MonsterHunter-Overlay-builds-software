@@ -9,6 +9,7 @@ const { loadOverlaySettings, saveOverlaySettings } = require('./infrastructure/o
 const execFileAsync = promisify(execFile);
 
 const fixturePath = path.join(__dirname, 'fixtures', 'simulated-overlay-v1.json');
+const appIconPath = path.join(__dirname, 'assets', 'app-icon.png');
 const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
 
 let overlayWindow;
@@ -33,13 +34,14 @@ function createInitialState() {
 }
 
 function createControlWindow() {
+  const area = screen.getPrimaryDisplay().workArea;
   controlWindow = new BrowserWindow({
-    width: 420,
-    height: 760,
-    minHeight: 620,
+    width: Math.min(1680, area.width),
+    height: Math.min(990, area.height),
     minWidth: 380,
     minHeight: 520,
     title: 'Hunter Companion — Configuração',
+    icon: appIconPath,
     backgroundColor: '#101217',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -47,7 +49,9 @@ function createControlWindow() {
       nodeIntegration: false,
     },
   });
-  controlWindow.loadFile(path.join(__dirname, 'control.html'));
+  const monsterId = process.argv.find((arg) => arg.startsWith('--monster='))?.slice('--monster='.length);
+  const startView = process.argv.includes('--bestiary') ? 'bestiary' : undefined;
+  controlWindow.loadFile(path.join(__dirname, 'control.html'), { query: { ...(monsterId ? { monster: monsterId } : {}), ...(startView ? { view: startView } : {}) } });
   controlWindow.on('closed', () => { controlWindow = null; });
 }
 

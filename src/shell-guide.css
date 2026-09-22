@@ -1,0 +1,58 @@
+/* Shared field-guide chrome. The Monsterpedia canvas remains unchanged. */
+body .sidebar {
+  position: sticky !important;
+  top: 0;
+  height: 100vh;
+  flex: 0 0 190px !important;
+  border-right: 1px solid #42606a;
+  background: linear-gradient(#061015 42%,#06101533 68%,#061015aa),url('assets/field-guide/atlas-night.png') left bottom / auto 65% no-repeat !important;
+}
+body .sidebar::after { display: none !important; }
+body .app-brand { height: 40px; min-height: 40px; padding: 0 17px; gap: 10px; border-bottom: 1px solid #28414a; white-space: nowrap; font: 13px Georgia,serif; }
+body .brand-mark { flex: 0 0 23px; width: 23px; height: 30px; color: transparent; background: url('assets/field-guide/compass.svg') center / contain no-repeat; }
+body .profile-card { height: 132px; padding: 14px 15px; border-bottom: 1px solid #29404a; }
+body .avatar { width: 60px; height: 60px; margin-bottom: 8px; border: 1px solid #6976de; background: linear-gradient(140deg,#5865e2,#303aa7); }
+body .profile-card strong { font: 14px Georgia,serif; }
+body .profile-card small { margin-top: 5px; font-size: 11px; }
+body .main-nav { padding-top: 12px; }
+body .nav-item { height: 49px; padding: 10px 8px 10px 20px; gap: 15px; white-space: nowrap; color: #bfd1d9; font: 14px Georgia,serif; }
+body .nav-item span { flex: 0 0 20px; }
+body .nav-item.active { border-left: 4px solid #dfbd75; padding-left: 19px; border-top: 1px solid #42636d; border-bottom: 1px solid #42636d; background: linear-gradient(90deg,#253b3c,#10232a); color: #fff7e5; }
+body .nav-item.active span { width: 20px; height: 25px; color: transparent; background: url('assets/field-guide/compass.svg') center / contain no-repeat; }
+body .sidebar-legend { position: absolute; bottom: 55px; left: 0; width: 100%; padding: 0 56px; color: #c5a05c; font: 11px/1.5 'Segoe UI',sans-serif; letter-spacing: .27em; }
+body .sidebar-legend span { display: block; width: 40px; height: 43px; margin: 9px auto 0; color: transparent; background: url('assets/field-guide/compass.svg') center / contain no-repeat; }
+body .settings-button { position: absolute; bottom: 0; height: 28px; min-height: 0; padding: 4px 18px; font-size: 10px; opacity: .65; }
+body .content-shell { background: linear-gradient(#071217b0,#071217f0),url('assets/field-guide/atlas-night.png') right top/1500px auto; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header {
+  position: relative;
+  height: 118px;
+  min-height: 118px;
+  padding: 0 26px;
+  border: 0;
+  background: linear-gradient(90deg,#06131955,#06131933),url('assets/field-guide/atlas-night.png') right top/1490px auto;
+}
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-title { position: relative; margin-left: 96px; gap: 0; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-title::before { content: ''; position: absolute; left: -98px; top: -16px; width: 80px; height: 90px; background: url('assets/field-guide/compass.svg') center/contain no-repeat; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .section-kicker { color: #dfbe76; font: 11px/1.6 Georgia,serif; letter-spacing: .3em; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header h1 { margin: 2px 0 0; color: #f4ead6; font: 44px/1.1 Georgia,serif; letter-spacing: .01em; text-transform: uppercase; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-line::after { content: 'CONHECIMENTO\A É A MELHOR ARMA'; white-space: pre; padding-left: 60px; margin-left: 32px; color: #bcc7cc; font: 9px/1.8 'Segoe UI',sans-serif; letter-spacing: .22em; background: linear-gradient(#cca45d,#cca45d) left center/42px 1px no-repeat; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header::after { content: ''; position: absolute; top: 0; right: 300px; width: 100px; height: 105px; background: url('assets/field-guide/compass.svg') center/contain no-repeat; opacity: .35; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header::before { content: 'NOVOS HORIZONTES\A MESMAS LENDAS'; position: absolute; top: 61px; right: 43px; color: #c9a35d; font: 10px/1.8 'Segoe UI',sans-serif; letter-spacing: .18em; text-align: center; white-space: pre; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .header-actions { display: none; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .view-root { padding: 0 23px 30px 22px; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .view-root > .toolbar,
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .view-root > .settings-card { margin-top: 0; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .view-root > .toolbar { min-height: 96px; padding: 19px; border: 1px solid #73633e; border-radius: 8px; background: linear-gradient(100deg,#0e1b21df,#112128b0),url('assets/field-guide/atlas-night.png') right top/1050px auto; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .field { color: #b7c7ce; font-size: 11px; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) select,
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .text-input { height: 42px; border: 1px solid #677372; background: linear-gradient(#14232988,#071116aa); color: #eff2ed; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .primary-button { border-color: #b89a62; background: #193139; color: #f4ead6; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .info-banner,
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .editor-card,
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .settings-card { border-color: #73633e; background: linear-gradient(#102127dc,#0b1b22c9),url('assets/field-guide/atlas-night.png') right top/1000px auto; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .card-grid { grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 16px; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .build-card { border-color: #9d834b; background: #0d1c21; }
+body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .card-art { background: radial-gradient(ellipse at 45% 23%,#95805a30,transparent 58%),url('assets/field-guide/atlas-night.png') right top/650px auto; }
+.reward-symbol img { display: block; width: 24px; height: 24px; object-fit: contain; }
+@media (max-width: 1100px) { body .sidebar { flex-basis: 160px !important; } body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-line::after { display: none; } }
+@media (max-width: 650px) { body .sidebar { flex-basis: 64px !important; overflow: hidden; } body .profile-card,body .app-brand { visibility: hidden; } body .sidebar-legend { display: none; visibility: hidden; } body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header h1 { font-size: 27px; } body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-title { margin-left: 0; } body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-title::before,body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header::before,body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header::after { display: none; } }

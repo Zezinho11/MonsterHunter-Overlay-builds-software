@@ -1,0 +1,7 @@
+# Field-guide artwork
+
+`atlas-night.png` is an original generated background created for this application using the built-in image generation tool on 2026-09-21. It is decorative, not a game asset or a data source. The functional UI is rendered separately in HTML and CSS.
+
+Prompt: “Generate one project UI BACKGROUND ASSET, no UI, no text, no letters, no logos, no frames, no creatures. Wide 1536x1024 dark fantasy hunter field-guide background. Very dark blue black petrol ink #07161b with intricate extremely low contrast fine engraved topographic contour lines concentrated in upper right and upper edge, a few thin muted antique gold contour lines. Along the far left 20 percent, from middle height downward, detailed jagged alpine mountain silhouettes, engraved blue-grey fine line pen illustration with pine forest in foreground. The mountains are visible but dark, like a nocturnal expedition journal. Remaining 80 percent almost empty dark navy-teal parchment with subtle grain and faint cartographic contours. Premium restrained handcrafted atlas aesthetic. No stars, no gradients of bright color, no text whatsoever. This background goes under functional app panels.”
+
+`compass.svg` and `embers.svg` are code-authored decorative artwork. Material-type symbols in the reward table are generic UI symbols; they do not claim to be official game icons. Element/status icons retain their existing provenance in `../ui-icons/README.md`.

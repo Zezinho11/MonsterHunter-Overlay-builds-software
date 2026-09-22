@@ -12,7 +12,10 @@
     "catalog:refresh": "node scripts/build-monster-catalog.js",
     "catalog:audit": "node scripts/audit-monster-catalog.js",
     "monsterpedia:audit": "node scripts/audit-monsterpedia.js",
+    "monsterpedia:layout-audit": "electron scripts/audit-detail-layout.cjs",
     "monsterpedia:deep-audit": "node scripts/audit-monsterpedia-deep.js",
+    "rewards:revalidate": "node scripts/revalidate-rewards.cjs --apply",
+    "shell:audit": "electron scripts/audit-shell-layout.cjs",
     "maps:audit": "node scripts/audit-monster-maps.js",
     "dist": "electron-builder --win nsis portable",
     "dist:installer": "electron-builder --win nsis",
@@ -28,6 +31,7 @@
   "build": {
     "appId": "com.coditech.monsterhuntercompanion",
     "productName": "Monster Hunter Companion",
+    "icon": "src/assets/app-icon.png",
     "directories": {
       "output": "release"
     },

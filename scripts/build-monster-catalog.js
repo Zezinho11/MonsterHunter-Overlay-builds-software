@@ -916,6 +916,22 @@ async function main() {
     if (entry.render && !entry.renderSource) entry.renderSource = 'monster-hunter-tools';
   }
 
+  const auditFile = path.join(ROOT, 'src', 'data', 'reward-audit.v1.json');
+  if (await fs.stat(auditFile).then(() => true, () => false)) {
+    const audit = JSON.parse(await fs.readFile(auditFile, 'utf8'));
+    for (const entry of entries) {
+      const verified = audit.entries?.[entry.id];
+      if (!verified || verified.name !== entry.name || verified.game !== entry.game) continue;
+      entry.ranks = verified.ranks;
+      entry.rewards = verified.rewards;
+      entry.rewardAudit = verified.rewardAudit;
+      entry.rankData = Object.fromEntries(entry.ranks.map((rank) => [rank, {
+        rewards: entry.rewards.map((reward) => ({ ...reward, conditions: reward.conditions.filter((condition) => condition.rank === rank) })).filter((reward) => reward.conditions.length),
+        healthProfiles: entry.rankData?.[rank]?.healthProfiles || [],
+      }]));
+      entry.availability.rewards = entry.rewards.length > 0;
+    }
+  }
   const catalog = {
     schema: 'monster-catalog.v1',
     generatedAt: new Date().toISOString(),

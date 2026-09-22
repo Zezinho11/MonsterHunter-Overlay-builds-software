@@ -1,0 +1,97 @@
+/* D219: catalog reference canvas 1680 × 943, independent of detail layout. */
+body:has(.bestiary-view-root) { background:#071116; color:#eeeade; font-family:'Segoe UI',sans-serif; }
+body:has(.bestiary-view-root) .app-shell { min-height:100vh; }
+body:has(.bestiary-view-root) .sidebar { position:sticky; top:0; height:100vh; flex:0 0 190px; border-right:1px solid #42606a; background:linear-gradient(#061015 42%,#06101533 68%,#061015aa),url('assets/field-guide/atlas-night.png') left bottom / auto 65% no-repeat; }
+body:has(.bestiary-view-root) .sidebar::after { display:none; }
+body:has(.bestiary-view-root) .app-brand { height:40px; min-height:40px; padding:0 17px; gap:14px; font:14px Georgia,serif; border-bottom:1px solid #28414a; }
+body:has(.bestiary-view-root) .brand-mark { color:transparent; width:23px; height:30px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
+body:has(.bestiary-view-root) .profile-card { height:132px; padding:14px 15px; border-color:#29404a; }
+body:has(.bestiary-view-root) .avatar { width:60px; height:60px; border:1px solid #6976de; background:linear-gradient(140deg,#5865e2,#303aa7); margin-bottom:8px; }
+body:has(.bestiary-view-root) .profile-card strong { font:14px Georgia,serif; }
+body:has(.bestiary-view-root) .profile-card small { font-size:11px; margin-top:5px; }
+body:has(.bestiary-view-root) .main-nav { padding-top:12px; }
+body:has(.bestiary-view-root) .nav-item { height:49px; padding:10px 20px; gap:15px; font:14px Georgia,serif; color:#bfd1d9; }
+body:has(.bestiary-view-root) .nav-item.active { border-left:4px solid #dfbd75; padding-left:19px; background:linear-gradient(90deg,#253b3c,#10232a); border-top:1px solid #42636d; border-bottom:1px solid #42636d; color:#fff7e5; }
+body:has(.bestiary-view-root) .nav-item.active span { color:transparent; height:25px; width:20px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
+body:has(.bestiary-view-root) .sidebar-legend { position:absolute; bottom:55px; left:0; width:100%; padding:0 56px; font:11px/1.5 'Segoe UI',sans-serif; letter-spacing:.27em; color:#c5a05c; }
+body:has(.bestiary-view-root) .sidebar-legend span { color:transparent; margin:9px auto 0; width:40px; height:43px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
+body:has(.bestiary-view-root) .settings-button { position:absolute; bottom:0; height:28px; min-height:0; padding:4px 18px; font-size:10px; opacity:.65; }
+body:has(.bestiary-view-root) .content-shell { background:linear-gradient(#071217b0,#071217f0),url('assets/field-guide/atlas-night.png') right top/1500px auto; }
+.content-header:has(+ .bestiary-view-root) { height:118px; min-height:118px; padding:0 26px; border:0; background:linear-gradient(90deg,#06131933,#06131922),url('assets/field-guide/atlas-night.png') right top/1490px auto; }
+.content-header:has(+ .bestiary-view-root) .content-header-title { margin-left:96px; gap:0; }
+.content-header:has(+ .bestiary-view-root) .content-header-title::before { content:''; left:-98px; top:-16px; width:80px; height:90px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
+.content-header:has(+ .bestiary-view-root) .section-kicker { font:11px/1.6 Georgia,serif; letter-spacing:.3em; color:#dfbe76; }
+.content-header:has(+ .bestiary-view-root) h1 { margin:2px 0 0; font:44px/1.1 Georgia,serif; color:#f4ead6; text-transform:uppercase; letter-spacing:.01em; }
+.content-header:has(+ .bestiary-view-root) .content-header-line { gap:0; }
+.content-header:has(+ .bestiary-view-root) .content-header-line::after { content:'CONHECIMENTO\A É A MELHOR ARMA'; white-space:pre; padding-left:60px; margin:0 0 0 32px; font:9px/1.8 'Segoe UI',sans-serif; letter-spacing:.22em; color:#bcc7cc; background:linear-gradient(#cca45d,#cca45d) left center/42px 1px no-repeat; }
+.content-header:has(+ .bestiary-view-root)::after { content:''; width:100px; height:105px; top:0; right:300px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; opacity:.35; }
+.content-header:has(+ .bestiary-view-root)::before { top:61px; right:43px; font:10px/1.8 'Segoe UI',sans-serif; letter-spacing:.18em; color:#c9a35d; }
+.content-header:has(+ .bestiary-view-root) .header-actions { display:none; }
+.bestiary-view-root { padding:0 23px 30px 22px; }
+.bestiary-view-root::before { display:none; }
+.bestiary-view-root .toolbar { display:grid; grid-template-columns:192fr 172fr 176fr 205fr 318fr 159fr; align-items:end; gap:18px; height:96px; margin:0 -10px 14px; padding:20px 127px 13px 19px; border:1px solid #73633e; border-radius:8px; background:linear-gradient(100deg,#0e1b21df,#112128b0),url('assets/field-guide/atlas-night.png') right top/1050px auto; }
+.bestiary-view-root .field,.bestiary-view-root .search-field { min-width:0; gap:5px; }
+.bestiary-view-root .field-label { font-size:11px; letter-spacing:0; color:#b7c7ce; }
+.bestiary-view-root .field-label>.mh-icon { display:none; }
+.bestiary-view-root select,.bestiary-view-root .text-input { min-width:0; width:100%; height:42px; border:1px solid #677372; border-radius:6px; background:linear-gradient(#14232988,#071116aa); font:12px 'Segoe UI',sans-serif; color:#eff2ed; padding:0 13px; }
+.bestiary-view-root .field:has(select) { position:relative; }
+.bestiary-view-root .field:has(select)::after { content:''; position:absolute; left:13px; bottom:8px; width:23px; height:25px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; pointer-events:none; }
+.bestiary-view-root .field:has(select) select { padding-left:47px; }
+.bestiary-view-root .field:has(#monster-favorites)::after { content:'☆'; background:none; color:#e7bc65; font-size:26px; line-height:24px; }
+.bestiary-view-root .input-with-icon>.mh-icon { width:20px; height:20px; color:#91a4ad; }
+.bestiary-view-root .input-with-icon>.text-input { padding-left:48px; border-color:#35545e; }
+.bestiary-view-root .spoiler-toggle { position:relative; height:42px; min-height:42px; padding:0 10px; gap:9px; font-size:11px; white-space:nowrap; border:1px solid #344952; border-radius:6px; color:#f2f1ec; background:#08131999; }
+.bestiary-view-root .spoiler-toggle>.mh-icon { display:none; }
+.bestiary-view-root .spoiler-toggle::before { content:'◉'; font-size:25px; transform:rotate(-35deg); text-decoration:line-through; }
+.bestiary-view-root .spoiler-toggle input { position:absolute; opacity:0; width:100%; height:100%; inset:0; margin:0; cursor:pointer; }
+.bestiary-view-root .spoiler-toggle:has(:checked) { border-color:#e3bc68; background:#314136; }
+.bestiary-view-root .spoiler-toggle:focus-within { outline:2px solid #e3bc68; }
+.bestiary-view-root #monster-count { display:none; }
+.bestiary-view-root .material-search-card { display:grid; position:relative; grid-template-columns:480fr 378fr 510fr; gap:20px; height:auto; min-height:82px; margin:0 0 17px; padding:15px 20px; border:1px solid #a58950; border-radius:6px; background:linear-gradient(100deg,#102127cf,#0b1b22a0),url('assets/field-guide/atlas-night.png') right top/1000px auto; }
+.bestiary-view-root .material-search-card::after { display:none; }
+.bestiary-view-root .material-search-card .section-heading { position:static; display:block; grid-column:1; align-self:center; padding-left:70px; }
+.bestiary-view-root .material-search-card .section-heading h2 { position:relative; display:block; margin:0 0 5px; font:600 14px/1.1 'Segoe UI',sans-serif; letter-spacing:.14em; white-space:nowrap; }
+.bestiary-view-root .material-search-card .section-icon { position:absolute; left:-69px; top:-7px; width:47px; height:48px; border:0; border-radius:0; background:none; }
+.bestiary-view-root .material-search-card .section-icon .mh-icon { width:43px; height:43px; }
+.bestiary-view-root .material-search-card .section-heading>span { position:absolute; right:40px; top:26px; font:9px 'Segoe UI',sans-serif; letter-spacing:.13em; }
+.bestiary-view-root .material-search-copy { display:contents; }
+.bestiary-view-root .material-search-copy p { position:static; margin:0; font:12px 'Segoe UI',sans-serif; color:#b1c0c7; letter-spacing:0; }
+.bestiary-view-root .material-input-wrap { width:100%; grid-column:2; align-self:center; }
+.bestiary-view-root .material-search-input { margin:0; height:40px; }
+.bestiary-view-root .material-search-card .material-results { grid-column:1/-1; width:100%; max-height:260px; overflow:auto; }
+.bestiary-view-root .material-results:has(.empty-state) { display:none; }
+.bestiary-view-root .material-search-card:has(.empty-state)::before { content:''; position:absolute; right:190px; top:52px; width:42px; height:1px; background:#bd9957; }
+.bestiary-view-root .card-grid { grid-template-columns:repeat(6,minmax(0,1fr)); gap:16px; }
+.bestiary-view-root .monster-card { height:186px; position:relative; border:1px solid #9d834b; border-radius:7px; background:radial-gradient(ellipse at 45% 23%,#95805a30,transparent 58%),linear-gradient(#0d1c21a0,#07151ce8),url('assets/field-guide/atlas-night.png') right top/650px auto; box-shadow:inset 0 0 0 3px #05101499,0 3px 8px #0007; }
+.bestiary-view-root .monster-card::before { display:none; }
+.bestiary-view-root .monster-art { height:126px; background:none; }
+.bestiary-view-root .monster-art img { max-height:116px; max-width:82%; filter:drop-shadow(0 3px 12px #bca56b22); }
+.bestiary-view-root .monster-card .card-body { padding:3px 13px 10px; background:none; }
+.bestiary-view-root .card-title strong { color:#f1f1ec; font:600 14px/1.4 'Segoe UI',sans-serif; }
+.bestiary-view-root .card-title>.tag { display:none; }
+.bestiary-view-root .card-meta { margin-top:7px; height:20px; align-items:center; font-size:11px; color:#acbbc5; }
+.bestiary-view-root .monster-card .card-meta::before { display:none; }
+.bestiary-view-root .card-meta>span:first-child { position:relative; margin-left:25px; padding:2px 5px; border:1px solid #28505d; border-radius:4px; color:#a5d2e6; font-size:9px; text-transform:uppercase; }
+.bestiary-view-root .card-meta>span:first-child::before { content:''; position:absolute; left:-26px; top:-3px; width:19px; height:22px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
+.bestiary-view-root .card-meta>span:last-child::before { content:'◎'; font-size:18px; vertical-align:-1px; margin-right:8px; color:#c7d8de; }
+.bestiary-view-root .favorite-button { top:8px; right:8px; width:24px; height:24px; font-size:19px; color:#f5d690; border-color:#947a40; }
+body:has(.bestiary-view-root) .app-brand { white-space:nowrap; font-weight:400; font-size:13px; gap:10px; }
+body:has(.bestiary-view-root) .brand-mark { flex:0 0 23px; }
+body:has(.bestiary-view-root) .nav-item { white-space:nowrap; font-weight:400; padding-right:8px; }
+body:has(.bestiary-view-root) .nav-item span { flex:0 0 20px; }
+.content-header:has(+ .view-root.bestiary-view-root) { padding:0 26px; background:linear-gradient(90deg,#06131955,#06131933),url('assets/field-guide/atlas-night.png') right top/1490px auto; }
+.content-header:has(+ .view-root.bestiary-view-root) .content-header-title { margin-left:96px; }
+.content-header:has(+ .view-root.bestiary-view-root) .content-header-title::before { content:''; left:-98px; top:-16px; width:80px; height:90px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
+.content-header:has(+ .view-root.bestiary-view-root) h1 { font:44px/1.1 Georgia,serif; text-transform:uppercase; }
+.content-header:has(+ .view-root.bestiary-view-root) .content-header-line::after { content:'CONHECIMENTO\A É A MELHOR ARMA'; white-space:pre; padding-left:60px; margin:0 0 0 32px; font:9px/1.8 'Segoe UI',sans-serif; letter-spacing:.22em; color:#bcc7cc; background:linear-gradient(#cca45d,#cca45d) left center/42px 1px no-repeat; }
+.content-header:has(+ .view-root.bestiary-view-root)::after { content:''; width:100px; height:105px; top:0; right:300px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; opacity:.35; }
+.content-header:has(+ .view-root.bestiary-view-root)::before { top:61px; right:43px; font:10px/1.8 'Segoe UI',sans-serif; letter-spacing:.18em; color:#c9a35d; }
+.bestiary-view-root .material-search-card .section-heading p { margin:0; font:12px 'Segoe UI',sans-serif; color:#b1c0c7; }
+.bestiary-view-root .monster-card { background:radial-gradient(ellipse at 45% 23%,#95805a30,transparent 58%),linear-gradient(#0d1c21cf,#07151cf0),url('assets/field-guide/atlas-night.png') right top/650px auto; }
+.bestiary-view-root .material-search-card .section-icon { background:url('assets/field-guide/material-crates.svg') center/contain no-repeat; }
+.bestiary-view-root .material-search-card .section-icon .mh-icon { visibility:hidden; }
+.bestiary-view-root .spoiler-toggle::before { content:''; width:25px; height:25px; flex:none; transform:none; background:url('assets/field-guide/eye-off.svg') center/contain no-repeat; }
+@media(min-width:1800px) { .bestiary-view-root .monster-card { height:205px; } .bestiary-view-root .monster-art { height:145px; } .bestiary-view-root .monster-art img { max-height:132px; } }
+@media(max-width:1400px) { .bestiary-view-root .toolbar { padding-right:18px; gap:10px; } .bestiary-view-root .material-search-card { grid-template-columns:1.2fr 1fr .6fr; } .bestiary-view-root .material-search-card .section-heading>span { right:18px; font-size:8px; } .bestiary-view-root .material-search-copy p { font-size:10px; } .content-header:has(+ .bestiary-view-root) .content-header-line::after { display:none; } }
+@media(max-width:1100px) { body:has(.bestiary-view-root) .sidebar { flex-basis:160px; } .bestiary-view-root .card-grid { grid-template-columns:repeat(4,minmax(0,1fr)); } .bestiary-view-root .toolbar { height:auto; grid-template-columns:repeat(3,minmax(0,1fr)); padding:14px; } .bestiary-view-root .material-search-card { grid-template-columns:1fr; } .bestiary-view-root .material-search-card .section-heading>span,.bestiary-view-root .material-search-card::before { display:none; } .bestiary-view-root .material-input-wrap { grid-column:1; } .bestiary-view-root .material-search-copy p { font-size:11px; } }
+@media(max-width:650px) { body:has(.bestiary-view-root) .sidebar { flex-basis:64px; overflow:hidden; } body:has(.bestiary-view-root) .profile-card,body:has(.bestiary-view-root) .app-brand,body:has(.bestiary-view-root) .sidebar-legend { visibility:hidden; } .content-header:has(+ .bestiary-view-root) { padding:0 12px; } .content-header:has(+ .bestiary-view-root) .content-header-title { margin-left:0; } .content-header:has(+ .bestiary-view-root) h1 { font-size:27px; } .content-header:has(+ .bestiary-view-root)::before,.content-header:has(+ .bestiary-view-root)::after { display:none; } .bestiary-view-root { padding:0 10px 20px; } .bestiary-view-root .toolbar { margin-left:0; margin-right:0; grid-template-columns:repeat(2,minmax(0,1fr)); } .bestiary-view-root .card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .bestiary-view-root .monster-card { height:180px; } .bestiary-view-root .card-meta>span:last-child { font-size:8px; } .bestiary-view-root .card-meta>span:last-child::before { display:none; } .bestiary-view-root .material-search-card .section-heading { padding-left:0; } .bestiary-view-root .section-icon { display:none!important; } }

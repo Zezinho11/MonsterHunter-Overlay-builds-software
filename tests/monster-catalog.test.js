@@ -80,10 +80,11 @@ test('catalog contains qualitative weak-point stars and breakable part metadata'
   assert.ok(catalog.entries.some((entry) => entry.parts.some((part) => part.breakable)));
 });
 
-test('catalog has reward coverage for every supported monster and health coverage by source capability', () => {
+test('catalog preserves source-backed rewards and health coverage', () => {
   for (const game of ['world', 'rise', 'wilds', 'mhgu']) {
-    assert.ok(catalog.entries.filter((entry) => entry.game === game).every((entry) => entry.rewards.length > 0), `Missing rewards in ${game}`);
+    assert.ok(catalog.entries.filter((entry) => entry.game === game && entry.name !== 'Ahtal-Neset').every((entry) => entry.rewards.length > 0), `Missing rewards in ${game}`);
   }
+  assert.equal(catalog.entries.find((entry) => entry.name === 'Ahtal-Neset').rewards.length, 0, 'Do not invent separate rewards for the Ahtal-Neset form');
   assert.ok(catalog.entries.filter((entry) => entry.game === 'rise').every((entry) => entry.baseHealth != null));
   assert.ok(catalog.entries.filter((entry) => entry.game === 'wilds').every((entry) => entry.baseHealth != null));
   assert.ok(catalog.entries.filter((entry) => entry.game === 'world').filter((entry) => entry.healthProfiles?.length).length >= 70);
@@ -126,7 +127,41 @@ test('catalog exposes rank availability without inventing Wilds Master Rank', ()
   assert.ok(catalog.entries.filter((entry) => entry.game === 'rise').every((entry) => entry.ranks.includes('master')));
   assert.ok(catalog.entries.filter((entry) => entry.game === 'wilds').every((entry) => !entry.ranks.includes('master')));
   assert.ok(catalog.entries.some((entry) => entry.game === 'world' && entry.name === 'Great Jagras' && entry.ranks.includes('low') && entry.ranks.includes('high') && entry.ranks.includes('master')));
-  assert.ok(catalog.entries.filter((entry) => entry.game === 'mhgu').every((entry) => entry.ranks.includes('low') && entry.ranks.includes('high') && entry.ranks.includes('master')));
+  assert.ok(catalog.entries.filter((entry) => entry.game === 'mhgu').some((entry) => entry.ranks.length < 3), 'MHGU monsters must not gain all ranks by default');
+  assert.deepEqual(catalog.entries.find((entry) => entry.name === 'Ahtal-Neset').ranks, ['master']);
+});
+
+test('audited reward ranks, conditions and local game icons stay consistent', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const root = path.resolve(__dirname, '..');
+  for (const monster of catalog.entries) {
+    assert.ok(monster.rewardAudit?.source, `Missing reward provenance: ${monster.name}`);
+    assert.ok(monster.ranks.length > 0, `No confirmed rank: ${monster.name}`);
+    assert.deepEqual(Object.keys(monster.rankData), monster.ranks);
+    for (const rank of monster.ranks) {
+      for (const reward of monster.rankData[rank].rewards) {
+        assert.ok(reward.conditions.length > 0 && reward.conditions.every((condition) => condition.rank === rank), `Cross-rank reward: ${monster.name} ${rank}`);
+        assert.ok(reward.iconSource && reward.iconAsset, `No source-backed item icon: ${monster.name} ${reward.item}`);
+        assert.ok(fs.existsSync(path.join(root, 'src', reward.iconAsset)), `Missing item icon: ${monster.name} ${reward.item}`);
+      }
+    }
+  }
+});
+
+test('World/Iceborne expansion ranks keep base monsters, variants and drops separate', () => {
+  const world = (name) => catalog.entries.find((monster) => monster.game === 'world' && monster.name === name);
+  assert.deepEqual(world('Nergigante').ranks, ['high']);
+  assert.deepEqual(world('Ruiner Nergigante').ranks, ['master']);
+  assert.deepEqual(world('Kulve Taroth').ranks, ['high', 'master']);
+  assert.ok(world('Kulve Taroth').rankData.master.rewards.some((reward) => reward.item === 'Golden Dragonsphire'));
+  assert.deepEqual(world('Deviljho').ranks, ['high', 'master']);
+  assert.ok(world('Deviljho').rankData.master.rewards.some((reward) => reward.item === 'Deviljho Scale'));
+  assert.deepEqual(world('Savage Deviljho').ranks, ['master']);
+  for (const name of ['Kulve Taroth', 'Deviljho']) {
+    assert.ok(world(name).rewardAudit.sources.some((source) => source.includes('mhworld.kiranico.com')));
+    assert.ok(world(name).rankData.master.rewards.every((reward) => reward.conditions.every((condition) => condition.rank === 'master' && condition.sourceSection !== 'Investigations')));
+  }
 });
 
 test('MHGU fallback fills published small-monster health and hitzones without replacing Kiranico rank data', () => {
