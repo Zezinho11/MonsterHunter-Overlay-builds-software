@@ -148,22 +148,33 @@ function buildRise(rise) {
     return name ? [{ id: `rise-item-${id}`, sourceId: 'mhrice', sourceRecordId: id, game: 'rise', name, rarity: item.rare || null, kind: item.type_ || 'item' }] : [];
   });
   const decorations = (rise.decorations?.param || []).flatMap((item) => {
-    const id = enumId(item.id); if (id === null) return [];
-    const pattern = new RegExp(`^Decorations_${String(id).padStart(3, '0')}_Name$`);
-    const name = localizedMessage(rise.decorations_name_msg_mr, pattern).name || localizedMessage(rise.decorations_name_msg, pattern).name;
+    const identity = Object.entries(item.id || {}).find(([kind, id]) => ['Deco', 'MrDeco'].includes(kind) && Number.isInteger(Number(id)));
+    if (!identity) return [];
+    const [kind, rawId] = identity;
+    const id = Number(rawId);
+    const isMaster = kind === 'MrDeco';
+    const nameId = isMaster ? id + 200 : id;
+    const pattern = new RegExp(`^Decorations_${String(nameId).padStart(isMaster ? 4 : 3, '0')}_Name$`);
+    const localized = isMaster
+      ? localizedMessage(rise.decorations_name_msg_mr, pattern)
+      : localizedMessage(rise.decorations_name_msg, pattern);
+    const name = localized.name;
     if (!name || name.startsWith('Decorations_')) return [];
     const skills = (item.skill_id_list || []).flatMap((value, index) => {
-      const skillId = enumId(value); const level = item.skill_lv_list?.[index] || 0;
+      const baseSkillId = Number(value?.Skill);
+      const masterSkillId = Number(value?.MrSkill);
+      const skillId = Number.isInteger(baseSkillId) ? baseSkillId : Number.isInteger(masterSkillId) ? masterSkillId + 200 : null;
+      const level = item.skill_lv_list?.[index] || 0;
       if (skillId === null || level <= 0) return [];
       const skillName = skillsById.get(skillId);
       return skillName ? [{ name: skillName, level }] : [];
     });
-    const product = (rise.decorations_product?.param || []).find((row) => enumId(row.id?.Deco) === id);
+    const product = (rise.decorations_product?.param || []).find((row) => Number(row.id?.[kind]) === id);
     const craftingMaterials = (product?.item_id_list || []).flatMap((value, index) => {
       const itemId = enumId(value); const materialName = itemId === null ? null : riseItemName(itemId, rise);
       return materialName && product.item_num_list?.[index] > 0 ? [{ name: materialName, quantity: product.item_num_list[index] }] : [];
     });
-    return [{ id: `rise-decoration-${id}`, sourceId: 'mhrice', sourceRecordId: id, game: 'rise', name, rarity: item.rare || null, slot: item.decoration_lv || 1, skills, icon: null, iconColor: item.icon_color ?? null, craftingMaterials }];
+    return [{ id: `rise-decoration-${isMaster ? 'mr-' : ''}${id}`, sourceId: 'mhrice', sourceRecordId: `${kind}:${id}`, sourceLocale: localized.locale, game: 'rise', expansion: isMaster ? 'sunbreak' : 'rise', name, rarity: item.rare || null, slot: item.decoration_lv || 1, skills, icon: null, iconColor: item.icon_color ?? null, craftingMaterials }];
   });
   const skills = (rise.player_skill_name_msg?.entries || []).flatMap((entry) => {
     const match = entry.name.match(/^PlayerSkill_(\d+)_Name$/); const id = Number(match?.[1]);

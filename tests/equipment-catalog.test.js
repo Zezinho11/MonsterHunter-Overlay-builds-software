@@ -54,3 +54,20 @@ test('generated catalogs include game-scoped decorations, published charms and W
   assert.ok(productionCatalog.games.wilds.charms.length > 0);
   assert.ok(productionCatalog.games.world.armor.some((item) => item.slot === 'arms'));
 });
+
+test('Rise and Sunbreak decorations retain separate source identities, skills and slot levels', () => {
+  const decorations = productionCatalog.games.rise.decorations;
+  const ids = decorations.map((item) => item.id);
+  assert.equal(ids.length, new Set(ids).size, 'decoration IDs must be unique across base and Master Rank');
+
+  const base = decorations.find((item) => item.sourceRecordId === 'Deco:107');
+  const master = decorations.find((item) => item.sourceRecordId === 'MrDeco:107');
+  assert.ok(base);
+  assert.ok(master);
+  assert.equal(base.expansion, 'rise');
+  assert.equal(master.expansion, 'sunbreak');
+  assert.equal(base.slot, 3);
+  assert.equal(master.slot, 1);
+  assert.notEqual(base.skills[0]?.name, master.skills[0]?.name);
+  assert.notDeepEqual(base.craftingMaterials, master.craftingMaterials);
+});
