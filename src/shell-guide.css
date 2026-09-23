@@ -54,5 +54,52 @@ body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .card-grid { gr
 body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .build-card { border-color: #9d834b; background: #0d1c21; }
 body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .card-art { background: radial-gradient(ellipse at 45% 23%,#95805a30,transparent 58%),url('assets/field-guide/atlas-night.png') right top/650px auto; }
 .reward-symbol img { display: block; width: 24px; height: 24px; object-fit: contain; }
+
+/* D234: the approved field-guide shell is shared by every desktop screen. */
+body .sidebar {
+  position: sticky !important;
+  top: 0;
+  height: 100vh;
+  flex: 0 0 190px !important;
+  border-right: 1px solid #42606a !important;
+  background: linear-gradient(#061015 42%, #06101533 68%, #061015aa), url('assets/field-guide/atlas-night.png') left bottom / auto 65% no-repeat !important;
+}
+body .sidebar::after { display: none !important; }
+body .app-brand { height: 40px !important; min-height: 40px !important; padding: 0 17px !important; gap: 14px !important; border-bottom: 1px solid #28414a !important; font: 14px Georgia, serif !important; }
+body .brand-mark { width: 23px !important; height: 30px !important; color: transparent !important; background: url('assets/field-guide/compass.svg') center / contain no-repeat !important; }
+body .profile-card { height: 132px !important; padding: 14px 15px !important; border-bottom: 1px solid #29404a !important; }
+body .avatar { width: 60px !important; height: 60px !important; margin-bottom: 8px !important; border: 1px solid #6976de !important; background: linear-gradient(140deg, #5865e2, #303aa7) !important; }
+body .profile-card strong { font: 14px Georgia, serif !important; }
+body .profile-card small { margin-top: 5px !important; font-size: 11px !important; }
+body .main-nav { padding-top: 12px !important; }
+body .nav-item { height: 49px !important; padding: 10px 20px !important; gap: 15px !important; color: #bfd1d9 !important; font: 14px Georgia, serif !important; }
+body .nav-item.active { border-left: 4px solid #dfbd75 !important; padding-left: 19px !important; border-top: 1px solid #42636d !important; border-bottom: 1px solid #42636d !important; background: linear-gradient(90deg, #253b3c, #10232a) !important; color: #fff7e5 !important; }
+body .nav-item.active span { width: 20px !important; height: 25px !important; color: transparent !important; background: url('assets/field-guide/compass.svg') center / contain no-repeat !important; }
+body .sidebar-legend { position: absolute !important; bottom: 55px !important; left: 0 !important; width: 100% !important; padding: 0 56px !important; color: #c5a05c !important; font: 11px/1.5 'Segoe UI', sans-serif !important; letter-spacing: .27em !important; }
+body .sidebar-legend span { display: block !important; width: 40px !important; height: 43px !important; margin: 9px auto 0 !important; color: transparent !important; background: url('assets/field-guide/compass.svg') center / contain no-repeat !important; }
+body .settings-button { position: absolute !important; bottom: 0 !important; height: 28px !important; min-height: 0 !important; padding: 4px 18px !important; font-size: 10px !important; opacity: .65 !important; }
+body .content-shell { background: linear-gradient(#071217b0, #071217f0), url('assets/field-guide/atlas-night.png') right top / 1500px auto !important; }
+
+.profile-view-root { display: grid; gap: 14px; padding: 0 23px 30px 22px; }
+.profile-hero-card { display: flex; align-items: center; gap: 20px; min-height: 168px; padding: 22px 28px; border: 1px solid #9d834b; border-radius: 8px; background: linear-gradient(90deg, #0c1c23e8, #0e242ac9), url('assets/field-guide/atlas-night.png') right top / 1100px auto; box-shadow: inset 0 1px rgba(255,255,255,.04); }
+.profile-hero-avatar { display: grid; place-items: center; flex: 0 0 112px; width: 112px; height: 112px; border: 2px solid #d0a85c; border-radius: 50%; background: radial-gradient(circle at 35% 28%, #6b8990, #162e36 65%, #0a171b); color: #f4ead6; font: 48px Georgia, serif; box-shadow: 0 0 0 5px rgba(196,154,90,.12); }
+.profile-hero-copy { min-width: 0; }
+.profile-eyebrow { color: #dfbe76; font: 10px/1.6 Georgia, serif; letter-spacing: .28em; }
+.profile-hero-copy h2 { margin: 6px 0 5px; color: #f4ead6; font: 40px/1.05 Georgia, serif; }
+.profile-hero-copy p { margin: 0; color: #aebfc2; font-size: 12px; }
+.profile-hero-actions { margin-left: auto; align-self: flex-end; }
+.profile-panels { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr); gap: 14px; }
+.profile-panels .settings-card { max-width: none; min-height: 290px; border-color: #73633e; background: linear-gradient(#102127dc, #0b1b22c9), url('assets/field-guide/atlas-night.png') right top / 1000px auto; }
+.profile-connection-list { display: grid; gap: 0; margin-top: 18px; border: 1px solid rgba(111,169,183,.26); background: rgba(4,16,21,.35); }
+.profile-connection-list div { display: flex; justify-content: space-between; gap: 16px; padding: 13px 14px; border-bottom: 1px solid rgba(196,154,90,.16); font-size: 12px; }
+.profile-connection-list div:last-child { border-bottom: 0; }
+.profile-connection-list strong { color: #f0eadc; font-weight: 600; }
+.profile-connection-list span { color: #73b7c7; text-align: right; }
+.profile-activity-card { display: flex; flex-direction: column; }
+.profile-empty-activity { display: grid; flex: 1; align-content: center; justify-items: center; gap: 8px; min-height: 160px; color: #aab9bb; text-align: center; }
+.profile-empty-activity span { color: #c49a5a; font-size: 42px; }
+.profile-empty-activity strong { color: #f0eadc; font: 18px Georgia, serif; }
+.profile-empty-activity small { max-width: 260px; line-height: 1.5; }
+@media (max-width: 900px) { .profile-panels { grid-template-columns: 1fr; } }
 @media (max-width: 1100px) { body .sidebar { flex-basis: 160px !important; } body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-line::after { display: none; } }
 @media (max-width: 650px) { body .sidebar { flex-basis: 64px !important; overflow: hidden; } body .profile-card,body .app-brand { visibility: hidden; } body .sidebar-legend { display: none; visibility: hidden; } body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header h1 { font-size: 27px; } body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-title { margin-left: 0; } body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header-title::before,body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header::before,body:not(:has(.bestiary-view-root)):not(:has(.detail-view-root)) .content-header::after { display: none; } }

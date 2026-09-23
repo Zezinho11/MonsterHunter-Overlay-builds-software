@@ -164,6 +164,35 @@ test('World/Iceborne expansion ranks keep base monsters, variants and drops sepa
   }
 });
 
+test('crown thresholds preserve provenance and keep unavailable games explicit', () => {
+  for (const monster of catalog.entries) {
+    const data = monster.crownData;
+    if (monster.type === 'small') {
+      assert.equal(data, null, `Small monster must not have crown data: ${monster.name}`);
+      assert.equal(monster.availability.crowns, false, `Small monster crowns must be unavailable: ${monster.name}`);
+    }
+    if (!data?.crowns) {
+      assert.equal(monster.availability.crowns, false, `Missing crown availability flag: ${monster.name}`);
+      continue;
+    }
+    assert.ok(data.source, `Missing crown source: ${monster.name}`);
+    assert.equal(data.unit, 'cm');
+    for (const crown of Object.values(data.crowns)) {
+      assert.ok(['<=', '>='].includes(crown.operator));
+      assert.ok(Number.isFinite(crown.value));
+      assert.equal(crown.unit, 'cm');
+    }
+    assert.equal(monster.availability.crowns, true);
+  }
+  const nergigante = catalog.entries.find((monster) => monster.game === 'world' && monster.name === 'Nergigante');
+  assert.equal(nergigante.crownData.crowns.large.value, 2273.19);
+  assert.deepEqual(nergigante.ranks, ['high']);
+  const wilds = catalog.entries.find((monster) => monster.game === 'wilds' && monster.name === 'Ajarakan');
+  assert.equal(wilds.crownData.crowns.small.value, 1047.92);
+  assert.equal(wilds.crownData.crowns.large.value, 1443.8);
+  assert.match(wilds.crownData.method, /faixa de tamanho/i);
+});
+
 test('MHGU fallback fills published small-monster health and hitzones without replacing Kiranico rank data', () => {
   const mhgu = catalog.entries.filter((monster) => monster.game === 'mhgu');
   const withHealth = mhgu.filter((monster) => monster.healthProfiles?.length);

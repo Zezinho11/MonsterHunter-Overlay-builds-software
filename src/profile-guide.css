@@ -1,0 +1,65 @@
+/* Functional profile, approved composition without the statistics strip. */
+body:has(.hunter-profile-page) .app-shell { background: #061720 url('assets/field-guide/profile-landscape.png') center top/100% 100% fixed no-repeat; }
+body:has(.hunter-profile-page) .content-shell { background:transparent!important; }
+body:has(.hunter-profile-page) .content-header { height:152px!important;min-height:152px!important;background:transparent!important;border:0!important;padding-left:44px!important; }
+body:has(.hunter-profile-page) .content-header-title { margin-left:102px!important; }
+body:has(.hunter-profile-page) .content-header-title::before {background-image:url('assets/field-guide/profile-compass.svg')!important;width:92px!important;height:112px!important;top:-14px!important;}
+body:has(.hunter-profile-page) .content-header::after { display:none!important; }
+body:has(.hunter-profile-page) .content-header::before { content:'“Explorar. Estudar. Superar.\A Sempre adiante.”'!important;top:112px!important;right:46px!important;font:italic 14px/1.5 Georgia,serif!important;letter-spacing:.05em!important;color:#bdc7c7!important; }
+body .avatar { background-color:#152e37!important; background-image:linear-gradient(140deg,#5865e2,#303aa7); background-position:center!important; background-size:cover!important; }
+body:has(.hunter-profile-page) .content-header h1 { font-size:clamp(28px,3.4vw,56px)!important; }
+body:has(.hunter-profile-page) .section-kicker { font-size:0!important; }
+body:has(.hunter-profile-page) .content-header-line::after { display:none!important; }
+body:has(.hunter-profile-page) .content-header-title::after { content:'SUA CAÇA, SUAS CONQUISTAS'; display:block; font:12px Georgia,serif; letter-spacing:.3em; color:#dac79f; margin-top:12px; }
+.hunter-profile-page .profile-view-root { padding:12px 0 28px; gap:18px; max-width:1294px; }
+.hunter-profile-page .profile-hero-card { min-height:216px; border-radius:0; padding:14px 48px; gap:44px; background:linear-gradient(90deg,#07182165,#07182118); }
+.hunter-profile-page .profile-hero-avatar { flex:0 0 188px; width:188px; height:188px; overflow:hidden; outline:1px solid #bda369;outline-offset:5px; }
+.profile-hero-avatar img { width:100%; height:100%; object-fit:cover; }
+.hunter-profile-page .profile-hero-copy h2 { font:40px Georgia,serif; }
+.hunter-profile-page .profile-hero-copy p { font:18px Georgia,serif; margin:10px 0 20px; }
+.hunter-profile-page .profile-actions button { min-height:42px;min-width:200px; padding:9px 22px; font:20px Georgia,serif!important; }
+.hunter-profile-page #profile-signout { background:linear-gradient(#58281d,#2d1712); border-color:#ac6045; }
+.profile-motto { margin-left:auto; text-align:center; color:#b5b6a5; font:italic 12px/2 Georgia,serif; letter-spacing:.28em; }
+.hunter-profile-page .profile-panels { grid-template-columns:1.15fr 1fr; gap:18px; }
+.hunter-profile-page .settings-card { position:relative; border:1px solid #ae8d50!important; border-radius:2px; padding:18px; min-width:0; }
+.hunter-profile-page .settings-card::before,.hunter-profile-page .profile-hero-card::before { content:''; position:absolute; inset:-1px; border:28px solid transparent;border-image:url('assets/field-guide/ornate-frame.svg') 28 fill / 28px; pointer-events:none; }
+.hunter-profile-page .profile-hero-card { position:relative; }
+.hunter-profile-page h2 { color:#efe3c6; font:bold 32px Georgia,serif; margin:0 0 20px; }
+.hunter-profile-page .profile-connection-list { margin-top:0; }
+.hunter-profile-page .profile-connection-list>div { align-items:center; min-height:54px; padding:12px 16px; gap:10px; }
+.hunter-profile-page .profile-connection-list strong { font:17px Georgia,serif; flex:1; }
+.profile-text-action { border:0; background:none; color:#8ac8df; cursor:pointer; font:14px Georgia,serif; text-align:right; }
+.profile-connection-list a { color:#8ac8df; }
+.profile-game-chips { display:flex; flex-wrap:wrap; gap:6px; justify-content:flex-end; }
+.profile-game-chips span { padding:7px 12px; border:1px solid #af945a; border-radius:4px; color:#e0d8c8; font:14px Georgia,serif; background:linear-gradient(#54442488,#261d1377); }
+.profile-game-chips span:first-child { border-color:#6692a3;background:linear-gradient(#153845,#0b2029); }
+.profile-game-chips span:nth-child(2) { border-color:#a5664e;background:linear-gradient(#562d23,#291713); }
+.profile-quote { color:#a7b3b4; font:italic 15px Georgia,serif; text-align:center; margin:24px 0 6px; }
+.profile-history { max-height:264px; overflow:auto; }
+.profile-history-row { width:100%; display:flex; align-items:center; gap:14px; text-align:left; border:1px solid #60707055; background:#07171db0; padding:8px; color:#e4e0d5; margin-bottom:7px; cursor:pointer; }
+.profile-history-row:hover { border-color:#c49a5a; background:#193039; }
+.profile-history-row>span:nth-child(2) { flex:1; min-width:0; }
+.profile-history-row strong,.profile-history-row small { display:block; overflow-wrap:anywhere; }
+.profile-history-row strong { font:19px Georgia,serif; margin:4px 0; }
+.profile-history-row small { color:#a2b4b8; font-size:11px; }
+.history-symbol { display:grid;place-items:center;flex:0 0 86px;height:68px;font-size:30px; color:#c7a362; }
+.history-symbol img { width:100%;height:100%;object-fit:contain; }
+.history-symbol svg {width:54px;height:54px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;}
+.hunter-profile-page .profile-panels .settings-card { min-height:350px;background:linear-gradient(#06182155,#06131a99); }
+.hunter-profile-page .profile-actions .primary-button { background:linear-gradient(#173d4c,#0b232d);border:1px solid #68a5bc; }
+.hunter-profile-page .profile-actions #edit-profile {background:linear-gradient(#173d4c,#0b232d)!important;border-color:#68a5bc!important;}
+.hunter-profile-page .profile-hero-card {margin-right:56px;}
+.hunter-profile-page .profile-connection-list strong {font-weight:normal!important;}
+.hunter-profile-page .settings-card h2 {font-size:32px;font-weight:normal;}
+.hunter-profile-page .profile-panels .settings-card {background:linear-gradient(#06182144,#06131a77)!important;}
+.hunter-profile-page .profile-motto { margin-right:16%;min-width:220px; }
+.hunter-profile-page .profile-view-root::after { content:'NOVOS HORIZONTES SEMPRE';color:#8b9897;font:9px Georgia,serif;letter-spacing:.5em;text-align:right;margin:20px 0; }
+.history-note { margin-top:12px; color:#9aafb6; }
+.profile-editor { max-width:900px; margin:auto; }
+.profile-editor form { display:grid; gap:16px; }
+.profile-avatar-edit { display:flex; align-items:center; gap:20px; border:0; background:none; color:#dbc086; margin-bottom:24px; cursor:pointer; }
+.profile-editor fieldset { border:1px solid #6b694c; padding:14px; display:flex; flex-wrap:wrap; gap:18px; }
+.profile-editor legend { color:#dcca9d; }
+@media(max-width:1400px) { .hunter-profile-page .profile-motto {display:none;} .hunter-profile-page .profile-hero-card {margin-right:0;} }
+@media(max-width:1100px) { .hunter-profile-page .profile-panels { grid-template-columns:1fr; } .profile-motto { display:none; } body:has(.hunter-profile-page) .content-header::before {display:none!important;} .hunter-profile-page .profile-hero-card {padding:20px;gap:24px;} }
+@media(max-width:650px) { .hunter-profile-page .profile-hero-card { flex-wrap:wrap; padding:18px; } .hunter-profile-page .profile-hero-avatar { width:90px;height:90px;flex-basis:90px; } .hunter-profile-page .profile-connection-list>div { flex-wrap:wrap; } }

@@ -6,18 +6,14 @@ const avatarButton = document.querySelector('#avatar-button');
 const avatarInput = document.querySelector('#avatar-input');
 const connectionLabel = document.querySelector('#connection-label');
 const detailHeaderActions = document.querySelector('#detail-header-actions');
+let profileState = { authenticated: false, profile: null, mode: 'local' };
+let profileReady = false;
+let onlineBuildResults = [];
+let myPublishedBuildIds = new Set();
 
 const viewNames = { 'online-builds': 'Builds online', 'saved-builds': 'Builds registradas', bestiary: 'Monsterpedia', 'overlay-settings': 'Configurar overlay', 'app-settings': 'Configurações' };
 const games = ['Monster Hunter: Wilds', 'Monster Hunter: World', 'Monster Hunter: Rise', 'Monster Hunter: Generations Ultimate'];
-const weapons = ['Grande Espada', 'Espada Longa', 'Arco', 'Lâminas Duplas', 'Martelo', 'Insect Glaive'];
-const buildCards = [
-  { title: 'DPS crítico — Artian', game: 'Monster Hunter: Wilds', type: 'DPS', weapon: 'Espada Longa', source: 'Game8', icon: '⚔️' },
-  { title: 'Elemental gelo', game: 'Monster Hunter: World', type: 'ELEMENTAL', weapon: 'Arco', source: 'Mobalytics', icon: '❄️' },
-  { title: 'Conforto e sobrevivência', game: 'Monster Hunter: Rise', type: 'CONFORTO', weapon: 'Grande Espada', source: 'Icy Veins', icon: '🛡️' },
-  { title: 'Dano bruto endgame', game: 'Monster Hunter: Wilds', type: 'DPS', weapon: 'Martelo', source: 'MH Wilds Hub', icon: '🔨' },
-  { title: 'Status — paralisia', game: 'Monster Hunter: Rise', type: 'STATUS', weapon: 'Lâminas Duplas', source: 'Game8', icon: '⚡' },
-  { title: 'Progressão Alto Rank', game: 'Monster Hunter: World', type: 'PROGRESSÃO', weapon: 'Arco', source: 'Mobalytics', icon: '🏹' },
-];
+const weapons = ['Grande Espada', 'Espada Longa', 'Espada e Escudo', 'Lâminas Duplas', 'Martelo', 'Berrante de Caça', 'Lança', 'Lançarma', 'Transmachado', 'Lâmina Energizada', 'Glaive Inseto', 'Arco', 'Balestra Leve', 'Balestra Pesada'];
 const savedCards = [
   { title: 'Meu set principal', game: 'Monster Hunter: Wilds', weapon: 'Espada Longa', type: 'DPS', icon: '⚔️' },
   { title: 'Caçada elemental', game: 'Monster Hunter: World', weapon: 'Arco', type: 'ELEMENTAL', icon: '❄️' },
@@ -37,9 +33,70 @@ function pt(value) {
 function ptList(values = [], separator = ' · ') {
   return values.map((value) => pt(value)).join(separator) || 'Indisponível';
 }
+const locationTerms = {
+  'ancient forest': 'Floresta Antiga', 'wildspire waste': 'Ermo Selvático', 'coral highlands': 'Planalto Coralino',
+  'rotten vale': 'Vale Putrefato', "elder's recess": 'Recesso dos Anciões', 'hoarfrost reach': 'Fronteira Glacial',
+  'guiding lands': 'Terras dos Guiadores', 'arena': 'Arena', 'caverns of el dorado': 'Cavernas de El Dorado',
+  'everstream': 'Corrente Eterna', 'castle schrade': 'Castelo Schrade', 'volcanic hollow': 'Cavidade Vulcânica',
+  'frost islands': 'Ilhas Gélidas', 'flooded forest': 'Floresta Alagada', 'sandy plains': 'Planícies Arenosas',
+  'shrine ruins': 'Ruínas do Santuário', 'lava caverns': 'Cavernas de Lava', 'jungle': 'Selva', 'citadel': 'Cidadela', 'the infernal springs': 'Fontes Infernais',
+  'windward plains': 'Planícies Zéfiras', 'scarlet forest': 'Floresta Escarlate', 'oilwell basin': 'Bacia Oleídea',
+  'windsong village': 'Vila de Kamura', 'ruins of wyveria': 'Ruínas de Wyveria', 'serperian ruins': 'Ruínas de Serperia',
+  'iceshard cliffs': 'Escarpas Frígidas', 'forbidden lands': 'Terras Proibidas'
+};
+function ptLocation(value) {
+  const raw = String(value || '').trim();
+  return locationTerms[raw.toLowerCase()] || pt(raw);
+}
+function ptLocationList(values = [], separator = ' · ') {
+  return values.map((value) => ptLocation(value)).join(separator) || 'Indisponível';
+}
 
 const dataLabelTerms = {
-  body: 'corpo', head: 'cabeça', forelegs: 'patas dianteiras', foreleg: 'pata dianteira', forearms: 'antebraços', hindlegs: 'patas traseiras', hindleg: 'pata traseira', legs: 'patas', leg: 'pata', lower: 'inferior', upper: 'superior', lowerbody: 'parte inferior', chest: 'peito', neck: 'pescoço', back: 'costas', tail: 'cauda', 'tail tip': 'ponta da cauda', horn: 'chifre', horns: 'chifres', wing: 'asa', wings: 'asas', arm: 'braço', arms: 'braços', jaw: 'mandíbula', tongue: 'língua', stomach: 'estômago', scalp: 'couro cabeludo', rock: 'rocha', shell: 'carapaça', hide: 'couro', scale: 'escama', scales: 'escamas', claw: 'garra', claws: 'garras', fang: 'presa', fangs: 'presas', bone: 'osso', bones: 'ossos', wing: 'asa', webbing: 'membrana', talon: 'garra', mane: 'juba', sac: 'bolsa', fluid: 'fluido', essence: 'essência', carapace: 'carapaça', thickhide: 'couro espesso', hardclaw: 'garra resistente', shard: 'fragmento', cortex: 'córtex', plate: 'placa', mantle: 'manto', ruby: 'rubi', gem: 'gema', blood: 'sangue', tear: 'lágrima', pelt: 'pele', meat: 'carne', liver: 'fígado', ore: 'minério', crystal: 'cristal', husk: 'casca', whisker: 'bigode', crest: 'crista', beak: 'bico', beaks: 'bicos', stinger: 'ferrão', antennae: 'antenas', antenna: 'antena', mud: 'lama', wounded: 'ferido', enraged: 'enfurecido', heated: 'aquecido', white: 'branco', black: 'negro', 'gloss black': 'preto brilhante', electricity: 'eletricidade', 'magma armor': 'armadura de magma', 'critical state': 'estado crítico', 'before wounded': 'antes de ferir', 'after wounded': 'depois de ferir', 'raw meat': 'carne crua', potion: 'poção', 'monster fluid': 'fluido de monstro', 'monster essence': 'essência de monstro', 'monster bone': 'osso de monstro', 'iron ore': 'minério de ferro', 'machalite ore': 'minério de machalita', 'dragonite ore': 'minério de dragonita', 'wyvern tear': 'lágrima de wyvern', 'large wyvern tear': 'lágrima grande de wyvern', 'nulberry': 'nobora', 'first-aid med': 'medicamento de primeiros socorros', 'ancient potion': 'poção antiga', 'mega potion': 'mega poção'
+  body: 'corpo', head: 'cabeça', forelegs: 'patas dianteiras', foreleg: 'pata dianteira', forearms: 'antebraços', hindlegs: 'patas traseiras', hindleg: 'pata traseira', legs: 'patas', leg: 'pata', lower: 'inferior', upper: 'superior', lowerbody: 'parte inferior', chest: 'peito', neck: 'pescoço', back: 'costas', tail: 'cauda', 'tail tip': 'ponta da cauda', horn: 'chifre', horns: 'chifres', wing: 'asa', wings: 'asas', arm: 'braço', arms: 'braços', jaw: 'mandíbula', tongue: 'língua', stomach: 'estômago', scalp: 'couro cabeludo', rock: 'rocha', shell: 'carapaça', hide: 'couro', scale: 'escama', scales: 'escamas', claw: 'garra', claws: 'garras', fang: 'presa', fangs: 'presas', bone: 'osso', bones: 'ossos', wing: 'asa', webbing: 'membrana', talon: 'garra', mane: 'juba', sac: 'bolsa', fluid: 'fluido', essence: 'essência', carapace: 'carapaça', thickhide: 'couro espesso', hardclaw: 'garra resistente', hardfang: 'presa resistente', hardhorn: 'chifre resistente', hardbone: 'osso resistente', shard: 'fragmento', fragment: 'fragmento', cortex: 'córtex', plate: 'placa', mantle: 'manto', ruby: 'rubi', gem: 'gema', jewel: 'joia', blood: 'sangue', tear: 'lágrima', pelt: 'pele', fur: 'pelo', feather: 'pena', feathers: 'penas', membrane: 'membrana', webbing: 'membrana', web: 'membrana', talon: 'garra', beak: 'bico', fin: 'barbatana', fins: 'barbatanas', sting: 'ferrão', stinger: 'ferrão', antennae: 'antenas', antenna: 'antena', mud: 'lama', wounded: 'ferido', broken: 'quebrado', enraged: 'enfurecido', heated: 'aquecido', white: 'branco', black: 'negro', 'gloss black': 'preto brilhante', electricity: 'eletricidade', 'magma armor': 'armadura de magma', 'critical state': 'estado crítico', 'before wounded': 'antes de ferir', 'after wounded': 'depois de ferir', 'raw meat': 'carne crua', potion: 'poção', 'monster fluid': 'fluido de monstro', 'monster essence': 'essência de monstro', 'monster bone': 'osso de monstro', 'iron ore': 'minério de ferro', 'machalite ore': 'minério de machalita', 'dragonite ore': 'minério de dragonita', 'wyvern tear': 'lágrima de wyvern', 'large wyvern tear': 'lágrima grande de wyvern', 'nulberry': 'nobora', 'first-aid med': 'medicamento de primeiros socorros', 'ancient potion': 'poção antiga', 'mega potion': 'mega poção'
+};
+const partExactTerms = {
+  'no data': 'Sem dados', 'left arm': 'Braço esquerdo', 'right arm': 'Braço direito',
+  'left leg': 'Pata esquerda', 'right leg': 'Pata direita', 'left claw': 'Garra esquerda', 'right claw': 'Garra direita',
+  'front legs': 'Patas dianteiras', 'front leg': 'Pata dianteira', 'hind legs': 'Patas traseiras', 'hind leg': 'Pata traseira',
+  'forelegs': 'Patas dianteiras', 'foreleg': 'Pata dianteira', 'hindlegs': 'Patas traseiras', 'hindleg': 'Pata traseira',
+  'forefeet': 'Patas dianteiras', 'hindfeet': 'Patas traseiras', 'wing arms': 'Braços das asas', 'wingarm': 'Braço da asa',
+  'wingarms': 'Braços das asas', 'wing claws': 'Garras das asas', 'wing legs': 'Patas das asas', 'wing tips': 'Pontas das asas',
+  'front part of wings': 'Parte dianteira das asas', 'back membrane': 'Membrana das costas', 'tail base': 'Base da cauda',
+  'tail end': 'Extremidade da cauda', 'tail main part': 'Parte principal da cauda', 'lower tail': 'Parte inferior da cauda',
+  'upper head': 'Parte superior da cabeça', 'upper neck': 'Parte superior do pescoço', 'lower neck': 'Parte inferior do pescoço',
+  'rock head casing (bottom)': 'Cobertura rochosa da cabeça (inferior)', 'rock head casing (face)': 'Cobertura rochosa da cabeça (face)',
+  'rock head casing (top)': 'Cobertura rochosa da cabeça (superior)', 'rear power unit': 'Unidade de força traseira',
+  'big ice plate (open)': 'Grande placa de gelo (aberta)', 'rump ice plate': 'Placa de gelo da garupa', 'tail ice plate': 'Placa de gelo da cauda'
+};
+const materialExactTerms = {
+  'rathalos scale': 'Escama de Rathalos', 'rathalos scale+': 'Escama de Rathalos+',
+  'rathalos shell': 'Carapaça de Rathalos', 'rathalos shell+': 'Carapaça de Rathalos+',
+  'rathalos webbing': 'Membrana de Rathalos', 'rathalos tail': 'Cauda de Rathalos',
+  'rathalos wing': 'Asa de Rathalos', 'rathalos plate': 'Placa de Rathalos',
+  'rathalos ruby': 'Rubi de Rathalos', 'rathalos mantle': 'Manto de Rathalos',
+  'rathalos cortex': 'Córtex de Rathalos', 'rathalos shard': 'Fragmento de Rathalos',
+  'rathalos fellwing': 'Asa Descarnada de Rathalos', 'rathalos lash': 'Açoite de Rathalos',
+  'rath marrow': 'Medula de Rath', 'rath medulla': 'Medula de Rath', 'flame sac': 'Bolsa de Chama',
+  'large wyvern tear': 'Lágrima Grande de Wyvern', 'wyvern tear': 'Lágrima de Wyvern',
+  'immortal dragonscale': 'Escama de Dragão Imortal', 'nergigante carapace': 'Carapaça de Nergigante',
+  'nergigante talon': 'Garra de Nergigante', 'nergigante regrowth plate': 'Placa de Regeneração de Nergigante',
+  'eternal regrowth plate': 'Placa de Regeneração Eterna', 'nergigante horn+': 'Chifre de Nergigante+',
+  'nergigante gem': 'Gema de Nergigante', 'nergigante tail': 'Cauda de Nergigante',
+  'nergigante cortex': 'Córtex de Nergigante', 'nergigante hardclaw': 'Garra Resistente de Nergigante',
+  'nergigante fellwing': 'Asa Descarnada de Nergigante', 'annihilating greathorn': 'Grande Chifre Aniquilador',
+  'escama rathalos': 'Escama de Rathalos', 'casco rathalos': 'Carapaça de Rathalos',
+  'memb. rathalos': 'Membrana de Rathalos', 'glân. de chama': 'Bolsa de Chama',
+  'tutano rath': 'Medula de Rath', 'medula rath': 'Medula de Rath', 'rubi de rathalos': 'Rubi de Rathalos'
+};
+const materialSuffixTerms = {
+  scale: 'escama', shell: 'carapaça', webbing: 'membrana', tail: 'cauda', wing: 'asa',
+  fang: 'presa', fangs: 'presas', claw: 'garra', claws: 'garras', hide: 'couro', fur: 'pelo',
+  pelt: 'pele', plate: 'placa', ruby: 'rubi', gem: 'gema', mantle: 'manto', cortex: 'córtex',
+  shard: 'fragmento', marrow: 'medula', medulla: 'medula', sac: 'bolsa', beak: 'bico',
+  horn: 'chifre', horns: 'chifres', feather: 'pena', feathers: 'penas', talon: 'garra',
+  talons: 'garras', blood: 'sangue', tear: 'lágrima', bone: 'osso', hardbone: 'osso resistente',
+  hardclaw: 'garra resistente', hardfang: 'presa resistente', hardhorn: 'chifre resistente'
 };
 function translateDataLabel(value) {
   let result = String(value || '');
@@ -47,8 +104,31 @@ function translateDataLabel(value) {
   for (const phrase of phrases) result = result.replace(new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}\\b`, 'gi'), dataLabelTerms[phrase]);
   return result;
 }
-function ptMaterial(value) { return translateDataLabel(value); }
-function ptPart(value) { return translateDataLabel(pt(value)); }
+function canonicalMaterial(value) {
+  const raw = String(value || '').trim();
+  const exact = materialExactTerms[raw.toLowerCase()];
+  if (exact) return exact;
+  const suffix = Object.keys(materialSuffixTerms).sort((a, b) => b.length - a.length)
+    .find((term) => new RegExp(`(?:^|\\s)${term.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}(?:\\+)?$`, 'i').test(raw));
+  if (!suffix) return translateDataLabel(raw).replace(/\\bNO DATA\\b/gi, 'Sem dados');
+  const prefix = raw.replace(new RegExp(`\\s*${suffix}(?:\\+)?$`, 'i'), '').trim();
+  const plus = /\\+$/.test(raw) ? '+' : '';
+  const translated = materialSuffixTerms[suffix];
+  return prefix ? `${translated} de ${prefix}${plus}` : `${translated}${plus}`;
+}
+function ptMaterial(value, monster = null) {
+  const raw = String(value || '').trim();
+  const sourceTranslation = monster?.itemTranslations?.[raw];
+  return canonicalMaterial(sourceTranslation || raw);
+}
+function ptPart(value, monster = null) {
+  const raw = String(value || '').trim();
+  if (!raw) return 'Indisponível';
+  const bodyPart = raw.match(/^BodyPart\s+(\d+)$/i);
+  if (bodyPart && monster?.parts?.[Number(bodyPart[1]) - 1]?.name) return ptPart(monster.parts[Number(bodyPart[1]) - 1].name, monster);
+  const exact = partExactTerms[raw.toLowerCase()];
+  return exact || translateDataLabel(raw).replace(/\bNO DATA\b/gi, 'Sem dados');
+}
 
 const iconPaths = {
   database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 10c0 4 16 4 16 0M4 15c0 4 16 4 16 0"/>',
@@ -79,7 +159,15 @@ const iconPaths = {
   exhaust: '<path d="M5 18c3-3 5 3 8 0s5 3 6 0M5 12c3-3 5 3 8 0s5 3 6 0M5 6c3-3 5 3 8 0s5 3 6 0"/>',
   cut: '<path d="m5 5 14 14M19 5 5 19"/><path d="M7 7 4 4m13 13 3 3"/>',
   blunt: '<path d="M8 4h8v5H8zM10 9v11m4-11v11M7 20h10"/>',
-  ammo: '<path d="M8 3h8v5l-1 2v8a3 3 0 0 1-6 0v-8L8 8V3Z"/><path d="M8 6h8"/>'
+  ammo: '<path d="M8 3h8v5l-1 2v8a3 3 0 0 1-6 0v-8L8 8V3Z"/><path d="M8 6h8"/>',
+  weapon: '<path d="m5 19 11-11m-5-5 10 10M4 4l5 5m7 7 4 4M3 7l4-4m10 17 4-4"/>',
+  helmet: '<path d="M4 15a8 8 0 0 1 16 0v3H4v-3Z"/><path d="M4 14h12l4 4M8 10l2-2m4 2 2 2"/>',
+  'chest-armor': '<path d="m8 3 4 2 4-2 4 3-2 6v9H6v-9L4 6l4-3Z"/><path d="M8 3v5l4 3 4-3V3M12 11v10"/>',
+  'arms-armor': '<path d="m7 4 4 2-2 5-3 1-2 7-3-1 2-9 4-5Zm10 0-4 2 2 5 3 1 2 7 3-1-2-9-4-5Z"/><path d="m7 12 3 1m7-1-3 1"/>',
+  'waist-armor': '<path d="M5 5h14l-1 5H6L5 5Zm1 5-2 11h16l-2-11M10 10v11m4-11v11"/><path d="M10 7h4v2h-4z"/>',
+  'leg-armor': '<path d="m6 3 12 0 1 9-2 9h-5l-1-8-1 8H5l-1-9 2-9Z"/><path d="M6 8h12M7 12h4m2 0h4"/>',
+  talisman: '<path d="M12 3 20 8v8l-8 5-8-5V8l8-5Z"/><circle cx="12" cy="12" r="3"/>',
+  decoration: '<path d="m12 2 2.8 6.2L21 11l-6.2 2.8L12 20l-2.8-6.2L3 11l6.2-2.8L12 2Z"/><circle cx="12" cy="11" r="2"/>'
 };
 const iconAssetFiles = { fire: 'fire.png', water: 'water.png', thunder: 'thunder.png', ice: 'ice.png', dragon: 'dragon.png', poison: 'poison.png', paralysis: 'paralysis.png', sleep: 'sleep.png', blast: 'blast.png', stun: 'stun.png', exhaust: 'fatigue.png' };
 function mhIcon(name, label = '') {
@@ -110,6 +198,18 @@ function weaknessSummary(monster) {
     return `${escapeHtml(pt(weakness.element))} <span class="weakness-summary-level weakness-level-${level}">(${level})</span>`;
   }).join(' · ') || 'Indisponível';
 }
+function crownSummary(monster) {
+  const crowns = monster.crownData?.crowns || {};
+  const labels = { small: 'Mini', silver: 'Prata', large: 'Ouro' };
+  const entries = Object.entries(labels).filter(([key]) => crowns[key]);
+  if (!entries.length) return '<span class="crown-unavailable">Indisponível na fonte catalogada</span>';
+  const note = monster.crownData?.method || 'Limiar publicado pela fonte';
+  return `<div class="crown-summary">${entries.map(([key, label]) => {
+    const crown = crowns[key];
+    const value = Number(crown.value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return `<span class="crown-summary-row"><span>${label}</span><strong>${crown.operator === '<=' ? '≤' : '≥'} ${value} cm</strong></span>`;
+  }).join('')}</div><small class="crown-source-note">${escapeHtml(note)}</small>`;
+}
 function weaknessVisual(monster) {
   const weaknesses = monster.weaknesses || [];
   const badges = weaknesses.length
@@ -120,7 +220,7 @@ function weaknessVisual(monster) {
     ? resistances.map((resistance) => `<span class="weakness-badge resistance-badge"><span class="weakness-icon">${resistanceIcon(resistance)}</span><span><strong>${escapeHtml(resistanceLabel(resistance))}</strong>${resistance.condition ? `<small>${escapeHtml(pt(resistance.condition))}</small>` : `<small>${resistance.kind === 'effect' ? 'efeito' : resistance.kind === 'status' ? 'status' : 'resistência'}</small>`}</span></span>`).join('')
     : '<span class="muted-inline">Indisponível</span>';
   const parts = (monster.parts || []).filter((part) => part.weakPointStars).slice(0, 8);
-  const table = parts.length ? `<div class="weakness-table"><div class="weakness-table-head">Parte</div><div class="weakness-table-head">${mhIcon('cut', 'Corte')}<span>Corte</span></div><div class="weakness-table-head">${mhIcon('blunt', 'Impacto')}<span>Impacto</span></div><div class="weakness-table-head">${mhIcon('ammo', 'Munição')}<span>Munição</span></div>${parts.map((part) => `<div class="weakness-part-name">${escapeHtml(pt(part.name))}${part.breakable ? ' <em>· quebra</em>' : ''}</div><div>${weaknessStars(part.weakPointStars.cut)}</div><div>${weaknessStars(part.weakPointStars.blunt)}</div><div>${weaknessStars(part.weakPointStars.ammo)}</div>`).join('')}</div>` : '';
+  const table = parts.length ? `<div class="weakness-table"><div class="weakness-table-head">Parte</div><div class="weakness-table-head">${mhIcon('cut', 'Corte')}<span>Corte</span></div><div class="weakness-table-head">${mhIcon('blunt', 'Impacto')}<span>Impacto</span></div><div class="weakness-table-head">${mhIcon('ammo', 'Munição')}<span>Munição</span></div>${parts.map((part) => `<div class="weakness-part-name">${escapeHtml(ptPart(part.name, monster))}${part.breakable ? ' <em>· quebra</em>' : ''}</div><div>${weaknessStars(part.weakPointStars.cut)}</div><div>${weaknessStars(part.weakPointStars.blunt)}</div><div>${weaknessStars(part.weakPointStars.ammo)}</div>`).join('')}</div>` : '';
   return `<div class="weakness-elements">${badges}</div>${table}<small class="weakness-note">Estrelas indicam a classificação do ponto fraco publicada pela fonte; valores numéricos de hitzone aparecem separadamente quando disponíveis.</small><div class="weakness-divider" aria-hidden="true"></div><section class="resistance-section"><h4>Resistências</h4><div class="resistance-elements">${resistanceBadges}</div></section>`;
 }
 
@@ -152,7 +252,7 @@ const monsters = monsterCatalog.entries.map((monster) => ({
   iconFallback: monster.type === 'large' ? '🐉' : '🐾',
   threat: pt(monster.type),
   weakness: monster.weaknesses?.slice(0, 4).map((weakness) => `${pt(weakness.element)}${weakness.level ? ` · ${weakness.level}` : ''}`).join(' / ') || 'Indisponível',
-  habitat: ptList(monster.locations),
+  habitat: ptLocationList(monster.locationsPt?.length ? monster.locationsPt : monster.locations),
   descriptionPt: monster.descriptionPt || monster.description,
   ecologyPt: monster.ecologyPt || { characteristics: '', usefulInfo: '' },
 }));
@@ -168,39 +268,326 @@ function loadSavedBuilds() {
 function saveBuilds(builds) { return window.localBuildStore.save(builds); }
 function escapeHtml(value) { return String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char])); }
 function selectHtml(id, values, selected = values[0]) { return `<select id="${id}">${values.map((value) => `<option ${value === selected ? 'selected' : ''}>${escapeHtml(value)}</option>`).join('')}</select>`; }
-function cardGrid(cards, saved = false) { return `<div class="card-grid">${cards.map((card) => `<article class="build-card"><div class="card-art">${card.icon}</div><div class="card-body"><div class="card-title"><strong>${escapeHtml(card.title)}</strong><span class="tag">${escapeHtml(card.type)}</span></div><div class="card-meta"><span>${escapeHtml(card.weapon)}</span><span>${saved ? escapeHtml(card.game.replace('Monster Hunter: ', '')) : 'Atualizada hoje'}</span></div><div class="card-source">${saved ? 'Build salva localmente' : `Fonte: ${escapeHtml(card.source)}`}</div></div></article>`).join('')}</div>`; }
+function cardGrid(cards, saved = false, online = false) { return `<div class="card-grid ${saved ? 'saved-build-grid' : ''}">${cards.map((card) => `<article class="build-card ${saved ? 'saved-build-card' : ''}" ${saved ? `data-saved-build-id="${escapeHtml(card.id)}" role="button" tabindex="0" aria-label="Abrir build ${escapeHtml(card.title)}"` : ''}><div class="card-art">${card.icon}</div><div class="card-body"><div class="card-title"><strong>${escapeHtml(card.title)}</strong><span class="tag">${escapeHtml(card.type)}</span></div><div class="card-meta"><span>${escapeHtml(card.weapon)}</span><span>${saved ? escapeHtml(card.game.replace('Monster Hunter: ', '')) : 'Atualizada hoje'}</span></div><div class="card-source">${online ? `Build pública · ${escapeHtml(card.source)} · Abrir ficha` : saved ? 'Build salva localmente · Abrir ficha' : `Fonte: ${escapeHtml(card.source)}`}</div></div></article>`).join('')}</div>`; }
 
 function renderOnlineBuilds() {
-  viewRoot.innerHTML = `<div class="toolbar"><label class="field">Jogo${selectHtml('build-game', games)}</label><label class="field">Arma${selectHtml('build-weapon', weapons, 'Espada Longa')}</label><label class="field">Tipo${selectHtml('build-type', ['Todos os tipos', 'DPS', 'ELEMENTAL', 'STATUS', 'CONFORTO', 'PROGRESSÃO'])}</label><button class="primary-button" id="search-builds">Buscar builds</button></div><div id="builds-info" class="info-banner">Resultados consultados online nas fontes aprovadas. Cada card preserva origem, tipo e jogo; nesta POC os resultados são simulados.</div><div id="online-build-grid">${cardGrid(buildCards)}</div>`;
-  const updateResults = () => {
+  const weaponOptions = ['Todos os tipos', ...weapons];
+  viewRoot.innerHTML = `<div class="toolbar"><label class="field">Jogo${selectHtml('build-game', ['Todos os jogos', ...games], 'Todos os jogos')}</label><label class="field">Arma${selectHtml('build-weapon', weaponOptions, 'Todos os tipos')}</label><label class="field">Tipo${selectHtml('build-type', ['Todos os tipos', 'DPS', 'ELEMENTAL', 'STATUS', 'CONFORTO', 'SUPORTE', 'PROGRESSÃO'])}</label><label class="field">Buscar na galeria<input class="text-input" id="build-query" placeholder="Nome da build, arma ou equipamento" /></label><button class="primary-button" id="search-builds">Buscar builds</button></div><div id="builds-info" class="info-banner">As builds publicadas aparecem em cartões e abrem uma ficha completa dentro do aplicativo. A busca editorial só pode exibir conteúdo integrado quando a fonte autorizar uma API ou exportação pública.</div><section class="build-sources-panel"><div class="section-heading"><h2>Fontes editoriais</h2><span>CONSULTA EXTERNA · NÃO INTEGRADA</span></div><div id="online-build-sources" class="build-source-links"></div></section><div id="online-build-grid" class="online-build-empty"><div class="empty-state">Use Buscar builds para consultar a galeria. As builds encontradas aparecem aqui e podem ser abertas sem sair do sistema.</div></div>`;
+  let fetchedRows = [];
+  const renderSources = () => {
     const game = document.querySelector('#build-game').value;
     const weapon = document.querySelector('#build-weapon').value;
     const type = document.querySelector('#build-type').value;
-    const results = buildCards.filter((card) => card.game === game && card.weapon === weapon && (type === 'Todos os tipos' || card.type === type));
-    document.querySelector('#online-build-grid').innerHTML = results.length ? cardGrid(results) : '<div class="empty-state">Nenhuma build simulada para esta combinação. Na versão online, a API consultará outras fontes aprovadas.</div>';
+    const query = [game === 'Todos os jogos' ? 'Monster Hunter' : game.replace('Monster Hunter: ', ''), weapon === 'Todos os tipos' ? '' : weapon, type === 'Todos os tipos' ? 'build' : type.toLowerCase()].filter(Boolean).join(' ');
+    const sources = [
+      ['Game8', `https://www.google.com/search?q=${encodeURIComponent(`site:game8.co/games/Monster-Hunter-${game.includes('Wilds') ? 'Wilds' : game.includes('Rise') ? 'Rise' : game.includes('World') ? 'World' : 'Generations-Ultimate'} ${query}`)}`],
+      ['Icy Veins', `https://www.google.com/search?q=${encodeURIComponent(`site:icy-veins.com ${query}`)}`],
+      ['Mobalytics', `https://www.google.com/search?q=${encodeURIComponent(`site:mobalytics.gg ${query}`)}`],
+      ['MH Wilds Hub', `https://www.google.com/search?q=${encodeURIComponent(`site:mhwildshub.com ${query}`)}`],
+    ];
+    document.querySelector('#online-build-sources').innerHTML = sources.map(([name, url]) => `<a class="build-source-link" href="${url}" target="_blank" rel="noreferrer">Pesquisar ${escapeHtml(query)} em ${name} ↗</a>`).join('');
   };
-  ['#build-game', '#build-weapon', '#build-type'].forEach((selector) => document.querySelector(selector).addEventListener('change', updateResults));
-  document.querySelector('#search-builds').addEventListener('click', () => { updateResults(); document.querySelector('#builds-info').textContent = 'Consulta simulada concluída. A versão conectada usará a API agregadora sob demanda e exibirá a origem de cada resultado.'; });
+  const showResults = (rows) => {
+    onlineBuildResults = rows;
+    const grid = document.querySelector('#online-build-grid');
+    const query = normalizeSearch(document.querySelector('#build-query').value);
+    const visibleRows = rows.filter((row) => !query || normalizeSearch([row.title, row.weapon_type, row.build_type, row.game, row.author_name, JSON.stringify(row.payload || {})].join(' ')).includes(query));
+    if (!visibleRows.length) { grid.className = 'online-build-empty'; grid.innerHTML = `<div class="empty-state">${rows.length ? 'Nenhuma build carregada corresponde a essa busca.' : 'Nenhuma build pública corresponde aos filtros. Seja o primeiro a compartilhar uma.'}</div>`; return; }
+    grid.className = '';
+    onlineBuildResults = visibleRows;
+    grid.innerHTML = cardGrid(visibleRows.map((row) => ({ id: row.id, title: row.title, type: row.build_type, weapon: row.weapon_type, game: row.game, icon: '⚔️', source: row.author_name || 'Caçador da comunidade' })), true, true);
+    grid.querySelectorAll('[data-saved-build-id]').forEach((card, index) => { card.dataset.onlineBuildIndex = String(index); card.setAttribute('aria-label', `Abrir build pública ${escapeHtml(visibleRows[index].title)}`); });
+    grid.querySelectorAll('[data-saved-build-id]').forEach((card) => card.removeAttribute('data-saved-build-id'));
+    grid.querySelectorAll('.build-card').forEach((card) => { card.setAttribute('role', 'button'); card.setAttribute('tabindex', '0'); });
+    grid.onclick = (event) => { const card = event.target.closest('[data-online-build-index]'); if (card) renderOnlineBuildDetail(Number(card.dataset.onlineBuildIndex)); };
+    grid.onkeydown = (event) => { if (event.key !== 'Enter' && event.key !== ' ') return; const card = event.target.closest('[data-online-build-index]'); if (card) { event.preventDefault(); renderOnlineBuildDetail(Number(card.dataset.onlineBuildIndex)); } };
+  };
+  const search = async () => {
+    const button = document.querySelector('#search-builds');
+    const info = document.querySelector('#builds-info');
+    button.disabled = true; button.textContent = 'Buscando…';
+    try {
+      const game = document.querySelector('#build-game').value;
+      const weaponType = document.querySelector('#build-weapon').value;
+      const buildType = document.querySelector('#build-type').value;
+      fetchedRows = await window.hunterOverlay.onlineBuilds.search({ game: game === 'Todos os jogos' ? '' : game, weaponType: weaponType === 'Todos os tipos' ? '' : weaponType, buildType: buildType === 'Todos os tipos' ? '' : buildType });
+      showResults(fetchedRows);
+      info.textContent = `${fetchedRows.length} build(s) pública(s) · resultados da API comunitária Hunter Companion.`;
+    } catch (error) {
+      showResults([]);
+      info.textContent = `Não foi possível consultar a galeria: ${error?.message || 'verifique a conexão e a configuração do Supabase.'} A busca editorial por links continua disponível abaixo.`;
+    } finally { button.disabled = false; button.textContent = 'Buscar builds'; }
+  };
+  ['#build-game', '#build-weapon', '#build-type'].forEach((selector) => document.querySelector(selector).addEventListener('change', renderSources));
+  document.querySelector('#search-builds').addEventListener('click', search);
+  document.querySelector('#build-query').addEventListener('keydown', (event) => { if (event.key === 'Enter') search(); });
+  document.querySelector('#build-query').addEventListener('input', () => { if (fetchedRows.length) showResults(fetchedRows); });
+  renderSources();
+}
+
+function renderOnlineBuildDetail(index) {
+  const row = onlineBuildResults[index];
+  if (!row?.payload) return renderOnlineBuilds();
+  const build = window.localBuildStore.normalizeBuild(row.payload);
+  const gameKey = equipmentCatalog.gameKey(build.game);
+  const weapon = equipmentCatalog.findWeapon(gameKey, build.weaponId) || equipmentCatalog.weapons(gameKey).find((item) => normalizeSearch(item.displayName || item.name) === normalizeSearch(build.weapon));
+  const slots = [['head', 'Capacete', 'helmet'], ['chest', 'Peitoral', 'chest-armor'], ['arms', 'Braçadeiras', 'arms-armor'], ['waist', 'Cintura', 'waist-armor'], ['legs', 'Grevas', 'leg-armor']];
+  const recipe = (record) => {
+    const materials = record?.craftingMaterials || [];
+    if (!materials.length && record?.craftingCost == null) return '<small class="build-crafting-missing">Receita não publicada pela fonte.</small>';
+    const rows = materials.map((item) => `<li>${escapeHtml(item.name || 'Material indisponível')} <b>×${escapeHtml(item.quantity ?? 1)}</b></li>`).join('');
+    return `<div class="online-crafting"><small>Materiais para criação</small>${rows ? `<ul>${rows}</ul>` : '<small>Sem materiais publicados.</small>'}${record.craftingCost != null ? `<small>Custo: ${escapeHtml(record.craftingCost)} zenny</small>` : ''}</div>`;
+  };
+  const cards = [weapon && `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(weapon, 'weapon', weapon.displayName || weapon.name)}</div><div class="build-equipment-copy"><small>Arma · ${escapeHtml(weapon.classPt || row.weapon_type)}</small><strong>${escapeHtml(weapon.displayName || weapon.name)}</strong><div class="build-detail-skills">${(weapon.skills || []).map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>${recipe(weapon)}</div></article>`, ...slots.map(([slot, label, icon]) => { const record = equipmentCatalog.findArmor(gameKey, build.armorIds?.[slot]); const name = record?.displayName || record?.name || build.armor?.[slot]; if (!name) return ''; return `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(record, icon, name)}</div><div class="build-equipment-copy"><small>${label}</small><strong>${escapeHtml(name)}</strong><div class="build-detail-skills">${(record?.skills || build.armorSkills?.[slot] || []).map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>${recipe(record)}</div></article>`; })];
+  const socketedNames = new Set(Object.values(build.decorationSlots || {}).flat().map((entry) => entry.name));
+  const deco = [...(build.decorations || []).filter((item) => !socketedNames.has(item)).map((item) => `Decoração não posicionada: ${item}`), ...(build.skills || [])];
+  const decorationCards = Object.entries(build.decorationSlots || {}).flatMap(([part, entries]) => (entries || []).map((entry) => {
+    const jewel = equipmentCatalog.findDecoration(gameKey, entry.id);
+    const partName = part === 'weapon' ? 'Arma' : part === 'talisman' ? 'Talismã' : equipmentCatalog.slotLabels[part] || part;
+    return `<span class="build-decoration-chip" title="${escapeHtml(jewel?.name || entry.name)} · nível ${escapeHtml(jewel?.slot || entry.requiredSlot || '?')}"><i>✦</i>${escapeHtml(jewel?.name || entry.name)} <small>· ${escapeHtml(partName)}${entry.slotIndex == null ? '' : ` · espaço ${entry.slotIndex + 1}`}</small></span>`;
+  }));
+  const charm = equipmentCatalog.findCharm(gameKey, build.talismanId);
+  const charmSkills = build.talismanSkills || charm?.skills || [];
+  viewRoot.classList.add('saved-build-detail-root');
+  viewTitle.textContent = 'Builds online';
+  const charmCard = build.talisman ? `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(charm, 'talisman', build.talisman)}</div><div class="build-equipment-copy"><small>Talismã · slots ${escapeHtml((build.talismanSlots || equipmentCatalog.slotCapacities(gameKey, charm)).join(', ') || 'não informados')}</small><strong>${escapeHtml(charm?.name || build.talisman)}</strong><div class="build-detail-skills">${charmSkills.map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` ${skill.unit === 'points' ? `${skill.level} pts` : `+${skill.level}`}` : ''}</span>`).join('')}</div>${recipe(charm)}</div></article>` : '';
+  viewRoot.innerHTML = `<div class="saved-build-detail"><button class="ghost-button build-detail-back" id="back-to-online-builds">← Voltar à galeria</button><section class="build-detail-banner"><span class="build-detail-emblem">⚔️</span><div><span class="section-kicker">${escapeHtml(row.game)} · ${escapeHtml(row.game_version || 'Versão não informada')}</span><h2>${escapeHtml(row.title)}</h2><p>${escapeHtml(row.build_type)} · ${escapeHtml(row.weapon_type)} · por ${escapeHtml(row.author_name || 'Caçador da comunidade')}</p></div></section><section class="build-detail-section"><div class="section-heading"><h2>Equipamento e criação</h2><span>RECEITAS POR PEÇA · CATÁLOGO LOCALIZADO</span></div><div class="build-equipment-grid">${cards.filter(Boolean).join('')}${charmCard}${decorationCards.length ? `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${mhIcon('decoration')}</div><div class="build-equipment-copy"><small>Decorações instaladas por peça</small><div class="build-detail-socketed">${decorationCards.join('')}</div></div></article>` : ''}${cards.filter(Boolean).length || charmCard || decorationCards.length ? '' : '<div class="build-detail-empty">A build não contém equipamentos reconhecidos pelo catálogo selecionado.</div>'}</div></section>${deco.length ? `<section class="build-detail-section"><div class="section-heading"><h2>Habilidades e decorações adicionais</h2></div><div class="build-detail-skills build-detail-skill-list">${deco.map((entry) => `<span>${escapeHtml(entry)}</span>`).join('')}</div></section>` : ''}${build.notes ? `<section class="build-detail-section"><div class="section-heading"><h2>Notas do autor</h2></div><p class="build-detail-notes">${escapeHtml(build.notes)}</p></section>` : ''}<p class="build-detail-provenance">Compartilhada na comunidade Hunter Companion · ${escapeHtml(row.published_at ? new Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium' }).format(new Date(row.published_at)) : 'data não informada')}. Receitas obtidas do catálogo do jogo; custos ausentes são indicados, não estimados.</p></div>`;
+  document.querySelector('#back-to-online-builds').addEventListener('click', () => renderOnlineBuilds());
 }
 function renderSavedBuilds(filterGame = 'Todos os jogos') {
+  viewRoot.classList.remove('saved-build-detail-root');
   const builds = loadSavedBuilds();
   const visibleBuilds = filterGame === 'Todos os jogos' ? builds : builds.filter((build) => build.game === filterGame);
-  const armorNames = ['Alpha Helm', 'Alpha Mail', 'Alpha Vambraces', 'Alpha Coil', 'Alpha Greaves'];
-  const equipmentSelect = (id, label) => `<div class="editor-row"><label>${label}</label>${selectHtml(id, ['', ...armorNames], armorNames[0])}</div>`;
-  viewRoot.innerHTML = `<div class="saved-layout"><div><div class="toolbar"><label class="field">Filtrar por jogo${selectHtml('saved-game', ['Todos os jogos', ...games], filterGame)}</label><button class="primary-button" id="new-build">＋ Nova build</button><button class="ghost-button" id="export-builds">Exportar JSON</button><button class="ghost-button" id="import-builds">Importar JSON</button><input id="import-file" type="file" accept="application/json" hidden /></div>${visibleBuilds.length ? cardGrid(visibleBuilds, true) : '<div class="empty-state">Nenhuma build registrada para este jogo.</div>'}</div><aside class="editor-card"><h2>Montar build</h2><div class="editor-row"><label>Nome</label><input class="text-input" id="editor-name" value="Minha build" /></div><div class="editor-row"><label>Jogo</label>${selectHtml('editor-game', games, games[0])}</div><div class="editor-row"><label>Arma</label>${selectHtml('editor-weapon', weapons, weapons[1])}</div>${equipmentSelect('editor-head', 'Capacete')}${equipmentSelect('editor-chest', 'Peitoral')}${equipmentSelect('editor-arms', 'Braçadeiras')}${equipmentSelect('editor-waist', 'Cintura')}${equipmentSelect('editor-legs', 'Grevas')}<div class="editor-row"><label>Talismã</label><input class="text-input" id="editor-talisman" placeholder="Nome do talismã" /></div><div class="editor-row"><label>Habilidades, separadas por vírgula</label><input class="text-input" id="editor-skills" placeholder="Weakness Exploit, Critical Eye" /></div><div class="editor-row"><label>Decorações, separadas por vírgula</label><input class="text-input" id="editor-decorations" placeholder="Tenderizer Jewel, Attack Jewel" /></div><div class="editor-row"><label>Tipo da build</label>${selectHtml('editor-type', ['DPS', 'ELEMENTAL', 'STATUS', 'CONFORTO', 'SUPORTE', 'PROGRESSÃO'])}</div><div class="editor-row"><label>Notas</label><textarea class="text-input editor-notes" id="editor-notes" placeholder="Objetivo e observações da build"></textarea></div><button class="primary-button" id="save-build">Salvar build local</button></aside></div>`;
+  const armorSlots = [['head', 'Capacete'], ['chest', 'Peitoral'], ['arms', 'Braçadeiras'], ['waist', 'Cintura'], ['legs', 'Grevas']];
+  const option = (item, selected) => `<option value="${escapeHtml(item.id)}" ${item.id === selected ? 'selected' : ''}>${escapeHtml(item.displayName || item.name)}${item.rank ? ` · ${escapeHtml(item.rank)}` : ''}</option>`;
+  const armorSelect = (slot) => `<input class="text-input equipment-filter" id="filter-${slot}" placeholder="Buscar ${equipmentCatalog.slotLabels[slot].toLowerCase()}" autocomplete="off" /><select id="editor-${slot}" data-armor-slot="${slot}"><option value="">Digite para filtrar o catálogo</option></select><div class="armor-skill-preview" id="skills-${slot}">Escolha uma peça para ver as skills.</div>`;
+  viewRoot.innerHTML = `<div class="saved-layout"><div><div class="toolbar"><label class="field">Filtrar por jogo${selectHtml('saved-game', ['Todos os jogos', ...games], filterGame)}</label><button class="primary-button" id="new-build">＋ Nova build</button><button class="ghost-button" id="export-builds">Exportar JSON</button><button class="ghost-button" id="import-builds">Importar JSON</button><input id="import-file" type="file" accept="application/json" hidden /></div>${visibleBuilds.length ? cardGrid(visibleBuilds, true) : '<div class="empty-state">Nenhuma build registrada para este jogo.</div>'}</div><aside class="editor-card"><h2>Montar build</h2><div class="editor-row"><label>Nome</label><input class="text-input" id="editor-name" value="Minha build" /></div><div class="editor-row"><label>Jogo</label>${selectHtml('editor-game', games, games[0])}<small id="catalog-status" class="catalog-status"></small></div><div class="editor-row"><label>Arma</label><input class="text-input equipment-filter" id="filter-weapon" placeholder="Buscar arma pelo nome" autocomplete="off" /><select id="editor-weapon"><option value="">Digite para filtrar o catálogo</option></select></div>${armorSlots.map(([slot, label]) => `<div class="editor-row armor-editor-row"><label>${label}</label>${armorSelect(slot)}</div>`).join('')}<div class="editor-row"><label>Talismã</label><input class="text-input" id="editor-talisman" placeholder="Nome do talismã" /></div><div class="editor-row"><label>Habilidades adicionais, separadas por vírgula</label><input class="text-input" id="editor-skills" placeholder="Fraqueza Explorada, Olho Crítico" /></div><div class="editor-row"><label>Decorações, separadas por vírgula</label><input class="text-input" id="editor-decorations" placeholder="Joia do Algoz, Joia de Ataque" /></div><div class="editor-row"><label>Tipo da build</label>${selectHtml('editor-type', ['DPS', 'ELEMENTAL', 'STATUS', 'CONFORTO', 'SUPORTE', 'PROGRESSÃO'])}</div><div class="editor-row"><label>Notas</label><textarea class="text-input editor-notes" id="editor-notes" placeholder="Objetivo e observações da build"></textarea></div><button class="primary-button" id="save-build">Salvar build local</button></aside></div>`;
   document.querySelector('#saved-game').addEventListener('change', (event) => renderSavedBuilds(event.target.value));
+  document.querySelector('.saved-build-grid')?.addEventListener('click', (event) => {
+    const card = event.target.closest('[data-saved-build-id]');
+    if (card) renderSavedBuildDetail(card.dataset.savedBuildId, filterGame);
+  });
+  document.querySelector('.saved-build-grid')?.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const card = event.target.closest('[data-saved-build-id]');
+    if (card) { event.preventDefault(); renderSavedBuildDetail(card.dataset.savedBuildId, filterGame); }
+  });
   document.querySelector('#new-build').addEventListener('click', () => document.querySelector('#editor-name').focus());
+  const gameSelect = document.querySelector('#editor-game');
+  const editorParts = ['weapon', ...armorSlots.map(([slot]) => slot), 'talisman'];
+  const socketState = Object.fromEntries(editorParts.map((part) => [part, []]));
+  const socketPanels = {};
+  editorParts.forEach((part) => {
+    const anchor = document.querySelector(part === 'weapon' ? '#editor-weapon' : part === 'talisman' ? '#editor-talisman' : `#editor-${part}`);
+    const panel = document.createElement('div');
+    panel.className = 'build-decoration-slots';
+    panel.id = `decoration-slots-${part}`;
+    panel.hidden = true;
+    anchor?.parentElement?.appendChild(panel);
+    socketPanels[part] = panel;
+  });
+  const charmSelect = document.createElement('select');
+  charmSelect.id = 'editor-charm-catalog';
+  charmSelect.setAttribute('aria-label', 'Talismã do catálogo');
+  document.querySelector('#editor-talisman')?.insertAdjacentElement('afterend', charmSelect);
+  const talismanExtra = document.createElement('div');
+  talismanExtra.className = 'talisman-custom-fields';
+  talismanExtra.innerHTML = '<label>Skill 1 <input class="text-input" id="editor-talisman-skill-1" /></label><label>Nível/pontos <input class="text-input" id="editor-talisman-level-1" type="number" min="0" max="99" value="0" /></label><label>Skill 2 <input class="text-input" id="editor-talisman-skill-2" /></label><label>Nível/pontos <input class="text-input" id="editor-talisman-level-2" type="number" min="0" max="99" value="0" /></label><label>Slots do talismã (ex.: 2,1) <input class="text-input" id="editor-talisman-slots" placeholder="0" /></label>';
+  charmSelect.parentElement?.appendChild(talismanExtra);
+  const createDecorationOptions = (select, game, part, capacities, index, occupied) => {
+    select.innerHTML = '';
+    const empty = document.createElement('option'); empty.value = ''; empty.textContent = '— Vazio —'; select.appendChild(empty);
+    const kind = part === 'weapon' ? 'weapon' : part === 'talisman' ? null : 'armor';
+    for (const decoration of equipmentCatalog.decorations(game, kind)) {
+      const fits = equipmentCatalog.decorationFits(game, capacities, index, decoration, occupied);
+      if (!fits) continue;
+      const option = document.createElement('option'); option.value = decoration.id;
+      option.textContent = `${decoration.name} · ${decoration.slot} espaço(s)`;
+      select.appendChild(option);
+    }
+  };
+  const renderDecorationSlots = (part, record, game) => {
+    const panel = socketPanels[part];
+    const capacities = equipmentCatalog.slotCapacities(game, record);
+    panel.replaceChildren(); panel.hidden = capacities.length === 0;
+    if (!capacities.length) return;
+    const prior = socketState[part];
+    const used = new Set();
+    capacities.forEach((capacity, index) => {
+      if (used.has(index)) {
+        const occupied = document.createElement('span'); occupied.className = 'decoration-slot-occupied'; occupied.textContent = `Espaço ${index + 1} ocupado pelo adorno anterior`; panel.appendChild(occupied); return;
+      }
+      const select = document.createElement('select'); select.className = 'decoration-slot-select';
+      select.dataset.part = part; select.dataset.slotIndex = String(index); select.dataset.capacity = String(capacity);
+      createDecorationOptions(select, game, part, capacities, index, used);
+      const existing = prior[index];
+      if (existing?.id && [...select.options].some((option) => option.value === existing.id)) select.value = existing.id;
+      const selected = equipmentCatalog.findDecoration(game, select.value);
+      if (selected && equipmentCatalog.gameKey(game) === 'mhgu') for (let n = 1; n < selected.slot; n += 1) used.add(index + n);
+      select.addEventListener('change', () => {
+        const values = [...panel.querySelectorAll('.decoration-slot-select')].map((entry) => ({ index: Number(entry.dataset.slotIndex), value: entry.value }));
+        socketState[part] = capacities.map((_, slotIndex) => {
+          const entry = values.find((value) => value.index === slotIndex);
+          if (!entry) return null;
+          const item = equipmentCatalog.findDecoration(game, entry.value);
+          return item ? { id: item.id, name: item.name, requiredSlot: item.slot, slotIndex } : null;
+        });
+        renderDecorationSlots(part, record, game);
+      });
+      const row = document.createElement('label'); row.className = 'decoration-slot-row';
+      const icon = document.createElement('span'); icon.className = 'decoration-slot-icon'; icon.textContent = '✦'; icon.setAttribute('aria-hidden', 'true');
+      const number = document.createElement('small'); number.textContent = `Espaço ${index + 1} · nível ${capacity}`;
+      row.append(icon, number, select); panel.appendChild(row);
+    });
+  };
+  const renderEquipmentOptions = (select, filter, records, emptyLabel) => {
+    const query = normalizeSearch(filter.value);
+    const matches = records.filter((item) => !query || normalizeSearch(`${item.displayName || item.name} ${item.classPt || ''} ${item.rank || ''}`).includes(query)).slice(0, 100);
+    select.innerHTML = `<option value="">${matches.length ? emptyLabel : 'Nenhum item corresponde à busca'}</option>${matches.map((item) => option(item)).join('')}`;
+  };
+  const updateCatalog = () => {
+    const game = gameSelect.value;
+    const data = equipmentCatalog.gameData(game);
+    document.querySelector('#catalog-status').textContent = data.available ? `${data.armor.length} armaduras · ${data.weapons.length} armas · ${data.items.length} itens` : 'Catálogo desta fonte ainda não sincronizado';
+    const weaponSelect = document.querySelector('#editor-weapon');
+    renderEquipmentOptions(weaponSelect, document.querySelector('#filter-weapon'), equipmentCatalog.weapons(game), 'Selecionar arma');
+    armorSlots.forEach(([slot]) => {
+      const select = document.querySelector(`#editor-${slot}`);
+      renderEquipmentOptions(select, document.querySelector(`#filter-${slot}`), equipmentCatalog.armor(game, slot), `Selecionar ${equipmentCatalog.slotLabels[slot].toLowerCase()}`);
+      document.querySelector(`#skills-${slot}`).textContent = 'Escolha uma peça para ver as skills.';
+    });
+    charmSelect.replaceChildren();
+    const customCharm = document.createElement('option'); customCharm.value = ''; customCharm.textContent = 'Talismã personalizado / não listado'; charmSelect.appendChild(customCharm);
+    equipmentCatalog.charms(game).forEach((charm) => { const entry = document.createElement('option'); entry.value = charm.id; entry.textContent = `${charm.name}${charm.rank ? ` · nível ${charm.rank}` : ''}`; charmSelect.appendChild(entry); });
+    updateSocketPanels();
+  };
+  const updateSocketPanels = () => {
+    const game = gameSelect.value;
+    const weapon = equipmentCatalog.findWeapon(game, document.querySelector('#editor-weapon').value);
+    renderDecorationSlots('weapon', weapon, game);
+    armorSlots.forEach(([slot]) => renderDecorationSlots(slot, equipmentCatalog.findArmor(game, document.querySelector(`#editor-${slot}`).value), game));
+    const charm = equipmentCatalog.findCharm(game, charmSelect.value);
+    const customSlots = document.querySelector('#editor-talisman-slots').value.split(',').map((value) => Number(value.trim())).filter((value) => Number.isInteger(value) && value > 0 && value <= 4);
+    const talismanRecord = charm || { slots: customSlots };
+    renderDecorationSlots('talisman', talismanRecord, game);
+  };
+  charmSelect.addEventListener('change', () => {
+    const charm = equipmentCatalog.findCharm(gameSelect.value, charmSelect.value);
+    if (charm) {
+      document.querySelector('#editor-talisman').value = charm.name;
+      document.querySelector('#editor-talisman-skill-1').value = charm.skills?.[0]?.name || '';
+      document.querySelector('#editor-talisman-level-1').value = charm.skills?.[0]?.level || 0;
+      document.querySelector('#editor-talisman-skill-2').value = charm.skills?.[1]?.name || '';
+      document.querySelector('#editor-talisman-level-2').value = charm.skills?.[1]?.level || 0;
+      document.querySelector('#editor-talisman-slots').value = equipmentCatalog.slotCapacities(gameSelect.value, charm).join(',');
+    }
+    updateSocketPanels();
+  });
+  gameSelect.addEventListener('change', updateCatalog);
+  document.querySelector('#editor-weapon').addEventListener('change', updateSocketPanels);
+  ['weapon', ...armorSlots.map(([slot]) => slot)].forEach((slot) => document.querySelector(`#filter-${slot}`).addEventListener('input', (event) => {
+    const select = document.querySelector(`#editor-${slot}`);
+    select.value = '';
+    const records = slot === 'weapon' ? equipmentCatalog.weapons(gameSelect.value) : equipmentCatalog.armor(gameSelect.value, slot);
+    renderEquipmentOptions(select, event.target, records, slot === 'weapon' ? 'Selecionar arma' : `Selecionar ${equipmentCatalog.slotLabels[slot].toLowerCase()}`);
+  }));
+  armorSlots.forEach(([slot]) => document.querySelector(`#editor-${slot}`).addEventListener('change', (event) => {
+    const piece = equipmentCatalog.findArmor(gameSelect.value, event.target.value);
+    document.querySelector(`#skills-${slot}`).innerHTML = piece?.skills?.length ? piece.skills.map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` ${skill.unit === 'points' ? `${skill.level} pts` : `+${skill.level}`}` : ''}</span>`).join('') : 'Sem skills publicadas para esta peça.';
+    updateSocketPanels();
+  }));
+  document.querySelector('#editor-talisman-slots').addEventListener('change', updateSocketPanels);
+  updateCatalog();
   document.querySelector('#save-build').addEventListener('click', () => {
     const split = (id) => document.querySelector(id).value.split(',').map((item) => item.trim()).filter(Boolean);
-    const build = window.localBuildStore.normalizeBuild({ title: document.querySelector('#editor-name').value.trim() || 'Minha build', game: document.querySelector('#editor-game').value, weapon: document.querySelector('#editor-weapon').value, type: document.querySelector('#editor-type').value, armor: { head: document.querySelector('#editor-head').value, chest: document.querySelector('#editor-chest').value, arms: document.querySelector('#editor-arms').value, waist: document.querySelector('#editor-waist').value, legs: document.querySelector('#editor-legs').value }, talisman: document.querySelector('#editor-talisman').value, skills: split('#editor-skills'), decorations: split('#editor-decorations'), notes: document.querySelector('#editor-notes').value, icon: '⚔️' });
+    const game = gameSelect.value;
+    const selectedArmor = Object.fromEntries(armorSlots.map(([slot]) => [slot, document.querySelector(`#editor-${slot}`).value]));
+    const armorParts = Object.fromEntries(armorSlots.map(([slot]) => [slot, equipmentCatalog.findArmor(game, selectedArmor[slot])]));
+    const selectedWeapon = equipmentCatalog.findWeapon(game, document.querySelector('#editor-weapon').value);
+    const charm = equipmentCatalog.findCharm(game, charmSelect.value);
+    const talismanSkills = charm?.skills || [1, 2].map((index) => ({ name: document.querySelector(`#editor-talisman-skill-${index}`).value.trim(), level: Number(document.querySelector(`#editor-talisman-level-${index}`).value || 0), unit: game === 'Monster Hunter: Generations Ultimate' ? 'points' : 'level' })).filter((skill) => skill.name && skill.level > 0);
+    const decorationSlots = Object.fromEntries(editorParts.map((part) => [part, socketState[part].filter(Boolean)]));
+    const socketDecorations = Object.values(decorationSlots).flat().map((entry) => entry.name);
+    const talismanSlots = charm ? equipmentCatalog.slotCapacities(game, charm) : split('#editor-talisman-slots').map(Number).filter((value) => value > 0);
+    const build = window.localBuildStore.normalizeBuild({ title: document.querySelector('#editor-name').value.trim() || 'Minha build', game, weapon: selectedWeapon?.displayName || selectedWeapon?.name || '', weaponId: selectedWeapon?.id || '', type: document.querySelector('#editor-type').value, armor: Object.fromEntries(armorSlots.map(([slot]) => [slot, armorParts[slot]?.name || ''])), armorIds: selectedArmor, armorSkills: Object.fromEntries(armorSlots.map(([slot]) => [slot, armorParts[slot]?.skills || []])), talisman: document.querySelector('#editor-talisman').value, talismanId: charm?.id || '', talismanSkills, talismanSlots, skills: split('#editor-skills'), decorations: [...split('#editor-decorations'), ...socketDecorations], decorationSlots, notes: document.querySelector('#editor-notes').value, icon: '⚔️' });
     saveBuilds([build, ...builds]);
+    recordActivity('build', build.title, build.id, build.game);
     renderSavedBuilds(filterGame);
   });
   document.querySelector('#export-builds').addEventListener('click', () => { const blob = new Blob([window.localBuildStore.exportData(builds)], { type: 'application/json' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'monster-hunter-builds.json'; link.click(); URL.revokeObjectURL(link.href); });
   document.querySelector('#import-builds').addEventListener('click', () => document.querySelector('#import-file').click());
   document.querySelector('#import-file').addEventListener('change', (event) => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => { try { saveBuilds(window.localBuildStore.importData(reader.result)); renderSavedBuilds(filterGame); } catch { document.querySelector('.info-banner')?.remove(); alert('Não foi possível importar o arquivo de builds.'); } }; reader.readAsText(file); });
 }
-function monsterCards(list) { return list.length ? list.map((monster) => { const art = monster.icon || monster.iconFallbackAsset ? `<img src="${escapeHtml(monster.icon || monster.iconFallbackAsset)}" alt="${monster.icon ? 'Ícone' : 'Imagem de fallback'} de ${escapeHtml(monster.name)}" loading="lazy" />` : `<span>${monster.iconFallback}</span>`; return `<article class="monster-card" data-monster-id="${escapeHtml(monster.id)}"><div class="monster-art">${art}<button class="favorite-button ${favoriteMonsterIds.has(monster.id) ? 'is-favorite' : ''}" data-favorite-id="${escapeHtml(monster.id)}" title="${favoriteMonsterIds.has(monster.id) ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">${favoriteMonsterIds.has(monster.id) ? '★' : '☆'}</button></div><div class="card-body"><div class="card-title"><strong>${escapeHtml(monster.name)}</strong><span class="tag">${escapeHtml(monster.threat)}</span></div><div class="card-meta"><span>${escapeHtml(monster.threat)}</span><span>${escapeHtml(monster.game.replace('Monster Hunter: ', ''))}</span></div></div></article>`; }).join('') : '<div class="empty-state">Nenhum monstro encontrado para este filtro.</div>'; }
+function equipmentImage(record, iconKind, label) {
+  const image = record?.icon;
+  if (typeof image === 'string' && /^https:\/\//i.test(image)) return `<img src="${escapeHtml(image)}" alt="Ícone de ${escapeHtml(label)}" loading="lazy" referrerpolicy="no-referrer" />`;
+  return `<span class="build-equipment-fallback" aria-label="${escapeHtml(label)}">${mhIcon(iconKind)}</span>`;
+}
+function buildEquipmentCard({ label, name, iconKind, record, meta = '', skills = [], decorations = [] }) {
+  if (!name) return '';
+  const pieceSkills = skills.length ? `<div class="build-detail-skills">${skills.map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>` : '';
+  const socketed = decorations.length ? `<div class="build-detail-socketed">${decorations.map((entry) => { const jewel = equipmentCatalog.findDecoration(record?.game || '', entry.id); return `<span class="build-decoration-chip" title="${escapeHtml(jewel?.name || entry.name)} · nível ${escapeHtml(jewel?.slot || entry.requiredSlot || '?')}"><i>✦</i>${escapeHtml(jewel?.name || entry.name)}${entry.slotIndex == null ? '' : ` · espaço ${entry.slotIndex + 1}`}</span>`; }).join('')}</div>` : '';
+  return `<article class="build-equipment-card"><div class="build-equipment-icon">${equipmentImage(record, iconKind, name)}</div><div class="build-equipment-copy"><small>${escapeHtml(label)}</small><strong>${escapeHtml(name)}</strong>${meta ? `<span class="build-equipment-meta">${escapeHtml(meta)}</span>` : ''}${pieceSkills}${socketed}</div></article>`;
+}
+function renderSavedBuildDetail(buildId, filterGame = 'Todos os jogos') {
+  const build = loadSavedBuilds().find((entry) => entry.id === buildId);
+  if (!build) return renderSavedBuilds(filterGame);
+  const gameKey = equipmentCatalog.gameKey(build.game);
+  const weapon = equipmentCatalog.findWeapon(gameKey, build.weaponId) || equipmentCatalog.weapons(gameKey).find((item) => normalizeSearch(item.displayName || item.name) === normalizeSearch(build.weapon));
+  const slotRows = [['head', 'Capacete', 'helmet'], ['chest', 'Peitoral', 'chest-armor'], ['arms', 'Braçadeiras', 'arms-armor'], ['waist', 'Cintura', 'waist-armor'], ['legs', 'Grevas', 'leg-armor']];
+  const armorCards = slotRows.map(([slot, label, icon]) => {
+    const piece = equipmentCatalog.findArmor(gameKey, build.armorIds?.[slot]);
+    const name = piece?.name || build.armor?.[slot] || '';
+    const meta = piece ? [piece.rank && `Rank ${piece.rank}`, piece.rarity && `Raridade ${piece.rarity}`, piece.defense?.base != null && `Defesa ${piece.defense.base}`, piece.slots?.length && `${piece.slots.length} espaço(s)`].filter(Boolean).join(' · ') : '';
+    const skills = piece?.skills?.length ? piece.skills : build.armorSkills?.[slot] || [];
+    return buildEquipmentCard({ label, name, iconKind: icon, record: piece, meta, skills, decorations: build.decorationSlots?.[slot] || [] });
+  }).join('');
+  const weaponName = weapon?.displayName || build.weapon;
+  const weaponMeta = weapon ? [weapon.rarity && `Raridade ${weapon.rarity}`, weapon.attack?.raw != null && `Ataque ${weapon.attack.raw}`, weapon.slots?.length && `${weapon.slots.length} espaço(s)`].filter(Boolean).join(' · ') : '';
+  const weaponCard = buildEquipmentCard({ label: 'Arma equipada', name: weaponName, iconKind: 'weapon', record: weapon, meta: weaponMeta, skills: weapon?.skills || [], decorations: build.decorationSlots?.weapon || [] });
+  const genericItems = [
+    build.talisman && buildEquipmentCard({ label: 'Talismã', name: build.talisman, iconKind: 'talisman', record: equipmentCatalog.findCharm(gameKey, build.talismanId), skills: build.talismanSkills || [], decorations: build.decorationSlots?.talisman || [] }),
+    ...(build.decorations || []).filter((name) => !Object.values(build.decorationSlots || {}).flat().some((entry) => entry.name === name)).map((name) => buildEquipmentCard({ label: 'Decoração não vinculada a um espaço', name, iconKind: 'decoration' })),
+  ].filter(Boolean).join('');
+  viewRoot.classList.add('saved-build-detail-root');
+  viewTitle.textContent = viewNames['saved-builds'];
+  recordActivity('build-view', build.title, build.id, build.game);
+  viewRoot.innerHTML = `<div class="saved-build-detail"><button class="ghost-button build-detail-back" id="back-to-saved-builds">← Voltar às builds registradas</button><section class="build-detail-banner"><span class="build-detail-emblem">${mhIcon('compass')}</span><div><span class="section-kicker">${escapeHtml(build.game)}</span><h2>${escapeHtml(build.title)}</h2><p>${escapeHtml(build.type)} · ${weapon ? escapeHtml(weapon.classPt) : 'Equipamento registrado'}</p></div><div class="build-share-actions"><span class="tag">${escapeHtml(build.game.replace('Monster Hunter: ', ''))}</span><button class="primary-button" id="share-build-online" ${!weapon ? 'disabled' : ''}>Compartilhar publicamente</button></div></section><div id="build-share-feedback" class="form-feedback" role="status"></div><section class="build-detail-section"><div class="section-heading"><h2>Equipamento</h2><span>ITENS REGISTRADOS NESTA BUILD</span></div><div class="build-equipment-grid">${weaponCard}${armorCards}${genericItems || '<div class="build-detail-empty">Talismã e decorações não foram registrados nesta build.</div>'}</div></section>${build.skills?.length ? `<section class="build-detail-section"><div class="section-heading"><h2>Habilidades adicionais</h2><span>${build.skills.length} REGISTRADAS</span></div><div class="build-detail-skills build-detail-skill-list">${build.skills.map((skill) => `<span>${escapeHtml(skill)}</span>`).join('')}</div></section>` : ''}${build.notes ? `<section class="build-detail-section"><div class="section-heading"><h2>Notas da build</h2></div><p class="build-detail-notes">${escapeHtml(build.notes)}</p></section>` : ''}<p class="build-detail-provenance">Build local · salva em ${escapeHtml(new Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium' }).format(new Date(build.createdAt)))}</p></div>`;
+  document.querySelector('#back-to-saved-builds').addEventListener('click', () => { viewTitle.textContent = viewNames['saved-builds']; renderSavedBuilds(filterGame); });
+  const shareButton = document.querySelector('#share-build-online');
+  const shareFeedback = document.querySelector('#build-share-feedback');
+  if (shareButton) {
+    if (!profileState.authenticated) shareFeedback.textContent = 'Entre na sua conta online para compartilhar builds com a comunidade.';
+    window.hunterOverlay.onlineBuilds.mine().then((rows) => {
+      myPublishedBuildIds = new Set(rows.map((row) => row.local_build_id));
+      if (myPublishedBuildIds.has(build.id)) { shareButton.textContent = 'Remover da galeria pública'; shareButton.disabled = false; shareButton.classList.add('danger-button'); }
+    }).catch(() => {});
+    shareButton.addEventListener('click', async () => {
+      if (!profileState.authenticated) { shareFeedback.textContent = 'Entre na sua conta online para compartilhar builds com a comunidade.'; return; }
+      if (!weapon) return;
+      const published = myPublishedBuildIds.has(build.id);
+      const prompt = published ? 'Remover esta build da galeria pública? Ela continuará salva localmente.' : 'Compartilhar esta build publicamente com todos os usuários? O nome, jogo e equipamento ficarão visíveis; as notas privadas serão omitidas.';
+      if (!window.confirm(prompt)) return;
+      shareButton.disabled = true;
+      try {
+        if (published) {
+          await window.hunterOverlay.onlineBuilds.unpublish(build.id);
+          myPublishedBuildIds.delete(build.id);
+          shareButton.textContent = 'Compartilhar publicamente'; shareButton.classList.remove('danger-button');
+          shareFeedback.textContent = 'Build removida da galeria pública. A cópia local foi mantida.';
+        } else {
+          const publicBuild = { ...build, notes: '' };
+          await window.hunterOverlay.onlineBuilds.publish({ ...publicBuild, weaponType: weapon.classPt || weapon.class, gameVersion: weapon.expansion || 'Versão não informada' });
+          myPublishedBuildIds.add(build.id);
+          shareButton.textContent = 'Remover da galeria pública'; shareButton.classList.add('danger-button');
+          shareFeedback.textContent = 'Build compartilhada. Ela já pode ser encontrada na busca online.';
+        }
+      } catch (error) { shareFeedback.textContent = error?.message || 'Não foi possível atualizar o compartilhamento.'; }
+      finally { shareButton.disabled = false; }
+    });
+  }
+}
+function monsterCards(list) { return list.length ? list.map((monster) => { const art = monster.icon || monster.iconFallbackAsset ? `<img src="${escapeHtml(monster.icon || monster.iconFallbackAsset)}" alt="${monster.icon ? 'Ícone' : 'Imagem de fallback'} de ${escapeHtml(monster.name)}" loading="lazy" />` : `<span>${monster.iconFallback}</span>`; const favorite = favoriteMonsterIds.has(monster.id); return `<article class="monster-card" data-monster-id="${escapeHtml(monster.id)}"><div class="monster-art">${art}<button class="favorite-button ${favorite ? 'is-favorite' : ''}" data-favorite-id="${escapeHtml(monster.id)}" title="${favorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}" aria-label="${favorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">${mhIcon('favorite')}</button></div><div class="card-body"><div class="card-title"><strong>${escapeHtml(monster.name)}</strong><span class="tag">${escapeHtml(monster.threat)}</span></div><div class="card-meta"><span>${escapeHtml(monster.threat)}</span><span>${escapeHtml(monster.game.replace('Monster Hunter: ', ''))}</span></div></div></article>`; }).join('') : '<div class="empty-state">Nenhum monstro encontrado para este filtro.</div>'; }
 function normalizeSearch(value) { return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); }
 function materialResults(list, query, rankKey) {
   const normalizedQuery = normalizeSearch(query);
@@ -209,7 +596,7 @@ function materialResults(list, query, rankKey) {
   for (const monster of list) {
     const rankRewards = rankKey && monster.rankData?.[rankKey]?.rewards?.length ? monster.rankData[rankKey].rewards : monster.rewards || [];
     for (const reward of rankRewards) {
-      if (!normalizeSearch(reward.item).includes(normalizedQuery) && !normalizeSearch(ptMaterial(reward.item)).includes(normalizedQuery)) continue;
+      if (!normalizeSearch(reward.item).includes(normalizedQuery) && !normalizeSearch(ptMaterial(reward.item, monster)).includes(normalizedQuery)) continue;
       for (const condition of reward.conditions || []) {
         if (rankKey && condition.rank && condition.rank !== rankKey) continue;
         results.push({ monster, item: reward.item, method: condition.type, rank: condition.rank, chance: condition.chance, part: condition.part });
@@ -221,7 +608,7 @@ function materialResults(list, query, rankKey) {
 function materialResultCards(results, query = '') {
   if (!normalizeSearch(query)) return '<div class="empty-state material-empty-state"><span class="result-marker"></span></div>';
   if (!results.length) return '<div class="empty-state">Nenhum material encontrado para este jogo/rank.</div>';
-  return results.slice(0, 80).map((result) => `<article class="material-result" data-monster-id="${escapeHtml(result.monster.id)}"><div><strong>${escapeHtml(ptMaterial(result.item))}</strong><span>${escapeHtml(result.monster.name)} · ${escapeHtml(result.monster.game.replace('Monster Hunter: ', ''))}</span></div><small>${escapeHtml(pt(result.method))}${result.part ? ` · ${escapeHtml(ptPart(result.part))}` : ''}${result.rank ? ` · ${result.rank === 'low' ? 'Baixo' : result.rank === 'high' ? 'Alto' : 'Mestre/G'}` : ''}${result.chance != null ? ` · ${result.chance}%` : ''}</small></article>`).join('');
+  return results.slice(0, 80).map((result) => `<article class="material-result" data-monster-id="${escapeHtml(result.monster.id)}"><div><strong>${escapeHtml(ptMaterial(result.item, result.monster))}</strong><span>${escapeHtml(result.monster.name)} · ${escapeHtml(result.monster.game.replace('Monster Hunter: ', ''))}</span></div><small>${escapeHtml(pt(result.method))}${result.part ? ` · ${escapeHtml(ptPart(result.part, result.monster))}` : ''}${result.rank ? ` · ${result.rank === 'low' ? 'Baixo' : result.rank === 'high' ? 'Alto' : 'Mestre/G'}` : ''}${result.chance != null ? ` · ${result.chance}%` : ''}</small></article>`).join('');
 }
 function partValueSummary(part) {
   const hitzones = part.hitzones || {};
@@ -3785,7 +4172,7 @@ function partMapMarkup(monster) {
     const kind = anchor.kind || (part.severable ? 'severable' : part.breakable ? 'breakable' : 'neutral');
     const flags = [part.breakable || kind === 'breakable' ? 'quebra' : '', part.severable || kind === 'severable' ? 'cortável' : ''].filter(Boolean).join(' · ');
     const side = anchor.side === 'left' ? 'is-left' : anchor.side === 'right' ? 'is-right' : '';
-    return `<button class="part-callout ${side} is-${kind}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(valuePart || part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
+    return `<button class="part-callout ${side} is-${kind}" style="--part-x:${anchor.x}%;--part-y:${anchor.y}%;--callout-x:${anchor.labelX ?? anchor.x}%;--callout-y:${anchor.labelY ?? anchor.y}%" data-part-index="${anchor.partIndex}"><strong>${escapeHtml(ptPart(part.name, monster))}</strong><small>${escapeHtml(flags || 'parte')}</small><em>${escapeHtml(partValueSummary(valuePart || part))}</em>${part.breakThresholds?.length ? `<span>Limiar ${part.breakThresholds.join('/')}</span>` : ''}</button>`;
   }).join('');
   const connectors = anchors.map((anchor) => `<line x1="${anchor.x}" y1="${anchor.y}" x2="${anchor.labelX ?? anchor.x}" y2="${anchor.labelY ?? anchor.y}" /><circle cx="${anchor.x}" cy="${anchor.y}" r=".8" />`).join('');
   const legend = '<div class="part-map-legend"><span>Linhas indicam a parte correspondente</span><span>Valores: Corte · Impacto · Munição</span></div>';
@@ -3841,11 +4228,13 @@ function detailRewardsMarkup(monster, rank) {
     if (reward.conditions?.length && !conditions.length) return '';
     const primary = conditions.find((c) => /carve|reward|target/.test(c.type)) || conditions[0];
     const labels = { reward: 'Recompensa', 'target rewards': 'Alvo', 'target-reward': 'Alvo', carve: 'Entalhe', carves: 'Entalhe', 'broken-part': 'Quebra', 'broken part rewards': 'Quebra', 'capture rewards': 'Captura', wound: 'Ferimento', shiny: 'Coleta', track: 'Rastro', palico: 'Amigato', plunderblade: 'Lâmina de pilhagem', investigation: 'Investigação' };
-    const method = (c) => c ? `${labels[c.type] || pt(c.type)}${c.part ? ` (${ptPart(c.part)})` : ''}` : 'Indisponível';
-    return `<details class="reward-row"><summary><span class="reward-item"><span class="reward-symbol" aria-hidden="true">${rewardItemIcon(reward)}</span><span>${escapeHtml(ptMaterial(reward.item))}</span></span><span>${primary?.chance != null ? `${primary.chance}%` : '—'}</span><span class="reward-origin">${escapeHtml(method(primary))}</span><span class="reward-chevron" aria-hidden="true">⌄</span></summary><div class="reward-conditions">${conditions.length ? conditions.map((c) => `<div><span>${escapeHtml(method(c))}${c.quantity != null ? ` · ×${c.quantity}` : ''}</span><strong>${c.chance != null ? `${c.chance}%` : 'Chance indisponível'}</strong></div>`).join('') : 'Condições não publicadas pela fonte.'}</div></details>`;
+    const method = (c) => c ? `${labels[c.type] || pt(c.type)}${c.part ? ` (${ptPart(c.part, monster)})` : ''}` : 'Indisponível';
+    return `<details class="reward-row"><summary><span class="reward-item"><span class="reward-symbol" aria-hidden="true">${rewardItemIcon(reward)}</span><span>${escapeHtml(ptMaterial(reward.item, monster))}</span></span><span>${primary?.chance != null ? `${primary.chance}%` : '—'}</span><span class="reward-origin">${escapeHtml(method(primary))}</span><span class="reward-chevron" aria-hidden="true">⌄</span></summary><div class="reward-conditions">${conditions.length ? conditions.map((c) => `<div><span>${escapeHtml(method(c))}${c.quantity != null ? ` · ×${c.quantity}` : ''}</span><strong>${c.chance != null ? `${c.chance}%` : 'Chance indisponível'}</strong></div>`).join('') : 'Condições não publicadas pela fonte.'}</div></details>`;
   }).join('') || '<p class="reward-empty">Recompensas não publicadas para este rank.</p>';
 }
 function renderMonsterDetail(monster, selectedRank = null) {
+  viewRoot.classList.remove('hunter-profile-page');
+  if (monster) recordActivity('monster', monster.name, monster.id, monster.game);
   window.__detailProvenanceResize?.disconnect?.();
   currentView = 'bestiary';
   document.querySelectorAll('[data-view]').forEach((button) => button.classList.toggle('active', button.dataset.view === 'bestiary'));
@@ -3872,7 +4261,7 @@ function renderMonsterDetail(monster, selectedRank = null) {
         <div class="stat-box"><small>Espécie</small><strong>${escapeHtml(pt(monster.species))}</strong></div>
         <div class="stat-box"><small>Habitat</small><strong>${escapeHtml(monster.habitat)}</strong></div>
         <div class="stat-box"><small>${healthLabel}</small><strong>${healthValue}</strong></div>
-        <div class="stat-box"><small>Fraquezas principais</small><strong>${weaknessSummary(monster)}</strong></div>
+        <div class="stat-box"><small>Tamanho e coroas</small><div class="stat-value crown-stat-value">${crownSummary(monster)}</div></div>
       </div></section>
       <section class="detail-card compact-card description-card"><h3>Descrição</h3><div class="detail-scroll"><p class="detail-description">${escapeHtml(monster.descriptionPt || 'Descrição indisponível.')}</p></div></section>
       <section class="detail-card compact-card useful-card"><h3>Informações úteis</h3><div class="detail-scroll">${spoilerLocked ? spoilerBlock : `<p class="detail-description">${escapeHtml(monster.ecologyPt?.usefulInfo || monster.ecologyPt?.characteristics || 'Informações úteis indisponíveis.')}</p>`}</div></section>
@@ -3901,8 +4290,45 @@ function renderMonsterDetail(monster, selectedRank = null) {
 }
 function renderOverlaySettings() { viewRoot.innerHTML = `<section class="settings-card"><h2>Overlay e widgets</h2><label class="switch-row"><span><strong>Modo de edição</strong><small>Permite ajustar a janela sobre o jogo</small></span><input id="edit-mode" type="checkbox" checked /></label><label class="switch-row"><span><strong>Clique-pass-through</strong><small>Deixa os cliques atravessarem o overlay</small></span><input id="click-through" type="checkbox" /></label><label class="range-row"><span><strong>Opacidade</strong></span><input id="opacity" type="range" min="25" max="100" value="94" /></label><div class="widget-toggles"><strong>Widgets visíveis</strong><label class="switch-row"><span><strong>Vida do monstro</strong><small>Vida, stamina, partes e anormalidades</small></span><input id="show-monster" type="checkbox" checked /></label><label class="switch-row"><span><strong>Medidor de dano</strong><small>DPS, participação, totais e gráfico</small></span><input id="show-damage" type="checkbox" checked /></label></div><div class="toolbar" style="margin-top:16px"><button data-delta="up" class="ghost-button">↑ Mover</button><button data-delta="down" class="ghost-button">↓ Mover</button><button data-delta="left" class="ghost-button">← Mover</button><button data-delta="right" class="ghost-button">Mover →</button><button data-delta="larger" class="ghost-button">＋ Aumentar</button><button data-delta="smaller" class="ghost-button">− Reduzir</button></div><div class="info-banner">O overlay real só será conectado após um adaptador de jogo validado. Esta tela controla a POC com dados simulados.</div></section>`; wireOverlayControls(); }
 function wireOverlayControls() { document.querySelector('#edit-mode').addEventListener('change', (event) => window.hunterOverlay.setEditMode(event.target.checked)); document.querySelector('#click-through').addEventListener('change', (event) => window.hunterOverlay.setClickThrough(event.target.checked)); document.querySelector('#opacity').addEventListener('input', (event) => window.hunterOverlay.setOpacity(Number(event.target.value) / 100)); document.querySelector('#show-monster').addEventListener('change', (event) => window.hunterOverlay.setWidgetVisibility('monster', event.target.checked)); document.querySelector('#show-damage').addEventListener('change', (event) => window.hunterOverlay.setWidgetVisibility('damage', event.target.checked)); document.querySelectorAll('[data-delta]').forEach((button) => button.addEventListener('click', () => window.hunterOverlay.adjustBounds({ up: { y: -20 }, down: { y: 20 }, left: { x: -20 }, right: { x: 20 }, larger: { width: 45, height: 45 }, smaller: { width: -45, height: -45 } }[button.dataset.delta]))); }
-function renderSettings() { viewRoot.innerHTML = `<section class="settings-card"><h2>Perfil do caçador</h2><label class="field">Nome do caçador<input class="text-input" id="name-input" value="${escapeHtml(localStorage.getItem('hunterName') || 'NomeCaçador')}" /></label><button id="save-profile" class="primary-button" style="margin-top:14px">Salvar perfil</button><div class="info-banner" style="margin-top:18px">As configurações do software e o perfil ficam locais nesta etapa.</div></section>`; document.querySelector('#save-profile').addEventListener('click', () => { const value = document.querySelector('#name-input').value.trim() || 'NomeCaçador'; localStorage.setItem('hunterName', value); updateProfile(value); }); }
-function updateProfile(name) { profileName.textContent = name; headerProfileName.textContent = name; avatarButton.textContent = name.charAt(0).toUpperCase(); }
+function profileSettingsMarkup() {
+  const online = profileState.mode === 'online';
+  const accountLabel = online ? 'Conta online' : 'Conta local';
+  if (profileState.authenticated && profileState.profile) {
+    const profile = profileState.profile;
+    return `<div class="profile-view-root"><section class="profile-hero-card"><div class="profile-hero-avatar">${escapeHtml(profile.displayName.charAt(0).toUpperCase())}</div><div class="profile-hero-copy"><span class="profile-eyebrow">HUNTER'S FIELD GUIDE</span><h2>${escapeHtml(profile.displayName)}</h2><p>${accountLabel} · ${escapeHtml(profile.email)}</p></div><div class="profile-hero-actions"><button id="logout-profile" class="ghost-button">Sair da conta</button></div></section><div class="profile-panels"><section class="settings-card profile-settings-card"><div class="section-heading"><h2>Identidade de caça</h2><span>${online ? 'Sincronizado' : 'Neste computador'}</span></div><label class="field">Nome do caçador<input class="text-input" id="name-input" value="${escapeHtml(profile.displayName)}" maxlength="32" /></label><div class="profile-connection-list"><div><strong>Perfil da Steam</strong><span>Adicionar link</span></div><div><strong>Código de amizade — Monster Hunter Wilds</strong><span>Não informado</span></div><div><strong>Jogos acompanhados</strong><span>World / Iceborne · Rise / Sunbreak · Wilds</span></div><div><strong>Título do caçador</strong><span>Rastreador de monstros</span></div></div><div class="profile-actions"><button id="save-profile" class="primary-button">Salvar alterações</button></div><div id="profile-feedback" class="form-feedback" role="status"></div></section><section class="settings-card profile-activity-card"><div class="section-heading"><h2>Atividade recente</h2><span>Em breve</span></div><div class="profile-empty-activity"><span>✥</span><strong>Suas caçadas aparecerão aqui</strong><small>Favoritos, builds e coroas poderão ser sincronizados com a conta.</small></div><div class="info-banner">${online ? 'Perfil sincronizado pelo Supabase. Favoritos e builds poderão ser sincronizados na próxima etapa.' : 'Este perfil fica armazenado localmente. Configure o Supabase para sincronizar a conta entre computadores.'}</div></section></div></div>`;
+  }
+  return `<section class="settings-card profile-settings-card"><div class="section-heading"><h2>Entrar no perfil</h2><span>${accountLabel}</span></div><p class="settings-intro">Crie um perfil para preservar seu nome, avatar e futuras builds entre sessões.</p><form id="login-form" class="profile-form"><label class="field">E-mail<input class="text-input" id="auth-email" type="email" autocomplete="email" required /></label><label class="field">Senha<input class="text-input" id="auth-password" type="password" autocomplete="current-password" minlength="8" required /></label><button class="primary-button" type="submit">Entrar</button></form><div class="profile-form-divider"><span>ou</span></div><button id="show-create-profile" class="ghost-button">Criar novo perfil</button><div id="profile-feedback" class="form-feedback" role="status"></div><div class="info-banner">${online ? 'Conta online Supabase: o perfil será sincronizado entre computadores.' : 'Modo offline: o perfil será salvo apenas neste computador. Configure o Supabase para ativar contas online.'}</div></section>`;
+}
+function renderAccountSettings() {
+  viewRoot.innerHTML = profileSettingsMarkup();
+  const feedback = document.querySelector('#profile-feedback');
+  const showError = (error) => { if (feedback) { feedback.textContent = error?.code === 'email_not_confirmed' ? 'Este e-mail ainda não foi confirmado no Supabase.' : error?.message || 'Não foi possível concluir a operação.'; } };
+  if (profileState.authenticated) {
+    document.querySelector('#save-profile').addEventListener('click', async () => { try { applyProfileState(await window.hunterOverlay.profile.update({ displayName: document.querySelector('#name-input').value })); if (feedback) feedback.textContent = 'Perfil atualizado.'; } catch (error) { showError(error); } });
+    document.querySelector('#logout-profile').addEventListener('click', async () => { try { applyProfileState(await window.hunterOverlay.profile.logout()); renderSettings(); } catch (error) { showError(error); } });
+    return;
+  }
+  document.querySelector('#login-form').addEventListener('submit', async (event) => { event.preventDefault(); const button = event.submitter || document.querySelector('#login-form button[type="submit"]'); if (button) button.disabled = true; try { applyProfileState(await window.hunterOverlay.profile.login({ email: document.querySelector('#auth-email').value, password: document.querySelector('#auth-password').value })); renderSettings(); } catch (error) { showError(error); if (button) button.disabled = false; } });
+  document.querySelector('#show-create-profile').addEventListener('click', () => {
+    viewRoot.innerHTML = `<section class="settings-card profile-settings-card"><div class="section-heading"><h2>Criar perfil</h2><span>${profileState.mode === 'online' ? 'Conta online' : 'Conta local'}</span></div><form id="create-form" class="profile-form"><label class="field">Nome do caçador<input class="text-input" id="create-name" value="NomeCaçador" maxlength="32" /></label><label class="field">E-mail<input class="text-input" id="create-email" type="email" autocomplete="email" required /></label><label class="field">Senha<input class="text-input" id="create-password" type="password" minlength="8" autocomplete="new-password" required /></label><label class="field">Confirmar senha<input class="text-input" id="create-password-confirm" type="password" minlength="8" autocomplete="new-password" required /></label><div class="profile-actions"><button class="primary-button" type="submit">Criar perfil</button><button id="cancel-create-profile" class="ghost-button" type="button">Voltar</button></div></form><div id="profile-feedback" class="form-feedback" role="status"></div></section>`;
+    document.querySelector('#create-form').addEventListener('submit', async (event) => { event.preventDefault(); const feedback = document.querySelector('#profile-feedback'); const password = document.querySelector('#create-password').value; if (password !== document.querySelector('#create-password-confirm').value) { feedback.textContent = 'As senhas não coincidem.'; return; } try { applyProfileState(await window.hunterOverlay.profile.create({ displayName: document.querySelector('#create-name').value || 'NomeCaçador', email: document.querySelector('#create-email').value, password, avatar: localStorage.getItem('hunterAvatar') || null })); renderSettings(); } catch (error) { feedback.textContent = error?.message || 'Não foi possível criar o perfil.'; } });
+    document.querySelector('#cancel-create-profile').addEventListener('click', renderSettings);
+  });
+}
+function applyProfileState(state) {
+  profileState = state || { authenticated: false, profile: null, mode: 'local' };
+  const name = profileState.authenticated ? profileState.profile?.displayName || 'NomeCaçador' : 'NomeCaçador';
+  profileName.textContent = name;
+  headerProfileName.textContent = name;
+  avatarButton.textContent = name.charAt(0).toUpperCase();
+  const status = document.querySelector('#profile-status');
+  if (status) status.textContent = profileState.authenticated ? 'Perfil conectado' : 'Caçador offline';
+  const avatar = profileState.authenticated ? profileState.profile?.avatar : null;
+  avatarButton.style.backgroundImage = '';
+  avatarButton.style.removeProperty('--profile-avatar');
+  if (avatar) { avatarButton.style.backgroundImage = `url(${avatar})`; avatarButton.style.setProperty('--profile-avatar', `url("${avatar}")`); avatarButton.style.backgroundSize = 'cover'; avatarButton.textContent = ''; }
+  return profileState;
+}
 function clearDetailHeader() { detailHeaderActions.hidden = true; detailHeaderActions.innerHTML = ''; viewRoot.classList.remove('detail-view-root', 'bestiary-view-root'); document.querySelector('.section-kicker').textContent = 'HUNTER COMPANION'; }
 function setDetailHeader(monster) {
   detailHeaderActions.hidden = false;
@@ -3911,15 +4337,28 @@ function setDetailHeader(monster) {
   detailHeaderActions.innerHTML = `<button class="detail-breadcrumb" id="detail-back-bestiary" title="Voltar à Monsterpedia"><span>/</span> ${escapeHtml(monster.game.replace('Monster Hunter: ', ''))} <span>/</span> <strong>${escapeHtml(monster.name)}</strong></button>`;
   document.querySelector('#detail-back-bestiary').addEventListener('click', renderBestiary);
 }
-function renderView(view) { currentView = view; viewTitle.textContent = viewNames[view]; document.querySelectorAll('[data-view]').forEach((button) => button.classList.toggle('active', button.dataset.view === view)); ({ 'online-builds': renderOnlineBuilds, 'saved-builds': renderSavedBuilds, bestiary: renderBestiary, 'overlay-settings': renderOverlaySettings, 'app-settings': renderSettings }[view] || renderOnlineBuilds)(); }
+function renderView(view) { currentView = view; viewRoot.classList.remove('hunter-profile-page', 'saved-build-detail-root'); viewTitle.textContent = viewNames[view]; if (view !== 'app-settings') recordActivity('view', viewNames[view], view); document.querySelectorAll('[data-view]').forEach((button) => button.classList.toggle('active', button.dataset.view === view)); ({ 'online-builds': renderOnlineBuilds, 'saved-builds': renderSavedBuilds, bestiary: renderBestiary, 'overlay-settings': renderOverlaySettings, 'app-settings': renderSettings }[view] || renderOnlineBuilds)(); }
 
 document.querySelectorAll('[data-view]').forEach((button) => button.addEventListener('click', () => { clearDetailHeader(); renderView(button.dataset.view); }));
-avatarButton.addEventListener('click', () => avatarInput.click());
-avatarInput.addEventListener('change', (event) => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => { localStorage.setItem('hunterAvatar', reader.result); avatarButton.style.backgroundImage = `url(${reader.result})`; avatarButton.style.backgroundSize = 'cover'; avatarButton.textContent = ''; }; reader.readAsDataURL(file); });
+avatarButton.addEventListener('click', () => { clearDetailHeader(); renderView('app-settings'); });
+avatarInput.addEventListener('change', async (event) => {
+  const file = event.target.files[0]; event.target.value = '';
+  if (!file) return;
+  const showError = message => { const feedback = document.querySelector('#profile-feedback'); if (feedback) feedback.textContent = message; else alert(message); };
+  if (!profileState.authenticated) { clearDetailHeader(); renderView('app-settings'); return; }
+  if (!/^image\/(png|jpeg|webp|gif)$/.test(file.type) || file.size > 1_000_000) { showError('Escolha uma imagem PNG, JPG, WebP ou GIF de até 1 MB.'); return; }
+  const accountId = profileState.profile.id;
+  const reader = new FileReader();
+  reader.onload = async () => { if (profileState.profile?.id !== accountId) return; try {
+    applyProfileState(await window.hunterOverlay.profile.update({ avatar: reader.result }));
+    const portrait = document.querySelector('.profile-hero-avatar');
+    if (portrait) portrait.innerHTML = `<img src="${escapeHtml(reader.result)}" alt="Foto do caçador">`;
+  } catch (error) { showError(error.message || 'Não foi possível salvar a foto.'); } };
+  reader.readAsDataURL(file);
+});
 document.querySelector('#profile-header').addEventListener('click', () => { clearDetailHeader(); renderView('app-settings'); });
-updateProfile(localStorage.getItem('hunterName') || 'NomeCaçador');
-const storedAvatar = localStorage.getItem('hunterAvatar');
-if (storedAvatar) { avatarButton.style.backgroundImage = `url(${storedAvatar})`; avatarButton.style.backgroundSize = 'cover'; avatarButton.textContent = ''; }
+applyProfileState(profileState);
+if (window.hunterOverlay.profile?.state) window.hunterOverlay.profile.state().then(state => { applyProfileState(state); profileReady = true; if (currentView === 'app-settings') renderSettings(); }).catch(() => { profileReady = true; });
 window.hunterOverlay.onState(({ connectionStatus }) => {
   if (connectionStatus) {
     connectionLabel.innerHTML = `<i></i> ${escapeHtml(connectionStatus.label)}`;
@@ -3927,7 +4366,8 @@ window.hunterOverlay.onState(({ connectionStatus }) => {
     connectionLabel.dataset.state = connectionStatus.state || 'unknown';
   }
 });
-renderView(new URLSearchParams(window.location.search).get('view') === 'bestiary' ? 'bestiary' : currentView);
+const requestedStartView = new URLSearchParams(window.location.search).get('view');
+renderView(['bestiary', 'app-settings'].includes(requestedStartView) ? requestedStartView : currentView);
 const initialMonsterId = new URLSearchParams(window.location.search).get('monster');
 const initialMonster = initialMonsterId && monsters.find((monster) => monster.id === initialMonsterId);
 if (initialMonster) renderMonsterDetail(initialMonster);

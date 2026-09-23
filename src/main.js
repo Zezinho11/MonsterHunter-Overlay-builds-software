@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, screen } = require('electron');
+const { app, BrowserWindow, ipcMain, screen, safeStorage, shell } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
 const { execFile } = require('node:child_process');
@@ -6,6 +6,8 @@ const { promisify } = require('node:util');
 const { findSupportedGames, parseTasklistCsv } = require('./integration/process-detector');
 const { getIntegrationStatus } = require('./integration/adapter-registry');
 const { loadOverlaySettings, saveOverlaySettings } = require('./infrastructure/overlay-settings-store');
+const { createProfileStore } = require('./infrastructure/profile-store');
+const { createSupabaseProfileStore } = require('./infrastructure/supabase-profile-store');
 const execFileAsync = promisify(execFile);
 
 const fixturePath = path.join(__dirname, 'fixtures', 'simulated-overlay-v1.json');
@@ -25,6 +27,8 @@ let settings = {
   widgets: { monster: true, damage: true },
 };
 let settingsFilePath;
+let profileStore;
+let supabaseProfileStore;
 let savedOverlayBounds;
 let connectionStatus = { state: 'simulation', label: 'Modo de simulação · nenhum jogo detectado', game: null };
 const overlayEnabled = !process.argv.includes('--no-overlay');
@@ -50,7 +54,11 @@ function createControlWindow() {
     },
   });
   const monsterId = process.argv.find((arg) => arg.startsWith('--monster='))?.slice('--monster='.length);
-  const startView = process.argv.includes('--bestiary') ? 'bestiary' : undefined;
+  controlWindow.webContents.setWindowOpenHandler(({ url }) => {
+    try { const link = new URL(url); if (link.protocol === 'https:' && ['steamcommunity.com', 'www.google.com'].includes(link.hostname)) shell.openExternal(url); } catch {}
+    return { action: 'deny' };
+  });
+  const startView = process.argv.includes('--profile') ? 'app-settings' : process.argv.includes('--bestiary') ? 'bestiary' : undefined;
   controlWindow.loadFile(path.join(__dirname, 'control.html'), { query: { ...(monsterId ? { monster: monsterId } : {}), ...(startView ? { view: startView } : {}) } });
   controlWindow.on('closed', () => { controlWindow = null; });
 }
@@ -185,8 +193,40 @@ ipcMain.on('overlay:reset-simulation', () => {
   broadcastState();
 });
 
+function activeProfileProvider() { return supabaseProfileStore || profileStore; }
+ipcMain.handle('profile:state', async () => activeProfileProvider()?.state() || { authenticated: false, profile: null, mode: 'local' });
+ipcMain.handle('profile:create', (_event, input) => activeProfileProvider().create(input));
+ipcMain.handle('profile:login', (_event, input) => activeProfileProvider().login(input));
+ipcMain.handle('profile:logout', () => activeProfileProvider().logout());
+ipcMain.handle('profile:update', (_event, input) => activeProfileProvider().update(input));
+ipcMain.handle('builds:online-search', async (_event, filters) => {
+  if (!supabaseProfileStore?.searchBuilds) throw new Error('A busca online de builds ainda não está configurada. Configure o Supabase do aplicativo.');
+  return supabaseProfileStore.searchBuilds(filters || {});
+});
+ipcMain.handle('builds:online-mine', async () => {
+  if (!supabaseProfileStore?.getMyPublishedBuilds) throw new Error('O compartilhamento de builds exige um perfil Supabase configurado.');
+  return supabaseProfileStore.getMyPublishedBuilds();
+});
+ipcMain.handle('builds:online-publish', async (_event, build) => {
+  if (!supabaseProfileStore?.publishBuild) throw new Error('A publicação de builds exige um perfil Supabase configurado.');
+  return supabaseProfileStore.publishBuild(build || {});
+});
+ipcMain.handle('builds:online-unpublish', async (_event, buildId) => {
+  if (!supabaseProfileStore?.unpublishBuild) throw new Error('A remoção de builds exige um perfil Supabase configurado.');
+  return supabaseProfileStore.unpublishBuild(buildId);
+});
+
 app.whenReady().then(() => {
   settingsFilePath = path.join(app.getPath('userData'), 'overlay-settings.v1.json');
+  profileStore = createProfileStore(path.join(app.getPath('userData'), 'profiles.v1.json'));
+  let supabaseConfig = {};
+  try { supabaseConfig = JSON.parse(fs.readFileSync(path.join(app.getPath('userData'), 'supabase.config.json'), 'utf8')); } catch {}
+  supabaseProfileStore = createSupabaseProfileStore({
+    url: process.env.SUPABASE_URL || supabaseConfig.url,
+    anonKey: process.env.SUPABASE_ANON_KEY || supabaseConfig.anonKey,
+    sessionPath: path.join(app.getPath('userData'), 'supabase-session.v1'),
+    secureStorage: safeStorage,
+  });
   const persisted = loadOverlaySettings(settingsFilePath);
   settings = persisted.settings;
   savedOverlayBounds = persisted.bounds;

@@ -1,0 +1,33 @@
+/* Shared sidebar: approved profile composition on every page. */
+body .sidebar { flex-basis:286px!important; width:286px; overflow-y:auto; border-right-color:#85744c!important; background:linear-gradient(#06141b22,#06141b33),url('assets/field-guide/profile-landscape.png') left bottom/100vw 100vh fixed no-repeat!important; }
+body .app-brand { height:148px!important; min-height:148px!important; padding:24px 22px 10px!important; gap:12px!important; border:0!important; align-items:flex-start; font-size:16px!important; }
+body .brand-mark { width:78px!important; height:104px!important; flex:0 0 78px;background-image:url('assets/field-guide/profile-compass.svg')!important; }
+body .brand-copy { color:#e8d7b0; font-variant:small-caps; white-space:normal; font-family:Georgia,serif;font-size:30px;line-height:1.05; }
+body .brand-copy small { display:block; font:10px/1.6 Georgia,serif; letter-spacing:.24em; margin-top:13px; text-align:center; }
+body .profile-card { height:208px!important; flex-shrink:0; padding:10px 20px 24px!important; }
+body .avatar { width:120px!important;height:120px!important;border:2px solid #c6a568!important;box-shadow:0 0 0 5px #b79a5433; background-color:#193039!important; background-image:linear-gradient(#314956,#0b1c25)!important;font:42px Georgia,serif; }
+body .avatar[style*="background-image"] { background-image:var(--profile-avatar)!important; }
+body .profile-card strong { font:23px Georgia,serif!important; }
+body .profile-card small { font:14px Georgia,serif!important; margin-top:9px!important; }
+body .main-nav { padding-top:5px!important; }
+body .main-nav .nav-item { position:static!important; display:flex; min-height:62px!important;height:62px!important;padding:12px 26px!important;gap:22px!important;font:19px Georgia,serif!important;opacity:1!important;border-top:1px solid transparent;border-bottom:1px solid transparent; }
+body .main-nav .nav-item span { background:none!important;color:#99aaae!important;flex:0 0 32px!important;width:32px!important;height:32px!important; }
+body .main-nav .nav-item svg { width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round; }
+body .main-nav .nav-item.active { background:linear-gradient(90deg,#78643f55,#0d242b)!important;border-top-color:#a18c5355!important;border-bottom-color:#a18c5355!important;border-left-color:#e3c784!important; }
+body .main-nav .nav-item.active span { color:#ddc894!important; }
+body .sidebar-legend { position:relative!important;bottom:auto!important;margin-top:auto;padding:75px 20px 24px!important;color:#d2bd93!important;font:italic 18px/1.4 Georgia,serif!important;letter-spacing:.04em!important; }
+@media(max-width:1100px) { body .sidebar { flex-basis:220px!important;width:220px; } body .brand-mark { flex-basis:50px;width:50px!important; } body .brand-copy { font-size:23px; } body .main-nav .nav-item { padding:12px!important;gap:12px!important;font-size:16px!important; } }
+@media(max-width:650px) { body .sidebar {flex-basis:64px!important;width:64px;} body .app-brand,body .profile-card,body .sidebar-legend {display:none!important;} body .main-nav .nav-item {overflow:hidden;font-size:0!important;gap:0!important;} }
+
+/* Monsterpedia uses the same shell; its catalog rules must not shrink or restyle the global sidebar. */
+body:has(.bestiary-view-root) .sidebar { flex-basis:286px!important; width:286px!important; }
+body:has(.bestiary-view-root) .app-brand { height:148px!important; min-height:148px!important; padding:24px 22px 10px!important; gap:12px!important; white-space:normal!important; font-size:16px!important; }
+body:has(.bestiary-view-root) .brand-mark { flex:0 0 78px!important; width:78px!important; height:104px!important; }
+body:has(.bestiary-view-root) .brand-copy { font-size:30px!important; font-weight:400!important; }
+body:has(.bestiary-view-root) .profile-card { height:208px!important; padding:10px 20px 24px!important; }
+body:has(.bestiary-view-root) .main-nav { padding-top:5px!important; }
+body:has(.bestiary-view-root) .main-nav .nav-item { height:62px!important; min-height:62px!important; padding:12px 26px!important; gap:22px!important; font-size:19px!important; font-weight:400!important; }
+body:has(.bestiary-view-root) .main-nav .nav-item span { flex:0 0 32px!important; width:32px!important; height:32px!important; }
+body:has(.bestiary-view-root) .sidebar-legend { position:relative!important; bottom:auto!important; margin-top:auto!important; padding:75px 20px 24px!important; }
+@media(max-width:1100px) { body:has(.bestiary-view-root) .sidebar { flex-basis:220px!important; width:220px!important; } body:has(.bestiary-view-root) .brand-mark { flex-basis:50px!important; width:50px!important; } body:has(.bestiary-view-root) .brand-copy { font-size:23px!important; } body:has(.bestiary-view-root) .main-nav .nav-item { padding:12px!important; gap:12px!important; font-size:16px!important; } }
+@media(max-width:650px) { body:has(.bestiary-view-root) .sidebar { flex-basis:64px!important; width:64px!important; } body:has(.bestiary-view-root) .app-brand,body:has(.bestiary-view-root) .profile-card,body:has(.bestiary-view-root) .sidebar-legend { display:none!important; } body:has(.bestiary-view-root) .main-nav .nav-item { font-size:0!important; gap:0!important; } }

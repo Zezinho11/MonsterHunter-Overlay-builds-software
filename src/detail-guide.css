@@ -49,6 +49,13 @@ body:has(.detail-view-root) .content-shell { overflow: hidden; }
 .detail-view-root .stat-box:nth-child(n+3) { border-top: 1px solid #294652; padding-top: 14px; }
 .detail-view-root .stat-box small { font-size: 11px; margin-bottom: 4px; color: #a2bfcb; }
 .detail-view-root .stat-box strong { font-size: 12px; line-height: 1.35; font-weight: 500; color: #f0f1ed; }
+.detail-view-root .crown-stat-value { min-width: 0; color: #f0f1ed; font-size: 11px; line-height: 1.25; }
+.detail-view-root .crown-summary { display: grid; gap: 4px; }
+.detail-view-root .crown-summary-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.detail-view-root .crown-summary-row > span { color: #c7d5d9; }
+.detail-view-root .crown-summary-row strong { font-size: 11px; color: #f0c870; white-space: nowrap; }
+.detail-view-root .crown-source-note { display: block; margin-top: 5px; color: #8fa7b1; font-size: 9px; }
+.detail-view-root .crown-unavailable { color: #9aaeb6; font-size: 11px; }
 .detail-view-root .detail-scroll { flex: 1; min-height: 0; overflow-y: auto; border: 1px solid #2b4c57; border-radius: 6px; background: #06151b66; padding: 7px 6px; }
 .detail-view-root .detail-description { margin: 0; font: 14px/1.55 'Segoe UI',sans-serif; color: #eceee9; overflow-wrap: anywhere; }
 .detail-view-root .section-heading { align-items: center; flex: none; gap: 5px; }

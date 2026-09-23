@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#b49a60" stroke-width="1">
+<path d="M1 1H99V99H1Z M5 20V5H20 M80 5H95V20 M95 80V95H80 M20 95H5V80"/>
+<g id="corner"><path d="M1 24 24 1M2 15 15 2M6 14Q20 18 17 6M9 6 6 9 9 12 12 9ZM18 3 21 6 18 9 15 6Z"/><path d="M1 27Q7 19 13 20Q19 21 20 13Q19 7 27 1"/></g>
+<use href="#corner" transform="translate(100 0) rotate(90)"/><use href="#corner" transform="translate(100 100) rotate(180)"/><use href="#corner" transform="translate(0 100) rotate(270)"/>
+</svg>

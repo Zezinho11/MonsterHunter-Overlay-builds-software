@@ -1,22 +1,6 @@
 /* D219: catalog reference canvas 1680 × 943, independent of detail layout. */
 body:has(.bestiary-view-root) { background:#071116; color:#eeeade; font-family:'Segoe UI',sans-serif; }
 body:has(.bestiary-view-root) .app-shell { min-height:100vh; }
-body:has(.bestiary-view-root) .sidebar { position:sticky; top:0; height:100vh; flex:0 0 190px; border-right:1px solid #42606a; background:linear-gradient(#061015 42%,#06101533 68%,#061015aa),url('assets/field-guide/atlas-night.png') left bottom / auto 65% no-repeat; }
-body:has(.bestiary-view-root) .sidebar::after { display:none; }
-body:has(.bestiary-view-root) .app-brand { height:40px; min-height:40px; padding:0 17px; gap:14px; font:14px Georgia,serif; border-bottom:1px solid #28414a; }
-body:has(.bestiary-view-root) .brand-mark { color:transparent; width:23px; height:30px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
-body:has(.bestiary-view-root) .profile-card { height:132px; padding:14px 15px; border-color:#29404a; }
-body:has(.bestiary-view-root) .avatar { width:60px; height:60px; border:1px solid #6976de; background:linear-gradient(140deg,#5865e2,#303aa7); margin-bottom:8px; }
-body:has(.bestiary-view-root) .profile-card strong { font:14px Georgia,serif; }
-body:has(.bestiary-view-root) .profile-card small { font-size:11px; margin-top:5px; }
-body:has(.bestiary-view-root) .main-nav { padding-top:12px; }
-body:has(.bestiary-view-root) .nav-item { height:49px; padding:10px 20px; gap:15px; font:14px Georgia,serif; color:#bfd1d9; }
-body:has(.bestiary-view-root) .nav-item.active { border-left:4px solid #dfbd75; padding-left:19px; background:linear-gradient(90deg,#253b3c,#10232a); border-top:1px solid #42636d; border-bottom:1px solid #42636d; color:#fff7e5; }
-body:has(.bestiary-view-root) .nav-item.active span { color:transparent; height:25px; width:20px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
-body:has(.bestiary-view-root) .sidebar-legend { position:absolute; bottom:55px; left:0; width:100%; padding:0 56px; font:11px/1.5 'Segoe UI',sans-serif; letter-spacing:.27em; color:#c5a05c; }
-body:has(.bestiary-view-root) .sidebar-legend span { color:transparent; margin:9px auto 0; width:40px; height:43px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
-body:has(.bestiary-view-root) .settings-button { position:absolute; bottom:0; height:28px; min-height:0; padding:4px 18px; font-size:10px; opacity:.65; }
-body:has(.bestiary-view-root) .content-shell { background:linear-gradient(#071217b0,#071217f0),url('assets/field-guide/atlas-night.png') right top/1500px auto; }
 .content-header:has(+ .bestiary-view-root) { height:118px; min-height:118px; padding:0 26px; border:0; background:linear-gradient(90deg,#06131933,#06131922),url('assets/field-guide/atlas-night.png') right top/1490px auto; }
 .content-header:has(+ .bestiary-view-root) .content-header-title { margin-left:96px; gap:0; }
 .content-header:has(+ .bestiary-view-root) .content-header-title::before { content:''; left:-98px; top:-16px; width:80px; height:90px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
@@ -74,7 +58,8 @@ body:has(.bestiary-view-root) .content-shell { background:linear-gradient(#07121
 .bestiary-view-root .card-meta>span:first-child { position:relative; margin-left:25px; padding:2px 5px; border:1px solid #28505d; border-radius:4px; color:#a5d2e6; font-size:9px; text-transform:uppercase; }
 .bestiary-view-root .card-meta>span:first-child::before { content:''; position:absolute; left:-26px; top:-3px; width:19px; height:22px; background:url('assets/field-guide/compass.svg') center/contain no-repeat; }
 .bestiary-view-root .card-meta>span:last-child::before { content:'◎'; font-size:18px; vertical-align:-1px; margin-right:8px; color:#c7d8de; }
-.bestiary-view-root .favorite-button { top:8px; right:8px; width:24px; height:24px; font-size:19px; color:#f5d690; border-color:#947a40; }
+.bestiary-view-root .favorite-button { top:8px; right:8px; display:grid; place-items:center; width:24px; height:24px; padding:0; font-size:19px; line-height:1; color:#f5d690; border-color:#947a40; }
+.bestiary-view-root .favorite-button .mh-icon { display:block; width:16px; height:16px; margin:0; stroke:currentColor; stroke-width:1.7; }
 body:has(.bestiary-view-root) .app-brand { white-space:nowrap; font-weight:400; font-size:13px; gap:10px; }
 body:has(.bestiary-view-root) .brand-mark { flex:0 0 23px; }
 body:has(.bestiary-view-root) .nav-item { white-space:nowrap; font-weight:400; padding-right:8px; }

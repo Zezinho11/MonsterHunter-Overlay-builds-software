@@ -16,4 +16,17 @@ contextBridge.exposeInMainWorld('hunterOverlay', {
   setWidgetVisibility: (widget, visible) => ipcRenderer.send('overlay:set-widget-visibility', { widget, visible }),
   adjustBounds: (delta) => ipcRenderer.send('overlay:adjust-bounds', delta),
   resetSimulation: () => ipcRenderer.send('overlay:reset-simulation'),
+  profile: {
+    state: () => ipcRenderer.invoke('profile:state'),
+    create: (input) => ipcRenderer.invoke('profile:create', input),
+    login: (input) => ipcRenderer.invoke('profile:login', input),
+    logout: () => ipcRenderer.invoke('profile:logout'),
+    update: (input) => ipcRenderer.invoke('profile:update', input),
+  },
+  onlineBuilds: {
+    search: (filters) => ipcRenderer.invoke('builds:online-search', filters),
+    mine: () => ipcRenderer.invoke('builds:online-mine'),
+    publish: (build) => ipcRenderer.invoke('builds:online-publish', build),
+    unpublish: (localBuildId) => ipcRenderer.invoke('builds:online-unpublish', localBuildId),
+  },
 });

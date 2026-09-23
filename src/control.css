@@ -114,13 +114,14 @@ body:has(.detail-view-root) .content-shell { overflow: visible; }
 .weakness-level-2 { color: #ff9f43; }
 .weakness-level-3 { color: #ff555f; }
 .weakness-badge small, .weakness-note, .muted-inline { color: #8798a9; font-size: 9px; }
-.weakness-table { display: grid; grid-template-columns: minmax(68px, 1fr) repeat(3, 42px); gap: 0 4px; margin-top: 10px; align-items: center; }
-.weakness-table > div { padding: 6px 0; border-bottom: 1px solid rgba(171, 195, 218, .14); font-size: 8px; }
-.weakness-table-head { color: #7e91a4; text-align: center; text-transform: uppercase; }
-.weakness-table-head .mh-icon { display: inline-block; width: 12px; height: 12px; margin-right: 3px; vertical-align: -2px; }
+.weakness-table { display: grid; grid-template-columns: minmax(68px, 1fr) repeat(3, minmax(46px, 52px)); gap: 0 4px; min-width: 250px; margin-top: 10px; align-items: center; }
+.weakness-table > div { display: flex; align-items: center; justify-content: center; min-width: 0; padding: 6px 0; border-bottom: 1px solid rgba(171, 195, 218, .14); font-size: 8px; }
+.weakness-table-head { color: #7e91a4; text-align: center; text-transform: uppercase; white-space: nowrap; }
+.weakness-table-head .mh-icon { flex: 0 0 auto; display: block; width: 12px; height: 12px; margin-right: 2px; }
+.weakness-table-head span { display: block; white-space: nowrap; }
 .weakness-part-name { color: #c9d5df; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .weakness-part-name em { color: #e1a85f; font-style: normal; }
-.weakness-stars { font-size: 9px; text-align: center; white-space: nowrap; }
+.weakness-stars { display: inline-flex; align-items: center; justify-content: center; min-width: 0; font-size: 9px; line-height: 1; text-align: center; white-space: nowrap; letter-spacing: 0; }
 .weakness-note { display: block; margin-top: 9px; line-height: 1.35; }
 .weakness-detail-card { border-color: rgba(255, 177, 66, .28); background: linear-gradient(145deg, rgba(34, 42, 51, .98), rgba(15, 21, 28, .96)); }
 .weakness-detail-card h3 { color: #f2f5f8; }
@@ -240,6 +241,17 @@ body {
 }
 .brand-mark { color: var(--guide-brass); font-size: 17px; }
 .profile-card { border-bottom-color: rgba(196, 154, 90, .2); }
+.profile-settings-card { max-width: 760px; }
+.settings-intro { max-width: 620px; color: #9aa9aa; line-height: 1.6; }
+.profile-account-summary { display:flex; align-items:center; gap:12px; margin:0 0 20px; padding:14px; border:1px solid rgba(196,154,90,.22); border-radius:8px; background:rgba(7,25,31,.55); }
+.profile-account-summary strong, .profile-account-summary small { display:block; }
+.profile-account-summary small { margin-top:4px; color:#8ca1a7; }
+.profile-account-avatar { display:grid; place-items:center; width:42px; height:42px; border-radius:50%; background:linear-gradient(145deg,#2c7180,#1e4650); border:1px solid rgba(196,154,90,.45); color:#f2dfb0; font-weight:700; }
+.profile-form { display:grid; gap:12px; max-width:430px; }
+.profile-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.profile-form-divider { max-width:430px; margin:18px 0; color:#6f8289; text-align:center; border-bottom:1px solid rgba(196,154,90,.18); line-height:1px; }
+.profile-form-divider span { padding:0 10px; background:#101c21; }
+.form-feedback { min-height:22px; margin-top:12px; color:#e4b86f; font-size:12px; }
 .avatar { background: linear-gradient(145deg, #2c7180, #1e4650); border: 1px solid rgba(196, 154, 90, .45); }
 .nav-item, .settings-button { color: #9aa9aa; }
 .nav-item:hover, .nav-item.active { border-left-color: var(--guide-brass); background: linear-gradient(90deg, rgba(196, 154, 90, .16), rgba(111, 169, 183, .07)); color: var(--guide-ivory); }
@@ -525,3 +537,80 @@ body {
   .bestiary-view-root .material-search-copy p { margin: 5px 0 8px; }
   .bestiary-view-root .material-search-card .material-results { grid-column: 1; }
 }
+ .catalog-status { display: block; margin-top: 5px; color: #73b7c7; font-size: 11px; }
+ .armor-editor-row select { width: 100%; }
+ .armor-skill-preview { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; color: #aebfc2; font-size: 11px; }
+ .armor-skill-preview span { padding: 3px 6px; border: 1px solid rgba(196,154,90,.4); border-radius: 3px; color: #e4c783; background: rgba(196,154,90,.08); }
+
+/* Keep the native Windows dropdown consistent with the dark field-guide shell. */
+body select { color-scheme: dark; background-color: #0b1b22 !important; color: #eff2ed !important; }
+body select option,
+body select optgroup { background-color: #0b1b22 !important; color: #eff2ed !important; }
+body select option:checked { background-color: #23434d !important; color: #fff7e5 !important; }
+body select option:disabled { color: #71848a !important; }
+
+.saved-build-card { cursor: pointer; transition: transform .16s ease, border-color .16s ease; }
+.saved-build-card:hover, .saved-build-card:focus-visible { outline: none; transform: translateY(-2px); border-color: #c4a55f; }
+.saved-build-detail { display: grid; gap: 14px; max-width: 1420px; margin: 0 auto; }
+.build-detail-back { width: max-content; }
+.build-detail-banner, .build-detail-section { border: 1px solid #73633e; border-radius: 8px; background: linear-gradient(110deg,#102127ed,#0b1b22dc),url('assets/field-guide/atlas-night.png') right top/1000px auto; box-shadow: inset 0 1px rgba(255,255,255,.035); }
+.build-detail-banner { display: flex; align-items: center; gap: 18px; min-height: 142px; padding: 22px 26px; }
+.build-detail-banner h2 { margin: 4px 0; color: #f4ead6; font: 32px/1.15 Georgia,serif; }
+.build-detail-banner p { margin: 0; color: #b3c2c7; font-size: 12px; }
+.build-detail-banner > .tag { margin-left: auto; }
+.build-detail-emblem { display: grid; place-items: center; width: 66px; height: 66px; flex: 0 0 66px; border: 1px solid #b99853; border-radius: 50%; color: #dfbe76; background: #09181e; }
+.build-detail-emblem .mh-icon { width: 38px; height: 38px; }
+.build-detail-section { padding: 18px; }
+.build-detail-section > .section-heading { margin-bottom: 14px; }
+.build-detail-section > .section-heading h2 { margin: 0; color: #f0e8d8; font: 20px Georgia,serif; }
+.build-equipment-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+.build-equipment-card { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 11px; border: 1px solid rgba(111,169,183,.3); border-radius: 6px; background: rgba(4,16,21,.48); }
+.build-equipment-icon { display: grid; place-items: center; width: 58px; height: 58px; flex: 0 0 58px; border: 1px solid rgba(196,154,90,.38); border-radius: 5px; background: radial-gradient(circle,#c49a5a14,transparent 72%),#0a171c; }
+.build-equipment-icon img { max-width: 90%; max-height: 90%; object-fit: contain; }
+.build-equipment-fallback { display: grid; place-items: center; width: 100%; height: 100%; color: #dfbe76; }
+.build-equipment-fallback .mh-icon { width: 33px; height: 33px; }
+.build-equipment-copy { display: grid; gap: 4px; min-width: 0; }
+.build-equipment-copy > small { color: #81b5c0; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.build-equipment-copy > strong { overflow-wrap: anywhere; color: #f0eadc; font-size: 13px; }
+.build-equipment-meta { color: #a9b8ba; font-size: 10px; }
+.build-detail-skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.build-detail-skills span { padding: 4px 7px; border: 1px solid rgba(196,154,90,.35); border-radius: 4px; color: #e2c47d; background: rgba(196,154,90,.07); font-size: 10px; }
+.build-detail-skill-list { margin: 0; }
+.build-detail-empty { grid-column: 1/-1; color: #9eafb0; font-size: 11px; }
+.build-detail-notes { margin: 0; color: #d5ddd9; font-size: 12px; line-height: 1.65; white-space: pre-wrap; }
+.build-detail-provenance { margin: 0; color: #8ca2a7; font-size: 10px; }
+.build-share-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-left: auto; }
+.build-share-actions .primary-button { white-space: nowrap; }
+.online-equipment-card { align-items: flex-start; }
+.online-crafting { margin-top: 8px; padding-top: 7px; border-top: 1px solid rgba(111,169,183,.24); color: #aebfc2; font-size: 10px; }
+.online-crafting > small:first-child { color: #d9c17f; text-transform: uppercase; letter-spacing: .08em; }
+.online-crafting ul { margin: 5px 0; padding-left: 16px; }
+.online-crafting li { padding: 2px 0; }
+.online-crafting li b { color: #e9d7a8; }
+.build-crafting-missing { display: block; margin-top: 7px; color: #91a3a7; }
+.build-decoration-slots { display: grid; gap: 5px; margin-top: 7px; padding-top: 7px; border-top: 1px solid rgba(111,169,183,.2); }
+.build-decoration-slots[hidden] { display: none; }
+.decoration-slot-row { display: grid; grid-template-columns: 18px minmax(90px,auto) minmax(150px,1fr); align-items: center; gap: 6px; color: #aab9ba; font-size: 10px; }
+.decoration-slot-icon { display: grid; place-items: center; width: 17px; height: 17px; border: 1px solid rgba(196,154,90,.45); border-radius: 3px; color: #dfbe76; }
+.decoration-slot-select { min-width: 0; width: 100%; padding: 6px 8px; font-size: 10px; }
+.decoration-slot-occupied { padding-left: 24px; color: #82969a; font-size: 9px; }
+.talisman-custom-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; margin-top: 6px; color: #aab9ba; font-size: 10px; }
+.talisman-custom-fields label { display: grid; gap: 4px; }
+.talisman-custom-fields input { min-width: 0; width: 100%; padding: 7px; }
+.build-detail-socketed { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+.build-decoration-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 6px; border: 1px solid rgba(196,154,90,.35); border-radius: 4px; color: #e2c47d; background: rgba(196,154,90,.07); font-size: 10px; }
+.build-decoration-chip i { color: #dfbe76; font-style: normal; }
+.build-decoration-chip small { color: #8eb0b8; }
+.danger-button { border-color: rgba(220,105,82,.7); color: #ffc0ad; }
+.danger-button:hover { background: rgba(126,43,34,.25); }
+.build-sources-panel { margin: 14px 0; padding: 16px; border: 1px solid #75643f; border-radius: 7px; background: linear-gradient(110deg,#102127ed,#0b1b22dc),url('assets/field-guide/atlas-night.png') right top/900px auto; }
+.build-sources-panel .section-heading { margin: 0 0 12px; }
+.build-sources-panel .section-heading h2 { margin: 0; color: #f0e8d8; font: 19px Georgia,serif; }
+.build-source-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.build-source-link { display: inline-flex; align-items: center; min-height: 38px; padding: 8px 11px; border: 1px solid rgba(111,169,183,.38); border-radius: 4px; color: #93d0df; background: rgba(4,16,21,.56); font-size: 11px; text-decoration: none; }
+.build-source-link:hover, .build-source-link:focus-visible { outline: none; border-color: #d2b46e; color: #f1d58d; }
+.online-build-empty { min-height: 160px; }
+.equipment-filter { width: 100%; margin: 0 0 5px; }
+.armor-editor-row { min-width: 0; }
+.armor-editor-row select { max-width: 100%; }
+@media (max-width: 720px) { .build-equipment-grid { grid-template-columns: 1fr; } .build-detail-banner { align-items: flex-start; padding: 16px; } .build-detail-banner h2 { font-size: 25px; } .build-detail-banner > .tag { display: none; } }

@@ -26,12 +26,47 @@ async function getText(url) {
   return response.text();
 }
 
+function extractMetaDescription(html) {
+  const source = String(html || '');
+  // Kiranico's Portuguese descriptions contain quotation marks inside the
+  // attribute value, so a naive [^"'] capture truncates them at the first quote.
+  const match = source.match(/<meta[^>]+name=["']description["'][^>]+content=(?:"([\s\S]*?)"|\'([\s\S]*?)\')/i);
+  const meta = cleanHtml(match?.[1] || match?.[2] || '');
+  if (meta.length > 80) return meta;
+  const body = source.match(/<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/i);
+  return cleanHtml(body?.[1] || meta);
+}
+
+function extractKiranicoItemNames(html) {
+  const names = new Map();
+  for (const match of String(html || '').matchAll(/\/items\/([^"/]+)(?:\/[^"<]*)?[^>]*>([\s\S]*?)<\/a>/gi)) {
+    const name = cleanHtml(match[2]);
+    if (name && !/^\d+$/.test(name)) names.set(match[1], name);
+  }
+  return names;
+}
+
+function extractKiranicoItemTranslations(englishHtml, localizedHtml) {
+  const english = extractKiranicoItemNames(englishHtml);
+  const localized = extractKiranicoItemNames(localizedHtml);
+  return Object.fromEntries([...english].flatMap(([id, name]) => {
+    const translated = localized.get(id);
+    return translated && translated !== name ? [[name, translated]] : [];
+  }));
+}
+
 async function translateToPortuguese(text) {
   if (!text) return '';
-  if (localPortugueseTranslations[text] && localPortugueseTranslations[text] !== text) {
-    return localPortugueseTranslations[text];
-  }
   try {
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pt-BR&dt=t&q=${encodeURIComponent(text)}`;
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      const translated = (data[0] || []).map((segment) => segment[0]).join('');
+      if (translated && translated !== text) return translated;
+    }
+    const local = localPortugueseTranslations[text];
+    if (local && local !== text) return local;
     const memoryUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|pt-BR`;
     const memoryResponse = await fetch(memoryUrl);
     if (memoryResponse.ok) {
@@ -39,13 +74,9 @@ async function translateToPortuguese(text) {
       const translated = memoryData.responseData?.translatedText;
       if (translated && translated !== text && memoryData.responseStatus === 200) return translated;
     }
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pt-BR&dt=t&q=${encodeURIComponent(text)}`;
-    const response = await fetch(url);
-    if (!response.ok) return text;
-    const data = await response.json();
-    return (data[0] || []).map((segment) => segment[0]).join('') || text;
-  } catch {
     return text;
+  } catch {
+    return localPortugueseTranslations[text] || text;
   }
 }
 
@@ -324,6 +355,8 @@ async function enrichFromMhguKiranico(entries, pages) {
         const response = await fetch(`https://mhgu.kiranico.com/monster/${page.id}`);
         if (!response.ok) continue;
         const html = await response.text();
+        const crownData = entry.type === 'large' ? extractMhguCrownData(html, `https://mhgu.kiranico.com/monster/${page.id}`) : null;
+        if (crownData) { entry.crownData = crownData; entry.availability.crowns = true; }
         const profiles = extractMhguHealthProfiles(html);
         const hitzoneData = extractMhguHitzones(html);
         const breaks = extractMhguBreaks(html);
@@ -364,6 +397,17 @@ async function enrichFromKiranico(entries, pages, game) {
         const response = await fetch(baseUrl);
         if (!response.ok) continue;
         const html = await response.text();
+        const localizedUrl = game === 'rise'
+          ? `https://mhrise.kiranico.com/pt-BR/data/monsters/${page.id}`
+          : `https://mhworld.kiranico.com/pt-BR/monsters/${page.id}/${page.path || slug(page.name)}`;
+        const localizedResponse = await fetch(localizedUrl).catch(() => null);
+        const localizedHtml = localizedResponse?.ok ? await localizedResponse.text() : '';
+        const localizedDescription = extractMetaDescription(localizedHtml);
+        if (localizedDescription) entry.descriptionPt = localizedDescription;
+        const itemTranslations = extractKiranicoItemTranslations(html, localizedHtml);
+        if (Object.keys(itemTranslations).length) entry.itemTranslations = { ...(entry.itemTranslations || {}), ...itemTranslations };
+        const crownData = entry.type === 'large' ? extractKiranicoCrownData(html, baseUrl) : null;
+        if (crownData) { entry.crownData = crownData; entry.availability.crowns = true; }
         const health = game === 'rise' ? extractKiranicoBaseHealth(html) : null;
         const parts = game === 'world' ? extractWorldHitzones(html) : extractKiranicoParts(html);
         const rewards = extractKiranicoRewards(html);
@@ -380,6 +424,27 @@ async function enrichFromKiranico(entries, pages, game) {
     }
   });
   await Promise.all(workers);
+}
+
+function applyWildsPortuguese(entries, localizedRecords, englishRecords) {
+  const byKey = new Map(localizedRecords.map((record) => [String(record.id ?? record.gameId ?? record.name).toLowerCase(), record]));
+  const byName = new Map(localizedRecords.map((record) => [slug(record.name), record]));
+  const englishByName = new Map(englishRecords.map((record) => [slug(record.name), record]));
+  for (const entry of entries.filter((candidate) => candidate.game === 'wilds')) {
+    const localized = byKey.get(String(entry.id).toLowerCase()) || byName.get(slug(entry.name));
+    if (!localized) continue;
+    entry.descriptionPt = localized.description || localized.features || entry.descriptionPt || '';
+    entry.ecologyPt = { characteristics: localized.features || '', usefulInfo: localized.tips || '' };
+    entry.locationsPt = (localized.locations || []).map((location) => typeof location === 'string' ? location : location.name).filter(Boolean);
+    const itemTranslations = {};
+    const english = englishByName.get(slug(entry.name));
+    const localizedItems = new Map((localized.rewards || []).map((reward) => [String(reward.item?.id ?? ''), reward.item?.name]).filter(([, name]) => name));
+    for (const reward of english?.rewards || []) {
+      const translated = localizedItems.get(String(reward.item?.id ?? ''));
+      if (reward.item?.name && translated) itemTranslations[reward.item.name] = translated;
+    }
+    if (Object.keys(itemTranslations).length) entry.itemTranslations = { ...(entry.itemTranslations || {}), ...itemTranslations };
+  }
 }
 
 function renderFor(entry, renderPages) {
@@ -550,7 +615,37 @@ async function isReachable(url) {
 }
 
 function cleanHtml(value) {
-  return String(value || '').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&#039;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+  const entities = { amp: '&', apos: "'", quot: '"', nbsp: ' ', atilde: 'ã', aacute: 'á', acirc: 'â', agrave: 'à', eacute: 'é', ecirc: 'ê', iacute: 'í', oacute: 'ó', ocirc: 'ô', otilde: 'õ', uacute: 'ú', ucirc: 'û', ccedil: 'ç', Atilde: 'Ã', Aacute: 'Á', Acirc: 'Â', Agrave: 'À', Eacute: 'É', Ecirc: 'Ê', Iacute: 'Í', Oacute: 'Ó', Ocirc: 'Ô', Otilde: 'Õ', Uacute: 'Ú', Ucirc: 'Û', Ccedil: 'Ç' };
+  return String(value || '').replace(/<[^>]+>/g, ' ').replace(/&(#\d+|#x[\da-f]+|[a-z]+);/gi, (full, entity) => {
+    if (entity[0] === '#') {
+      const code = entity[1].toLowerCase() === 'x' ? parseInt(entity.slice(2), 16) : Number(entity.slice(1));
+      return Number.isFinite(code) ? String.fromCodePoint(code) : full;
+    }
+    return entities[entity] || entities[entity.toLowerCase()] || full;
+  }).replace(/\s+/g, ' ').trim();
+}
+
+function polishPortuguese(value) {
+  return String(value || '').replace(/\bRathians\b/g, 'Rathian')
+    .replace(/\bKing of the Skies\b/gi, 'Rei dos Céus')
+    .replace(/\bwyverns terríveis chamado\b/gi, 'Wyverns terríveis chamados')
+    .replace(/\bwyverns terríveis chamavam\b/gi, 'Wyverns terríveis chamados')
+    .replace(/\bwyvern fanged\b/gi, 'wyvern com presas')
+    .replace(/\bfanged wyvern\b/gi, 'wyvern com presas')
+    .replace(/\bBird Wyvern\b/gi, 'wyvern pássaro')
+    .replace(/\bBrute Wyvern\b/gi, 'wyvern bruto')
+    .replace(/\bforelegs\b/gi, 'patas dianteiras')
+    .replace(/\bWildspire Waste\b/gi, 'Ermo Selvático')
+    .replace(/\bAncient Forest\b/gi, 'Floresta Antiga')
+    .replace(/\bCoral Highlands\b/gi, 'Planalto Coralino')
+    .replace(/\bFlash Bomb\b/gi, 'Bomba de Clarão')
+    .replace(/\bWyverns\b/g, 'Wyverns').replace(/\bwyverns\b/g, 'Wyverns')
+    .replace(/\bcalled\b/gi, 'chamados')
+    .replace(/\bFire breath\b/gi, 'sopro de fogo')
+    .replace(/\bflash bomb\b/gi, 'Bomba de Clarão')
+    .replace(/\bbomba flash\b/gi, 'Bomba de Clarão')
+    .replace(/\bbring a Rathalos back to the earth\b/gi, 'trazer Rathalos de volta ao solo')
+    .replace(/\s+/g, ' ').trim();
 }
 
 function extractEcology(html) {
@@ -597,6 +692,90 @@ function extractWorldHealthProfiles(html) {
     }
   }
   return profiles.sort((a, b) => (a.mode === 'expedition' ? -1 : 1) - (b.mode === 'expedition' ? -1 : 1));
+}
+
+function extractKiranicoCrownData(html, source) {
+  const crowns = {};
+  const pattern = /<img[^>]+crown_(mini|large|king)\.png[^>]*>[\s\S]{0,500}?<strong>\s*(&le;|&ge;|≤|≥)\s*([\d,.]+)\s*cm\s*<\/strong>/gi;
+  for (const match of html.matchAll(pattern)) {
+    const type = { mini: 'small', large: 'silver', king: 'large' }[match[1].toLowerCase()];
+    const value = Number(match[3].replace(/,/g, ''));
+    if (!type || !Number.isFinite(value)) continue;
+    crowns[type] = { operator: match[2].includes('le') || match[2] === '≤' ? '<=' : '>=', value, unit: 'cm' };
+  }
+  if (!Object.keys(crowns).length) return null;
+  return { source, unit: 'cm', crowns };
+}
+
+function extractMhguCrownData(html, source) {
+  const size = html.match(/<h5>\s*Size:\s*([\d,.]+)\s*<\/h5>/i);
+  const crowns = {};
+  const crownQuests = {};
+  const pattern = /<h6>\s*(Small|Silver|Gold) Crown:\s*(&le;|&ge;|≤|≥)\s*([\d,.]+)\s*<\/h6>([\s\S]*?)(?=<h6>|$)/gi;
+  for (const match of html.matchAll(pattern)) {
+    const type = { small: 'small', silver: 'silver', gold: 'large' }[match[1].toLowerCase()];
+    const value = Number(match[3].replace(/,/g, ''));
+    if (!type || !Number.isFinite(value)) continue;
+    crowns[type] = { operator: match[2].includes('le') || match[2] === '≤' ? '<=' : '>=', value, unit: 'cm' };
+    crownQuests[type] = [...match[4].matchAll(/<a[^>]+href="([^"]*\/quest\/[^" ]+)"[^>]*>([\s\S]*?)<\/a>[\s\S]*?<td[^>]*class="text-right"[^>]*>\s*([\d.]+)%/gi)]
+      .map((quest) => ({ name: cleanHtml(quest[2]), chance: Number(quest[3]), source: quest[1].startsWith('http') ? quest[1] : `https://mhgu.kiranico.com${quest[1]}` }));
+  }
+  if (!Object.keys(crowns).length) return null;
+  return { source, unit: 'cm', baseSize: size ? Number(size[1].replace(/,/g, '')) : null, crowns, crownQuests };
+}
+
+function parseWildsSize(value) {
+  const normalized = String(value).replace(/\s/g, '');
+  if (normalized.includes(',') && normalized.includes('.')) {
+    return normalized.lastIndexOf(',') > normalized.lastIndexOf('.')
+      ? Number(normalized.replace(/\./g, '').replace(',', '.'))
+      : Number(normalized.replace(/,/g, ''));
+  }
+  return Number(normalized.replace(',', '.'));
+}
+
+function extractWildsCrownData(html, source) {
+  const records = new Map();
+  for (const rowMatch of html.matchAll(/<tr>([\s\S]*?)<\/tr>/gi)) {
+    const row = rowMatch[1];
+    const nameMatch = row.match(/<h3[^>]*id="[^"]+"[^>]*>[\s\S]*?<br\s*\/?>\s*([^<]+)<\/h3>/i);
+    const sizeMatch = row.match(/♕\s*([\d.,]+)\s*~\s*♕\s*([\d.,]+)\s*<\/h3>/i);
+    if (!nameMatch || !sizeMatch) continue;
+    const name = cleanHtml(nameMatch[1]).trim();
+    const min = parseWildsSize(sizeMatch[1]);
+    const max = parseWildsSize(sizeMatch[2]);
+    if (!name || !Number.isFinite(min) || !Number.isFinite(max)) continue;
+    records.set(slug(name), {
+      source,
+      unit: 'cm',
+      method: 'Faixa de tamanho publicada pela fonte; os limiares de Prata não são publicados',
+      sizeRange: { min, max, unit: 'cm' },
+      crowns: {
+        small: { operator: '<=', value: min, unit: 'cm' },
+        large: { operator: '>=', value: max, unit: 'cm' },
+      },
+    });
+  }
+  return records;
+}
+
+function crownDataFromMhrice(sizeInfo) {
+  if (!sizeInfo || sizeInfo.no_size_scale || !Number.isFinite(sizeInfo.base_size)) return null;
+  const thresholds = [
+    ['small', sizeInfo.small_boarder, '<='],
+    ['silver', sizeInfo.big_boarder, '>='],
+    ['large', sizeInfo.king_boarder, '>='],
+  ];
+  const crowns = Object.fromEntries(thresholds
+    .filter(([, multiplier]) => Number.isFinite(multiplier))
+    .map(([type, multiplier, operator]) => [type, { operator, value: Number((sizeInfo.base_size * multiplier).toFixed(2)), unit: 'cm' }]));
+  return Object.keys(crowns).length ? {
+    source: 'https://mhrise.mhrice.info/',
+    unit: 'cm',
+    method: 'Tamanho-base MHRice multiplicado pelo limiar publicado do jogo',
+    baseSize: sizeInfo.base_size,
+    crowns,
+  } : null;
 }
 
 async function enrichWorldHealth(entries, pages) {
@@ -699,11 +878,17 @@ async function translateCatalogText(entries) {
   });
   await Promise.all(workers);
   for (const entry of entries) {
-    entry.descriptionPt = translations.get(entry.description) || '';
+    entry.descriptionPt = polishPortuguese(entry.descriptionPt || translations.get(entry.description) || '');
     entry.ecologyPt = {
-      characteristics: translations.get(entry.ecology?.characteristics) || '',
-      usefulInfo: translations.get(entry.ecology?.usefulInfo) || '',
+      characteristics: polishPortuguese(entry.ecologyPt?.characteristics || translations.get(entry.ecology?.characteristics) || ''),
+      usefulInfo: polishPortuguese(entry.ecologyPt?.usefulInfo || translations.get(entry.ecology?.usefulInfo) || ''),
     };
+    if (entry.game === 'rise' && entry.name === 'Rathalos') {
+      entry.ecologyPt = {
+        characteristics: 'Wyverns terríveis chamados de “Reis dos Céus”. Junto com Rathian, eles demarcam vastos territórios centrados em torno de seus ninhos. Rathalos desce do céu sobre os invasores, atacando com garras venenosas e um sopro de fogo.',
+        usefulInfo: 'O Rei dos Céus faz jus ao nome ao permanecer no ar durante a maior parte de seus ataques. Uma Bomba de Clarão bem posicionada pode trazer Rathalos de volta ao solo.'
+      };
+    }
     if (entry.game === 'mhgu') {
       entry.descriptionPt = `Dados de referência do Monster Hunter Generations Ultimate para ${entry.name}, com vida por rank, hitzones, partes quebráveis, estados e recompensas.`;
     }
@@ -787,7 +972,8 @@ function baseEntry(game, record) {
     rewards: normalizeRewards(record.rewards),
     baseHealth: record.baseHealth ?? null,
     healthProfiles: [],
-    availability: { weaknesses: true, locations: Boolean(record.locations?.length), parts: false, rewards: Boolean(record.rewards?.length), render: false, icon: false, ecology: false, health: record.baseHealth != null },
+    availability: { weaknesses: true, locations: Boolean(record.locations?.length), parts: false, rewards: Boolean(record.rewards?.length), render: false, icon: false, ecology: false, health: record.baseHealth != null, crowns: false },
+    crownData: null,
   };
 }
 
@@ -798,10 +984,11 @@ const riseSmallMonsterNames = new Set([
 ]);
 
 async function main() {
-  const [world, worldSupplement, wilds, rise, mhguPage, mhrice, iconManifest, zukanMonsters, worldRenderPages, riseRenderPages, wildsRenderPages, worldKiranicoPages, riseKiranicoLargePages, riseKiranicoSmallPages, mhguKiranicoPages, mhguCommunityHitzones] = await Promise.all([
+  const [world, worldSupplement, wilds, wildsPt, rise, mhguPage, mhrice, iconManifest, zukanMonsters, worldRenderPages, riseRenderPages, wildsRenderPages, worldKiranicoPages, riseKiranicoLargePages, riseKiranicoSmallPages, mhguKiranicoPages, mhguCommunityHitzones] = await Promise.all([
     getJson('https://mhw-db.com/monsters'),
     getJson('https://raw.githubusercontent.com/Neryss/monster_hunter_db/master/mhw_db.json'),
     getJson('https://wilds.mhdb.io/en/monsters'),
+    getJson('https://wilds.mhdb.io/pt-br/monsters'),
     getJson('https://raw.githubusercontent.com/Neryss/monster_hunter_db/master/rise_monster_db.json'),
     getText('https://mhgu.kiranico.com/monster'),
     getJson('https://d2d662ws3kt2jd.cloudfront.net/mhrice.json'),
@@ -816,6 +1003,8 @@ async function main() {
     getText('https://mhgu.kiranico.com/monster'),
     getText('https://raw.githubusercontent.com/ArmoredRaven17/MHGU-Monster-Info/master/docs/data/hitzones.js'),
   ]);
+  const wildsCrownHtml = await getText('https://monsterhunterwilds.wiki.fextralife.com/Crowns');
+  const wildsCrownData = extractWildsCrownData(wildsCrownHtml, 'https://monsterhunterwilds.wiki.fextralife.com/Crowns');
 
   const worldNames = new Set(world.map((record) => record.name.toLowerCase()));
   const worldRecords = [...world, ...worldSupplement.filter((record) => !worldNames.has(record.name.toLowerCase()))];
@@ -846,6 +1035,7 @@ async function main() {
     ...(mhrice.monster_names_mr?.entries || []),
   ].flatMap((entry) => (entry.content || []).filter(Boolean).map((name) => [name.toLowerCase(), entry])));
   const riseList = mhrice.monster_list?.data_list || [];
+  const riseSizeByEm = new Map((mhrice.size_list?.size_info_list || []).map((record) => [record.em_type?.Em, record]));
   const riseMonstersByName = new Map();
   for (const [name, nameEntry] of riseNames) {
     const index = Number(nameEntry.name?.replace(/\D/g, ''));
@@ -873,6 +1063,8 @@ async function main() {
     if (entry.game === 'rise') {
       const riceName = riseNames.get(entry.name.toLowerCase());
       const riceMonster = riseMonstersByName.get(entry.name.toLowerCase()) || null;
+      const crownData = entry.type === 'large' ? crownDataFromMhrice(riseSizeByEm.get(riceMonster?.em_type?.Em)) : null;
+      if (crownData) { entry.crownData = crownData; entry.availability.crowns = true; }
       entry.baseHealth = riceMonster?.data_tune?.base_hp_vital ?? null;
       entry.availability.health = entry.baseHealth != null;
       entry.parts = (riceMonster?.data_tune?.enemy_parts_break_data_list || []).map((part, index) => ({
@@ -885,6 +1077,8 @@ async function main() {
       if (riceName && !entry.description) entry.description = `Dados extraídos do MHRice para ${entry.name}.`;
     }
     if (entry.game === 'wilds') {
+      const crownData = entry.type === 'large' ? wildsCrownData.get(slug(entry.name)) : null;
+      if (crownData) { entry.crownData = crownData; entry.availability.crowns = true; }
       entry.parts = (wilds.find((record) => record.name === entry.name)?.parts || []).map((part) => ({
         id: part.id ?? part.part,
         name: part.name || part.part || 'Parte sem nome',
@@ -903,6 +1097,7 @@ async function main() {
   await enrichFromMhguKiranico(entries, mhguPages);
   enrichMhguFromCommunityHitzones(entries, mhguCommunityHitzones);
   await enrichFromMonsterTools(entries, renderPages);
+  applyWildsPortuguese(entries, wildsPt, wilds);
   await enrichFromFandom(entries);
   await enrichFromFandomCrossGame(entries);
   deriveRankData(entries);
@@ -943,6 +1138,7 @@ async function main() {
       { id: 'mhrice', games: ['rise'], url: 'https://mhrise.mhrice.info/', license: 'MIT/Apache-2.0', note: 'Game-extracted Rise data and base health/part thresholds.' },
       { id: 'neryss-rise-db', games: ['rise'], url: 'https://github.com/Neryss/monster_hunter_db', note: 'Rise/Sunbreak weakness and resistance supplement.' },
       { id: 'wilds-mhdb', games: ['wilds'], url: 'https://wilds.mhdb.io/en/monsters', note: 'Wilds weaknesses, rewards and part multipliers.' },
+      { id: 'wilds-crowns-fextralife', games: ['wilds'], url: 'https://monsterhunterwilds.wiki.fextralife.com/Crowns', note: 'Published Wilds monster size ranges used as explicit lower/upper crown bounds; exact Silver thresholds are not published.' },
       { id: 'mhgu-kiranico', games: ['mhgu'], url: 'https://mhgu.kiranico.com/monster', note: 'MHGU pages provide rank-specific quest health, hitzones A/B, status thresholds, break data and Low/High/G Rank reward tables.' },
       { id: 'mhgu-community-hitzones', games: ['mhgu'], url: 'https://github.com/ArmoredRaven17/MHGU-Monster-Info', license: 'MIT', note: 'Fallback for MHGU records without a Kiranico table; data is decoded from game resources and the upstream project documents the one missing Ahtal-Neset record.' },
       { id: 'monster-hunter-db-icons', games: ['world', 'rise', 'wilds', 'mhgu'], url: 'https://github.com/CrimsonNynja/monster-hunter-DB/tree/master/icons', note: 'Game-specific icon references; attribution retained.' },
