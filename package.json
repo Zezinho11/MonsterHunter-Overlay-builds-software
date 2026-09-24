@@ -13,6 +13,7 @@
     "builds:catalog": "node scripts/build-equipment-catalog.cjs",
     "builds:registered-audit": "electron scripts/audit-registered-builds.cjs",
     "builds:editor-audit": "electron scripts/audit-build-editor.cjs",
+    "builds:community-audit": "electron scripts/audit-community-gallery.cjs",
     "catalog:audit": "node scripts/audit-monster-catalog.js",
     "monsterpedia:audit": "node scripts/audit-monsterpedia.js",
     "monsterpedia:layout-audit": "electron scripts/audit-detail-layout.cjs",

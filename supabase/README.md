@@ -18,4 +18,6 @@ Uma build local só é enviada depois de o usuário usar “Compartilhar publica
 
 `migrations/20260922_community_build_equipment_slots.sql` amplia somente a lista de campos públicos permitidos para incluir ID/skills/slots do talismã e decorações encaixadas por peça. Foi aplicada ao projeto Hunter Companion em 2026-09-22. Em outros projetos/ambientes, aplique-a uma vez no SQL Editor. A migration não republica builds antigas; novas publicações/atualizações continuam opt-in, e notas, e-mail e metadados privados permanecem excluídos.
 
+Para validar somente leitura pública, execute `npm run builds:community-audit`. O teste consulta a RPC sem sessão, confere filtros por jogo e campos retornados, confirma que a tabela não permite SELECT anônimo e verifica a tela Builds online. Ele não cria, atualiza nem remove builds; requer a configuração local normal do Supabase ou `SUPABASE_CONFIG_PATH`.
+
 A integração mantém o perfil local como fallback quando a configuração não existe ou a rede está indisponível. A sincronização de favoritos e builds será adicionada sobre a mesma sessão na próxima etapa.
