@@ -75,6 +75,10 @@ app.whenReady().then(async () => {
     for (const fixture of prepared.filter((entry) => !entry.unavailable)) {
       await win.webContents.executeJavaScript("renderView('saved-builds')");
       await win.webContents.executeJavaScript(`document.querySelector('[data-saved-build-id=\\\"registered-build-audit-${fixture.key}\\\"]')?.click()`);
+      await win.webContents.executeJavaScript(`Promise.all([...document.querySelectorAll('.build-equipment-source-icon')].map(async (image) => {
+        image.loading = 'eager';
+        try { await image.decode(); } catch {}
+      }))`);
       const detail = await win.webContents.executeJavaScript(`(() => {
         const text = document.querySelector('#view-root')?.innerText || '';
         const title = ${JSON.stringify(`Build de validação ${fixture.key}`)};
@@ -106,10 +110,10 @@ app.whenReady().then(async () => {
           return !image.isConnected && Boolean(document.querySelector('.build-equipment-fallback'));
         })()`);
       }
-      if (fixture.key === 'world') {
+      if (fixture.key === 'world' || fixture.key === 'rise') {
         win.showInactive();
         await new Promise((resolve) => setTimeout(resolve, 300));
-        fs.writeFileSync(path.join(output, 'saved-build-detail.png'), (await win.webContents.capturePage()).toPNG());
+        fs.writeFileSync(path.join(output, `saved-build-detail-${fixture.key}.png`), (await win.webContents.capturePage()).toPNG());
       }
       await win.webContents.executeJavaScript("document.querySelector('#back-to-saved-builds')?.click()");
       const returned = await win.webContents.executeJavaScript(`({
@@ -123,7 +127,7 @@ app.whenReady().then(async () => {
     const report = { cases };
     fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(report, null, 2));
     console.log(JSON.stringify(report, null, 2));
-    const passed = cases.length === 4 && cases.every(({ detail, returned }) => detail.title && detail.weapon && detail.armorCount >= 6 && detail.armorSkill && detail.talisman && detail.decoration && detail.notes && detail.backButton && detail.sidebarWidth === 286 && !detail.overflow && returned.listVisible && returned.title === 'Builds registradas' && returned.sidebarWidth === 286 && !returned.overflow) && cases.find(({ fixture }) => fixture.key === 'world')?.detail.sourceIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.detail.categoryIcons > 0 && cases.find(({ fixture }) => fixture.key === 'mhgu')?.detail.categoryIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.iconRecovery;
+    const passed = cases.length === 4 && cases.every(({ detail, returned }) => detail.title && detail.weapon && detail.armorCount >= 6 && detail.armorSkill && detail.talisman && detail.decoration && detail.notes && detail.backButton && detail.sidebarWidth === 286 && !detail.overflow && returned.listVisible && returned.title === 'Builds registradas' && returned.sidebarWidth === 286 && !returned.overflow) && cases.find(({ fixture }) => fixture.key === 'world')?.detail.sourceIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.detail.categoryIcons > 0 && cases.find(({ fixture }) => fixture.key === 'rise')?.detail.categoryIcons >= 5 && cases.find(({ fixture }) => fixture.key === 'mhgu')?.detail.categoryIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.iconRecovery;
     app.exit(passed ? 0 : 1);
   } catch (error) {
     console.error(error);

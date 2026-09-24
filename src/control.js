@@ -542,6 +542,11 @@ function equipmentCategoryIcon(record, iconKind, gameKey = record?.game) {
     const key = armorPart || (kind === 'weapon' ? weaponType : kind === 'talisman' ? 'talisman' : null);
     return key ? `assets/build-icons/world/${key}.svg` : '';
   }
+  if (gameKey === 'rise') {
+    const armorPart = slot && ({ head: 'armor-head', chest: 'armor-chest', arms: 'armor-arms', waist: 'armor-waist', legs: 'armor-legs' })[slot];
+    const key = armorPart || (kind === 'talisman' ? 'talisman' : null);
+    return key ? `assets/build-icons/rise/${key}.svg` : '';
+  }
   if (gameKey === 'mhgu') {
     const armorPart = slot && ({ head: 'armor_head', chest: 'armor_body', arms: 'armor_arms', waist: 'armor_waist', legs: 'armor_legs' })[slot];
     const weaponClass = String(record?.class || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
