@@ -181,6 +181,12 @@ function mhIcon(name, label = '') {
 document.addEventListener('error', (event) => {
   const image = event.target;
   if (!(image instanceof HTMLImageElement) || !image.classList.contains('build-equipment-source-icon')) return;
+  if (image.dataset.fallbackSrc && image.dataset.fallbackUsed !== 'true') {
+    image.dataset.fallbackUsed = 'true';
+    image.alt = `Ícone de categoria para ${image.dataset.itemLabel || 'equipamento'}`;
+    image.src = image.dataset.fallbackSrc;
+    return;
+  }
   const fallback = document.createElement('span');
   fallback.className = 'build-equipment-fallback';
   fallback.setAttribute('aria-label', `Imagem indisponível: ${image.alt.replace(/^Ícone de /, '')}`);
@@ -347,7 +353,7 @@ function renderOnlineBuildDetail(index) {
     const rows = materials.map((item) => `<li>${escapeHtml(item.name || 'Material indisponível')} <b>×${escapeHtml(item.quantity ?? 1)}</b></li>`).join('');
     return `<div class="online-crafting"><small>Materiais para criação</small>${rows ? `<ul>${rows}</ul>` : '<small>Sem materiais publicados.</small>'}${record.craftingCost != null ? `<small>Custo: ${escapeHtml(record.craftingCost)} zenny</small>` : ''}</div>`;
   };
-  const cards = [weapon && `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(weapon, 'weapon', weapon.displayName || weapon.name)}</div><div class="build-equipment-copy"><small>Arma · ${escapeHtml(weapon.classPt || row.weapon_type)}</small><strong>${escapeHtml(weapon.displayName || weapon.name)}</strong><div class="build-detail-skills">${(weapon.skills || []).map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>${recipe(weapon)}</div></article>`, ...slots.map(([slot, label, icon]) => { const record = equipmentCatalog.findArmor(gameKey, build.armorIds?.[slot]); const name = record?.displayName || record?.name || build.armor?.[slot]; if (!name) return ''; return `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(record, icon, name)}</div><div class="build-equipment-copy"><small>${label}</small><strong>${escapeHtml(name)}</strong><div class="build-detail-skills">${(record?.skills || build.armorSkills?.[slot] || []).map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>${recipe(record)}</div></article>`; })];
+  const cards = [weapon && `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(weapon, 'weapon', weapon.displayName || weapon.name, gameKey)}</div><div class="build-equipment-copy"><small>Arma · ${escapeHtml(weapon.classPt || row.weapon_type)}</small><strong>${escapeHtml(weapon.displayName || weapon.name)}</strong><div class="build-detail-skills">${(weapon.skills || []).map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>${recipe(weapon)}</div></article>`, ...slots.map(([slot, label, icon]) => { const record = equipmentCatalog.findArmor(gameKey, build.armorIds?.[slot]); const name = record?.displayName || record?.name || build.armor?.[slot]; if (!name) return ''; return `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(record, icon, name, gameKey)}</div><div class="build-equipment-copy"><small>${label}</small><strong>${escapeHtml(name)}</strong><div class="build-detail-skills">${(record?.skills || build.armorSkills?.[slot] || []).map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>${recipe(record)}</div></article>`; })];
   const socketedNames = new Set(Object.values(build.decorationSlots || {}).flat().map((entry) => entry.name));
   const deco = [...(build.decorations || []).filter((item) => !socketedNames.has(item)).map((item) => `Decoração não posicionada: ${item}`), ...(build.skills || [])];
   const decorationCards = Object.entries(build.decorationSlots || {}).flatMap(([part, entries]) => (entries || []).map((entry) => {
@@ -359,7 +365,7 @@ function renderOnlineBuildDetail(index) {
   const charmSkills = build.talismanSkills || charm?.skills || [];
   viewRoot.classList.add('saved-build-detail-root');
   viewTitle.textContent = 'Builds online';
-  const charmCard = build.talisman ? `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(charm, 'talisman', build.talisman)}</div><div class="build-equipment-copy"><small>Talismã · slots ${escapeHtml((build.talismanSlots || equipmentCatalog.slotCapacities(gameKey, charm)).join(', ') || 'não informados')}</small><strong>${escapeHtml(charm?.name || build.talisman)}</strong><div class="build-detail-skills">${charmSkills.map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` ${skill.unit === 'points' ? `${skill.level} pts` : `+${skill.level}`}` : ''}</span>`).join('')}</div>${recipe(charm)}</div></article>` : '';
+  const charmCard = build.talisman ? `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${equipmentImage(charm, 'talisman', build.talisman, gameKey)}</div><div class="build-equipment-copy"><small>Talismã · slots ${escapeHtml((build.talismanSlots || equipmentCatalog.slotCapacities(gameKey, charm)).join(', ') || 'não informados')}</small><strong>${escapeHtml(charm?.name || build.talisman)}</strong><div class="build-detail-skills">${charmSkills.map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` ${skill.unit === 'points' ? `${skill.level} pts` : `+${skill.level}`}` : ''}</span>`).join('')}</div>${recipe(charm)}</div></article>` : '';
   viewRoot.innerHTML = `<div class="saved-build-detail"><button class="ghost-button build-detail-back" id="back-to-online-builds">← Voltar à galeria</button><section class="build-detail-banner"><span class="build-detail-emblem">⚔️</span><div><span class="section-kicker">${escapeHtml(row.game)} · ${escapeHtml(row.game_version || 'Versão não informada')}</span><h2>${escapeHtml(row.title)}</h2><p>${escapeHtml(row.build_type)} · ${escapeHtml(row.weapon_type)} · por ${escapeHtml(row.author_name || 'Caçador da comunidade')}</p></div></section><section class="build-detail-section"><div class="section-heading"><h2>Equipamento e criação</h2><span>RECEITAS POR PEÇA · CATÁLOGO LOCALIZADO</span></div><div class="build-equipment-grid">${cards.filter(Boolean).join('')}${charmCard}${decorationCards.length ? `<article class="build-equipment-card online-equipment-card"><div class="build-equipment-icon">${mhIcon('decoration')}</div><div class="build-equipment-copy"><small>Decorações instaladas por peça</small><div class="build-detail-socketed">${decorationCards.join('')}</div></div></article>` : ''}${cards.filter(Boolean).length || charmCard || decorationCards.length ? '' : '<div class="build-detail-empty">A build não contém equipamentos reconhecidos pelo catálogo selecionado.</div>'}</div></section>${deco.length ? `<section class="build-detail-section"><div class="section-heading"><h2>Habilidades e decorações adicionais</h2></div><div class="build-detail-skills build-detail-skill-list">${deco.map((entry) => `<span>${escapeHtml(entry)}</span>`).join('')}</div></section>` : ''}${build.notes ? `<section class="build-detail-section"><div class="section-heading"><h2>Notas do autor</h2></div><p class="build-detail-notes">${escapeHtml(build.notes)}</p></section>` : ''}<p class="build-detail-provenance">Compartilhada na comunidade Hunter Companion · ${escapeHtml(row.published_at ? new Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium' }).format(new Date(row.published_at)) : 'data não informada')}. Receitas obtidas do catálogo do jogo; custos ausentes são indicados, não estimados.</p></div>`;
   document.querySelector('#back-to-online-builds').addEventListener('click', () => renderOnlineBuilds());
 }
@@ -527,16 +533,36 @@ function renderSavedBuilds(filterGame = 'Todos os jogos') {
   document.querySelector('#import-builds').addEventListener('click', () => document.querySelector('#import-file').click());
   document.querySelector('#import-file').addEventListener('change', (event) => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => { try { saveBuilds(window.localBuildStore.importData(reader.result)); renderSavedBuilds(filterGame); } catch { document.querySelector('.info-banner')?.remove(); alert('Não foi possível importar o arquivo de builds.'); } }; reader.readAsText(file); });
 }
-function equipmentImage(record, iconKind, label) {
+function equipmentCategoryIcon(record, iconKind, gameKey = record?.game) {
+  const kind = String(iconKind || '').toLowerCase();
+  const slot = ({ helmet: 'head', 'chest-armor': 'chest', 'arms-armor': 'arms', 'waist-armor': 'waist', 'leg-armor': 'legs' })[kind];
+  if (gameKey === 'world') {
+    const armorPart = slot && ({ head: 'armor-head', chest: 'armor-chest', arms: 'armor-arms', legs: 'armor-legs' })[slot];
+    const weaponType = record?.class && `weapon-${String(record.class).replaceAll('_', '-')}`;
+    const key = armorPart || (kind === 'weapon' ? weaponType : kind === 'talisman' ? 'talisman' : null);
+    return key ? `assets/build-icons/world/${key}.svg` : '';
+  }
+  if (gameKey === 'mhgu') {
+    const armorPart = slot && ({ head: 'armor_head', chest: 'armor_body', arms: 'armor_arms', waist: 'armor_waist', legs: 'armor_legs' })[slot];
+    const weaponClass = String(record?.class || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+    const weaponAliases = { 'sword_and_shield': 'sword_and_shield', 'switch_axe': 'switch_axe', 'charge_blade': 'charge_blade', 'hunting_horn': 'hunting_horn', 'insect_glaive': 'insect_glaive', 'great_sword': 'great_sword', 'long_sword': 'long_sword', 'dual_blades': 'dual_blades', 'gunlance': 'gunlance', 'light_bowgun': 'light_bowgun', 'heavy_bowgun': 'heavy_bowgun', bow: 'bow', hammer: 'hammer', lance: 'lance' };
+    const key = armorPart || (kind === 'weapon' ? weaponAliases[weaponClass] : null);
+    return key ? `assets/build-icons/mhgu/${key}.png` : '';
+  }
+  return '';
+}
+function equipmentImage(record, iconKind, label, gameKey = record?.game) {
   const image = record?.icon;
-  if (typeof image === 'string' && /^https:\/\//i.test(image)) return `<img class="build-equipment-source-icon" data-icon-kind="${escapeHtml(iconKind)}" src="${escapeHtml(image)}" alt="Ícone de ${escapeHtml(label)}" loading="lazy" referrerpolicy="no-referrer" />`;
+  const categoryIcon = equipmentCategoryIcon(record, iconKind, gameKey);
+  if (typeof image === 'string' && /^https:\/\//i.test(image)) return `<img class="build-equipment-source-icon" data-icon-kind="${escapeHtml(iconKind)}" data-item-label="${escapeHtml(label)}" ${categoryIcon ? `data-fallback-src="${escapeHtml(categoryIcon)}"` : ''} src="${escapeHtml(image)}" alt="Ícone individual de ${escapeHtml(label)}" loading="lazy" referrerpolicy="no-referrer" />`;
+  if (categoryIcon) return `<img class="build-equipment-source-icon" data-icon-kind="${escapeHtml(iconKind)}" data-item-label="${escapeHtml(label)}" src="${escapeHtml(categoryIcon)}" alt="Ícone de categoria para ${escapeHtml(label)}" loading="lazy" />`;
   return `<span class="build-equipment-fallback" aria-label="${escapeHtml(label)}">${mhIcon(iconKind)}</span>`;
 }
-function buildEquipmentCard({ label, name, iconKind, record, meta = '', skills = [], decorations = [] }) {
+function buildEquipmentCard({ label, name, iconKind, record, gameKey = record?.game, meta = '', skills = [], decorations = [] }) {
   if (!name) return '';
   const pieceSkills = skills.length ? `<div class="build-detail-skills">${skills.map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>` : '';
   const socketed = decorations.length ? `<div class="build-detail-socketed">${decorations.map((entry) => { const jewel = equipmentCatalog.findDecoration(record?.game || '', entry.id); return `<span class="build-decoration-chip" title="${escapeHtml(jewel?.name || entry.name)} · nível ${escapeHtml(jewel?.slot || entry.requiredSlot || '?')}"><i>✦</i>${escapeHtml(jewel?.name || entry.name)}${entry.slotIndex == null ? '' : ` · espaço ${entry.slotIndex + 1}`}</span>`; }).join('')}</div>` : '';
-  return `<article class="build-equipment-card"><div class="build-equipment-icon">${equipmentImage(record, iconKind, name)}</div><div class="build-equipment-copy"><small>${escapeHtml(label)}</small><strong>${escapeHtml(name)}</strong>${meta ? `<span class="build-equipment-meta">${escapeHtml(meta)}</span>` : ''}${pieceSkills}${socketed}</div></article>`;
+  return `<article class="build-equipment-card"><div class="build-equipment-icon">${equipmentImage(record, iconKind, name, gameKey)}</div><div class="build-equipment-copy"><small>${escapeHtml(label)}</small><strong>${escapeHtml(name)}</strong>${meta ? `<span class="build-equipment-meta">${escapeHtml(meta)}</span>` : ''}${pieceSkills}${socketed}</div></article>`;
 }
 function renderSavedBuildDetail(buildId, filterGame = 'Todos os jogos') {
   const build = loadSavedBuilds().find((entry) => entry.id === buildId);
@@ -549,13 +575,13 @@ function renderSavedBuildDetail(buildId, filterGame = 'Todos os jogos') {
     const name = piece?.name || build.armor?.[slot] || '';
     const meta = piece ? [piece.rank && `Rank ${piece.rank}`, piece.rarity && `Raridade ${piece.rarity}`, piece.defense?.base != null && `Defesa ${piece.defense.base}`, piece.slots?.length && `${piece.slots.length} espaço(s)`].filter(Boolean).join(' · ') : '';
     const skills = piece?.skills?.length ? piece.skills : build.armorSkills?.[slot] || [];
-    return buildEquipmentCard({ label, name, iconKind: icon, record: piece, meta, skills, decorations: build.decorationSlots?.[slot] || [] });
+    return buildEquipmentCard({ label, name, iconKind: icon, record: piece, gameKey, meta, skills, decorations: build.decorationSlots?.[slot] || [] });
   }).join('');
   const weaponName = weapon?.displayName || build.weapon;
   const weaponMeta = weapon ? [weapon.rarity && `Raridade ${weapon.rarity}`, weapon.attack?.raw != null && `Ataque ${weapon.attack.raw}`, weapon.slots?.length && `${weapon.slots.length} espaço(s)`].filter(Boolean).join(' · ') : '';
-  const weaponCard = buildEquipmentCard({ label: 'Arma equipada', name: weaponName, iconKind: 'weapon', record: weapon, meta: weaponMeta, skills: weapon?.skills || [], decorations: build.decorationSlots?.weapon || [] });
+  const weaponCard = buildEquipmentCard({ label: 'Arma equipada', name: weaponName, iconKind: 'weapon', record: weapon, gameKey, meta: weaponMeta, skills: weapon?.skills || [], decorations: build.decorationSlots?.weapon || [] });
   const genericItems = [
-    build.talisman && buildEquipmentCard({ label: 'Talismã', name: build.talisman, iconKind: 'talisman', record: equipmentCatalog.findCharm(gameKey, build.talismanId), skills: build.talismanSkills || [], decorations: build.decorationSlots?.talisman || [] }),
+    build.talisman && buildEquipmentCard({ label: 'Talismã', name: build.talisman, iconKind: 'talisman', record: equipmentCatalog.findCharm(gameKey, build.talismanId), gameKey, skills: build.talismanSkills || [], decorations: build.decorationSlots?.talisman || [] }),
     ...(build.decorations || []).filter((name) => !Object.values(build.decorationSlots || {}).flat().some((entry) => entry.name === name)).map((name) => buildEquipmentCard({ label: 'Decoração não vinculada a um espaço', name, iconKind: 'decoration' })),
   ].filter(Boolean).join('');
   viewRoot.classList.add('saved-build-detail-root');
