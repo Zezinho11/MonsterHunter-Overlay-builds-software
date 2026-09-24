@@ -29,7 +29,11 @@ and its credited [Monster Hunter Wiki equipment-icon category](https://monsterhu
 (CC BY-SA 4.0; see `NOTICE.md` in that folder). Rise uses the five armor-slot
 and talisman symbols from the wiki-sourced icon set credited by the RAB Rise
 builder; see `../build-icons/rise/NOTICE.md` (CC BY-SA 3.0). These are category
-icons, not the named item's exact appearance. Rise weapon/decorations and all
-Wilds equipment retain the neutral category pictogram until an equivalent
-source is validated. All game-derived images remain Capcom-related assets;
-source attribution does not imply Capcom endorsement.
+icons, not the named item's exact appearance. The 14 World weapon-class SVGs
+also serve as generic class symbols for Rise/Wilds; four decoration-slot
+symbols cover World/Rise/Wilds, keyed only by required slot level. Wilds armor
+uses the fifth-generation armor-slot symbols. See
+`../build-icons/shared-5gen/NOTICE.md`. Individual Rise/Wilds equipment art is
+still unavailable, so the UI must not imply that category art represents a
+specific piece. All game-derived images remain Capcom-related assets; source
+attribution does not imply Capcom endorsement.

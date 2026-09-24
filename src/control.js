@@ -359,7 +359,7 @@ function renderOnlineBuildDetail(index) {
   const decorationCards = Object.entries(build.decorationSlots || {}).flatMap(([part, entries]) => (entries || []).map((entry) => {
     const jewel = equipmentCatalog.findDecoration(gameKey, entry.id);
     const partName = part === 'weapon' ? 'Arma' : part === 'talisman' ? 'Talismã' : equipmentCatalog.slotLabels[part] || part;
-    return `<span class="build-decoration-chip" title="${escapeHtml(jewel?.name || entry.name)} · nível ${escapeHtml(jewel?.slot || entry.requiredSlot || '?')}"><i>✦</i>${escapeHtml(jewel?.name || entry.name)} <small>· ${escapeHtml(partName)}${entry.slotIndex == null ? '' : ` · espaço ${entry.slotIndex + 1}`}</small></span>`;
+    return `<span class="build-decoration-chip" title="${escapeHtml(jewel?.name || entry.name)} · nível ${escapeHtml(jewel?.slot || entry.requiredSlot || '?')}">${decorationIconMarkup(gameKey, jewel, jewel?.name || entry.name)}${escapeHtml(jewel?.name || entry.name)} <small>· ${escapeHtml(partName)}${entry.slotIndex == null ? '' : ` · espaço ${entry.slotIndex + 1}`}</small></span>`;
   }));
   const charm = equipmentCatalog.findCharm(gameKey, build.talismanId);
   const charmSkills = build.talismanSkills || charm?.skills || [];
@@ -536,10 +536,18 @@ function renderSavedBuilds(filterGame = 'Todos os jogos') {
 function equipmentCategoryIcon(record, iconKind, gameKey = record?.game) {
   const kind = String(iconKind || '').toLowerCase();
   const slot = ({ helmet: 'head', 'chest-armor': 'chest', 'arms-armor': 'arms', 'waist-armor': 'waist', 'leg-armor': 'legs' })[kind];
+  const weaponClass = String(record?.class || '').toLowerCase().replaceAll('_', '-');
+  const weaponAliases = { 'charge-axe': 'charge-blade', 'gun-lance': 'gunlance', horn: 'hunting-horn', 'short-sword': 'sword-and-shield', 'sword-shield': 'sword-and-shield', 'slash-axe': 'switch-axe' };
+  const weaponKey = `weapon-${weaponAliases[weaponClass] || weaponClass}`;
+  if (['rise', 'wilds'].includes(gameKey)) {
+    const armorPart = slot && ({ head: 'armor-head', chest: 'armor-chest', arms: 'armor-arms', waist: 'armor-waist', legs: 'armor-legs' })[slot];
+    if (armorPart) return `assets/build-icons/rise/${armorPart}.svg`;
+    if (kind === 'weapon' && /^weapon-[a-z-]+$/.test(weaponKey)) return `assets/build-icons/world/${weaponKey}.svg`;
+    if (kind === 'talisman') return 'assets/build-icons/rise/talisman.svg';
+  }
   if (gameKey === 'world') {
     const armorPart = slot && ({ head: 'armor-head', chest: 'armor-chest', arms: 'armor-arms', legs: 'armor-legs' })[slot];
-    const weaponType = record?.class && `weapon-${String(record.class).replaceAll('_', '-')}`;
-    const key = armorPart || (kind === 'weapon' ? weaponType : kind === 'talisman' ? 'talisman' : null);
+    const key = armorPart || (kind === 'weapon' ? weaponKey : kind === 'talisman' ? 'talisman' : null);
     return key ? `assets/build-icons/world/${key}.svg` : '';
   }
   if (gameKey === 'rise') {
@@ -556,9 +564,18 @@ function equipmentCategoryIcon(record, iconKind, gameKey = record?.game) {
   }
   return '';
 }
+function decorationCategoryIcon(gameKey, decoration) {
+  if (!['world', 'rise', 'wilds'].includes(gameKey)) return '';
+  const rank = Math.max(1, Math.min(4, Number(decoration?.slot) || 1));
+  return `assets/build-icons/shared-5gen/decoration-rank-${rank}.svg`;
+}
+function decorationIconMarkup(gameKey, decoration, label) {
+  const src = decorationCategoryIcon(gameKey, decoration);
+  return src ? `<img class="build-equipment-source-icon build-decoration-source-icon" data-icon-kind="decoration" src="${src}" alt="Ícone de categoria de decoração para ${escapeHtml(label)}" loading="lazy" />` : '<i>✦</i>';
+}
 function equipmentImage(record, iconKind, label, gameKey = record?.game) {
   const image = record?.icon;
-  const categoryIcon = equipmentCategoryIcon(record, iconKind, gameKey);
+  const categoryIcon = iconKind === 'decoration' ? decorationCategoryIcon(gameKey, record) : equipmentCategoryIcon(record, iconKind, gameKey);
   if (typeof image === 'string' && /^https:\/\//i.test(image)) return `<img class="build-equipment-source-icon" data-icon-kind="${escapeHtml(iconKind)}" data-item-label="${escapeHtml(label)}" ${categoryIcon ? `data-fallback-src="${escapeHtml(categoryIcon)}"` : ''} src="${escapeHtml(image)}" alt="Ícone individual de ${escapeHtml(label)}" loading="lazy" referrerpolicy="no-referrer" />`;
   if (categoryIcon) return `<img class="build-equipment-source-icon" data-icon-kind="${escapeHtml(iconKind)}" data-item-label="${escapeHtml(label)}" src="${escapeHtml(categoryIcon)}" alt="Ícone de categoria para ${escapeHtml(label)}" loading="lazy" />`;
   return `<span class="build-equipment-fallback" aria-label="${escapeHtml(label)}">${mhIcon(iconKind)}</span>`;
@@ -566,7 +583,7 @@ function equipmentImage(record, iconKind, label, gameKey = record?.game) {
 function buildEquipmentCard({ label, name, iconKind, record, gameKey = record?.game, meta = '', skills = [], decorations = [] }) {
   if (!name) return '';
   const pieceSkills = skills.length ? `<div class="build-detail-skills">${skills.map((skill) => `<span>${escapeHtml(skill.name)}${skill.level ? ` +${escapeHtml(skill.level)}` : ''}</span>`).join('')}</div>` : '';
-  const socketed = decorations.length ? `<div class="build-detail-socketed">${decorations.map((entry) => { const jewel = equipmentCatalog.findDecoration(record?.game || '', entry.id); return `<span class="build-decoration-chip" title="${escapeHtml(jewel?.name || entry.name)} · nível ${escapeHtml(jewel?.slot || entry.requiredSlot || '?')}"><i>✦</i>${escapeHtml(jewel?.name || entry.name)}${entry.slotIndex == null ? '' : ` · espaço ${entry.slotIndex + 1}`}</span>`; }).join('')}</div>` : '';
+  const socketed = decorations.length ? `<div class="build-detail-socketed">${decorations.map((entry) => { const jewel = equipmentCatalog.findDecoration(record?.game || gameKey, entry.id); return `<span class="build-decoration-chip" title="${escapeHtml(jewel?.name || entry.name)} · nível ${escapeHtml(jewel?.slot || entry.requiredSlot || '?')}">${decorationIconMarkup(gameKey, jewel, jewel?.name || entry.name)}${escapeHtml(jewel?.name || entry.name)}${entry.slotIndex == null ? '' : ` · espaço ${entry.slotIndex + 1}`}</span>`; }).join('')}</div>` : '';
   return `<article class="build-equipment-card"><div class="build-equipment-icon">${equipmentImage(record, iconKind, name, gameKey)}</div><div class="build-equipment-copy"><small>${escapeHtml(label)}</small><strong>${escapeHtml(name)}</strong>${meta ? `<span class="build-equipment-meta">${escapeHtml(meta)}</span>` : ''}${pieceSkills}${socketed}</div></article>`;
 }
 function renderSavedBuildDetail(buildId, filterGame = 'Todos os jogos') {

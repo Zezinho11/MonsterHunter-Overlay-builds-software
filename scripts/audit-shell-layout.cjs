@@ -32,7 +32,11 @@ app.whenReady().then(async () => {
         onlineCardAudit = await win.webContents.executeJavaScript("(() => { const cards=[...document.querySelectorAll('#online-build-grid .build-card')],xs=new Set(cards.map(e=>Math.round(e.getBoundingClientRect().x)));return {visibleBuildCards:cards.length,buildColumns:xs.size};})()");
         fs.writeFileSync(path.join(out, 'online-build-results.png'), (await win.webContents.capturePage()).toPNG());
         await win.webContents.executeJavaScript("document.querySelector('#online-build-grid .build-card')?.click()");
-        onlineDetailAudit = await win.webContents.executeJavaScript("Boolean(document.querySelector('.online-equipment-card') && document.querySelector('.build-detail-socketed') && document.querySelector('#back-to-online-builds'))");
+        await win.webContents.executeJavaScript("Promise.all([...document.querySelectorAll('.online-equipment-card img, .build-decoration-source-icon')].map(i => { i.loading='eager'; return i.decode().catch(() => {}); }))");
+        onlineDetailAudit = await win.webContents.executeJavaScript("Boolean(document.querySelector('.online-equipment-card') && document.querySelector('.build-detail-socketed') && document.querySelector('#back-to-online-builds') && document.querySelector('.online-equipment-card .build-equipment-source-icon[data-icon-kind=\\\"weapon\\\"]')?.naturalWidth > 0 && [...document.querySelectorAll('.build-decoration-source-icon')].length > 0 && [...document.querySelectorAll('.build-decoration-source-icon')].every(i => i.naturalWidth > 0) && document.querySelectorAll('.online-equipment-card .build-equipment-source-icon[alt^=\\\"Ícone de categoria\\\"]').length >= 5)");
+        win.showInactive();
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        fs.writeFileSync(path.join(out, 'online-build-detail.png'), (await win.webContents.capturePage()).toPNG());
         await win.webContents.executeJavaScript("document.querySelector('#back-to-online-builds')?.click()");
       }
       await new Promise((resolve) => setTimeout(resolve, 250));

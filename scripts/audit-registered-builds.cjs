@@ -94,6 +94,8 @@ app.whenReady().then(async () => {
           sourceIcons: document.querySelectorAll('.build-equipment-source-icon').length,
           categoryIcons: document.querySelectorAll('.build-equipment-source-icon[alt^="Ícone de categoria"]').length,
           categoryIconSources: [...document.querySelectorAll('.build-equipment-source-icon[alt^="Ícone de categoria"]')].map((image) => ({ src: image.getAttribute('src'), loaded: image.complete && image.naturalWidth > 0 })),
+          weaponCategoryIcon: document.querySelector('.build-equipment-source-icon[data-icon-kind="weapon"]')?.getAttribute('src') || '',
+          decorationCategoryIcons: [...document.querySelectorAll('.build-decoration-source-icon')].map((image) => ({ src: image.getAttribute('src'), loaded: image.complete && image.naturalWidth > 0 })),
           fallbackIcons: document.querySelectorAll('.build-equipment-fallback').length,
         };
       })()`);
@@ -110,7 +112,7 @@ app.whenReady().then(async () => {
           return !image.isConnected && Boolean(document.querySelector('.build-equipment-fallback'));
         })()`);
       }
-      if (fixture.key === 'world' || fixture.key === 'rise') {
+      if (fixture.key === 'world' || fixture.key === 'rise' || fixture.key === 'wilds') {
         win.showInactive();
         await new Promise((resolve) => setTimeout(resolve, 300));
         fs.writeFileSync(path.join(output, `saved-build-detail-${fixture.key}.png`), (await win.webContents.capturePage()).toPNG());
@@ -127,7 +129,7 @@ app.whenReady().then(async () => {
     const report = { cases };
     fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(report, null, 2));
     console.log(JSON.stringify(report, null, 2));
-    const passed = cases.length === 4 && cases.every(({ detail, returned }) => detail.title && detail.weapon && detail.armorCount >= 6 && detail.armorSkill && detail.talisman && detail.decoration && detail.notes && detail.backButton && detail.sidebarWidth === 286 && !detail.overflow && returned.listVisible && returned.title === 'Builds registradas' && returned.sidebarWidth === 286 && !returned.overflow) && cases.find(({ fixture }) => fixture.key === 'world')?.detail.sourceIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.detail.categoryIcons > 0 && cases.find(({ fixture }) => fixture.key === 'rise')?.detail.categoryIcons >= 5 && cases.find(({ fixture }) => fixture.key === 'mhgu')?.detail.categoryIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.iconRecovery;
+    const passed = cases.length === 4 && cases.every(({ detail, returned }) => detail.title && detail.weapon && detail.armorCount >= 6 && detail.armorSkill && detail.talisman && detail.decoration && detail.notes && detail.backButton && detail.sidebarWidth === 286 && !detail.overflow && returned.listVisible && returned.title === 'Builds registradas' && returned.sidebarWidth === 286 && !returned.overflow) && cases.find(({ fixture }) => fixture.key === 'world')?.detail.sourceIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.detail.categoryIcons > 0 && cases.find(({ fixture }) => fixture.key === 'rise')?.detail.categoryIcons >= 5 && cases.find(({ fixture }) => fixture.key === 'rise')?.detail.weaponCategoryIcon.includes('weapon-') && cases.find(({ fixture }) => fixture.key === 'rise')?.detail.decorationCategoryIcons.length > 0 && cases.find(({ fixture }) => fixture.key === 'rise')?.detail.decorationCategoryIcons.every(({ loaded }) => loaded) && cases.find(({ fixture }) => fixture.key === 'wilds')?.detail.weaponCategoryIcon.includes('weapon-') && cases.find(({ fixture }) => fixture.key === 'wilds')?.detail.categoryIcons >= 5 && cases.find(({ fixture }) => fixture.key === 'wilds')?.detail.decorationCategoryIcons.length > 0 && cases.find(({ fixture }) => fixture.key === 'wilds')?.detail.decorationCategoryIcons.every(({ loaded }) => loaded) && cases.find(({ fixture }) => fixture.key === 'mhgu')?.detail.categoryIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.iconRecovery;
     app.exit(passed ? 0 : 1);
   } catch (error) {
     console.error(error);

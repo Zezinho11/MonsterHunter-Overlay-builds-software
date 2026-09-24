@@ -600,6 +600,7 @@ body select option:disabled { color: #71848a !important; }
 .build-detail-socketed { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
 .build-decoration-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 6px; border: 1px solid rgba(196,154,90,.35); border-radius: 4px; color: #e2c47d; background: rgba(196,154,90,.07); font-size: 10px; }
 .build-decoration-chip i { color: #dfbe76; font-style: normal; }
+.build-decoration-chip .build-decoration-source-icon { width: 16px; height: 16px; object-fit: contain; flex: 0 0 16px; }
 .build-decoration-chip small { color: #8eb0b8; }
 .danger-button { border-color: rgba(220,105,82,.7); color: #ffc0ad; }
 .danger-button:hover { background: rgba(126,43,34,.25); }
