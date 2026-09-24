@@ -87,9 +87,19 @@ app.whenReady().then(async () => {
           notes: text.includes('Notas da fixture de auditoria.'), backButton: Boolean(document.querySelector('#back-to-saved-builds')),
           sidebarWidth: document.querySelector('.sidebar')?.getBoundingClientRect().width || 0,
           overflow: document.documentElement.scrollWidth > innerWidth,
+          sourceIcons: document.querySelectorAll('.build-equipment-source-icon').length,
           fallbackIcons: document.querySelectorAll('.build-equipment-fallback').length,
         };
       })()`);
+      let iconRecovery = true;
+      if (fixture.key === 'world') {
+        iconRecovery = await win.webContents.executeJavaScript(`(() => {
+          const image = document.querySelector('.build-equipment-source-icon');
+          if (!image) return false;
+          image.dispatchEvent(new Event('error'));
+          return !image.isConnected && Boolean(document.querySelector('.build-equipment-fallback'));
+        })()`);
+      }
       if (fixture.key === 'world') {
         win.showInactive();
         await new Promise((resolve) => setTimeout(resolve, 300));
@@ -102,12 +112,12 @@ app.whenReady().then(async () => {
         sidebarWidth: document.querySelector('.sidebar')?.getBoundingClientRect().width,
         overflow: document.documentElement.scrollWidth > innerWidth,
       })`);
-      cases.push({ fixture, detail, returned });
+      cases.push({ fixture, detail, returned, iconRecovery });
     }
     const report = { cases };
     fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(report, null, 2));
     console.log(JSON.stringify(report, null, 2));
-    const passed = cases.length === 4 && cases.every(({ detail, returned }) => detail.title && detail.weapon && detail.armorCount >= 6 && detail.armorSkill && detail.talisman && detail.decoration && detail.notes && detail.backButton && detail.sidebarWidth === 286 && !detail.overflow && returned.listVisible && returned.title === 'Builds registradas' && returned.sidebarWidth === 286 && !returned.overflow);
+    const passed = cases.length === 4 && cases.every(({ detail, returned }) => detail.title && detail.weapon && detail.armorCount >= 6 && detail.armorSkill && detail.talisman && detail.decoration && detail.notes && detail.backButton && detail.sidebarWidth === 286 && !detail.overflow && returned.listVisible && returned.title === 'Builds registradas' && returned.sidebarWidth === 286 && !returned.overflow) && cases.find(({ fixture }) => fixture.key === 'world')?.detail.sourceIcons > 0 && cases.find(({ fixture }) => fixture.key === 'world')?.iconRecovery;
     app.exit(passed ? 0 : 1);
   } catch (error) {
     console.error(error);

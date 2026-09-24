@@ -178,6 +178,15 @@ function mhIcon(name, label = '') {
     : `<svg class="mh-icon mh-icon-${escapeHtml(key)}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${iconPaths[key] || '<circle cx="12" cy="12" r="7"/>'}</svg>`;
   return `${visual}${label ? `<span class="sr-only">${escapeHtml(label)}</span>` : ''}`;
 }
+document.addEventListener('error', (event) => {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement) || !image.classList.contains('build-equipment-source-icon')) return;
+  const fallback = document.createElement('span');
+  fallback.className = 'build-equipment-fallback';
+  fallback.setAttribute('aria-label', `Imagem indisponível: ${image.alt.replace(/^Ícone de /, '')}`);
+  fallback.innerHTML = mhIcon(image.dataset.iconKind || 'weapon');
+  image.replaceWith(fallback);
+}, true);
 function weaknessIcon(element) { return mhIcon(element); }
 const resistanceIcons = { noise: 'noise', flash: 'flash', exhaust: 'exhaust', poison: 'poison', sleep: 'sleep', paralysis: 'paralysis', fire: 'fire', water: 'water', thunder: 'thunder', ice: 'ice', dragon: 'dragon', fireblight: 'fire', waterblight: 'water', thunderblight: 'thunder', iceblight: 'ice', dragonblight: 'dragon' };
 const resistanceLabels = { noise: 'Ruído', flash: 'Flash', exhaust: 'Exaustão', poison: 'Veneno', sleep: 'Sono', paralysis: 'Paralisia', fire: 'Fogo', water: 'Água', thunder: 'Trovão', ice: 'Gelo', dragon: 'Dragão' };
@@ -520,7 +529,7 @@ function renderSavedBuilds(filterGame = 'Todos os jogos') {
 }
 function equipmentImage(record, iconKind, label) {
   const image = record?.icon;
-  if (typeof image === 'string' && /^https:\/\//i.test(image)) return `<img src="${escapeHtml(image)}" alt="Ícone de ${escapeHtml(label)}" loading="lazy" referrerpolicy="no-referrer" />`;
+  if (typeof image === 'string' && /^https:\/\//i.test(image)) return `<img class="build-equipment-source-icon" data-icon-kind="${escapeHtml(iconKind)}" src="${escapeHtml(image)}" alt="Ícone de ${escapeHtml(label)}" loading="lazy" referrerpolicy="no-referrer" />`;
   return `<span class="build-equipment-fallback" aria-label="${escapeHtml(label)}">${mhIcon(iconKind)}</span>`;
 }
 function buildEquipmentCard({ label, name, iconKind, record, meta = '', skills = [], decorations = [] }) {
